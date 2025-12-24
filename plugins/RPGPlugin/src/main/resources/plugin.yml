@@ -1,0 +1,45 @@
+name: MineLauncherRPG
+main: com.example.rpg.RPGPlugin
+version: 1.0.0
+author: LauncherTeam
+api-version: 1.20
+commands:
+  rpg:
+    description: Open RPG menu and use RPG commands
+    usage: /rpg
+  rpgadmin:
+    description: Open RPG admin tools
+    usage: /rpgadmin
+  party:
+    description: Party management
+    usage: /party
+permissions:
+  rpg.admin.*:
+    description: Full RPG admin permissions
+    default: op
+    children:
+      rpg.admin: true
+      rpg.editor: true
+      rpg.debug: true
+  rpg.editor.*:
+    description: Full RPG editor permissions
+    default: op
+    children:
+      rpg.editor: true
+  rpg.mod.*:
+    description: RPG moderation permissions
+    default: op
+    children:
+      rpg.mod: true
+  rpg.admin:
+    description: Access admin menu
+    default: op
+  rpg.editor:
+    description: Access editor tools
+    default: op
+  rpg.mod:
+    description: Access moderation tools
+    default: op
+  rpg.debug:
+    description: Access debug overlay
+    default: op

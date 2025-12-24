@@ -1,0 +1,34 @@
+name: RPGPlugin
+main: de.yourname.rpg.RPGPlugin
+version: 0.1.0
+api-version: '1.21'
+commands:
+  rpg:
+    description: Hauptmenü des RPG-Plugins
+    usage: /rpg
+    permission: rpg.use
+  rpgadmin:
+    description: Admin-Panel des RPG-Plugins
+    usage: /rpgadmin
+    permission: rpg.admin.*
+permissions:
+  rpg.use:
+    default: true
+  rpg.admin.*:
+    default: op
+    children:
+      rpg.admin.zone.*: true
+      rpg.admin.quest.*: true
+      rpg.admin.npc.*: true
+      rpg.admin.loot.*: true
+      rpg.admin.player.*: true
+  rpg.admin.zone.*:
+    default: op
+  rpg.admin.quest.*:
+    default: op
+  rpg.admin.npc.*:
+    default: op
+  rpg.admin.loot.*:
+    default: op
+  rpg.admin.player.*:
+    default: op

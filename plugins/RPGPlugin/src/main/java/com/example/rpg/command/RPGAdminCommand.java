@@ -62,6 +62,9 @@ public class RPGAdminCommand implements CommandExecutor {
             .name(Text.mm("<yellow>Editor Wand"))
             .loreLine(Text.mm("<gray>Links: Pos1, Rechts: Pos2"))
             .build();
+        var meta = wand.getItemMeta();
+        meta.getPersistentDataContainer().set(plugin.wandKey(), PersistentDataType.BYTE, (byte) 1);
+        wand.setItemMeta(meta);
         player.getInventory().addItem(wand);
         player.sendMessage(Text.mm("<green>Editor Wand erhalten."));
     }

@@ -3,9 +3,8 @@ package com.example.rpg.listener;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.util.Text;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Material;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,11 +46,11 @@ public class PlayerListener implements Listener {
         if (item == null || item.getType() != Material.STICK) {
             return;
         }
-        if (item.getItemMeta() == null || item.getItemMeta().displayName() == null) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
             return;
         }
-        Component name = item.getItemMeta().displayName();
-        if (name == null || !PlainTextComponentSerializer.plainText().serialize(name).equalsIgnoreCase("Editor Wand")) {
+        if (!meta.getPersistentDataContainer().has(plugin.wandKey(), PersistentDataType.BYTE)) {
             return;
         }
         if (event.getClickedBlock() == null) {

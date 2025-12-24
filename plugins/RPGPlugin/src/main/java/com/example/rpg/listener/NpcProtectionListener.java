@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.persistence.PersistentDataType;
 
 /**
@@ -38,10 +37,5 @@ public class NpcProtectionListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void onInteractAt(PlayerInteractAtEntityEvent event) {
-        if (isNpc(event.getRightClicked())) {
-            event.setCancelled(true);
-        }
-    }
+    // Intentionally no PlayerInteractAtEntityEvent cancel to avoid breaking normal right-click.
 }

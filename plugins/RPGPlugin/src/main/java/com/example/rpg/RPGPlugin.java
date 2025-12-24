@@ -46,6 +46,7 @@ public class RPGPlugin extends JavaPlugin {
     private final Set<UUID> debugPlayers = new HashSet<>();
     private NamespacedKey questKey;
     private NamespacedKey skillKey;
+    private NamespacedKey wandKey;
     private AuditLog auditLog;
 
     @Override
@@ -64,6 +65,7 @@ public class RPGPlugin extends JavaPlugin {
         itemGenerator = new ItemGenerator(this);
         questKey = new NamespacedKey(this, "quest_id");
         skillKey = new NamespacedKey(this, "skill_id");
+        wandKey = new NamespacedKey(this, "editor_wand");
         guiManager = new GuiManager(playerDataManager, questManager, skillManager, classManager, factionManager, questKey, skillKey);
         auditLog = new AuditLog(this);
 
@@ -153,6 +155,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public NamespacedKey skillKey() {
         return skillKey;
+    }
+
+    public NamespacedKey wandKey() {
+        return wandKey;
     }
 
     public boolean toggleDebug(UUID uuid) {

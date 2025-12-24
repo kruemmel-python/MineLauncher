@@ -82,11 +82,11 @@ public class LootManager {
             table.setAppliesTo(section.getString("appliesTo", "ZOMBIE"));
             List<LootEntry> entries = new ArrayList<>();
             for (Map<?, ?> raw : section.getMapList("entries")) {
-                Object materialValue = raw.getOrDefault("material", "IRON_NUGGET");
-                Object chanceValue = raw.getOrDefault("chance", 0.3);
-                Object minValue = raw.getOrDefault("minAmount", 1);
-                Object maxValue = raw.getOrDefault("maxAmount", 1);
-                Object rarityValue = raw.getOrDefault("rarity", "COMMON");
+                Object materialValue = raw.containsKey("material") ? raw.get("material") : "IRON_NUGGET";
+                Object chanceValue = raw.containsKey("chance") ? raw.get("chance") : 0.3;
+                Object minValue = raw.containsKey("minAmount") ? raw.get("minAmount") : 1;
+                Object maxValue = raw.containsKey("maxAmount") ? raw.get("maxAmount") : 1;
+                Object rarityValue = raw.containsKey("rarity") ? raw.get("rarity") : "COMMON";
                 String material = String.valueOf(materialValue);
                 double chance = Double.parseDouble(String.valueOf(chanceValue));
                 int minAmount = Integer.parseInt(String.valueOf(minValue));

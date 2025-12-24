@@ -82,9 +82,9 @@ public class QuestManager {
             quest.setMinLevel(section.getInt("minLevel", 1));
             List<QuestStep> steps = new ArrayList<>();
             for (Map<?, ?> raw : section.getMapList("steps")) {
-                Object typeValue = raw.getOrDefault("type", "KILL");
-                Object targetValue = raw.getOrDefault("target", "ZOMBIE");
-                Object amountValue = raw.getOrDefault("amount", 1);
+                Object typeValue = raw.containsKey("type") ? raw.get("type") : "KILL";
+                Object targetValue = raw.containsKey("target") ? raw.get("target") : "ZOMBIE";
+                Object amountValue = raw.containsKey("amount") ? raw.get("amount") : 1;
                 String typeName = String.valueOf(typeValue);
                 String target = String.valueOf(targetValue);
                 int amount = Integer.parseInt(String.valueOf(amountValue));

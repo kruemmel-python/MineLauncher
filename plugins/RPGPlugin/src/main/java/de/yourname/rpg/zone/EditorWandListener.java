@@ -38,7 +38,13 @@ public class EditorWandListener implements Listener {
             event.setCancelled(true);
         } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock() != null) {
             if (player.isSneaking()) {
-                player.sendMessage("§eEditor-GUI folgt.");
+                if (selection.isComplete()) {
+                    player.sendMessage("§6Zone-Auswahl:");
+                    player.sendMessage("§ePos1: §7" + format(selection.getPos1()));
+                    player.sendMessage("§ePos2: §7" + format(selection.getPos2()));
+                } else {
+                    player.sendMessage("§7Auswahl unvollständig. Setze Pos1 und Pos2.");
+                }
                 return;
             }
             Location location = event.getClickedBlock().getLocation();
@@ -49,5 +55,9 @@ public class EditorWandListener implements Listener {
             selection.reset();
             player.sendMessage("§cSelection zurückgesetzt.");
         }
+    }
+
+    private String format(ZonePosition pos) {
+        return pos.getWorld() + " (" + pos.getX() + "," + pos.getY() + "," + pos.getZ() + ")";
     }
 }

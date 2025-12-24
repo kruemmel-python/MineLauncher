@@ -28,6 +28,14 @@ public class ZoneService {
         return registry.get(id);
     }
 
+    public List<Zone> listZones() {
+        return registry.all().stream().toList();
+    }
+
+    public void registerZone(Zone zone) {
+        registry.register(zone.getId(), zone);
+    }
+
     public Optional<Zone> getZoneAt(Location location) {
         return registry.all().stream().filter(zone -> matches(zone, location)).findFirst();
     }

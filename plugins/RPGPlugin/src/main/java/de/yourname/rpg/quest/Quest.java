@@ -1,22 +1,19 @@
 package de.yourname.rpg.quest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Quest {
     private String id;
     private String title;
     private String description;
-    private List<QuestStep> steps;
+    private java.util.List<QuestStepData> steps;
     private List<String> requirements;
     private List<String> rewards;
     private QuestStatus status;
     private int version;
 
     public Quest() {
-        this.steps = new ArrayList<>();
-        this.requirements = new ArrayList<>();
-        this.rewards = new ArrayList<>();
+        this.steps = new java.util.ArrayList<>();
+        this.requirements = new java.util.ArrayList<>();
+        this.rewards = new java.util.ArrayList<>();
         this.status = QuestStatus.DRAFT;
         this.version = 1;
     }
@@ -40,7 +37,7 @@ public class Quest {
         return description;
     }
 
-    public List<QuestStep> getSteps() {
+    public java.util.List<QuestStepData> getSteps() {
         return steps;
     }
 
@@ -58,6 +55,14 @@ public class Quest {
 
     public void setStatus(QuestStatus status) {
         this.status = status;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getVersion() {

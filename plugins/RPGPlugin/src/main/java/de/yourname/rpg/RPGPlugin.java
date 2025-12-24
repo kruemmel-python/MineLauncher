@@ -16,6 +16,7 @@ import de.yourname.rpg.storage.StorageService;
 import de.yourname.rpg.util.GameplayListener;
 import de.yourname.rpg.util.PdcKeys;
 import de.yourname.rpg.util.PlayerLifecycleListener;
+import de.yourname.rpg.util.ZoneEnterListener;
 import de.yourname.rpg.zone.EditorWandItem;
 import de.yourname.rpg.zone.EditorWandListener;
 import de.yourname.rpg.zone.ZoneService;
@@ -49,9 +50,9 @@ public class RPGPlugin extends JavaPlugin {
 
         PdcKeys keys = new PdcKeys(this);
         RpgMenu menu = new RpgMenu();
-        RpgCommand rpgCommand = new RpgCommand(menu);
+        RpgCommand rpgCommand = new RpgCommand(menu, context);
         EditorWandItem wandItem = new EditorWandItem(keys);
-        RpgAdminCommand adminCommand = new RpgAdminCommand(wandItem);
+        RpgAdminCommand adminCommand = new RpgAdminCommand(wandItem, context, keys);
 
         getCommand("rpg").setExecutor(rpgCommand);
         getCommand("rpgadmin").setExecutor(adminCommand);
@@ -60,6 +61,7 @@ public class RPGPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GameplayListener(context), this);
         getServer().getPluginManager().registerEvents(new NpcInteractionHandler(npcService, questService, keys), this);
         getServer().getPluginManager().registerEvents(new EditorWandListener(adminCommand, keys), this);
+        getServer().getPluginManager().registerEvents(new ZoneEnterListener(zoneService, questService), this);
     }
 
     @Override

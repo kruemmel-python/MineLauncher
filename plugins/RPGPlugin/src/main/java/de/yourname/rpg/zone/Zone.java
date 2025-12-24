@@ -59,6 +59,26 @@ public class Zone {
         this.lootTableId = lootTableId;
     }
 
+    public void setWorld(String world) {
+        this.world = world;
+    }
+
+    public void setPos1(ZonePosition pos1) {
+        this.pos1 = pos1;
+    }
+
+    public void setPos2(ZonePosition pos2) {
+        this.pos2 = pos2;
+    }
+
+    public void setLevelMin(int levelMin) {
+        this.levelMin = levelMin;
+    }
+
+    public void setLevelMax(int levelMax) {
+        this.levelMax = levelMax;
+    }
+
     public void setXpMultiplier(double xpMultiplier) {
         this.xpMultiplier = xpMultiplier;
     }

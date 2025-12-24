@@ -35,6 +35,14 @@ public class QuestService {
         return questRegistry.get(id);
     }
 
+    public List<Quest> listQuests() {
+        return questRegistry.all().stream().toList();
+    }
+
+    public void registerQuest(Quest quest) {
+        questRegistry.register(quest.getId(), quest);
+    }
+
     public void startQuest(UUID uuid, String questId) {
         playerStates.computeIfAbsent(uuid, key -> new HashMap<>())
                 .putIfAbsent(questId, new QuestState(questId));
@@ -65,7 +73,7 @@ public class QuestService {
             QuestProgress progress = state.getProgress();
             progress.setCount(key, progress.getCount(key) + 1);
             questRegistry.get(state.getQuestId()).ifPresent(quest -> {
-                if (!state.isCompleted() && evaluator.evaluate(playerDataService.getOrCreate(uuid), quest, state)) {
+                if (!state.isCompleted() && evaluator.evaluate(quest, state)) {
                     state.setCompleted(true);
                     PlayerData data = playerDataService.getOrCreate(uuid);
                     data.getQuestStates().put(quest.getId(), "completed");

@@ -25,6 +25,10 @@ public class NpcService {
         return registry.get(id);
     }
 
+    public void registerNpc(RpgNpc npc) {
+        registry.register(npc.getId(), npc);
+    }
+
     public Optional<RpgNpc> findByEntity(UUID entityUuid) {
         return registry.all().stream()
                 .filter(npc -> entityUuid.equals(npc.getEntityUuid()))

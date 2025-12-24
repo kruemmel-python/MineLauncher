@@ -25,6 +25,16 @@ Alle Beispiele sind Ingame-Kommandos (Chat/Console im Spiel).
 
 ---
 
+### `/rpg quests start <id>`
+Startet eine Quest, damit der Fortschritt getrackt wird.
+
+**Beispiel:**
+```
+/rpg quests start intro_quest
+```
+
+---
+
 ### `/rpg skills`
 Öffnet den Skilltree bzw. zeigt an, dass der Skilltree geöffnet wird.
 
@@ -96,7 +106,7 @@ Startet das Erstellen einer Zone mit der angegebenen ID.
 ---
 
 ### `/rpgadmin zone edit <id>`
-Öffnet den Zonen-Editor für eine bestehende Zone.
+Aktualisiert die bestehende Zone mit der aktuellen Auswahl (Pos1/Pos2).
 
 **Beispiel:**
 ```
@@ -105,8 +115,8 @@ Startet das Erstellen einer Zone mit der angegebenen ID.
 
 ---
 
-### `/rpgadmin npc create <id>`
-Erstellt einen NPC mit der angegebenen ID.
+### `/rpgadmin npc create <id> [role] [dialogId]`
+Erstellt einen NPC mit der angegebenen ID an der aktuellen Position.
 
 **Beispiel:**
 ```
@@ -125,12 +135,28 @@ Erstellt eine neue Quest mit der angegebenen ID.
 
 ---
 
-### `/rpgadmin quest edit <id>`
-Bearbeitet eine bestehende Quest.
+### `/rpgadmin quest edit <id> title <text>`
+Setzt den Titel einer Quest.
 
 **Beispiel:**
 ```
-/rpgadmin quest edit intro_quest
+/rpgadmin quest edit intro_quest title Der erste Auftrag
+```
+
+### `/rpgadmin quest edit <id> desc <text>`
+Setzt die Beschreibung einer Quest.
+
+**Beispiel:**
+```
+/rpgadmin quest edit intro_quest desc Sprich mit dem Schmied im Dorf.
+```
+
+### `/rpgadmin quest edit <id> addstep <kill|collect|talk|goto> <target> <amount>`
+Fügt einen Quest-Schritt hinzu.
+
+**Beispiel:**
+```
+/rpgadmin quest edit intro_quest addstep kill ZOMBIE 3
 ```
 
 ---
@@ -145,12 +171,20 @@ Veröffentlicht eine Quest (Status → published).
 
 ---
 
-### `/rpgadmin loottable edit <id>`
-Bearbeitet eine Loot-Tabelle.
+### `/rpgadmin loottable edit <id> add <itemId> <chance>`
+Fügt einen Eintrag zu einer Loot-Tabelle hinzu.
 
 **Beispiel:**
 ```
-/rpgadmin loottable edit starter_loot
+/rpgadmin loottable edit starter_loot add rpg_sword 0.25
+```
+
+### `/rpgadmin loottable edit <id> remove <itemId>`
+Entfernt einen Eintrag aus einer Loot-Tabelle.
+
+**Beispiel:**
+```
+/rpgadmin loottable edit starter_loot remove rpg_sword
 ```
 
 ---

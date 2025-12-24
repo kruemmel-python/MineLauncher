@@ -23,4 +23,8 @@ public class SkillService {
     public Optional<SkillTree> getTree(String id) {
         return registry.get(id);
     }
+
+    public java.util.List<SkillTree> listTrees() {
+        return registry.all().stream().toList();
+    }
 }

@@ -26,6 +26,14 @@ public class LootService {
         return tables.get(id);
     }
 
+    public void registerTable(LootTable table) {
+        tables.register(table.getId(), table);
+    }
+
+    public List<LootTable> listTables() {
+        return tables.all().stream().toList();
+    }
+
     public List<String> roll(String tableId) {
         return getTable(tableId).map(roller::roll).orElse(List.of());
     }

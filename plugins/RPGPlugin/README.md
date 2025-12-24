@@ -1,6 +1,6 @@
 # RPGPlugin
 
-Autarkes Minecraft-RPG-Plugin (Paper 1.21.x) mit geschichteter Architektur.
+Autarkes Minecraft-RPG-Plugin (Paper 1.20.4) mit geschichteter Architektur.
 
 ## Build
 

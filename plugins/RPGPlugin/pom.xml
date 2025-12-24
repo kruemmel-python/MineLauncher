@@ -12,8 +12,8 @@
     <name>RPGPlugin</name>
 
     <properties>
-        <java.version>21</java.version>
-        <paper.version>1.21.1-R0.1-SNAPSHOT</paper.version>
+        <java.version>17</java.version>
+        <paper.version>1.20.4-R0.1-SNAPSHOT</paper.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

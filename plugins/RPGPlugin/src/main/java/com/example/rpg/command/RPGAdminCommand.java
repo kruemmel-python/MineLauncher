@@ -13,6 +13,8 @@ import com.example.rpg.model.Zone;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -109,8 +111,14 @@ public class RPGAdminCommand implements CommandExecutor {
             player.sendMessage(Text.mm("<red>Zone nicht gefunden."));
             return;
         }
-        zone.setMinLevel(Integer.parseInt(args[3]));
-        zone.setMaxLevel(Integer.parseInt(args[4]));
+        Integer min = parseInt(args[3]);
+        Integer max = parseInt(args[4]);
+        if (min == null || max == null || min < 1 || max < min) {
+            player.sendMessage(Text.mm("<red>Ungültiger Levelbereich. Beispiel: <white>/rpgadmin zone setlevel <id> 1 30</white>"));
+            return;
+        }
+        zone.setMinLevel(min);
+        zone.setMaxLevel(max);
         plugin.zoneManager().saveZone(zone);
         plugin.auditLog().log(player, "Zone Level gesetzt: " + zone.id());
         player.sendMessage(Text.mm("<green>Zone Level aktualisiert."));
@@ -126,8 +134,14 @@ public class RPGAdminCommand implements CommandExecutor {
             player.sendMessage(Text.mm("<red>Zone nicht gefunden."));
             return;
         }
-        zone.setSlowMultiplier(Double.parseDouble(args[3]));
-        zone.setDamageMultiplier(Double.parseDouble(args[4]));
+        Double slow = parseDouble(args[3]);
+        Double dmg = parseDouble(args[4]);
+        if (slow == null || dmg == null || slow <= 0.0 || dmg <= 0.0) {
+            player.sendMessage(Text.mm("<red>Ungültige Werte. Beispiel: <white>/rpgadmin zone setmod <id> 0.8 1.2</white>"));
+            return;
+        }
+        zone.setSlowMultiplier(slow);
+        zone.setDamageMultiplier(dmg);
         plugin.zoneManager().saveZone(zone);
         plugin.auditLog().log(player, "Zone Modifikatoren gesetzt: " + zone.id());
         player.sendMessage(Text.mm("<green>Zone Modifikatoren aktualisiert."));
@@ -151,7 +165,12 @@ public class RPGAdminCommand implements CommandExecutor {
             return;
         }
         String id = args[2];
-        NpcRole role = NpcRole.valueOf(args[3].toUpperCase());
+        Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, args[3]);
+        if (roleOpt.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Unbekannte Rolle. Erlaubt: <white>" + java.util.Arrays.toString(NpcRole.values())));
+            return;
+        }
+        NpcRole role = roleOpt.get();
         Npc npc = new Npc(id);
         npc.setName(id);
         npc.setRole(role);
@@ -224,9 +243,18 @@ public class RPGAdminCommand implements CommandExecutor {
             player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
             return;
         }
-        QuestStepType type = QuestStepType.valueOf(args[3].toUpperCase());
+        Optional<QuestStepType> typeOpt = parseEnum(QuestStepType.class, args[3]);
+        if (typeOpt.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Unbekannter Step-Typ. Erlaubt: <white>" + java.util.Arrays.toString(QuestStepType.values())));
+            return;
+        }
+        QuestStepType type = typeOpt.get();
         String target = args[4];
-        int amount = Integer.parseInt(args[5]);
+        Integer amount = parseInt(args[5]);
+        if (amount == null || amount < 1) {
+            player.sendMessage(Text.mm("<red>Amount muss >= 1 sein.</red>"));
+            return;
+        }
         quest.steps().add(new QuestStep(type, target, amount));
         plugin.questManager().saveQuest(quest);
         plugin.auditLog().log(player, "Quest Step hinzugefügt: " + quest.id());
@@ -271,11 +299,25 @@ public class RPGAdminCommand implements CommandExecutor {
             return;
         }
         String material = args[3];
-        double chance = Double.parseDouble(args[4]);
-        int min = Integer.parseInt(args[5]);
-        int max = Integer.parseInt(args[6]);
-        Rarity rarity = Rarity.valueOf(args[7].toUpperCase());
-        table.entries().add(new LootEntry(material, chance, min, max, rarity));
+        Material mat = Material.matchMaterial(material.toUpperCase(Locale.ROOT));
+        if (mat == null) {
+            player.sendMessage(Text.mm("<red>Unbekanntes Material: <white>" + material + "</white>"));
+            return;
+        }
+        Double chance = parseDouble(args[4]);
+        Integer min = parseInt(args[5]);
+        Integer max = parseInt(args[6]);
+        Optional<Rarity> rarityOpt = parseEnum(Rarity.class, args[7]);
+        if (chance == null || min == null || max == null || rarityOpt.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Ungültige Parameter. Beispiel: <white>/rpgadmin loot addentry <id> IRON_NUGGET 0.5 1 3 COMMON</white>"));
+            return;
+        }
+        if (chance < 0.0 || chance > 1.0 || min < 1 || max < min) {
+            player.sendMessage(Text.mm("<red>Chance 0..1 und min/max gültig setzen.</red>"));
+            return;
+        }
+        Rarity rarity = rarityOpt.get();
+        table.entries().add(new LootEntry(mat.name(), chance, min, max, rarity));
         plugin.lootManager().saveTable(table);
         plugin.auditLog().log(player, "Loot Entry hinzugefügt: " + table.id());
         player.sendMessage(Text.mm("<green>Loot Entry hinzugefügt."));
@@ -293,5 +335,36 @@ public class RPGAdminCommand implements CommandExecutor {
         }
         return new Location(player.getServer().getWorld(parts[0]),
             Double.parseDouble(parts[1]), Double.parseDouble(parts[2]), Double.parseDouble(parts[3]));
+    }
+
+    // -----------------------
+    // Parsing-Helper (crash-sicher)
+    // -----------------------
+    private static Integer parseInt(String raw) {
+        try {
+            return Integer.parseInt(raw);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private static Double parseDouble(String raw) {
+        try {
+            return Double.parseDouble(raw);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private static <E extends Enum<E>> Optional<E> parseEnum(Class<E> type, String raw) {
+        if (raw == null) {
+            return Optional.empty();
+        }
+        String key = raw.trim().toUpperCase(Locale.ROOT);
+        try {
+            return Optional.of(Enum.valueOf(type, key));
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
+        }
     }
 }

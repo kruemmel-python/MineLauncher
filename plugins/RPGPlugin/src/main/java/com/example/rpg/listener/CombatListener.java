@@ -59,7 +59,7 @@ public class CombatListener implements Listener {
             for (int i = 0; i < quest.steps().size(); i++) {
                 QuestStep step = quest.steps().get(i);
                 if (step.type() == QuestStepType.KILL && step.target().equalsIgnoreCase(event.getEntity().getType().name())) {
-                    progress.incrementStep(i, 1);
+                    progress.incrementStepClamped(i, 1, step.amount());
                 }
             }
             plugin.completeQuestIfReady(killer, quest, progress);

@@ -25,14 +25,24 @@ public class PartyManager {
     }
 
     public void removeMember(UUID member) {
-        Party party = partiesByMember.remove(member);
-        if (party != null) {
-            party.removeMember(member);
-            if (party.leader().equals(member)) {
-                party.members().forEach(partiesByMember::remove);
-            } else if (party.members().isEmpty()) {
-                partiesByMember.remove(member);
+        Party party = partiesByMember.get(member);
+        if (party == null) {
+            return;
+        }
+
+        party.removeMember(member);
+        partiesByMember.remove(member);
+
+        if (party.leader().equals(member)) {
+            for (UUID uuid : party.members()) {
+                partiesByMember.remove(uuid);
             }
+            party.members().clear();
+            return;
+        }
+
+        if (party.members().isEmpty()) {
+            partiesByMember.remove(party.leader());
         }
     }
 }

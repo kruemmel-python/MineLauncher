@@ -24,6 +24,19 @@ public class QuestProgress {
         stepProgress.put(index, stepProgress.getOrDefault(index, 0) + amount);
     }
 
+    /**
+     * Erhöht den Fortschritt, aber nie über "required" hinaus.
+     * Damit bleibt Progress stabil, und Auswertungen werden deterministisch.
+     */
+    public void incrementStepClamped(int index, int amount, int required) {
+        int current = stepProgress.getOrDefault(index, 0);
+        int next = current + Math.max(0, amount);
+        if (required > 0) {
+            next = Math.min(required, next);
+        }
+        stepProgress.put(index, next);
+    }
+
     public int getStepProgress(int index) {
         return stepProgress.getOrDefault(index, 0);
     }

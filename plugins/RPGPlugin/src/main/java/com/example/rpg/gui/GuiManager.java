@@ -42,7 +42,7 @@ public class GuiManager {
     }
 
     public void openPlayerMenu(Player player) {
-        Inventory inv = Bukkit.createInventory(player, 27, Component.text("RPG Menü"));
+        Inventory inv = Bukkit.createInventory(new GuiHolders.PlayerMenuHolder(), 27, Component.text("RPG Menü"));
         PlayerProfile profile = playerDataManager.getProfile(player);
 
         inv.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
@@ -72,7 +72,7 @@ public class GuiManager {
     }
 
     public void openAdminMenu(Player player) {
-        Inventory inv = Bukkit.createInventory(player, 27, Component.text("RPG Admin"));
+        Inventory inv = Bukkit.createInventory(new GuiHolders.AdminMenuHolder(), 27, Component.text("RPG Admin"));
         inv.setItem(10, new ItemBuilder(Material.COMPASS)
             .name(Text.mm("<gold>Zonen-Editor"))
             .loreLine(Text.mm("<gray>Regionen verwalten"))
@@ -101,7 +101,7 @@ public class GuiManager {
     }
 
     public void openQuestList(Player player) {
-        Inventory inv = Bukkit.createInventory(player, 27, Component.text("Quests"));
+        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestListHolder(), 27, Component.text("Quests"));
         int slot = 0;
         for (Quest quest : questManager.quests().values()) {
             if (slot >= inv.getSize()) {
@@ -122,7 +122,7 @@ public class GuiManager {
     }
 
     public void openSkillList(Player player) {
-        Inventory inv = Bukkit.createInventory(player, 27, Component.text("Skills"));
+        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillListHolder(), 27, Component.text("Skills"));
         PlayerProfile profile = playerDataManager.getProfile(player);
         int slot = 0;
         for (var entry : skillManager.skills().entrySet()) {

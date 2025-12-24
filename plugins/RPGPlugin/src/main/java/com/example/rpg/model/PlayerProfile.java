@@ -22,6 +22,10 @@ public class PlayerProfile {
     private final Map<String, QuestProgress> activeQuests = new HashMap<>();
     private final Set<String> completedQuests = new HashSet<>();
     private final Map<String, Integer> factionRep = new HashMap<>();
+    /**
+     * Skill-Cooldowns persistent: skillId -> lastUseMillis
+     */
+    private final Map<String, Long> skillCooldowns = new HashMap<>();
 
     public PlayerProfile(UUID uuid) {
         this.uuid = uuid;
@@ -100,6 +104,10 @@ public class PlayerProfile {
 
     public Map<String, Integer> factionRep() {
         return factionRep;
+    }
+
+    public Map<String, Long> skillCooldowns() {
+        return skillCooldowns;
     }
 
     public void addXp(int amount) {

@@ -1,12 +1,12 @@
 package com.example.rpg.listener;
 
 import com.example.rpg.RPGPlugin;
+import com.example.rpg.gui.GuiHolders;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Quest;
 import com.example.rpg.model.QuestProgress;
 import com.example.rpg.model.Skill;
 import com.example.rpg.util.Text;
-import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,12 +27,12 @@ public class GuiListener implements Listener {
         if (!(event.getWhoClicked() instanceof Player player)) {
             return;
         }
-        Component title = event.getView().title();
         ItemStack current = event.getCurrentItem();
         if (current == null) {
             return;
         }
-        if (title.equals(Component.text("RPG Menü"))) {
+        var holder = event.getInventory().getHolder();
+        if (holder instanceof GuiHolders.PlayerMenuHolder) {
             event.setCancelled(true);
             switch (event.getSlot()) {
                 case 12 -> plugin.guiManager().openSkillList(player);
@@ -42,7 +42,7 @@ public class GuiListener implements Listener {
             }
             return;
         }
-        if (title.equals(Component.text("RPG Admin"))) {
+        if (holder instanceof GuiHolders.AdminMenuHolder) {
             event.setCancelled(true);
             if (event.getSlot() == 15) {
                 boolean enabled = plugin.toggleDebug(player.getUniqueId());
@@ -50,7 +50,7 @@ public class GuiListener implements Listener {
             }
             return;
         }
-        if (title.equals(Component.text("Quests"))) {
+        if (holder instanceof GuiHolders.QuestListHolder) {
             event.setCancelled(true);
             Quest quest = resolveQuest(current);
             if (quest == null) {
@@ -73,7 +73,7 @@ public class GuiListener implements Listener {
             player.sendMessage(Text.mm("<green>Quest angenommen: " + quest.name()));
             return;
         }
-        if (title.equals(Component.text("Skills"))) {
+        if (holder instanceof GuiHolders.SkillListHolder) {
             event.setCancelled(true);
             Skill skill = resolveSkill(current);
             if (skill == null) {

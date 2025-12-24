@@ -7,6 +7,7 @@ import com.example.rpg.gui.GuiManager;
 import com.example.rpg.listener.CombatListener;
 import com.example.rpg.listener.GuiListener;
 import com.example.rpg.listener.NpcListener;
+import com.example.rpg.listener.NpcProtectionListener;
 import com.example.rpg.listener.PlayerListener;
 import com.example.rpg.listener.ZoneListener;
 import com.example.rpg.manager.ClassManager;
@@ -70,6 +71,7 @@ public class RPGPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new CombatListener(this), this);
         Bukkit.getPluginManager().registerEvents(new ZoneListener(this), this);
         Bukkit.getPluginManager().registerEvents(new NpcListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new NpcProtectionListener(this), this);
         Bukkit.getPluginManager().registerEvents(new GuiListener(this), this);
 
         getCommand("rpg").setExecutor(new RPGCommand(this));

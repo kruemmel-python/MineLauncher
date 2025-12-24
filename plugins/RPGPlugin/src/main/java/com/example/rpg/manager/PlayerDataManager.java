@@ -84,6 +84,13 @@ public class PlayerDataManager {
                     profile.factionRep().put(factionId, factions.getInt(factionId));
                 }
             }
+
+            ConfigurationSection cooldowns = section.getConfigurationSection("skillCooldowns");
+            if (cooldowns != null) {
+                for (String skillId : cooldowns.getKeys(false)) {
+                    profile.skillCooldowns().put(skillId, cooldowns.getLong(skillId, 0L));
+                }
+            }
         }
         return profile;
     }
@@ -118,6 +125,11 @@ public class PlayerDataManager {
         ConfigurationSection factions = section.createSection("factionRep");
         for (Map.Entry<String, Integer> entry : profile.factionRep().entrySet()) {
             factions.set(entry.getKey(), entry.getValue());
+        }
+
+        ConfigurationSection cooldowns = section.createSection("skillCooldowns");
+        for (Map.Entry<String, Long> entry : profile.skillCooldowns().entrySet()) {
+            cooldowns.set(entry.getKey(), entry.getValue());
         }
         save();
     }

@@ -6,9 +6,6 @@ import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Skill;
 import com.example.rpg.model.SkillType;
 import com.example.rpg.util.Text;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +16,6 @@ import org.bukkit.util.Vector;
 
 public class RPGCommand implements CommandExecutor {
     private final RPGPlugin plugin;
-    private final Map<UUID, Map<String, Long>> cooldowns = new HashMap<>();
 
     public RPGCommand(RPGPlugin plugin) {
         this.plugin = plugin;
@@ -66,9 +62,7 @@ public class RPGCommand implements CommandExecutor {
             return;
         }
         long now = System.currentTimeMillis();
-        long last = cooldowns
-            .computeIfAbsent(player.getUniqueId(), key -> new HashMap<>())
-            .getOrDefault(skillId, 0L);
+        long last = profile.skillCooldowns().getOrDefault(skillId, 0L);
         if (now - last < skill.cooldown() * 1000L) {
             long remaining = (skill.cooldown() * 1000L - (now - last)) / 1000L;
             player.sendMessage(Text.mm("<red>Cooldown: " + remaining + "s"));
@@ -80,7 +74,7 @@ public class RPGCommand implements CommandExecutor {
         }
         profile.setMana(profile.mana() - skill.manaCost());
         applySkillEffect(player, skill.effect());
-        cooldowns.get(player.getUniqueId()).put(skillId, now);
+        profile.skillCooldowns().put(skillId, now);
         player.sendMessage(Text.mm("<green>Skill benutzt: " + skill.name()));
     }
 

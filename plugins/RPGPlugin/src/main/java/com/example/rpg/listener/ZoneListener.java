@@ -56,7 +56,7 @@ public class ZoneListener implements Listener {
             for (int i = 0; i < quest.steps().size(); i++) {
                 QuestStep step = quest.steps().get(i);
                 if (step.type() == QuestStepType.EXPLORE && step.target().equalsIgnoreCase(zone.id())) {
-                    progress.incrementStep(i, 1);
+                    progress.incrementStepClamped(i, 1, step.amount());
                 }
             }
             plugin.completeQuestIfReady(player, quest, progress);

@@ -1,0 +1,7 @@
+rpg:
+  dataVersion: 1
+  xp:
+    mobBase: 10
+    blockBreak: 1
+    craft: 2
+  manaRegenPerTick: 5

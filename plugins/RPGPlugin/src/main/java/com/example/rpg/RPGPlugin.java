@@ -206,7 +206,10 @@ public class RPGPlugin extends JavaPlugin {
         profile.activeQuests().remove(quest.id());
         profile.addXp(quest.reward().xp());
         profile.setSkillPoints(profile.skillPoints() + quest.reward().skillPoints());
-        quest.reward().factionRep().forEach((id, amount) ->\n            profile.factionRep().put(id, profile.factionRep().getOrDefault(id, 0) + amount)\n        );
-        player.sendMessage(\"§aQuest abgeschlossen: \" + quest.name());\n        return true;
+        quest.reward().factionRep().forEach((id, amount) ->
+            profile.factionRep().put(id, profile.factionRep().getOrDefault(id, 0) + amount)
+        );
+        player.sendMessage("§aQuest abgeschlossen: " + quest.name());
+        return true;
     }
 }

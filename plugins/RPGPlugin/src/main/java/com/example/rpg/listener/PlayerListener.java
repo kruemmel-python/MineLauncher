@@ -5,6 +5,7 @@ import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.util.Text;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

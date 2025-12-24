@@ -14,7 +14,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -103,8 +102,8 @@ public class RPGCommand implements CommandExecutor {
             }
             case "taunt" -> {
                 for (Entity entity : player.getNearbyEntities(8, 4, 8)) {
-                    if (entity instanceof LivingEntity living && !(entity instanceof Player)) {
-                        living.setTarget(player);
+                    if (entity instanceof org.bukkit.entity.Mob mob) {
+                        mob.setTarget(player);
                     }
                 }
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_IRON_GOLEM_REPAIR, 1f, 0.7f);

@@ -81,12 +81,17 @@ public class LootManager {
             LootTable table = new LootTable(id);
             table.setAppliesTo(section.getString("appliesTo", "ZOMBIE"));
             List<LootEntry> entries = new ArrayList<>();
-            for (Map<?, ?> map : section.getMapList("entries")) {
-                String material = String.valueOf(map.getOrDefault("material", "IRON_NUGGET"));
-                double chance = Double.parseDouble(String.valueOf(map.getOrDefault("chance", 0.3)));
-                int minAmount = Integer.parseInt(String.valueOf(map.getOrDefault("minAmount", 1)));
-                int maxAmount = Integer.parseInt(String.valueOf(map.getOrDefault("maxAmount", 1)));
-                Rarity rarity = Rarity.valueOf(String.valueOf(map.getOrDefault("rarity", "COMMON")));
+            for (Map<?, ?> raw : section.getMapList("entries")) {
+                Object materialValue = raw.getOrDefault("material", "IRON_NUGGET");
+                Object chanceValue = raw.getOrDefault("chance", 0.3);
+                Object minValue = raw.getOrDefault("minAmount", 1);
+                Object maxValue = raw.getOrDefault("maxAmount", 1);
+                Object rarityValue = raw.getOrDefault("rarity", "COMMON");
+                String material = String.valueOf(materialValue);
+                double chance = Double.parseDouble(String.valueOf(chanceValue));
+                int minAmount = Integer.parseInt(String.valueOf(minValue));
+                int maxAmount = Integer.parseInt(String.valueOf(maxValue));
+                Rarity rarity = Rarity.valueOf(String.valueOf(rarityValue));
                 entries.add(new LootEntry(material, chance, minAmount, maxAmount, rarity));
             }
             table.setEntries(entries);

@@ -81,10 +81,13 @@ public class QuestManager {
             quest.setRepeatable(section.getBoolean("repeatable", false));
             quest.setMinLevel(section.getInt("minLevel", 1));
             List<QuestStep> steps = new ArrayList<>();
-            for (Map<?, ?> map : section.getMapList("steps")) {
-                String typeName = String.valueOf(map.getOrDefault("type", "KILL"));
-                String target = String.valueOf(map.getOrDefault("target", "ZOMBIE"));
-                int amount = Integer.parseInt(String.valueOf(map.getOrDefault("amount", 1)));
+            for (Map<?, ?> raw : section.getMapList("steps")) {
+                Object typeValue = raw.getOrDefault("type", "KILL");
+                Object targetValue = raw.getOrDefault("target", "ZOMBIE");
+                Object amountValue = raw.getOrDefault("amount", 1);
+                String typeName = String.valueOf(typeValue);
+                String target = String.valueOf(targetValue);
+                int amount = Integer.parseInt(String.valueOf(amountValue));
                 QuestStepType type = QuestStepType.valueOf(typeName);
                 steps.add(new QuestStep(type, target, amount));
             }

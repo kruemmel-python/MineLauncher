@@ -6,5 +6,6 @@ public enum SkillEffectType {
     PROJECTILE,
     POTION,
     SOUND,
-    XP
+    XP,
+    PARTICLE
 }

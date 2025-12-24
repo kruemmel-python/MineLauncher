@@ -28,6 +28,7 @@ import com.example.rpg.skill.SkillEffectRegistry;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.skill.effects.DamageEffect;
 import com.example.rpg.skill.effects.HealEffect;
+import com.example.rpg.skill.effects.ParticleEffect;
 import com.example.rpg.skill.effects.PotionStatusEffect;
 import com.example.rpg.skill.effects.ProjectileEffect;
 import com.example.rpg.skill.effects.SoundEffect;
@@ -56,6 +57,8 @@ public class RPGPlugin extends JavaPlugin {
     private ItemGenerator itemGenerator;
     private SkillEffectRegistry skillEffects;
     private final Set<UUID> debugPlayers = new HashSet<>();
+    private final java.util.Map<UUID, Long> actionBarErrorUntil = new java.util.HashMap<>();
+    private final java.util.Map<UUID, String> actionBarErrorMessage = new java.util.HashMap<>();
     private NamespacedKey questKey;
     private NamespacedKey skillKey;
     private NamespacedKey wandKey;
@@ -85,7 +88,8 @@ public class RPGPlugin extends JavaPlugin {
             .register(SkillEffectType.PROJECTILE, new ProjectileEffect())
             .register(SkillEffectType.POTION, new PotionStatusEffect())
             .register(SkillEffectType.SOUND, new SoundEffect())
-            .register(SkillEffectType.XP, new XpEffect());
+            .register(SkillEffectType.XP, new XpEffect())
+            .register(SkillEffectType.PARTICLE, new ParticleEffect());
         guiManager = new GuiManager(playerDataManager, questManager, skillManager, classManager, factionManager, questKey, skillKey);
         auditLog = new AuditLog(this);
 
@@ -104,6 +108,7 @@ public class RPGPlugin extends JavaPlugin {
         npcManager.spawnAll();
         startDebugTask();
         startManaRegenTask();
+        startHudTask();
     }
 
     @Override
@@ -193,27 +198,27 @@ public class RPGPlugin extends JavaPlugin {
     public boolean useSkill(Player player, String skillId) {
         var skill = skillManager.getSkill(skillId);
         if (skill == null) {
-            player.sendMessage("§cUnbekannter Skill.");
+            notifySkillError(player, "Unbekannter Skill");
             return false;
         }
         var profile = playerDataManager.getProfile(player);
         if (!profile.learnedSkills().containsKey(skillId)) {
-            player.sendMessage("§cSkill nicht gelernt.");
+            notifySkillError(player, "Skill nicht gelernt");
             return false;
         }
         if (skill.type() == com.example.rpg.model.SkillType.PASSIVE) {
-            player.sendMessage("§ePassiver Skill ist aktiv.");
+            notifySkillError(player, "Passiver Skill ist aktiv");
             return false;
         }
         long now = System.currentTimeMillis();
         long last = profile.skillCooldowns().getOrDefault(skillId, 0L);
         if (now - last < skill.cooldown() * 1000L) {
             long remaining = (skill.cooldown() * 1000L - (now - last)) / 1000L;
-            player.sendMessage("§cCooldown: " + remaining + "s");
+            notifySkillError(player, "Cooldown: " + remaining + "s");
             return false;
         }
         if (profile.mana() < skill.manaCost()) {
-            player.sendMessage("§cNicht genug Mana.");
+            notifySkillError(player, "Nicht genug Mana");
             return false;
         }
         profile.setMana(profile.mana() - skill.manaCost());
@@ -223,6 +228,50 @@ public class RPGPlugin extends JavaPlugin {
         profile.skillCooldowns().put(skillId, now);
         player.sendMessage("§aSkill benutzt: " + skill.name());
         return true;
+    }
+
+    public void notifySkillError(Player player, String message) {
+        actionBarErrorUntil.put(player.getUniqueId(), System.currentTimeMillis() + 2000L);
+        actionBarErrorMessage.put(player.getUniqueId(), message);
+        player.sendActionBar("§c" + message);
+    }
+
+    private void startHudTask() {
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                var profile = playerDataManager.getProfile(player);
+                String health = String.format("❤ Leben: %.0f/%.0f", player.getHealth(),
+                    player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH) != null
+                        ? player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue()
+                        : 20.0);
+                String mana = "🔵 Mana: " + profile.mana() + "/" + profile.maxMana();
+                Long until = actionBarErrorUntil.get(player.getUniqueId());
+                if (until != null && until > System.currentTimeMillis()) {
+                    String msg = actionBarErrorMessage.getOrDefault(player.getUniqueId(), "Fehler");
+                    player.sendActionBar("§c" + msg);
+                } else {
+                    player.sendActionBar("§f" + health + " §7| §f" + mana);
+                }
+
+                int slot = player.getInventory().getHeldItemSlot() + 1;
+                String skillId = skillHotbarManager.getBinding(profile, slot);
+                if (skillId != null) {
+                    var skill = skillManager.getSkill(skillId);
+                    if (skill != null && skill.cooldown() > 0) {
+                        long last = profile.skillCooldowns().getOrDefault(skillId, 0L);
+                        long remaining = skill.cooldown() * 1000L - (System.currentTimeMillis() - last);
+                        if (remaining > 0) {
+                            float progress = Math.max(0f, Math.min(1f, remaining / (skill.cooldown() * 1000f)));
+                            player.setExp(progress);
+                            player.setLevel((int) Math.ceil(remaining / 1000f));
+                        } else {
+                            player.setExp(0f);
+                            player.setLevel(profile.level());
+                        }
+                    }
+                }
+            }
+        }, 10L, 10L);
     }
 
     public boolean toggleDebug(UUID uuid) {

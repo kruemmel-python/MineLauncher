@@ -2,7 +2,7 @@ name: MineLauncherRPG
 main: com.example.rpg.RPGPlugin
 version: 1.0.0
 author: LauncherTeam
-api-version: 1.20.4
+api-version: 1.20
 commands:
   rpg:
     description: Open RPG menu and use RPG commands

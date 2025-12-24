@@ -1,0 +1,7 @@
+com\example\worldcreator\WorldTypeOption.class
+com\example\worldcreator\FixedBiomeProvider.class
+com\example\worldcreator\WaterChunkGenerator.class
+com\example\worldcreator\WorldCreatorPlugin.class
+com\example\worldcreator\WorldCreatorPlugin$1.class
+com\example\worldcreator\VoidChunkGenerator.class
+com\example\worldcreator\SkyIslandsChunkGenerator.class

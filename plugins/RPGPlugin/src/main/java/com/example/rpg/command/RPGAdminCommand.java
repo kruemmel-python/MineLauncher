@@ -152,13 +152,14 @@ public class RPGAdminCommand implements CommandExecutor {
 
     private void handleNpc(Player player, String[] args) {
         if (args.length < 2) {
-            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog>"));
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest>"));
             return;
         }
         switch (args[1].toLowerCase()) {
             case "create" -> createNpc(player, args);
             case "dialog" -> setNpcDialog(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog>"));
+            case "linkquest" -> linkNpcQuest(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest>"));
         }
     }
 
@@ -205,6 +206,29 @@ public class RPGAdminCommand implements CommandExecutor {
         });
     }
 
+    private void linkNpcQuest(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc linkquest <npcId> <questId>"));
+            return;
+        }
+        String npcId = args[2];
+        String questId = args[3];
+        Npc npc = plugin.npcManager().getNpc(npcId);
+        if (npc == null) {
+            player.sendMessage(Text.mm("<red>NPC nicht gefunden."));
+            return;
+        }
+        Quest quest = plugin.questManager().getQuest(questId);
+        if (quest == null) {
+            player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
+            return;
+        }
+        npc.setQuestLink(questId);
+        plugin.npcManager().saveNpc(npc);
+        plugin.auditLog().log(player, "NPC Quest verlinkt: " + npcId + " -> " + questId);
+        player.sendMessage(Text.mm("<green>NPC verlinkt mit Quest: " + quest.name()));
+    }
+
     private void handleQuest(Player player, String[] args) {
         if (args.length < 2) {
             player.sendMessage(Text.mm("<gray>/rpgadmin quest <create|addstep>"));
@@ -229,7 +253,7 @@ public class RPGAdminCommand implements CommandExecutor {
         quest.setDescription("Neue Quest");
         quest.setRepeatable(false);
         quest.setMinLevel(1);
-        quest.setSteps(List.of());
+        quest.setSteps(new java.util.ArrayList<>());
         plugin.questManager().quests().put(id, quest);
         plugin.questManager().saveQuest(quest);
         plugin.auditLog().log(player, "Quest erstellt: " + id);

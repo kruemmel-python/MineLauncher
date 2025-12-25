@@ -46,6 +46,7 @@ public class MobManager {
         section.set("skillIntervalSeconds", mob.skillIntervalSeconds());
         section.set("xp", mob.xp());
         section.set("lootTable", mob.lootTable());
+        section.set("behaviorTree", mob.behaviorTree());
         save();
     }
 
@@ -75,6 +76,7 @@ public class MobManager {
             mob.setSkillIntervalSeconds(section.getInt("skillIntervalSeconds", 8));
             mob.setXp(section.getInt("xp", 50));
             mob.setLootTable(section.getString("lootTable", null));
+            mob.setBehaviorTree(section.getString("behaviorTree", null));
             mobs.put(id, mob);
         }
     }
@@ -92,6 +94,20 @@ public class MobManager {
         zombie.setXp(120);
         zombie.setLootTable("forest_mobs");
         mobs.put(zombie.id(), zombie);
+
+        MobDefinition skeletonKing = new MobDefinition("skeleton_king");
+        skeletonKing.setName("§cSkelettkönig");
+        skeletonKing.setType("SKELETON");
+        skeletonKing.setHealth(80);
+        skeletonKing.setDamage(10);
+        skeletonKing.setMainHand("DIAMOND_SWORD");
+        skeletonKing.setHelmet("GOLDEN_HELMET");
+        skeletonKing.setSkills(List.of("shield_wall", "ember_shot"));
+        skeletonKing.setSkillIntervalSeconds(8);
+        skeletonKing.setXp(180);
+        skeletonKing.setLootTable("forest_mobs");
+        skeletonKing.setBehaviorTree("skeleton_king");
+        mobs.put(skeletonKing.id(), skeletonKing);
         saveAll();
     }
 

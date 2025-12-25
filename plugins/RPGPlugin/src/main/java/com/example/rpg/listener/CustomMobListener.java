@@ -1,6 +1,8 @@
 package com.example.rpg.listener;
 
 import com.example.rpg.RPGPlugin;
+import com.example.rpg.behavior.BehaviorContext;
+import com.example.rpg.behavior.BehaviorNode;
 import com.example.rpg.model.LootEntry;
 import com.example.rpg.model.LootTable;
 import com.example.rpg.model.MobDefinition;
@@ -31,7 +33,8 @@ public class CustomMobListener implements Listener {
     private final RPGPlugin plugin;
     private final NamespacedKey mobKey;
     private final Random random = new Random();
-    private final Map<UUID, BukkitTask> skillTasks = new HashMap<>();
+    private final Map<UUID, BukkitTask> behaviorTasks = new HashMap<>();
+    private final Map<UUID, BehaviorContext> behaviorContexts = new HashMap<>();
     private final Map<UUID, TextDisplay> healthBars = new HashMap<>();
 
     public CustomMobListener(RPGPlugin plugin) {
@@ -67,10 +70,11 @@ public class CustomMobListener implements Listener {
             return;
         }
         removeHealthBar(entity);
-        BukkitTask task = skillTasks.remove(entity.getUniqueId());
+        BukkitTask task = behaviorTasks.remove(entity.getUniqueId());
         if (task != null) {
             task.cancel();
         }
+        behaviorContexts.remove(entity.getUniqueId());
         MobDefinition mob = plugin.mobManager().getMob(mobId);
         if (mob == null) {
             return;
@@ -120,7 +124,7 @@ public class CustomMobListener implements Listener {
             }
         }
         attachHealthBar(entity, mob, entity.getHealth());
-        startSkillLoop(entity, mob);
+        startBehaviorLoop(entity, mob);
     }
 
     private String getMobId(LivingEntity entity) {
@@ -165,29 +169,35 @@ public class CustomMobListener implements Listener {
         updateHealthBar(living, mob, nextHealth);
     }
 
-    private void startSkillLoop(LivingEntity entity, MobDefinition mob) {
-        if (mob.skills().isEmpty() || mob.skillIntervalSeconds() <= 0) {
-            return;
-        }
+    private void startBehaviorLoop(LivingEntity entity, MobDefinition mob) {
+        BehaviorNode root = plugin.behaviorTreeManager().getTree(mob.behaviorTree());
+        BehaviorContext context = new BehaviorContext(plugin, entity, mob);
+        behaviorContexts.put(entity.getUniqueId(), context);
         BukkitTask task = plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
             if (entity.isDead() || !entity.isValid()) {
-                BukkitTask running = skillTasks.remove(entity.getUniqueId());
+                BukkitTask running = behaviorTasks.remove(entity.getUniqueId());
                 if (running != null) {
                     running.cancel();
                 }
+                behaviorContexts.remove(entity.getUniqueId());
                 return;
             }
-            Player target = entity.getWorld().getPlayers().stream()
-                .filter(player -> player.getLocation().distanceSquared(entity.getLocation()) <= 100)
-                .findFirst()
-                .orElse(null);
+            Player target = findTarget(entity);
+            context.setTarget(target);
             if (target == null) {
                 return;
             }
-            String skillId = mob.skills().get(random.nextInt(mob.skills().size()));
-            plugin.useMobSkill(entity, target, skillId);
-        }, 20L, mob.skillIntervalSeconds() * 20L);
-        skillTasks.put(entity.getUniqueId(), task);
+            root.tick(context);
+        }, 1L, 1L);
+        behaviorTasks.put(entity.getUniqueId(), task);
+    }
+
+    private Player findTarget(LivingEntity entity) {
+        return entity.getWorld().getPlayers().stream()
+            .filter(player -> player.getLocation().distanceSquared(entity.getLocation()) <= 400)
+            .min((a, b) -> Double.compare(a.getLocation().distanceSquared(entity.getLocation()),
+                b.getLocation().distanceSquared(entity.getLocation())))
+            .orElse(null);
     }
 
     private void attachHealthBar(LivingEntity entity, MobDefinition mob, double health) {

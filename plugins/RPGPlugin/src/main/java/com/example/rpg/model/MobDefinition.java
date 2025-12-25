@@ -15,6 +15,7 @@ public class MobDefinition {
     private int skillIntervalSeconds;
     private int xp;
     private String lootTable;
+    private String behaviorTree;
 
     public MobDefinition(String id) {
         this.id = id;
@@ -102,5 +103,13 @@ public class MobDefinition {
 
     public void setLootTable(String lootTable) {
         this.lootTable = lootTable;
+    }
+
+    public String behaviorTree() {
+        return behaviorTree;
+    }
+
+    public void setBehaviorTree(String behaviorTree) {
+        this.behaviorTree = behaviorTree;
     }
 }

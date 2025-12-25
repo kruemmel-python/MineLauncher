@@ -26,6 +26,7 @@ import com.example.rpg.listener.ProfessionListener;
 import com.example.rpg.listener.SkillHotbarListener;
 import com.example.rpg.listener.ZoneListener;
 import com.example.rpg.manager.ArenaManager;
+import com.example.rpg.manager.BehaviorTreeManager;
 import com.example.rpg.manager.ClassManager;
 import com.example.rpg.manager.DungeonManager;
 import com.example.rpg.manager.GuildManager;
@@ -86,6 +87,7 @@ public class RPGPlugin extends JavaPlugin {
     private ProfessionManager professionManager;
     private DungeonManager dungeonManager;
     private ArenaManager arenaManager;
+    private BehaviorTreeManager behaviorTreeManager;
     private GuildManager guildManager;
     private FactionManager factionManager;
     private PartyManager partyManager;
@@ -117,6 +119,7 @@ public class RPGPlugin extends JavaPlugin {
         npcManager = new NpcManager(this);
         lootManager = new LootManager(this);
         mobManager = new MobManager(this);
+        behaviorTreeManager = new BehaviorTreeManager(this);
         skillManager = new SkillManager(this);
         skillHotbarManager = new SkillHotbarManager(playerDataManager);
         classManager = new ClassManager(this);
@@ -224,6 +227,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public MobManager mobManager() {
         return mobManager;
+    }
+
+    public BehaviorTreeManager behaviorTreeManager() {
+        return behaviorTreeManager;
     }
 
     public SkillManager skillManager() {

@@ -172,7 +172,7 @@ public class SpawnerManager {
         Location location = new Location(world, x + 0.5, y + 1, z + 0.5);
         var type = org.bukkit.entity.EntityType.valueOf(mob.type().toUpperCase());
         var entity = world.spawnEntity(location, type);
-        if (entity instanceof LivingEntity living) {
+        if (entity instanceof org.bukkit.entity.LivingEntity living) {
             plugin.customMobListener().applyDefinition(living, mob);
         } else {
             entity.remove();

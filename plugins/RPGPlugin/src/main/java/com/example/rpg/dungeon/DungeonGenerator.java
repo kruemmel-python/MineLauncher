@@ -7,6 +7,8 @@ import com.example.rpg.util.Text;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -88,14 +90,17 @@ public class DungeonGenerator {
             Location location = roomCenters.get(i);
             Spawner spawner = plugin.spawnerManager().spawners().values().stream().findFirst().orElse(null);
             if (spawner == null) {
+                spawnFallbackMob(location);
                 continue;
             }
             if (spawner.mobs().isEmpty()) {
+                spawnFallbackMob(location);
                 continue;
             }
             String mobId = spawner.mobs().keySet().iterator().next();
             MobDefinition mob = plugin.mobManager().getMob(mobId);
             if (mob == null) {
+                spawnFallbackMob(location);
                 continue;
             }
             var entity = location.getWorld().spawnEntity(location, EntityType.valueOf(mob.type().toUpperCase()));
@@ -103,6 +108,10 @@ public class DungeonGenerator {
                 plugin.customMobListener().applyDefinition(living, mob);
             }
         }
+    }
+
+    private void spawnFallbackMob(Location location) {
+        location.getWorld().spawnEntity(location, EntityType.ZOMBIE);
     }
 
     private void spawnBoss(Location bossRoom) {
@@ -114,7 +123,8 @@ public class DungeonGenerator {
         if (entity instanceof org.bukkit.entity.LivingEntity living) {
             plugin.customMobListener().applyDefinition(living, boss);
             TextDisplay display = bossRoom.getWorld().spawn(bossRoom.clone().add(0, 2, 0), TextDisplay.class);
-            display.text(Text.mm("<red>Boss: " + boss.name()));
+            Component bossName = LegacyComponentSerializer.legacySection().deserialize(boss.name());
+            display.text(Component.text("Boss: ").append(bossName));
         }
     }
 

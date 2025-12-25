@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class DungeonManager {
     private final RPGPlugin plugin;
-    private final YamlConfiguration config;
+    private final FileConfiguration config;
     private Location entrance;
     private Location exit;
     private final Map<UUID, Location> returnLocations = new HashMap<>();

@@ -57,10 +57,6 @@ public class DungeonGenerator {
         spawnSpawners(roomCenters, theme);
         spawnBoss(bossRoom);
         spawnSigns(start, bossRoom, theme);
-        for (Player player : party) {
-            player.teleport(start);
-            player.sendMessage(Text.mm("<green>Dungeon generiert: " + theme));
-        }
         return new DungeonInstance(world, start, bossRoom);
     }
 
@@ -81,10 +77,6 @@ public class DungeonGenerator {
                     Location start = new Location(world, 1, originY + 2, 1);
                     Location bossRoom = buildFromPatterns(world, patterns, originY);
                     DungeonInstance instance = new DungeonInstance(world, start, bossRoom);
-                    for (Player player : party) {
-                        player.teleport(start);
-                        player.sendMessage(Text.mm("<green>Dungeon generiert: " + theme));
-                    }
                     callback.accept(instance);
                 }
             }.runTask(plugin);

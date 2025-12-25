@@ -3,6 +3,7 @@ package com.example.rpg.manager;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.dungeon.DungeonGenerator;
 import com.example.rpg.dungeon.DungeonInstance;
+import com.example.rpg.util.Text;
 import com.example.rpg.util.WorldUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +69,7 @@ public class DungeonManager {
                 activeInstances.put(member.getUniqueId(), instance);
                 if (instance.start() != null) {
                     member.teleport(instance.start());
+                    member.sendMessage(Text.mm("<green>Dungeon generiert: " + theme));
                 }
             }
             plugin.getServer().getScheduler().runTaskLater(plugin, () -> closeDungeon(instance), 20L * 60L * 15L);

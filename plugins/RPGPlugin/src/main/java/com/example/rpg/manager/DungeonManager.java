@@ -58,11 +58,17 @@ public class DungeonManager {
     }
 
     public void generateDungeon(Player player, String theme, List<Player> party) {
+        if (!party.contains(player)) {
+            party.add(player);
+        }
         java.util.function.Consumer<DungeonInstance> onGenerated = instance -> {
             allInstances.add(instance);
             for (Player member : party) {
                 returnLocations.put(member.getUniqueId(), member.getLocation());
                 activeInstances.put(member.getUniqueId(), instance);
+                if (instance.start() != null) {
+                    member.teleport(instance.start());
+                }
             }
             plugin.getServer().getScheduler().runTaskLater(plugin, () -> closeDungeon(instance), 20L * 60L * 15L);
         };

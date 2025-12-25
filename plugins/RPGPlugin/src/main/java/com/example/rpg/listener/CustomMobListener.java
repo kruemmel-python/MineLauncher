@@ -95,6 +95,9 @@ public class CustomMobListener implements Listener {
                             ItemStack item = plugin.itemGenerator().createRpgItem(material, entry.rarity(), 1);
                             item.setAmount(entry.minAmount() + random.nextInt(Math.max(1, entry.maxAmount() - entry.minAmount() + 1)));
                             event.getDrops().add(item);
+                            if (killer != null) {
+                                plugin.broadcastLoot(killer, item);
+                            }
                         }
                     }
                 }

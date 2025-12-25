@@ -37,6 +37,12 @@ commands:
   behavior:
     description: Behavior tree editor
     usage: /behavior edit <tree>
+  lootchat:
+    description: Toggle loot chat
+    usage: /lootchat [true|false]
+  voicechat:
+    description: Voice chat channels
+    usage: /voicechat <party|guild|leave>
 permissions:
   rpg.admin.*:
     description: Full RPG admin permissions

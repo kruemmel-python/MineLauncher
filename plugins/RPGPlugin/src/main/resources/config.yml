@@ -7,6 +7,8 @@ rpg:
   manaRegenPerTick: 5
   party:
     xpSplit: true
+lootchat:
+  enabled: true
 database:
   host: localhost
   port: 5432

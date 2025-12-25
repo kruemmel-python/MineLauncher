@@ -9,6 +9,8 @@ import com.example.rpg.command.GuildCommand;
 import com.example.rpg.command.PvpCommand;
 import com.example.rpg.command.TradeCommand;
 import com.example.rpg.command.BehaviorCommand;
+import com.example.rpg.command.LootChatCommand;
+import com.example.rpg.command.VoiceChatCommand;
 import com.example.rpg.db.DatabaseService;
 import com.example.rpg.db.PlayerDao;
 import com.example.rpg.db.SqlPlayerDao;
@@ -50,6 +52,7 @@ import com.example.rpg.manager.SpawnerManager;
 import com.example.rpg.manager.ZoneManager;
 import com.example.rpg.manager.TradeManager;
 import com.example.rpg.manager.ProfessionManager;
+import com.example.rpg.manager.VoiceChatManager;
 import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.AuditLog;
 import com.example.rpg.util.PromptManager;
@@ -99,6 +102,7 @@ public class RPGPlugin extends JavaPlugin {
     private SkillTreeManager skillTreeManager;
     private ItemStatManager itemStatManager;
     private BehaviorTreeEditorGui behaviorTreeEditorGui;
+    private VoiceChatManager voiceChatManager;
     private PromptManager promptManager;
     private ItemGenerator itemGenerator;
     private SkillEffectRegistry skillEffects;
@@ -124,6 +128,7 @@ public class RPGPlugin extends JavaPlugin {
         lootManager = new LootManager(this);
         mobManager = new MobManager(this);
         behaviorTreeManager = new BehaviorTreeManager(this);
+        voiceChatManager = new VoiceChatManager(this);
         skillManager = new SkillManager(this);
         skillHotbarManager = new SkillHotbarManager(playerDataManager);
         classManager = new ClassManager(this);
@@ -185,6 +190,8 @@ public class RPGPlugin extends JavaPlugin {
         getCommand("g").setExecutor(new GuildCommand(this));
         getCommand("pvp").setExecutor(new PvpCommand(this));
         getCommand("behavior").setExecutor(new BehaviorCommand(this));
+        getCommand("lootchat").setExecutor(new LootChatCommand(this));
+        getCommand("voicechat").setExecutor(new VoiceChatCommand(this));
 
         npcManager.spawnAll();
         startDebugTask();
@@ -354,6 +361,10 @@ public class RPGPlugin extends JavaPlugin {
         return behaviorTreeEditorGui;
     }
 
+    public VoiceChatManager voiceChatManager() {
+        return voiceChatManager;
+    }
+
     public CustomMobListener customMobListener() {
         return customMobListener;
     }
@@ -372,6 +383,16 @@ public class RPGPlugin extends JavaPlugin {
 
     public NamespacedKey wandKey() {
         return wandKey;
+    }
+
+    public void broadcastLoot(Player player, org.bukkit.inventory.ItemStack item) {
+        if (!getConfig().getBoolean("lootchat.enabled", true)) {
+            return;
+        }
+        String name = item.getType().name().toLowerCase().replace("_", " ");
+        String message = "<gold>" + player.getName() + "</gold> hat <yellow>" + item.getAmount()
+            + "x " + name + "</yellow> gelootet.";
+        getServer().broadcast(com.example.rpg.util.Text.mm(message));
     }
 
     public boolean useSkill(Player player, String skillId) {

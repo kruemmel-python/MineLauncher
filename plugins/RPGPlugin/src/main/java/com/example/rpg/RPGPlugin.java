@@ -187,19 +187,45 @@ public class RPGPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        playerDataManager.saveAll();
-        questManager.saveAll();
-        zoneManager.saveAll();
-        npcManager.saveAll();
-        lootManager.saveAll();
-        mobManager.saveAll();
-        skillManager.saveAll();
-        classManager.saveAll();
-        factionManager.saveAll();
-        spawnerManager.saveAll();
-        shopManager.saveAll();
-        auctionHouseManager.listings().values().forEach(auctionHouseManager::saveListing);
-        guildManager.saveAll();
+        if (playerDataManager != null) {
+            playerDataManager.saveAll();
+        }
+        if (questManager != null) {
+            questManager.saveAll();
+        }
+        if (zoneManager != null) {
+            zoneManager.saveAll();
+        }
+        if (npcManager != null) {
+            npcManager.saveAll();
+        }
+        if (lootManager != null) {
+            lootManager.saveAll();
+        }
+        if (mobManager != null) {
+            mobManager.saveAll();
+        }
+        if (skillManager != null) {
+            skillManager.saveAll();
+        }
+        if (classManager != null) {
+            classManager.saveAll();
+        }
+        if (factionManager != null) {
+            factionManager.saveAll();
+        }
+        if (spawnerManager != null) {
+            spawnerManager.saveAll();
+        }
+        if (shopManager != null) {
+            shopManager.saveAll();
+        }
+        if (auctionHouseManager != null) {
+            auctionHouseManager.listings().values().forEach(auctionHouseManager::saveListing);
+        }
+        if (guildManager != null) {
+            guildManager.saveAll();
+        }
         if (databaseService != null) {
             databaseService.shutdown();
         }

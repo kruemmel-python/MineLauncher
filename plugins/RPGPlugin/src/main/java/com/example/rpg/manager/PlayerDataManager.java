@@ -84,6 +84,7 @@ public class PlayerDataManager {
                     profile.factionRep().put(factionId, factions.getInt(factionId));
                 }
             }
+            profile.setGold(section.getInt("gold", 0));
 
             ConfigurationSection cooldowns = section.getConfigurationSection("skillCooldowns");
             if (cooldowns != null) {
@@ -147,6 +148,7 @@ public class PlayerDataManager {
         for (Map.Entry<Integer, String> entry : profile.skillBindings().entrySet()) {
             bindings.set(String.valueOf(entry.getKey()), entry.getValue());
         }
+        section.set("gold", profile.gold());
         save();
     }
 

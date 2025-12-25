@@ -33,7 +33,9 @@ public class RPGCommand implements CommandExecutor {
             case "respec" -> handleRespec(player);
             case "class" -> handleClass(player, args);
             case "bind" -> handleBind(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind>"));
+            case "money" -> handleMoney(player);
+            case "pay" -> handlePay(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind|money|pay>"));
         }
         return true;
     }
@@ -153,5 +155,43 @@ public class RPGCommand implements CommandExecutor {
         }
         plugin.skillHotbarManager().bindSkill(profile, slot, skillId);
         player.sendMessage(Text.mm("<green>Skill gebunden: Slot " + slot + " -> " + skill.name()));
+    }
+
+    private void handleMoney(Player player) {
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        player.sendMessage(Text.mm("<gold>Gold: <white>" + profile.gold()));
+    }
+
+    private void handlePay(Player player, String[] args) {
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/rpg pay <player> <amount>"));
+            return;
+        }
+        Player target = player.getServer().getPlayer(args[1]);
+        if (target == null) {
+            player.sendMessage(Text.mm("<red>Spieler nicht online."));
+            return;
+        }
+        Integer amount;
+        try {
+            amount = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            player.sendMessage(Text.mm("<red>Betrag ungültig."));
+            return;
+        }
+        if (amount <= 0) {
+            player.sendMessage(Text.mm("<red>Betrag muss > 0 sein."));
+            return;
+        }
+        PlayerProfile senderProfile = plugin.playerDataManager().getProfile(player);
+        PlayerProfile targetProfile = plugin.playerDataManager().getProfile(target);
+        if (senderProfile.gold() < amount) {
+            player.sendMessage(Text.mm("<red>Nicht genug Gold."));
+            return;
+        }
+        senderProfile.setGold(senderProfile.gold() - amount);
+        targetProfile.setGold(targetProfile.gold() + amount);
+        player.sendMessage(Text.mm("<green>Du hast <gold>" + amount + "</gold> Gold an " + target.getName() + " gesendet."));
+        target.sendMessage(Text.mm("<green>Du hast <gold>" + amount + "</gold> Gold von " + player.getName() + " erhalten."));
     }
 }

@@ -21,6 +21,7 @@ import com.example.rpg.manager.NpcManager;
 import com.example.rpg.manager.PartyManager;
 import com.example.rpg.manager.PlayerDataManager;
 import com.example.rpg.manager.QuestManager;
+import com.example.rpg.manager.ShopManager;
 import com.example.rpg.manager.SkillHotbarManager;
 import com.example.rpg.manager.SkillManager;
 import com.example.rpg.manager.SpawnerManager;
@@ -58,6 +59,7 @@ public class RPGPlugin extends JavaPlugin {
     private SkillHotbarManager skillHotbarManager;
     private ClassManager classManager;
     private SpawnerManager spawnerManager;
+    private ShopManager shopManager;
     private FactionManager factionManager;
     private PartyManager partyManager;
     private GuiManager guiManager;
@@ -87,6 +89,7 @@ public class RPGPlugin extends JavaPlugin {
         classManager = new ClassManager(this);
         factionManager = new FactionManager(this);
         spawnerManager = new SpawnerManager(this);
+        shopManager = new ShopManager(this);
         partyManager = new PartyManager();
         promptManager = new PromptManager();
         itemGenerator = new ItemGenerator(this);
@@ -139,6 +142,7 @@ public class RPGPlugin extends JavaPlugin {
         classManager.saveAll();
         factionManager.saveAll();
         spawnerManager.saveAll();
+        shopManager.saveAll();
     }
 
     public PlayerDataManager playerDataManager() {
@@ -203,6 +207,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public SpawnerManager spawnerManager() {
         return spawnerManager;
+    }
+
+    public ShopManager shopManager() {
+        return shopManager;
     }
 
     public CustomMobListener customMobListener() {
@@ -342,12 +350,13 @@ public class RPGPlugin extends JavaPlugin {
                         ? player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue()
                         : 20.0);
                 String mana = "🔵 Mana: " + profile.mana() + "/" + profile.maxMana();
+                String gold = "💰 " + profile.gold();
                 Long until = actionBarErrorUntil.get(player.getUniqueId());
                 if (until != null && until > System.currentTimeMillis()) {
                     String msg = actionBarErrorMessage.getOrDefault(player.getUniqueId(), "Fehler");
                     player.sendActionBar("§c" + msg);
                 } else {
-                    player.sendActionBar("§f" + health + " §7| §f" + mana);
+                    player.sendActionBar("§f" + health + " §7| §f" + mana + " §7| §6" + gold);
                 }
 
                 int slot = player.getInventory().getHeldItemSlot() + 1;

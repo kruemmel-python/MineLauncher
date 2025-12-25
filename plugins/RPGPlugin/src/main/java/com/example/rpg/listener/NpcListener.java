@@ -43,5 +43,13 @@ public class NpcListener implements Listener {
             player.sendMessage(Text.mm("<yellow>Quest verfügbar: <white>" + npc.questLink()));
             plugin.guiManager().openQuestList(player);
         }
+        if (npc.role() == NpcRole.VENDOR && npc.shopId() != null) {
+            var shop = plugin.shopManager().getShop(npc.shopId());
+            if (shop == null) {
+                player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+                return;
+            }
+            plugin.guiManager().openShop(player, shop);
+        }
     }
 }

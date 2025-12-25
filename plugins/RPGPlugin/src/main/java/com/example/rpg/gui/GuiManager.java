@@ -7,6 +7,8 @@ import com.example.rpg.manager.QuestManager;
 import com.example.rpg.manager.SkillManager;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Quest;
+import com.example.rpg.model.ShopDefinition;
+import com.example.rpg.model.ShopItem;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
 import java.util.ArrayList;
@@ -154,6 +156,29 @@ public class GuiManager {
             meta.getPersistentDataContainer().set(skillKey, PersistentDataType.STRING, id);
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
+        }
+        player.openInventory(inv);
+    }
+
+    public void openShop(Player player, ShopDefinition shop) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), 27, Component.text(shop.title()));
+        for (ShopItem item : shop.items().values()) {
+            Material material = Material.matchMaterial(item.material());
+            if (material == null) {
+                continue;
+            }
+            ItemBuilder builder = new ItemBuilder(material);
+            if (item.name() != null && !item.name().isBlank()) {
+                builder.name(net.kyori.adventure.text.Component.text(
+                    org.bukkit.ChatColor.translateAlternateColorCodes('&', item.name())));
+            }
+            if (item.buyPrice() > 0) {
+                builder.loreLine(Text.mm("<gray>Kaufen: <gold>" + item.buyPrice() + " Gold"));
+            }
+            if (item.sellPrice() > 0) {
+                builder.loreLine(Text.mm("<gray>Verkaufen: <gold>" + item.sellPrice() + " Gold"));
+            }
+            inv.setItem(item.slot(), builder.build());
         }
         player.openInventory(inv);
     }

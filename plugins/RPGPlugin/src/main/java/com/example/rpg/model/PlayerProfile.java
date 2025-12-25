@@ -27,6 +27,7 @@ public class PlayerProfile {
      */
     private final Map<String, Long> skillCooldowns = new HashMap<>();
     private final Map<Integer, String> skillBindings = new HashMap<>();
+    private int gold = 0;
 
     public PlayerProfile(UUID uuid) {
         this.uuid = uuid;
@@ -113,6 +114,14 @@ public class PlayerProfile {
 
     public Map<Integer, String> skillBindings() {
         return skillBindings;
+    }
+
+    public int gold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = Math.max(0, gold);
     }
 
     public void addXp(int amount) {

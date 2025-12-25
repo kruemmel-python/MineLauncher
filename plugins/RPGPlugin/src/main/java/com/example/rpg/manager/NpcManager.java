@@ -80,6 +80,7 @@ public class NpcManager {
         section.set("pitch", npc.pitch());
         section.set("dialog", npc.dialog());
         section.set("questLink", npc.questLink());
+        section.set("shopId", npc.shopId());
         section.set("uuid", npc.uuid() != null ? npc.uuid().toString() : null);
         save();
     }
@@ -105,6 +106,7 @@ public class NpcManager {
             npc.setWorld(section.getString("world", "world"));
             npc.setDialog(section.getStringList("dialog"));
             npc.setQuestLink(section.getString("questLink", null));
+            npc.setShopId(section.getString("shopId", null));
             npc.setUuid(section.contains("uuid") ? UUID.fromString(section.getString("uuid")) : null);
             World world = Bukkit.getWorld(npc.world());
             double x = section.getDouble("x");

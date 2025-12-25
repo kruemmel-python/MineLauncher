@@ -39,4 +39,21 @@ public final class GuiHolders {
             throw new UnsupportedOperationException();
         }
     }
+
+    public static final class ShopHolder implements InventoryHolder {
+        private final String shopId;
+
+        public ShopHolder(String shopId) {
+            this.shopId = shopId;
+        }
+
+        public String shopId() {
+            return shopId;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }

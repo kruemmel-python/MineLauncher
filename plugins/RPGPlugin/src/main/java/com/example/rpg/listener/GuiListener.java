@@ -14,6 +14,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.Sound;
+import org.bukkit.Material;
 
 public class GuiListener implements Listener {
     private final RPGPlugin plugin;
@@ -92,6 +95,11 @@ public class GuiListener implements Listener {
             profile.setSkillPoints(profile.skillPoints() - 1);
             player.sendMessage(Text.mm("<green>Skill gelernt: " + skill.name()));
             plugin.guiManager().openSkillList(player);
+            return;
+        }
+        if (holder instanceof GuiHolders.ShopHolder shopHolder) {
+            event.setCancelled(true);
+            handleShopClick(player, event.getInventory(), event.getSlot(), current, shopHolder, event.isRightClick());
         }
     }
 
@@ -117,5 +125,70 @@ public class GuiListener implements Listener {
             return null;
         }
         return plugin.skillManager().getSkill(skillId);
+    }
+
+    private void handleShopClick(Player player, Inventory inventory, int slot, ItemStack clicked,
+                                 GuiHolders.ShopHolder holder, boolean rightClick) {
+        var shop = plugin.shopManager().getShop(holder.shopId());
+        if (shop == null) {
+            player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+            return;
+        }
+        var shopItem = shop.items().get(slot);
+        if (shopItem == null) {
+            return;
+        }
+        var profile = plugin.playerDataManager().getProfile(player);
+        Material material = Material.matchMaterial(shopItem.material());
+        if (material == null) {
+            player.sendMessage(Text.mm("<red>Item ungültig."));
+            return;
+        }
+        if (rightClick) {
+            int sellPrice = shopItem.sellPrice();
+            if (sellPrice <= 0) {
+                player.sendMessage(Text.mm("<red>Dieses Item kann nicht verkauft werden."));
+                return;
+            }
+            if (!player.getInventory().contains(material)) {
+                player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
+                return;
+            }
+            removeOne(player.getInventory(), material);
+            profile.setGold(profile.gold() + sellPrice);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1.2f);
+            player.sendMessage(Text.mm("<green>Verkauft für <gold>" + sellPrice + "</gold> Gold."));
+        } else {
+            int buyPrice = shopItem.buyPrice();
+            if (buyPrice <= 0) {
+                player.sendMessage(Text.mm("<red>Dieses Item kann nicht gekauft werden."));
+                return;
+            }
+            if (profile.gold() < buyPrice) {
+                player.sendMessage(Text.mm("<red>Nicht genug Gold."));
+                return;
+            }
+            profile.setGold(profile.gold() - buyPrice);
+            player.getInventory().addItem(new ItemStack(material));
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1.2f);
+            player.sendMessage(Text.mm("<green>Gekauft für <gold>" + buyPrice + "</gold> Gold."));
+        }
+        player.updateInventory();
+        plugin.playerDataManager().saveProfile(profile);
+    }
+
+    private void removeOne(Inventory inventory, Material material) {
+        for (int i = 0; i < inventory.getSize(); i++) {
+            ItemStack stack = inventory.getItem(i);
+            if (stack == null || stack.getType() != material) {
+                continue;
+            }
+            if (stack.getAmount() > 1) {
+                stack.setAmount(stack.getAmount() - 1);
+            } else {
+                inventory.setItem(i, null);
+            }
+            return;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class Npc {
     private float pitch;
     private List<String> dialog = new ArrayList<>();
     private String questLink;
+    private String shopId;
 
     public Npc(String id) {
         this.id = id;
@@ -115,5 +116,13 @@ public class Npc {
 
     public void setQuestLink(String questLink) {
         this.questLink = questLink;
+    }
+
+    public String shopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 }

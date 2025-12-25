@@ -160,14 +160,15 @@ public class RPGAdminCommand implements CommandExecutor {
 
     private void handleNpc(Player player, String[] args) {
         if (args.length < 2) {
-            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest>"));
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop>"));
             return;
         }
         switch (args[1].toLowerCase()) {
             case "create" -> createNpc(player, args);
             case "dialog" -> setNpcDialog(player, args);
             case "linkquest" -> linkNpcQuest(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest>"));
+            case "linkshop" -> linkNpcShop(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop>"));
         }
     }
 
@@ -235,6 +236,28 @@ public class RPGAdminCommand implements CommandExecutor {
         plugin.npcManager().saveNpc(npc);
         plugin.auditLog().log(player, "NPC Quest verlinkt: " + npcId + " -> " + questId);
         player.sendMessage(Text.mm("<green>NPC verlinkt mit Quest: " + quest.name()));
+    }
+
+    private void linkNpcShop(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc linkshop <npcId> <shopId>"));
+            return;
+        }
+        String npcId = args[2];
+        String shopId = args[3];
+        Npc npc = plugin.npcManager().getNpc(npcId);
+        if (npc == null) {
+            player.sendMessage(Text.mm("<red>NPC nicht gefunden."));
+            return;
+        }
+        if (plugin.shopManager().getShop(shopId) == null) {
+            player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+            return;
+        }
+        npc.setShopId(shopId);
+        plugin.npcManager().saveNpc(npc);
+        plugin.auditLog().log(player, "NPC Shop verlinkt: " + npcId + " -> " + shopId);
+        player.sendMessage(Text.mm("<green>NPC verlinkt mit Shop: " + shopId));
     }
 
     private void handleQuest(Player player, String[] args) {

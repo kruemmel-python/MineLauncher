@@ -22,6 +22,7 @@ import com.example.rpg.manager.PlayerDataManager;
 import com.example.rpg.manager.QuestManager;
 import com.example.rpg.manager.SkillHotbarManager;
 import com.example.rpg.manager.SkillManager;
+import com.example.rpg.manager.SpawnerManager;
 import com.example.rpg.manager.ZoneManager;
 import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.AuditLog;
@@ -55,6 +56,7 @@ public class RPGPlugin extends JavaPlugin {
     private SkillManager skillManager;
     private SkillHotbarManager skillHotbarManager;
     private ClassManager classManager;
+    private SpawnerManager spawnerManager;
     private FactionManager factionManager;
     private PartyManager partyManager;
     private GuiManager guiManager;
@@ -83,6 +85,7 @@ public class RPGPlugin extends JavaPlugin {
         skillHotbarManager = new SkillHotbarManager(playerDataManager);
         classManager = new ClassManager(this);
         factionManager = new FactionManager(this);
+        spawnerManager = new SpawnerManager(this);
         partyManager = new PartyManager();
         promptManager = new PromptManager();
         itemGenerator = new ItemGenerator(this);
@@ -133,6 +136,7 @@ public class RPGPlugin extends JavaPlugin {
         skillManager.saveAll();
         classManager.saveAll();
         factionManager.saveAll();
+        spawnerManager.saveAll();
     }
 
     public PlayerDataManager playerDataManager() {
@@ -193,6 +197,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public SkillEffectRegistry skillEffects() {
         return skillEffects;
+    }
+
+    public SpawnerManager spawnerManager() {
+        return spawnerManager;
     }
 
     public CustomMobListener customMobListener() {

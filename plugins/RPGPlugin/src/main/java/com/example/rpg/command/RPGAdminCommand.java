@@ -59,7 +59,8 @@ public class RPGAdminCommand implements CommandExecutor {
             case "loot" -> handleLoot(player, args);
             case "skill" -> handleSkill(player, args);
             case "mob" -> handleMob(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin <wand|zone|npc|quest|loot|skill|mob>"));
+            case "spawner" -> handleSpawner(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin <wand|zone|npc|quest|loot|skill|mob|spawner>"));
         }
         return true;
     }
@@ -403,6 +404,87 @@ public class RPGAdminCommand implements CommandExecutor {
             entity.remove();
             player.sendMessage(Text.mm("<red>Mob-Typ ist kein LivingEntity."));
         }
+    }
+
+    private void handleSpawner(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin spawner <create|addmob|setlimit>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "create" -> createSpawner(player, args);
+            case "addmob" -> addSpawnerMob(player, args);
+            case "setlimit" -> setSpawnerLimit(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin spawner <create|addmob|setlimit>"));
+        }
+    }
+
+    private void createSpawner(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin spawner create <id> <zoneId>"));
+            return;
+        }
+        String id = args[2];
+        String zoneId = args[3];
+        if (plugin.zoneManager().getZone(zoneId) == null) {
+            player.sendMessage(Text.mm("<red>Zone nicht gefunden."));
+            return;
+        }
+        var spawner = new com.example.rpg.model.Spawner(id);
+        spawner.setZoneId(zoneId);
+        spawner.setMaxMobs(6);
+        spawner.setSpawnInterval(200);
+        plugin.spawnerManager().spawners().put(id, spawner);
+        plugin.spawnerManager().saveSpawner(spawner);
+        plugin.auditLog().log(player, "Spawner erstellt: " + id);
+        player.sendMessage(Text.mm("<green>Spawner erstellt: " + id));
+    }
+
+    private void addSpawnerMob(Player player, String[] args) {
+        if (args.length < 5) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin spawner addmob <id> <mobId> <chance>"));
+            return;
+        }
+        var spawner = plugin.spawnerManager().getSpawner(args[2]);
+        if (spawner == null) {
+            player.sendMessage(Text.mm("<red>Spawner nicht gefunden."));
+            return;
+        }
+        String mobId = args[3];
+        if (plugin.mobManager().getMob(mobId) == null) {
+            player.sendMessage(Text.mm("<red>Mob nicht gefunden."));
+            return;
+        }
+        Double chance = parseDouble(args[4]);
+        if (chance == null || chance <= 0) {
+            player.sendMessage(Text.mm("<red>Chance ungültig.</red>"));
+            return;
+        }
+        spawner.mobs().put(mobId, chance);
+        plugin.spawnerManager().saveSpawner(spawner);
+        plugin.auditLog().log(player, "Spawner Mob hinzugefügt: " + spawner.id());
+        player.sendMessage(Text.mm("<green>Spawner Mob hinzugefügt."));
+    }
+
+    private void setSpawnerLimit(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin spawner setlimit <id> <amount>"));
+            return;
+        }
+        var spawner = plugin.spawnerManager().getSpawner(args[2]);
+        if (spawner == null) {
+            player.sendMessage(Text.mm("<red>Spawner nicht gefunden."));
+            return;
+        }
+        Integer limit = parseInt(args[3]);
+        if (limit == null || limit < 0) {
+            player.sendMessage(Text.mm("<red>Limit ungültig.</red>"));
+            return;
+        }
+        spawner.setMaxMobs(limit);
+        plugin.spawnerManager().saveSpawner(spawner);
+        plugin.auditLog().log(player, "Spawner Limit gesetzt: " + spawner.id());
+        player.sendMessage(Text.mm("<green>Spawner Limit aktualisiert."));
     }
 
     private void createSkill(Player player, String[] args) {

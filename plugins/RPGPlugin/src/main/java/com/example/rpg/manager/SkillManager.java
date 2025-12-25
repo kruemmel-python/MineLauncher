@@ -290,6 +290,8 @@ public class SkillManager {
             case "power_strike" -> effectConfig("DAMAGE", Map.of("amount", 8, "radius", 3, "maxTargets", 1));
             case "whirlwind" -> effectConfig("DAMAGE", Map.of("amount", 5, "radius", 4, "maxTargets", 10));
             case "execute" -> effectConfig("DAMAGE", Map.of("amount", 12, "radius", 3, "maxTargets", 1));
+            case "dash" -> effectConfig("VELOCITY", Map.of("forward", 1.2, "up", 0.3, "add", false));
+            case "taunt" -> effectConfig("AGGRO", Map.of("radius", 8));
             default -> effectConfig("HEAL", Map.of("amount", 4));
         };
     }

@@ -34,6 +34,8 @@ import com.example.rpg.skill.effects.ParticleEffect;
 import com.example.rpg.skill.effects.PotionStatusEffect;
 import com.example.rpg.skill.effects.ProjectileEffect;
 import com.example.rpg.skill.effects.SoundEffect;
+import com.example.rpg.skill.effects.VelocityEffect;
+import com.example.rpg.skill.effects.AggroEffect;
 import com.example.rpg.skill.effects.XpEffect;
 import java.util.HashSet;
 import java.util.Set;
@@ -94,7 +96,9 @@ public class RPGPlugin extends JavaPlugin {
             .register(SkillEffectType.POTION, new PotionStatusEffect())
             .register(SkillEffectType.SOUND, new SoundEffect())
             .register(SkillEffectType.XP, new XpEffect())
-            .register(SkillEffectType.PARTICLE, new ParticleEffect());
+            .register(SkillEffectType.PARTICLE, new ParticleEffect())
+            .register(SkillEffectType.VELOCITY, new VelocityEffect())
+            .register(SkillEffectType.AGGRO, new AggroEffect());
         guiManager = new GuiManager(playerDataManager, questManager, skillManager, classManager, factionManager, questKey, skillKey);
         auditLog = new AuditLog(this);
 

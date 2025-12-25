@@ -76,7 +76,8 @@ public class CombatListener implements Listener {
                 if (random.nextDouble() <= entry.chance()) {
                     Material material = Material.matchMaterial(entry.material());
                     if (material != null) {
-                        ItemStack item = plugin.itemGenerator().createRpgItem(material, entry.rarity(), profile.level());
+                        int level = plugin.playerDataManager().getProfile(killer).level();
+                        ItemStack item = plugin.itemGenerator().createRpgItem(material, entry.rarity(), level);
                         item.setAmount(entry.minAmount() + random.nextInt(Math.max(1, entry.maxAmount() - entry.minAmount() + 1)));
                         event.getDrops().add(item);
                     }

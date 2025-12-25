@@ -25,8 +25,15 @@ public class DatabaseService {
         String password = config.getString("database.password", "password");
         int poolSize = config.getInt("database.poolSize", 10);
 
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            plugin.getLogger().severe("PostgreSQL JDBC driver not found.");
+        }
+
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl("jdbc:postgresql://" + host + ":" + port + "/" + database);
+        hikariConfig.setDriverClassName("org.postgresql.Driver");
         hikariConfig.setUsername(username);
         hikariConfig.setPassword(password);
         hikariConfig.setMaximumPoolSize(poolSize);

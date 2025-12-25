@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -27,15 +28,47 @@ public class CombatListener implements Listener {
     }
 
     @EventHandler
+    public void onFriendlyFire(EntityDamageByEntityEvent event) {
+        if (!(event.getDamager() instanceof Player damager)) {
+            return;
+        }
+        if (!(event.getEntity() instanceof Player target)) {
+            return;
+        }
+        plugin.partyManager().getParty(damager.getUniqueId()).ifPresent(party -> {
+            if (party.members().contains(target.getUniqueId())) {
+                event.setCancelled(true);
+            }
+        });
+    }
+
+    @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         Player killer = event.getEntity().getKiller();
         if (killer == null) {
             return;
         }
-        PlayerProfile profile = plugin.playerDataManager().getProfile(killer);
         int xp = 10 + event.getEntity().getType().ordinal() % 10;
-        profile.addXp(xp);
-        profile.applyAttributes(killer);
+        var partyOpt = plugin.partyManager().getParty(killer.getUniqueId());
+        java.util.List<Player> recipients = new java.util.ArrayList<>();
+        if (partyOpt.isPresent()) {
+            for (java.util.UUID memberId : partyOpt.get().members()) {
+                Player member = plugin.getServer().getPlayer(memberId);
+                if (member != null && member.getWorld().equals(killer.getWorld())
+                    && member.getLocation().distanceSquared(killer.getLocation()) <= 30 * 30) {
+                    recipients.add(member);
+                }
+            }
+        } else {
+            recipients.add(killer);
+        }
+        boolean split = plugin.getConfig().getBoolean("rpg.party.xpSplit", true);
+        int share = split ? Math.max(1, xp / Math.max(1, recipients.size())) : xp;
+        for (Player member : recipients) {
+            PlayerProfile profile = plugin.playerDataManager().getProfile(member);
+            profile.addXp(share);
+            profile.applyAttributes(member);
+        }
 
         LootTable table = plugin.lootManager().getTableFor(event.getEntity().getType().name());
         if (table != null) {
@@ -51,18 +84,21 @@ public class CombatListener implements Listener {
             }
         }
 
-        for (QuestProgress progress : profile.activeQuests().values()) {
-            Quest quest = plugin.questManager().getQuest(progress.questId());
-            if (quest == null) {
-                continue;
-            }
-            for (int i = 0; i < quest.steps().size(); i++) {
-                QuestStep step = quest.steps().get(i);
-                if (step.type() == QuestStepType.KILL && step.target().equalsIgnoreCase(event.getEntity().getType().name())) {
-                    progress.incrementStepClamped(i, 1, step.amount());
+        for (Player member : recipients) {
+            PlayerProfile profile = plugin.playerDataManager().getProfile(member);
+            for (QuestProgress progress : profile.activeQuests().values()) {
+                Quest quest = plugin.questManager().getQuest(progress.questId());
+                if (quest == null) {
+                    continue;
                 }
+                for (int i = 0; i < quest.steps().size(); i++) {
+                    QuestStep step = quest.steps().get(i);
+                    if (step.type() == QuestStepType.KILL && step.target().equalsIgnoreCase(event.getEntity().getType().name())) {
+                        progress.incrementStepClamped(i, 1, step.amount());
+                    }
+                }
+                plugin.completeQuestIfReady(member, quest, progress);
             }
-            plugin.completeQuestIfReady(killer, quest, progress);
         }
     }
 

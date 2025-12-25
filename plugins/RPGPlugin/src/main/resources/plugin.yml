@@ -13,6 +13,9 @@ commands:
   party:
     description: Party management
     usage: /party
+  p:
+    description: Party chat shortcut
+    usage: /p <message>
 permissions:
   rpg.admin.*:
     description: Full RPG admin permissions

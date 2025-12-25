@@ -123,6 +123,7 @@ public class RPGPlugin extends JavaPlugin {
         getCommand("rpg").setExecutor(new RPGCommand(this));
         getCommand("rpgadmin").setExecutor(new RPGAdminCommand(this));
         getCommand("party").setExecutor(new PartyCommand(this));
+        getCommand("p").setExecutor(new PartyCommand(this));
 
         npcManager.spawnAll();
         startDebugTask();

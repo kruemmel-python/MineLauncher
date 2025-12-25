@@ -24,7 +24,7 @@ public class PartyCommand implements CommandExecutor {
             return true;
         }
         if (args.length == 0) {
-            player.sendMessage(Text.mm("<gray>/party <create|invite|join|leave>"));
+            player.sendMessage(Text.mm("<gray>/party <create|invite|join|leave|chat>"));
             return true;
         }
         switch (args[0].toLowerCase()) {
@@ -32,7 +32,8 @@ public class PartyCommand implements CommandExecutor {
             case "invite" -> invitePlayer(player, args);
             case "join" -> joinParty(player, args);
             case "leave" -> leaveParty(player);
-            default -> player.sendMessage(Text.mm("<gray>/party <create|invite|join|leave>"));
+            case "chat" -> partyChat(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/party <create|invite|join|leave|chat>"));
         }
         return true;
     }
@@ -90,5 +91,21 @@ public class PartyCommand implements CommandExecutor {
         }
         plugin.partyManager().removeMember(uuid);
         player.sendMessage(Text.mm("<green>Party verlassen."));
+    }
+
+    private void partyChat(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/party chat <message>"));
+            return;
+        }
+        plugin.partyManager().getParty(player.getUniqueId()).ifPresentOrElse(party -> {
+            String message = String.join(" ", java.util.Arrays.copyOfRange(args, 1, args.length));
+            for (UUID member : party.members()) {
+                Player target = Bukkit.getPlayer(member);
+                if (target != null) {
+                    target.sendMessage(Text.mm("<aqua>[Party] " + player.getName() + ": <white>" + message));
+                }
+            }
+        }, () -> player.sendMessage(Text.mm("<yellow>Du bist in keiner Party.")));
     }
 }

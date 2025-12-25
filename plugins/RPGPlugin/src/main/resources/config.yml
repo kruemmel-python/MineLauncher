@@ -5,3 +5,5 @@ rpg:
     blockBreak: 1
     craft: 2
   manaRegenPerTick: 5
+  party:
+    xpSplit: true

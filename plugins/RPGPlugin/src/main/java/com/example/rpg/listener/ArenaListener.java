@@ -16,6 +16,10 @@ public class ArenaListener implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
+        event.setKeepInventory(true);
+        event.getDrops().clear();
+        event.setKeepLevel(true);
+        event.setDroppedExp(0);
         plugin.arenaManager().handleDeath(player);
     }
 }

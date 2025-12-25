@@ -1,0 +1,66 @@
+name: MineLauncherRPG
+main: com.example.rpg.RPGPlugin
+version: 1.0.0
+author: LauncherTeam
+api-version: 1.20
+commands:
+  rpg:
+    description: Open RPG menu and use RPG commands
+    usage: /rpg
+  rpgadmin:
+    description: Open RPG admin tools
+    usage: /rpgadmin
+  party:
+    description: Party management
+    usage: /party
+  p:
+    description: Party chat shortcut
+    usage: /p <message>
+  auction:
+    description: Auction house
+    usage: /auction <list|sell|buy>
+  trade:
+    description: Player trade
+    usage: /trade <request|accept|offer|requestgold|ready|cancel>
+  dungeon:
+    description: Dungeon management
+    usage: /dungeon <enter|leave|generate>
+  guild:
+    description: Guild management
+    usage: /guild <create|invite|accept|leave|disband|info|chat|bank|quest>
+  g:
+    description: Guild chat shortcut
+    usage: /g <message>
+  pvp:
+    description: PvP arenas
+    usage: /pvp <join|top>
+permissions:
+  rpg.admin.*:
+    description: Full RPG admin permissions
+    default: op
+    children:
+      rpg.admin: true
+      rpg.editor: true
+      rpg.debug: true
+  rpg.editor.*:
+    description: Full RPG editor permissions
+    default: op
+    children:
+      rpg.editor: true
+  rpg.mod.*:
+    description: RPG moderation permissions
+    default: op
+    children:
+      rpg.mod: true
+  rpg.admin:
+    description: Access admin menu
+    default: op
+  rpg.editor:
+    description: Access editor tools
+    default: op
+  rpg.mod:
+    description: Access moderation tools
+    default: op
+  rpg.debug:
+    description: Access debug overlay
+    default: op

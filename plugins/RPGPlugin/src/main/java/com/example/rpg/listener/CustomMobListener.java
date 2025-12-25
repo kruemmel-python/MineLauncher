@@ -12,14 +12,18 @@ import java.util.UUID;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Display;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TextDisplay;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -28,6 +32,7 @@ public class CustomMobListener implements Listener {
     private final NamespacedKey mobKey;
     private final Random random = new Random();
     private final Map<UUID, BukkitTask> skillTasks = new HashMap<>();
+    private final Map<UUID, TextDisplay> healthBars = new HashMap<>();
 
     public CustomMobListener(RPGPlugin plugin) {
         this.plugin = plugin;
@@ -61,6 +66,7 @@ public class CustomMobListener implements Listener {
         if (mobId == null) {
             return;
         }
+        removeHealthBar(entity);
         BukkitTask task = skillTasks.remove(entity.getUniqueId());
         if (task != null) {
             task.cancel();
@@ -94,11 +100,8 @@ public class CustomMobListener implements Listener {
 
     public void applyDefinition(LivingEntity entity, MobDefinition mob) {
         String name = mob.name();
-        if (name != null) {
-            entity.customName(net.kyori.adventure.text.Component.text(
-                org.bukkit.ChatColor.translateAlternateColorCodes('&', name)));
-        }
-        entity.setCustomNameVisible(true);
+        entity.customName(null);
+        entity.setCustomNameVisible(false);
         if (entity.getAttribute(Attribute.GENERIC_MAX_HEALTH) != null) {
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(mob.health());
         }
@@ -116,6 +119,7 @@ public class CustomMobListener implements Listener {
                 entity.getEquipment().setHelmet(new ItemStack(material));
             }
         }
+        attachHealthBar(entity, mob, entity.getHealth());
         startSkillLoop(entity, mob);
     }
 
@@ -124,6 +128,41 @@ public class CustomMobListener implements Listener {
             return null;
         }
         return entity.getPersistentDataContainer().get(mobKey, PersistentDataType.STRING);
+    }
+
+    @EventHandler
+    public void onMobDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof LivingEntity living)) {
+            return;
+        }
+        String mobId = getMobId(living);
+        if (mobId == null) {
+            return;
+        }
+        MobDefinition mob = plugin.mobManager().getMob(mobId);
+        if (mob == null) {
+            return;
+        }
+        double nextHealth = Math.max(0, living.getHealth() - event.getFinalDamage());
+        updateHealthBar(living, mob, nextHealth);
+    }
+
+    @EventHandler
+    public void onMobHeal(EntityRegainHealthEvent event) {
+        if (!(event.getEntity() instanceof LivingEntity living)) {
+            return;
+        }
+        String mobId = getMobId(living);
+        if (mobId == null) {
+            return;
+        }
+        MobDefinition mob = plugin.mobManager().getMob(mobId);
+        if (mob == null) {
+            return;
+        }
+        double maxHealth = mob.health();
+        double nextHealth = Math.min(maxHealth, living.getHealth() + event.getAmount());
+        updateHealthBar(living, mob, nextHealth);
     }
 
     private void startSkillLoop(LivingEntity entity, MobDefinition mob) {
@@ -149,5 +188,47 @@ public class CustomMobListener implements Listener {
             plugin.useMobSkill(entity, target, skillId);
         }, 20L, mob.skillIntervalSeconds() * 20L);
         skillTasks.put(entity.getUniqueId(), task);
+    }
+
+    private void attachHealthBar(LivingEntity entity, MobDefinition mob, double health) {
+        removeHealthBar(entity);
+        TextDisplay display = entity.getWorld().spawn(entity.getLocation().add(0, 1.6, 0), TextDisplay.class);
+        display.setBillboard(Display.Billboard.CENTER);
+        display.setSeeThrough(true);
+        display.setShadowed(true);
+        display.text(net.kyori.adventure.text.Component.text(buildHealthText(mob, health)));
+        entity.addPassenger(display);
+        healthBars.put(entity.getUniqueId(), display);
+    }
+
+    private void updateHealthBar(LivingEntity entity, MobDefinition mob, double health) {
+        TextDisplay display = healthBars.get(entity.getUniqueId());
+        if (display == null || display.isDead()) {
+            attachHealthBar(entity, mob, health);
+            return;
+        }
+        display.text(net.kyori.adventure.text.Component.text(buildHealthText(mob, health)));
+    }
+
+    private void removeHealthBar(LivingEntity entity) {
+        TextDisplay display = healthBars.remove(entity.getUniqueId());
+        if (display != null && !display.isDead()) {
+            display.remove();
+        }
+    }
+
+    private String buildHealthText(MobDefinition mob, double health) {
+        double maxHealth = Math.max(1, mob.health());
+        int bars = 10;
+        int filled = (int) Math.round((health / maxHealth) * bars);
+        filled = Math.min(bars, Math.max(0, filled));
+        int empty = bars - filled;
+        StringBuilder bar = new StringBuilder();
+        bar.append("§7[§a");
+        bar.append("|".repeat(filled));
+        bar.append("§c");
+        bar.append("|".repeat(empty));
+        bar.append("§7]");
+        return mob.name() + " " + bar + " §f" + Math.round(health) + "/" + Math.round(maxHealth) + " HP";
     }
 }

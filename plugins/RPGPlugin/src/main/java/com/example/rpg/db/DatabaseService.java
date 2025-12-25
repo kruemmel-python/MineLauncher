@@ -12,8 +12,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class DatabaseService {
     private final JavaPlugin plugin;
-    private final HikariDataSource dataSource;
+    private HikariDataSource dataSource;
     private final ExecutorService executor;
+    private final String jdbcUrl;
+    private final String databaseName;
+    private final String username;
+    private final String password;
 
     public DatabaseService(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -21,9 +25,12 @@ public class DatabaseService {
         String host = config.getString("database.host", "localhost");
         int port = config.getInt("database.port", 5432);
         String database = config.getString("database.name", "rpg");
-        String username = config.getString("database.user", "rpg");
-        String password = config.getString("database.password", "password");
+        this.databaseName = database;
+        this.username = config.getString("database.user", "rpg");
+        this.password = config.getString("database.password", "minecraft");
         int poolSize = config.getInt("database.poolSize", 10);
+
+        this.jdbcUrl = "jdbc:postgresql://" + host + ":" + port + "/" + database;
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -32,14 +39,14 @@ public class DatabaseService {
         }
 
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:postgresql://" + host + ":" + port + "/" + database);
+        hikariConfig.setJdbcUrl(jdbcUrl);
         hikariConfig.setDriverClassName("org.postgresql.Driver");
-        hikariConfig.setUsername(username);
-        hikariConfig.setPassword(password);
+        hikariConfig.setUsername(this.username);
+        hikariConfig.setPassword(this.password);
         hikariConfig.setMaximumPoolSize(poolSize);
         hikariConfig.setPoolName("MineLauncherRPG");
         hikariConfig.setAutoCommit(true);
-        this.dataSource = new HikariDataSource(hikariConfig);
+        this.dataSource = createDataSource(hikariConfig);
         this.executor = Executors.newFixedThreadPool(Math.max(2, poolSize));
     }
 
@@ -52,6 +59,10 @@ public class DatabaseService {
     }
 
     public void initTables() {
+        if (dataSource == null) {
+            plugin.getLogger().severe("Database not available. Skipping table initialization.");
+            return;
+        }
         String playersTable = """
             CREATE TABLE IF NOT EXISTS rpg_players (
                 uuid UUID PRIMARY KEY,
@@ -97,6 +108,44 @@ public class DatabaseService {
 
     public void shutdown() {
         executor.shutdown();
-        dataSource.close();
+        if (dataSource != null) {
+            dataSource.close();
+        }
+    }
+
+    private HikariDataSource createDataSource(HikariConfig hikariConfig) {
+        try {
+            return new HikariDataSource(hikariConfig);
+        } catch (RuntimeException ex) {
+            if (ex.getMessage() != null && ex.getMessage().contains("existiert nicht")) {
+                plugin.getLogger().warning("Database not found. Attempting to create '" + databaseName + "'.");
+                if (createDatabase()) {
+                    return new HikariDataSource(hikariConfig);
+                }
+            }
+            plugin.getLogger().severe("Failed to initialize database: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    private boolean createDatabase() {
+        String adminUrl = jdbcUrl.replace("/" + databaseName, "/postgres");
+        try (Connection connection = java.sql.DriverManager.getConnection(adminUrl, username, password);
+             java.sql.PreparedStatement exists = connection.prepareStatement(
+                 "SELECT 1 FROM pg_database WHERE datname = ?")) {
+            exists.setString(1, databaseName);
+            try (java.sql.ResultSet resultSet = exists.executeQuery()) {
+                if (resultSet.next()) {
+                    return true;
+                }
+            }
+            try (java.sql.Statement statement = connection.createStatement()) {
+                statement.execute("CREATE DATABASE \"" + databaseName + "\"");
+                return true;
+            }
+        } catch (SQLException e) {
+            plugin.getLogger().severe("Failed to create database: " + e.getMessage());
+            return false;
+        }
     }
 }

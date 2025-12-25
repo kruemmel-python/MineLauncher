@@ -12,7 +12,7 @@ database:
   port: 5432
   name: rpg
   user: rpg
-  password: password
+  password: minecraft
   poolSize: 10
 dungeon:
   entrance:

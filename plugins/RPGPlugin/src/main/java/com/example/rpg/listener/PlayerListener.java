@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -49,6 +50,14 @@ public class PlayerListener implements Listener {
         if (plugin.promptManager().handle(player, event.getMessage())) {
             event.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event) {
+        event.setKeepInventory(true);
+        event.getDrops().clear();
+        event.setKeepLevel(true);
+        event.setDroppedExp(0);
     }
 
     @EventHandler

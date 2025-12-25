@@ -3,10 +3,13 @@ package com.example.rpg.dungeon;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.model.MobDefinition;
 import com.example.rpg.model.Spawner;
+import com.example.rpg.dungeon.wfc.Pattern;
+import com.example.rpg.dungeon.wfc.WfcGenerator;
 import com.example.rpg.util.Text;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
@@ -16,13 +19,16 @@ import org.bukkit.WorldCreator;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class DungeonGenerator {
     private final RPGPlugin plugin;
     private final Random random = new Random();
+    private final WfcGenerator wfcGenerator;
 
     public DungeonGenerator(RPGPlugin plugin) {
         this.plugin = plugin;
+        this.wfcGenerator = new WfcGenerator();
     }
 
     public DungeonInstance generate(String theme, List<Player> party) {
@@ -56,6 +62,83 @@ public class DungeonGenerator {
             player.sendMessage(Text.mm("<green>Dungeon generiert: " + theme));
         }
         return new DungeonInstance(world, start, bossRoom);
+    }
+
+    public void generateWfc(String theme, List<Player> party, Consumer<DungeonInstance> callback) {
+        String worldName = "dungeon_" + System.currentTimeMillis();
+        World world = plugin.getServer().createWorld(new WorldCreator(worldName));
+        int width = 10;
+        int height = 3;
+        int depth = 10;
+        int originY = 60;
+        wfcGenerator.generate(width, height, depth).thenAccept(patterns -> {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (patterns == null) {
+                        return;
+                    }
+                    Location start = new Location(world, 1, originY + 2, 1);
+                    Location bossRoom = buildFromPatterns(world, patterns, originY);
+                    DungeonInstance instance = new DungeonInstance(world, start, bossRoom);
+                    for (Player player : party) {
+                        player.teleport(start);
+                        player.sendMessage(Text.mm("<green>Dungeon generiert: " + theme));
+                    }
+                    callback.accept(instance);
+                }
+            }.runTask(plugin);
+        });
+    }
+
+    private Location buildFromPatterns(World world, Pattern[][][] patterns, int originY) {
+        Location start = null;
+        Location farthest = null;
+        double bestDistance = 0;
+        int cellSize = 2;
+        for (int x = 0; x < patterns.length; x++) {
+            for (int y = 0; y < patterns[x].length; y++) {
+                for (int z = 0; z < patterns[x][y].length; z++) {
+                    Pattern pattern = patterns[x][y][z];
+                    if (pattern == null) {
+                        continue;
+                    }
+                    int baseX = x * cellSize;
+                    int baseY = originY + y * cellSize;
+                    int baseZ = z * cellSize;
+                    placePattern(world, pattern, baseX, baseY, baseZ);
+                    if ("FLOOR".equals(pattern.socketDown())) {
+                        Location center = new Location(world, baseX + 0.5, baseY + 1, baseZ + 0.5);
+                        if (start == null) {
+                            start = center;
+                        }
+                        double distance = start != null ? start.distanceSquared(center) : 0;
+                        if (distance > bestDistance) {
+                            bestDistance = distance;
+                            farthest = center;
+                        }
+                    }
+                }
+            }
+        }
+        if (farthest == null) {
+            farthest = new Location(world, 1, originY + 2, 1);
+        }
+        spawnBoss(farthest);
+        return farthest;
+    }
+
+    private void placePattern(World world, Pattern pattern, int baseX, int baseY, int baseZ) {
+        Material[] blocks = pattern.blocks();
+        int index = 0;
+        for (int x = 0; x < 2; x++) {
+            for (int y = 0; y < 2; y++) {
+                for (int z = 0; z < 2; z++) {
+                    Material material = blocks[index++];
+                    world.getBlockAt(baseX + x, baseY + y, baseZ + z).setType(material, false);
+                }
+            }
+        }
     }
 
     private void carveRoom(World world, int startX, int startY, int startZ, int size, Material material) {

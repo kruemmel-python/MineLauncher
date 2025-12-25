@@ -50,6 +50,14 @@ public class DungeonManager {
     }
 
     public void generateDungeon(Player player, String theme, List<Player> party) {
+        if ("wfc".equalsIgnoreCase(theme)) {
+            generator.generateWfc(theme, party, instance -> {
+                for (Player member : party) {
+                    activeInstances.put(member.getUniqueId(), instance);
+                }
+            });
+            return;
+        }
         DungeonInstance instance = generator.generate(theme, party);
         for (Player member : party) {
             activeInstances.put(member.getUniqueId(), instance);

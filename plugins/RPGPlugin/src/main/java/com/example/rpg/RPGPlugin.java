@@ -226,6 +226,10 @@ public class RPGPlugin extends JavaPlugin {
         if (guildManager != null) {
             guildManager.saveAll();
         }
+        if (dungeonManager != null) {
+            getLogger().info("Cleaning up dungeon worlds...");
+            dungeonManager.shutdown();
+        }
         if (databaseService != null) {
             databaseService.shutdown();
         }

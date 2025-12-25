@@ -3,6 +3,8 @@ package com.example.rpg.manager;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.dungeon.DungeonGenerator;
 import com.example.rpg.dungeon.DungeonInstance;
+import com.example.rpg.util.WorldUtils;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,7 @@ public class DungeonManager {
     private final Map<UUID, Location> returnLocations = new HashMap<>();
     private final DungeonGenerator generator;
     private final Map<UUID, DungeonInstance> activeInstances = new HashMap<>();
+    private final List<DungeonInstance> allInstances = new ArrayList<>();
 
     public DungeonManager(RPGPlugin plugin) {
         this.plugin = plugin;
@@ -40,40 +43,65 @@ public class DungeonManager {
 
     public void leaveDungeon(org.bukkit.entity.Player player) {
         Location back = returnLocations.remove(player.getUniqueId());
+        activeInstances.remove(player.getUniqueId());
         if (back != null) {
             player.teleport(back);
             return;
         }
         if (exit != null) {
             player.teleport(exit);
+            return;
+        }
+        if (!plugin.getServer().getWorlds().isEmpty()) {
+            player.teleport(plugin.getServer().getWorlds().get(0).getSpawnLocation());
         }
     }
 
     public void generateDungeon(Player player, String theme, List<Player> party) {
+        java.util.function.Consumer<DungeonInstance> onGenerated = instance -> {
+            allInstances.add(instance);
+            for (Player member : party) {
+                returnLocations.put(member.getUniqueId(), member.getLocation());
+                activeInstances.put(member.getUniqueId(), instance);
+            }
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> closeDungeon(instance), 20L * 60L * 15L);
+        };
+
         if ("wfc".equalsIgnoreCase(theme)) {
-            generator.generateWfc(theme, party, instance -> {
-                for (Player member : party) {
-                    activeInstances.put(member.getUniqueId(), instance);
-                }
-            });
+            generator.generateWfc(theme, party, onGenerated);
             return;
         }
         DungeonInstance instance = generator.generate(theme, party);
-        for (Player member : party) {
-            activeInstances.put(member.getUniqueId(), instance);
+        onGenerated.accept(instance);
+    }
+
+    public void closeDungeon(DungeonInstance instance) {
+        if (!allInstances.contains(instance)) {
+            return;
         }
+        WorldUtils.unloadAndDeleteWorld(instance.world(), exit != null ? exit : entrance);
+        allInstances.remove(instance);
+        activeInstances.values().removeIf(active -> active.equals(instance));
+    }
+
+    public void shutdown() {
+        for (DungeonInstance instance : new ArrayList<>(allInstances)) {
+            WorldUtils.unloadAndDeleteWorld(instance.world(), exit);
+        }
+        allInstances.clear();
+        activeInstances.clear();
     }
 
     private void load() {
         String world = config.getString("dungeon.entrance.world", null);
-        if (world != null) {
+        if (world != null && plugin.getServer().getWorld(world) != null) {
             entrance = new Location(plugin.getServer().getWorld(world),
                 config.getDouble("dungeon.entrance.x"),
                 config.getDouble("dungeon.entrance.y"),
                 config.getDouble("dungeon.entrance.z"));
         }
         String exitWorld = config.getString("dungeon.exit.world", null);
-        if (exitWorld != null) {
+        if (exitWorld != null && plugin.getServer().getWorld(exitWorld) != null) {
             exit = new Location(plugin.getServer().getWorld(exitWorld),
                 config.getDouble("dungeon.exit.x"),
                 config.getDouble("dungeon.exit.y"),

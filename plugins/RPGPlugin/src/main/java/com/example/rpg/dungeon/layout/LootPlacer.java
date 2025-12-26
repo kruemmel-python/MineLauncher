@@ -4,8 +4,9 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Bukkit;
 import org.bukkit.block.BlockState;
-import org.bukkit.block.Lootable;
+import org.bukkit.loot.Lootable;
 import org.bukkit.loot.LootTable;
 import org.bukkit.util.BoundingBox;
 
@@ -43,7 +44,7 @@ public class LootPlacer {
         if (key == null) {
             key = NamespacedKey.minecraft(tableKey);
         }
-        return world.getServer().getLootTable(key);
+        return Bukkit.getLootTable(key);
     }
 
     private Location randomPoint(Room room, org.bukkit.World world) {

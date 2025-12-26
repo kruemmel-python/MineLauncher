@@ -53,7 +53,12 @@ public class NpcListener implements Listener {
             plugin.guiManager().openQuestList(player);
         }
         if (npc.role() == NpcRole.VENDOR) {
-            openStaticShop(player, npc);
+            if (npc.shopId() != null) {
+                openStaticShop(player, npc);
+            } else {
+                ShopDefinition shop = buildMixedVendorShop(npc, player);
+                plugin.guiManager().openShop(player, shop);
+            }
             return;
         }
         if (npc.role() == NpcRole.WEAPON_VENDOR
@@ -131,6 +136,52 @@ public class NpcListener implements Listener {
                 item.setRarity(rarity.name());
                 item.setMinLevel(level);
             }
+            items.put(item.slot(), item);
+        }
+        shop.setItems(items);
+        plugin.shopManager().registerShop(shop);
+        return shop;
+    }
+
+    private ShopDefinition buildMixedVendorShop(Npc npc, Player player) {
+        ShopDefinition shop = new ShopDefinition("npc_" + npc.id());
+        shop.setTitle("Gemischtwaren");
+        Map<Integer, ShopItem> items = new java.util.HashMap<>();
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        int level = Math.max(1, profile.level());
+        List<Material> rpgMaterials = List.of(
+            Material.WOODEN_SWORD, Material.STONE_SWORD, Material.IRON_SWORD,
+            Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
+            Material.CHAINMAIL_CHESTPLATE, Material.IRON_CHESTPLATE, Material.BOW
+        );
+        List<Material> normalMaterials = List.of(
+            Material.BREAD, Material.COOKED_BEEF, Material.COOKED_CHICKEN,
+            Material.IRON_NUGGET, Material.GOLD_NUGGET, Material.ARROW
+        );
+        int slot = 0;
+        for (int i = 0; i < 6; i++) {
+            Material material = rpgMaterials.get(random.nextInt(rpgMaterials.size()));
+            ShopItem item = new ShopItem();
+            item.setSlot(slot++);
+            item.setMaterial(material.name());
+            Rarity rarity = rollRarity();
+            int base = 60 + (level * 12);
+            int buyPrice = (int) Math.max(20, base * (1 + rarity.weight()));
+            item.setBuyPrice(buyPrice);
+            item.setSellPrice(Math.max(10, buyPrice / 4));
+            item.setRpgItem(true);
+            item.setRarity(rarity.name());
+            item.setMinLevel(level);
+            items.put(item.slot(), item);
+        }
+        for (int i = 0; i < 3; i++) {
+            Material material = normalMaterials.get(random.nextInt(normalMaterials.size()));
+            ShopItem item = new ShopItem();
+            item.setSlot(slot++);
+            item.setMaterial(material.name());
+            item.setBuyPrice(20 + random.nextInt(30));
+            item.setSellPrice(5 + random.nextInt(10));
+            item.setRpgItem(false);
             items.put(item.slot(), item);
         }
         shop.setItems(items);

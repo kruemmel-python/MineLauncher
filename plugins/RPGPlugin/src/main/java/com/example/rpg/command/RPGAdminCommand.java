@@ -343,7 +343,7 @@ public class RPGAdminCommand implements CommandExecutor {
 
     private void createNpc(Player player, String[] args) {
         if (args.length < 4) {
-            player.sendMessage(Text.mm("<gray>/rpgadmin npc create <id> <role>"));
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc create <id> <role> [shopId]"));
             return;
         }
         String id = args[2];
@@ -358,6 +358,9 @@ public class RPGAdminCommand implements CommandExecutor {
         npc.setRole(role);
         npc.setLocation(player.getLocation());
         npc.setDialog(List.of("Hallo!", "Ich habe eine Aufgabe für dich."));
+        if (role == NpcRole.VENDOR && args.length >= 5) {
+            npc.setShopId(args[4]);
+        }
         plugin.npcManager().npcs().put(id, npc);
         plugin.npcManager().spawnNpc(npc);
         plugin.npcManager().saveNpc(npc);

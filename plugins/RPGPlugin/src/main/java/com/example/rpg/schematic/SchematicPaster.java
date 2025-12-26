@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.block.BlockFace;
 
 public class SchematicPaster {
-    public record PasteOptions(boolean includeAir, Transform transform) {
+    public record PasteOptions(boolean includeAir, Transform transform, UndoBuffer undoBuffer) {
     }
 
     private final JavaPlugin plugin;
@@ -52,6 +52,9 @@ public class SchematicPaster {
                     }
                     Block block = world.getBlockAt(origin.getBlockX() + placement.x(), origin.getBlockY() + placement.y(), origin.getBlockZ() + placement.z());
                     try {
+                        if (options.undoBuffer() != null) {
+                            options.undoBuffer().add(block.getLocation(), block.getBlockData());
+                        }
                         BlockData data = Bukkit.createBlockData(placement.blockData());
                         data = rotateBlockData(data, options.transform().rotation());
                         block.setBlockData(data, false);

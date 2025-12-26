@@ -182,6 +182,10 @@ public class RPGAdminCommand implements CommandExecutor {
             plugin.guiManager().openBuildingCategories(player);
             return;
         }
+        if ("undo".equalsIgnoreCase(args[1])) {
+            plugin.buildingManager().undoLast(player);
+            return;
+        }
         plugin.buildingManager().beginPlacement(player, args[1], com.example.rpg.schematic.Transform.Rotation.NONE);
     }
 

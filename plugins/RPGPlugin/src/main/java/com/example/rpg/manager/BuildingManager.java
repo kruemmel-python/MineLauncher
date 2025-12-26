@@ -11,7 +11,9 @@ import com.example.rpg.schematic.Transform;
 import com.example.rpg.util.Text;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +36,7 @@ public class BuildingManager {
     private final Map<UUID, PlacementSession> placementSessions = new HashMap<>();
     private final SpongeSchemLoader loader = new SpongeSchemLoader();
     private final Map<String, CompletableFuture<Schematic>> schematicCache = new ConcurrentHashMap<>();
+    private final Map<UUID, Deque<com.example.rpg.schematic.UndoBuffer>> undoHistory = new HashMap<>();
     private final Random random = new Random();
     private final Executor asyncExecutor = CompletableFuture.delayedExecutor(0, java.util.concurrent.TimeUnit.MILLISECONDS);
 
@@ -140,10 +143,13 @@ public class BuildingManager {
                     return;
                 }
                 try {
+                    com.example.rpg.schematic.UndoBuffer undoBuffer = new com.example.rpg.schematic.UndoBuffer();
                     pasteBuilding(origin, definition, rotation, finalBaseFuture.join(),
                         finalFloorFuture != null ? finalFloorFuture.join() : null,
                         finalBasementFuture != null ? finalBasementFuture.join() : null,
-                        furnitureFutures);
+                        furnitureFutures,
+                        undoBuffer);
+                    pushUndo(player.getUniqueId(), undoBuffer);
                     player.sendMessage(Text.mm("<green>Gebäude platziert: " + definition.name()));
                 } catch (Exception ex) {
                     plugin.getLogger().warning("Failed to paste building: " + ex.getMessage());
@@ -163,8 +169,10 @@ public class BuildingManager {
             try {
                 SchematicPaster paster = new SchematicPaster(plugin);
                 Transform transform = new Transform(rotation, 0, 0, 0);
+                com.example.rpg.schematic.UndoBuffer undoBuffer = new com.example.rpg.schematic.UndoBuffer();
                 paster.pasteInBatches(origin.getWorld(), origin, schematic,
-                    new SchematicPaster.PasteOptions(false, transform), 5000);
+                    new SchematicPaster.PasteOptions(false, transform, undoBuffer), 5000);
+                pushUndo(player.getUniqueId(), undoBuffer);
                 player.sendMessage(Text.mm("<green>Schematic platziert: " + schematicName));
             } catch (Exception ex) {
                 plugin.getLogger().warning("Failed to paste schematic: " + ex.getMessage());
@@ -173,22 +181,43 @@ public class BuildingManager {
         }), asyncExecutor);
     }
 
+    public void undoLast(Player player) {
+        Deque<com.example.rpg.schematic.UndoBuffer> history = undoHistory.get(player.getUniqueId());
+        if (history == null || history.isEmpty()) {
+            player.sendMessage(Text.mm("<yellow>Kein Gebäude zum Rückgängig machen."));
+            return;
+        }
+        com.example.rpg.schematic.UndoBuffer buffer = history.pop();
+        for (var snapshot : buffer.snapshots()) {
+            snapshot.location().getBlock().setBlockData(snapshot.data(), false);
+        }
+        player.sendMessage(Text.mm("<green>Letztes Gebäude rückgängig gemacht."));
+    }
+
+    private void pushUndo(UUID playerId, com.example.rpg.schematic.UndoBuffer buffer) {
+        undoHistory.computeIfAbsent(playerId, key -> new ArrayDeque<>()).push(buffer);
+    }
+
     private void pasteBuilding(Location origin, BuildingDefinition definition, Transform.Rotation rotation, Schematic base,
-                               Schematic floor, Schematic basement, Map<FurnitureDefinition, CompletableFuture<Schematic>> furnitureFutures) {
+                               Schematic floor, Schematic basement, Map<FurnitureDefinition, CompletableFuture<Schematic>> furnitureFutures,
+                               com.example.rpg.schematic.UndoBuffer undoBuffer) {
         SchematicPaster paster = new SchematicPaster(plugin);
         int minFloors = Math.max(1, definition.minFloors());
         int maxFloors = Math.max(minFloors, definition.maxFloors());
         int floors = Math.max(1, random.nextInt(maxFloors - minFloors + 1) + minFloors);
         Transform baseTransform = new Transform(rotation, definition.offsetX(), definition.offsetY(), definition.offsetZ());
-        paster.pasteInBatches(origin.getWorld(), origin, base, new SchematicPaster.PasteOptions(definition.includeAir(), baseTransform), 5000);
+        paster.pasteInBatches(origin.getWorld(), origin, base,
+            new SchematicPaster.PasteOptions(definition.includeAir(), baseTransform, undoBuffer), 5000);
         if (basement != null && definition.basementDepth() > 0) {
             Transform basementTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() - definition.basementDepth(), definition.offsetZ());
-            paster.pasteInBatches(origin.getWorld(), origin, basement, new SchematicPaster.PasteOptions(definition.includeAir(), basementTransform), 5000);
+            paster.pasteInBatches(origin.getWorld(), origin, basement,
+                new SchematicPaster.PasteOptions(definition.includeAir(), basementTransform, undoBuffer), 5000);
         }
         for (int i = 1; i < floors; i++) {
             Schematic floorSchematic = floor != null ? floor : base;
             Transform floorTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() + definition.floorHeight() * i, definition.offsetZ());
-            paster.pasteInBatches(origin.getWorld(), origin, floorSchematic, new SchematicPaster.PasteOptions(definition.includeAir(), floorTransform), 5000);
+            paster.pasteInBatches(origin.getWorld(), origin, floorSchematic,
+                new SchematicPaster.PasteOptions(definition.includeAir(), floorTransform, undoBuffer), 5000);
         }
         for (var entry : furnitureFutures.entrySet()) {
             FurnitureDefinition furniture = entry.getKey();
@@ -198,7 +227,8 @@ public class BuildingManager {
                 definition.offsetX() + furniture.offsetX(),
                 definition.offsetY() + furniture.offsetY(),
                 definition.offsetZ() + furniture.offsetZ());
-            paster.pasteInBatches(origin.getWorld(), origin, furnitureSchematic, new SchematicPaster.PasteOptions(definition.includeAir(), transform), 2000);
+            paster.pasteInBatches(origin.getWorld(), origin, furnitureSchematic,
+                new SchematicPaster.PasteOptions(definition.includeAir(), transform, undoBuffer), 2000);
         }
     }
 

@@ -104,4 +104,11 @@ public final class GuiHolders {
             throw new UnsupportedOperationException();
         }
     }
+
+    public static final class SchematicMoveHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }

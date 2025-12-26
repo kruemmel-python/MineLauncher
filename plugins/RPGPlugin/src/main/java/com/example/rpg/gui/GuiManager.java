@@ -219,6 +219,16 @@ public class GuiManager {
         player.openInventory(inv);
     }
 
+    public void openSchematicMoveGui(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.SchematicMoveHolder(), 27, Component.text("Schematic verschieben"));
+        inv.setItem(11, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Links")).build());
+        inv.setItem(15, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Rechts")).build());
+        inv.setItem(13, new ItemBuilder(Material.FEATHER).name(Text.mm("<yellow>Hoch")).build());
+        inv.setItem(22, new ItemBuilder(Material.ANVIL).name(Text.mm("<yellow>Runter")).build());
+        inv.setItem(26, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Fertig")).build());
+        player.openInventory(inv);
+    }
+
     public void openShop(Player player, ShopDefinition shop) {
         Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), 27, Component.text(shop.title()));
         for (ShopItem item : shop.items().values()) {

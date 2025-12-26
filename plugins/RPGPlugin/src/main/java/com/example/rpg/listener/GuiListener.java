@@ -154,6 +154,18 @@ public class GuiListener implements Listener {
             event.setCancelled(true);
             handleShopClick(player, event.getInventory(), event.getSlot(), current, shopHolder, event.isRightClick());
         }
+        if (holder instanceof GuiHolders.SchematicMoveHolder) {
+            event.setCancelled(true);
+            switch (event.getSlot()) {
+                case 11 -> plugin.buildingManager().moveLastPlacement(player, -1, 0, 0);
+                case 15 -> plugin.buildingManager().moveLastPlacement(player, 1, 0, 0);
+                case 13 -> plugin.buildingManager().moveLastPlacement(player, 0, 1, 0);
+                case 22 -> plugin.buildingManager().moveLastPlacement(player, 0, -1, 0);
+                case 26 -> player.closeInventory();
+                default -> {
+                }
+            }
+        }
     }
 
     private Quest resolveQuest(ItemStack item) {

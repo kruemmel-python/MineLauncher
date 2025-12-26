@@ -276,12 +276,16 @@ public class BuildingManager {
 
     private void clearEntities(Location origin, Bounds bounds) {
         BoundingBox box = BoundingBox.of(
-            origin.getBlockX() + bounds.minX,
-            origin.getBlockY() + bounds.minY,
-            origin.getBlockZ() + bounds.minZ,
-            origin.getBlockX() + bounds.maxX + 1,
-            origin.getBlockY() + bounds.maxY + 1,
-            origin.getBlockZ() + bounds.maxZ + 1
+            new org.bukkit.util.Vector(
+                origin.getBlockX() + bounds.minX,
+                origin.getBlockY() + bounds.minY,
+                origin.getBlockZ() + bounds.minZ
+            ),
+            new org.bukkit.util.Vector(
+                origin.getBlockX() + bounds.maxX + 1,
+                origin.getBlockY() + bounds.maxY + 1,
+                origin.getBlockZ() + bounds.maxZ + 1
+            )
         );
         for (var entity : origin.getWorld().getNearbyEntities(box)) {
             if (entity instanceof Player) {

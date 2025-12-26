@@ -1,9 +1,11 @@
 package com.example.rpg.manager;
 
+import com.example.rpg.model.RPGStat;
 import com.example.rpg.util.Text;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.EnumMap;
 import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -21,6 +23,8 @@ public class ItemStatManager {
     private final NamespacedKey critKey;
     private final NamespacedKey healthKey;
     private final NamespacedKey setIdKey;
+    private final NamespacedKey enchantAffixKey;
+    private final Map<RPGStat, NamespacedKey> enchantStatKeys = new EnumMap<>(RPGStat.class);
     private final Map<String, PotionEffectType> setBonuses = Map.of(
         "ember", PotionEffectType.FIRE_RESISTANCE,
         "guardian", PotionEffectType.DAMAGE_RESISTANCE,
@@ -32,6 +36,10 @@ public class ItemStatManager {
         this.critKey = new NamespacedKey(plugin, "stat_crit");
         this.healthKey = new NamespacedKey(plugin, "stat_health");
         this.setIdKey = new NamespacedKey(plugin, "set_id");
+        this.enchantAffixKey = new NamespacedKey(plugin, "enchant_affixes");
+        for (RPGStat stat : RPGStat.values()) {
+            enchantStatKeys.put(stat, new NamespacedKey(plugin, "enchant_stat_" + stat.name().toLowerCase()));
+        }
     }
 
     public void applyAffixes(ItemStack item) {
@@ -59,12 +67,30 @@ public class ItemStatManager {
         double crit = data.getOrDefault(critKey, PersistentDataType.DOUBLE, 0.0);
         int health = data.getOrDefault(healthKey, PersistentDataType.INTEGER, 0);
         String setId = data.get(setIdKey, PersistentDataType.STRING);
-        meta.lore(List.of(
-            Text.mm("<gray>Stärke: <white>" + strength),
-            Text.mm("<gray>Krit-Chance: <white>" + String.format("%.1f%%", crit * 100)),
-            Text.mm("<gray>Leben: <white>" + health),
-            setId != null ? Text.mm("<gold>Set: " + setId + " (4 Teile)") : Text.mm("<gray>Kein Set")
-        ));
+        List<Component> lore = new java.util.ArrayList<>();
+        lore.add(Text.mm("<gray>Stärke: <white>" + strength));
+        lore.add(Text.mm("<gray>Krit-Chance: <white>" + String.format("%.1f%%", crit * 100)));
+        lore.add(Text.mm("<gray>Leben: <white>" + health));
+        if (setId != null) {
+            lore.add(Text.mm("<gold>Set: " + setId + " (4 Teile)"));
+        } else {
+            lore.add(Text.mm("<gray>Kein Set"));
+        }
+        for (RPGStat stat : RPGStat.values()) {
+            NamespacedKey key = enchantStatKeys.get(stat);
+            if (key == null) {
+                continue;
+            }
+            int value = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
+            if (value > 0) {
+                lore.add(Text.mm("<aqua>Affix " + stat.name() + ": <white>+" + value));
+            }
+        }
+        String affixes = data.get(enchantAffixKey, PersistentDataType.STRING);
+        if (affixes != null && !affixes.isBlank()) {
+            lore.add(Text.mm("<light_purple>Affixe: <white>" + affixes));
+        }
+        meta.lore(lore);
     }
 
     public void updateSetBonus(Player player) {
@@ -106,6 +132,14 @@ public class ItemStatManager {
 
     public NamespacedKey setIdKey() {
         return setIdKey;
+    }
+
+    public NamespacedKey enchantStatKey(RPGStat stat) {
+        return enchantStatKeys.get(stat);
+    }
+
+    public NamespacedKey enchantAffixKey() {
+        return enchantAffixKey;
     }
 
     private String randomFrom(List<String> values) {

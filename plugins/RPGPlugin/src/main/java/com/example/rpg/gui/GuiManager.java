@@ -34,6 +34,7 @@ public class GuiManager {
     private final FactionManager factionManager;
     private final BuildingManager buildingManager;
     private final com.example.rpg.permissions.PermissionService permissionService;
+    private final com.example.rpg.manager.EnchantManager enchantManager;
     private final NamespacedKey questKey;
     private final NamespacedKey skillKey;
     private final NamespacedKey buildingKey;
@@ -42,12 +43,15 @@ public class GuiManager {
     private final NamespacedKey permPlayerKey;
     private final NamespacedKey permNodeKey;
     private final NamespacedKey permActionKey;
+    private final NamespacedKey enchantRecipeKey;
 
     public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, SkillManager skillManager,
                       ClassManager classManager, FactionManager factionManager, BuildingManager buildingManager,
                       com.example.rpg.permissions.PermissionService permissionService,
+                      com.example.rpg.manager.EnchantManager enchantManager,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
-                      NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey) {
+                      NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
+                      NamespacedKey enchantRecipeKey) {
         this.playerDataManager = playerDataManager;
         this.questManager = questManager;
         this.skillManager = skillManager;
@@ -55,6 +59,7 @@ public class GuiManager {
         this.factionManager = factionManager;
         this.buildingManager = buildingManager;
         this.permissionService = permissionService;
+        this.enchantManager = enchantManager;
         this.questKey = questKey;
         this.skillKey = skillKey;
         this.buildingKey = buildingKey;
@@ -63,6 +68,7 @@ public class GuiManager {
         this.permPlayerKey = permPlayerKey;
         this.permNodeKey = permNodeKey;
         this.permActionKey = permActionKey;
+        this.enchantRecipeKey = enchantRecipeKey;
     }
 
     public void openPlayerMenu(Player player) {
@@ -242,6 +248,67 @@ public class GuiManager {
         inv.setItem(13, new ItemBuilder(Material.FEATHER).name(Text.mm("<yellow>Hoch")).build());
         inv.setItem(22, new ItemBuilder(Material.ANVIL).name(Text.mm("<yellow>Runter")).build());
         inv.setItem(26, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Fertig")).build());
+        player.openInventory(inv);
+    }
+
+    public void openEnchanting(Player player, String selectedRecipeId) {
+        ItemStack target = player.getInventory().getItemInMainHand();
+        List<com.example.rpg.model.EnchantmentRecipe> available = enchantManager.availableRecipes(player, target);
+        if (available.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Keine Verzauberungen verfügbar."));
+        }
+        String recipeId = selectedRecipeId;
+        if (recipeId == null && !available.isEmpty()) {
+            recipeId = available.get(0).id();
+        }
+        Inventory inv = Bukkit.createInventory(new GuiHolders.EnchantingHolder(recipeId), 27, Component.text("Verzauberungen"));
+        ItemStack displayTarget = target == null ? null : target.clone();
+        if (displayTarget != null) {
+            displayTarget.setAmount(1);
+            inv.setItem(10, displayTarget);
+        } else {
+            inv.setItem(10, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Kein Ziel-Item")).build());
+        }
+        for (int i = 0; i < Math.min(available.size(), 9); i++) {
+            var recipe = available.get(i);
+            ItemBuilder builder = new ItemBuilder(Material.ENCHANTED_BOOK)
+                .name(Text.mm("<yellow>" + recipe.id()))
+                .loreLine(Text.mm("<gray>Typ: <white>" + recipe.type()))
+                .loreLine(Text.mm("<gray>Ziel: <white>" + recipe.targetSlot()));
+            if (recipe.statToImprove() != null) {
+                builder.loreLine(Text.mm("<gray>Stat: <white>" + recipe.statToImprove()));
+            }
+            if (recipe.costGold() > 0) {
+                builder.loreLine(Text.mm("<gold>Kosten: " + recipe.costGold() + " Gold"));
+            }
+            if (recipe.costMaterial() != null && recipe.costAmount() > 0) {
+                builder.loreLine(Text.mm("<gray>Material: <white>" + recipe.costMaterial() + " x" + recipe.costAmount()));
+            }
+            ItemStack item = builder.build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(enchantRecipeKey, PersistentDataType.STRING, recipe.id());
+            item.setItemMeta(meta);
+            inv.setItem(i, item);
+        }
+        com.example.rpg.model.EnchantmentRecipe selected = recipeId != null ? enchantManager.recipes().get(recipeId) : null;
+        if (selected != null) {
+            if (selected.costMaterial() != null) {
+                inv.setItem(14, new ItemBuilder(selected.costMaterial())
+                    .name(Text.mm("<yellow>Material: <white>" + selected.costMaterial()))
+                    .loreLine(Text.mm("<gray>Menge: <white>" + selected.costAmount()))
+                    .build());
+            } else {
+                inv.setItem(14, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).name(Text.mm("<gray>Kein Material")).build());
+            }
+            inv.setItem(15, new ItemBuilder(Material.GOLD_INGOT)
+                .name(Text.mm("<gold>Goldkosten"))
+                .loreLine(Text.mm("<gray>Benötigt: <white>" + selected.costGold()))
+                .build());
+            inv.setItem(22, new ItemBuilder(Material.ANVIL).name(Text.mm("<green>Verzaubern")).build());
+        } else {
+            inv.setItem(22, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Kein Rezept ausgewählt")).build());
+        }
+        inv.setItem(26, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Schließen")).build());
         player.openInventory(inv);
     }
 

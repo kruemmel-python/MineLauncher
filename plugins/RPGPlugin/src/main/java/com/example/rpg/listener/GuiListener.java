@@ -344,6 +344,28 @@ public class GuiListener implements Listener {
             if (event.getSlot() == 45) {
                 plugin.guiManager().openPermissionsMain(player);
             }
+            return;
+        }
+        if (holder instanceof GuiHolders.EnchantingHolder enchantingHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 26) {
+                player.closeInventory();
+                return;
+            }
+            if (event.getSlot() == 22) {
+                String recipeId = enchantingHolder.recipeId();
+                if (recipeId == null) {
+                    player.sendMessage(Text.mm("<red>Kein Rezept ausgewählt."));
+                    return;
+                }
+                plugin.enchantManager().applyRecipe(player, recipeId);
+                plugin.guiManager().openEnchanting(player, recipeId);
+                return;
+            }
+            String recipeId = resolveEnchantRecipeId(current);
+            if (recipeId != null) {
+                plugin.guiManager().openEnchanting(player, recipeId);
+            }
         }
     }
 
@@ -413,6 +435,14 @@ public class GuiListener implements Listener {
             return null;
         }
         return UUID.fromString(value);
+    }
+
+    private String resolveEnchantRecipeId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.enchantRecipeKey(), PersistentDataType.STRING);
     }
 
     private com.example.rpg.permissions.PermissionDecision parseDecision(String value) {

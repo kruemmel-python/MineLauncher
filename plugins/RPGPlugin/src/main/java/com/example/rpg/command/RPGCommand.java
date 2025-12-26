@@ -37,7 +37,8 @@ public class RPGCommand implements CommandExecutor {
             case "pay" -> handlePay(player, args);
             case "profession" -> handleProfession(player, args);
             case "skilltree" -> plugin.skillTreeGui().open(player);
-            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind|money|pay|profession|skilltree>"));
+            case "enchant" -> plugin.guiManager().openEnchanting(player, null);
+            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind|money|pay|profession|skilltree|enchant>"));
         }
         return true;
     }

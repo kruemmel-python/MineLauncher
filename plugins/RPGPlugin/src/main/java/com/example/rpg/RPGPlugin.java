@@ -61,6 +61,7 @@ import com.example.rpg.util.PromptManager;
 import com.example.rpg.permissions.PermissionService;
 import com.example.rpg.permissions.PermissionDecision;
 import com.example.rpg.permissions.PermissionListener;
+import com.example.rpg.manager.EnchantManager;
 import com.example.rpg.skill.SkillEffectRegistry;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.skill.effects.DamageEffect;
@@ -110,6 +111,7 @@ public class RPGPlugin extends JavaPlugin {
     private VoiceChatManager voiceChatManager;
     private PermissionService permissionService;
     private BuildingManager buildingManager;
+    private EnchantManager enchantManager;
     private PromptManager promptManager;
     private ItemGenerator itemGenerator;
     private SkillEffectRegistry skillEffects;
@@ -126,6 +128,7 @@ public class RPGPlugin extends JavaPlugin {
     private NamespacedKey permPlayerKey;
     private NamespacedKey permNodeKey;
     private NamespacedKey permActionKey;
+    private NamespacedKey enchantRecipeKey;
     private AuditLog auditLog;
 
     @Override
@@ -168,6 +171,7 @@ public class RPGPlugin extends JavaPlugin {
         permPlayerKey = new NamespacedKey(this, "perm_player");
         permNodeKey = new NamespacedKey(this, "perm_node");
         permActionKey = new NamespacedKey(this, "perm_action");
+        enchantRecipeKey = new NamespacedKey(this, "enchant_recipe");
         skillEffects = new SkillEffectRegistry()
             .register(SkillEffectType.HEAL, new HealEffect())
             .register(SkillEffectType.DAMAGE, new DamageEffect())
@@ -182,6 +186,7 @@ public class RPGPlugin extends JavaPlugin {
         skillTreeGui = new SkillTreeGui(this);
         behaviorTreeEditorGui = new BehaviorTreeEditorGui(this);
         auditLog = new AuditLog(this);
+        enchantManager = new EnchantManager(this);
         permissionService = new PermissionService(this, databaseService,
             getConfig().getBoolean("permissions.enabled", true),
             getConfig().getString("permissions.defaultRole", "player"),
@@ -190,7 +195,8 @@ public class RPGPlugin extends JavaPlugin {
             getConfig().getBoolean("permissions.auditEnabled", true),
             getConfig().getLong("permissions.cacheTtlSeconds", 30));
         guiManager = new GuiManager(playerDataManager, questManager, skillManager, classManager, factionManager, buildingManager,
-            permissionService, questKey, skillKey, buildingKey, buildingCategoryKey, permRoleKey, permPlayerKey, permNodeKey, permActionKey);
+            permissionService, enchantManager, questKey, skillKey, buildingKey, buildingCategoryKey, permRoleKey, permPlayerKey,
+            permNodeKey, permActionKey, enchantRecipeKey);
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getPluginManager().registerEvents(new CombatListener(this), this);
@@ -403,6 +409,10 @@ public class RPGPlugin extends JavaPlugin {
         return buildingManager;
     }
 
+    public EnchantManager enchantManager() {
+        return enchantManager;
+    }
+
     public CustomMobListener customMobListener() {
         return customMobListener;
     }
@@ -445,6 +455,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public NamespacedKey permActionKey() {
         return permActionKey;
+    }
+
+    public NamespacedKey enchantRecipeKey() {
+        return enchantRecipeKey;
     }
 
     public void broadcastLoot(Player player, org.bukkit.inventory.ItemStack item) {

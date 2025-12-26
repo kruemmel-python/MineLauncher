@@ -223,4 +223,21 @@ public final class GuiHolders {
             throw new UnsupportedOperationException();
         }
     }
+
+    public static final class EnchantingHolder implements InventoryHolder {
+        private final String recipeId;
+
+        public EnchantingHolder(String recipeId) {
+            this.recipeId = recipeId;
+        }
+
+        public String recipeId() {
+            return recipeId;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }

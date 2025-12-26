@@ -35,6 +35,10 @@ public class ShopManager {
         return shops;
     }
 
+    public void registerShop(ShopDefinition shop) {
+        shops.put(shop.id(), shop);
+    }
+
     public void saveShop(ShopDefinition shop) {
         ConfigurationSection section = config.createSection(shop.id());
         section.set("title", shop.title());

@@ -134,6 +134,7 @@ public class NpcListener implements Listener {
             items.put(item.slot(), item);
         }
         shop.setItems(items);
+        plugin.shopManager().registerShop(shop);
         return shop;
     }
 

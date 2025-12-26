@@ -1,0 +1,76 @@
+package com.example.rpg.model;
+
+public class ShopItem {
+    private int slot;
+    private String material;
+    private String name;
+    private int buyPrice;
+    private int sellPrice;
+    private boolean rpgItem;
+    private String rarity;
+    private int minLevel;
+
+    public int slot() {
+        return slot;
+    }
+
+    public void setSlot(int slot) {
+        this.slot = slot;
+    }
+
+    public String material() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int buyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(int buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public int sellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public boolean rpgItem() {
+        return rpgItem;
+    }
+
+    public void setRpgItem(boolean rpgItem) {
+        this.rpgItem = rpgItem;
+    }
+
+    public String rarity() {
+        return rarity;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
+    public int minLevel() {
+        return minLevel;
+    }
+
+    public void setMinLevel(int minLevel) {
+        this.minLevel = minLevel;
+    }
+}

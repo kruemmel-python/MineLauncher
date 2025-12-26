@@ -126,8 +126,9 @@ public class CombatListener implements Listener {
                     if (step.type() == QuestStepType.KILL && step.target().equalsIgnoreCase(event.getEntity().getType().name())) {
                         progress.incrementStepClamped(i, 1, step.amount());
                     }
+                }
+                plugin.completeQuestIfReady(member, quest, progress);
             }
-            plugin.completeQuestIfReady(member, quest, progress);
         }
 
         String zoneId = plugin.zoneManager().getZoneAt(event.getEntity().getLocation()) != null
@@ -136,7 +137,6 @@ public class CombatListener implements Listener {
         for (Player member : recipients) {
             plugin.worldEventManager().handleKill(member, event.getEntity().getType().name(), zoneId);
         }
-    }
     }
 
     @EventHandler

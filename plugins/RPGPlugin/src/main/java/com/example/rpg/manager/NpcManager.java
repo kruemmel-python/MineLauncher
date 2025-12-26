@@ -158,9 +158,9 @@ public class NpcManager {
     private void loadDialogue(ConfigurationSection section, Npc npc) {
         npc.dialogueNodes().clear();
         for (java.util.Map<?, ?> raw : section.getMapList("dialogueNodes")) {
-            Object idValue = raw.getOrDefault("id", "start");
-            DialogueNode node = new DialogueNode(String.valueOf(idValue));
-            node.setText(String.valueOf(raw.getOrDefault("text", "")));
+            String idValue = mapString(raw, "id", "start");
+            DialogueNode node = new DialogueNode(idValue);
+            node.setText(mapString(raw, "text", ""));
             Object optionsRaw = raw.get("options");
             if (optionsRaw instanceof java.util.List<?> options) {
                 for (Object entry : options) {
@@ -168,18 +168,47 @@ public class NpcManager {
                         continue;
                     }
                     DialogueOption option = new DialogueOption();
-                    option.setText(String.valueOf(optRaw.getOrDefault("text", "Weiter")));
-                    option.setNextId(String.valueOf(optRaw.getOrDefault("nextId", "end")));
+                    option.setText(mapString(optRaw, "text", "Weiter"));
+                    option.setNextId(mapString(optRaw, "nextId", "end"));
                     option.setRequiredFactionId(valueOrNull(optRaw.get("requiredFactionId")));
-                    option.setMinRep(parseInt(optRaw.getOrDefault("minRep", 0)));
+                    option.setMinRep(mapInt(optRaw, "minRep", 0));
                     option.setRequiredQuestId(valueOrNull(optRaw.get("requiredQuestId")));
-                    option.setRequireQuestCompleted(Boolean.parseBoolean(String.valueOf(optRaw.getOrDefault("requireQuestCompleted", false))));
+                    option.setRequireQuestCompleted(mapBool(optRaw, "requireQuestCompleted", false));
                     option.setGrantQuestId(valueOrNull(optRaw.get("grantQuestId")));
                     node.options().add(option);
                 }
             }
             npc.dialogueNodes().put(node.id(), node);
         }
+    }
+
+    private String mapString(java.util.Map<?, ?> raw, String key, String fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        String resolved = String.valueOf(value);
+        return resolved.isBlank() ? fallback : resolved;
+    }
+
+    private int mapInt(java.util.Map<?, ?> raw, String key, int fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        try {
+            return Integer.parseInt(String.valueOf(value));
+        } catch (NumberFormatException e) {
+            return fallback;
+        }
+    }
+
+    private boolean mapBool(java.util.Map<?, ?> raw, String key, boolean fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        return Boolean.parseBoolean(String.valueOf(value));
     }
 
     private String valueOrNull(Object raw) {

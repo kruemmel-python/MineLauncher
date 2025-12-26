@@ -118,7 +118,7 @@ public class SkillSynergyManager {
             synergy.setWindowSeconds(section.getInt("windowSeconds", 6));
             List<Map<?, ?>> rawEffects = section.getMapList("effects");
             for (Map<?, ?> raw : rawEffects) {
-                String typeName = String.valueOf(raw.getOrDefault("type", "DAMAGE"));
+                String typeName = mapString(raw, "type", "DAMAGE");
                 SkillEffectType type = SkillEffectType.valueOf(typeName);
                 Map<String, Object> params = new HashMap<>();
                 Object paramsRaw = raw.get("params");
@@ -131,6 +131,15 @@ public class SkillSynergyManager {
             }
             synergies.put(id, synergy);
         }
+    }
+
+    private String mapString(Map<?, ?> raw, String key, String fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        String resolved = String.valueOf(value);
+        return resolved.isBlank() ? fallback : resolved;
     }
 
     private void seedDefaults() {

@@ -262,9 +262,9 @@ public class WorldEventManager {
             }
             event.unlockQuests().addAll(section.getStringList("unlockQuests"));
             for (Map<?, ?> raw : section.getMapList("steps")) {
-                String typeName = String.valueOf(raw.getOrDefault("type", "KILL"));
-                String target = String.valueOf(raw.getOrDefault("target", "ZOMBIE"));
-                int amount = Integer.parseInt(String.valueOf(raw.getOrDefault("amount", 1)));
+                String typeName = mapString(raw, "type", "KILL");
+                String target = mapString(raw, "target", "ZOMBIE");
+                int amount = mapInt(raw, "amount", 1);
                 event.steps().add(new QuestStep(QuestStepType.valueOf(typeName), target, amount));
             }
             ConfigurationSection progressSection = section.getConfigurationSection("progress");
@@ -278,6 +278,27 @@ public class WorldEventManager {
                 }
             }
             events.put(id, event);
+        }
+    }
+
+    private String mapString(Map<?, ?> raw, String key, String fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        String resolved = String.valueOf(value);
+        return resolved.isBlank() ? fallback : resolved;
+    }
+
+    private int mapInt(Map<?, ?> raw, String key, int fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        try {
+            return Integer.parseInt(String.valueOf(value));
+        } catch (NumberFormatException e) {
+            return fallback;
         }
     }
 

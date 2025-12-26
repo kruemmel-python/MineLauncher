@@ -115,19 +115,60 @@ public class FactionManager {
     private java.util.List<FactionRank> loadRanks(ConfigurationSection section) {
         java.util.List<FactionRank> ranks = new ArrayList<>();
         for (Map<?, ?> raw : section.getMapList("ranks")) {
-            Object idValue = raw.getOrDefault("id", "rank");
-            Object nameValue = raw.getOrDefault("name", String.valueOf(idValue));
-            Object minValue = raw.getOrDefault("minRep", 0);
-            Object discountValue = raw.getOrDefault("shopDiscount", 0.0);
-            Object accessValue = raw.getOrDefault("dungeonAccess", false);
-            FactionRank rank = new FactionRank(String.valueOf(idValue));
-            rank.setName(String.valueOf(nameValue));
-            rank.setMinRep(Integer.parseInt(String.valueOf(minValue)));
-            rank.setShopDiscount(Double.parseDouble(String.valueOf(discountValue)));
-            rank.setDungeonAccess(Boolean.parseBoolean(String.valueOf(accessValue)));
+            String idValue = mapString(raw, "id", "rank");
+            String nameValue = mapString(raw, "name", idValue);
+            int minValue = mapInt(raw, "minRep", 0);
+            double discountValue = mapDouble(raw, "shopDiscount", 0.0);
+            boolean accessValue = mapBool(raw, "dungeonAccess", false);
+            FactionRank rank = new FactionRank(idValue);
+            rank.setName(nameValue);
+            rank.setMinRep(minValue);
+            rank.setShopDiscount(discountValue);
+            rank.setDungeonAccess(accessValue);
             ranks.add(rank);
         }
         return ranks;
+    }
+
+    private String mapString(Map<?, ?> raw, String key, String fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        String resolved = String.valueOf(value);
+        return resolved.isBlank() ? fallback : resolved;
+    }
+
+    private int mapInt(Map<?, ?> raw, String key, int fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        try {
+            return Integer.parseInt(String.valueOf(value));
+        } catch (NumberFormatException e) {
+            return fallback;
+        }
+    }
+
+    private double mapDouble(Map<?, ?> raw, String key, double fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        try {
+            return Double.parseDouble(String.valueOf(value));
+        } catch (NumberFormatException e) {
+            return fallback;
+        }
+    }
+
+    private boolean mapBool(Map<?, ?> raw, String key, boolean fallback) {
+        Object value = raw.get(key);
+        if (value == null) {
+            return fallback;
+        }
+        return Boolean.parseBoolean(String.valueOf(value));
     }
 
     private void save() {

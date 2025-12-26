@@ -1,0 +1,30 @@
+RuneOfStrength:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 250
+  costItem: IRON_NUGGET:1
+  effects:
+    - type: SOUND
+      params: { sound: ENTITY_PLAYER_LEVELUP, volume: 1.0, pitch: 1.5 }
+RuneOfConstitution:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 1
+  costGold: 200
+  costItem: IRON_NUGGET:2
+  effects:
+    - type: SOUND
+      params: { sound: ENTITY_ANVIL_USE, volume: 1.0, pitch: 1.2 }
+RuneOfPrecision:
+  type: AFFIX
+  targetSlot: HAND
+  affix: Praezision
+  minLevel: 2
+  costGold: 300
+  costItem: GOLD_NUGGET:1
+  effects:
+    - type: SOUND
+      params: { sound: ENTITY_PLAYER_LEVELUP, volume: 1.0, pitch: 1.8 }

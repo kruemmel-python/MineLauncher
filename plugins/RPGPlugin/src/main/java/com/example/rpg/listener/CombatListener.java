@@ -8,6 +8,7 @@ import com.example.rpg.model.Quest;
 import com.example.rpg.model.QuestProgress;
 import com.example.rpg.model.QuestStep;
 import com.example.rpg.model.QuestStepType;
+import com.example.rpg.model.Rarity;
 import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -44,8 +45,15 @@ public class CombatListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getEntity().getPersistentDataContainer()
+            .has(plugin.customMobListener().mobKey(), org.bukkit.persistence.PersistentDataType.STRING)) {
+            return;
+        }
         Player killer = event.getEntity().getKiller();
         if (killer == null) {
+            return;
+        }
+        if (event.getEntity() instanceof Player) {
             return;
         }
         int xp = 10 + event.getEntity().getType().ordinal() % 10;
@@ -84,6 +92,8 @@ public class CombatListener implements Listener {
                     }
                 }
             }
+        } else {
+            dropGenericLoot(killer, event);
         }
 
         for (Player member : recipients) {
@@ -120,5 +130,54 @@ public class CombatListener implements Listener {
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         profile.addXp(2);
         profile.applyAttributes(player);
+    }
+
+    private void dropGenericLoot(Player killer, EntityDeathEvent event) {
+        PlayerProfile profile = plugin.playerDataManager().getProfile(killer);
+        int level = Math.max(1, profile.level());
+        int gold = 5 + random.nextInt(6) + level;
+        profile.setGold(profile.gold() + gold);
+        killer.sendMessage(com.example.rpg.util.Text.mm("<gold>+ " + gold + " Gold"));
+
+        Material material = selectMaterialForLevel(level);
+        if (material == null) {
+            return;
+        }
+        Rarity rarity = rollRarity();
+        ItemStack item = plugin.itemGenerator().createRpgItem(material, rarity, level);
+        event.getDrops().add(item);
+        plugin.broadcastLoot(killer, item);
+    }
+
+    private Material selectMaterialForLevel(int level) {
+        Material[] low = {
+            Material.WOODEN_SWORD, Material.STONE_SWORD, Material.BOW,
+            Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE,
+            Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS
+        };
+        Material[] mid = {
+            Material.IRON_SWORD, Material.CROSSBOW,
+            Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE,
+            Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS
+        };
+        Material[] high = {
+            Material.DIAMOND_SWORD, Material.NETHERITE_SWORD,
+            Material.IRON_HELMET, Material.IRON_CHESTPLATE,
+            Material.IRON_LEGGINGS, Material.IRON_BOOTS
+        };
+        Material[] pool = level < 5 ? low : (level < 15 ? mid : high);
+        return pool[random.nextInt(pool.length)];
+    }
+
+    private Rarity rollRarity() {
+        double roll = random.nextDouble();
+        double total = 0.0;
+        for (Rarity rarity : Rarity.values()) {
+            total += rarity.weight();
+            if (roll <= total) {
+                return rarity;
+            }
+        }
+        return Rarity.COMMON;
     }
 }

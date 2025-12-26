@@ -7,6 +7,11 @@ Willkommen beim **MineLauncher RPG System**. Dieses Plugin verwandelt einen Pape
 *   **Java:** JDK 17+
 *   **Datenbank:** PostgreSQL (zwingend erforderlich für Spielerdaten)
 
+## 🧰 Launcher-CLI (außerhalb des Spiels)
+
+*   **Client starten:** `dotnet run --project C_launcher -- play [Name]`  
+    Beispiel: `dotnet run --project C_launcher -- play Alex`
+
 ---
 
 ## 🚀 Schritt 0: Installation & Datenbank (WICHTIG)
@@ -330,3 +335,138 @@ So sieht der Loop für deine Spieler aus:
 | `/rpgadmin build gui` | Öffnet den Bau-Manager. |
 | `/rpgadmin build <id>` | Startet Platzierung eines Gebäudes. |
 | `/rpgadmin build undo` | Macht die letzte Platzierung rückgängig. |
+
+---
+
+# 📌 Vollständige Befehlsübersicht (mit Beispielen)
+
+## Spieler-Befehle
+
+| Befehl | Beispiel | Zweck |
+| --- | --- | --- |
+| `/rpg` | `/rpg` | Öffnet das RPG-Menü (Charakter, Skills, Quests, Fraktionen) |
+| `/rpg skill <id>` | `/rpg skill dash` | Skill aktivieren |
+| `/rpg quest list` | `/rpg quest list` | Questliste öffnen |
+| `/rpg quest abandon <id>` | `/rpg quest abandon starter` | Quest abbrechen |
+| `/rpg quest complete <id>` | `/rpg quest complete starter` | Quest-Abschluss prüfen |
+| `/rpg respec` | `/rpg respec` | Skills/Attribute reset |
+| `/rpg class list` | `/rpg class list` | Klassen auflisten |
+| `/rpg class choose <id>` | `/rpg class choose mage` | Klasse wählen |
+| `/rpg bind <slot 1-9> <skillId>` | `/rpg bind 2 heal` | Skill auf Slot binden |
+| `/rpg money` | `/rpg money` | Gold anzeigen |
+| `/rpg pay <player> <amount>` | `/rpg pay Alex 50` | Gold senden |
+| `/rpg profession list` | `/rpg profession list` | Berufe anzeigen |
+| `/rpg profession set <name> <level>` | `/rpg profession set mining 5` | Beruf setzen |
+| `/rpg skilltree` | `/rpg skilltree` | Skillbaum öffnen |
+
+## Party
+
+| Befehl | Beispiel | Zweck |
+| --- | --- | --- |
+| `/party create` | `/party create` | Party erstellen |
+| `/party invite <player>` | `/party invite Alex` | Spieler einladen |
+| `/party join <leader>` | `/party join Alex` | Party beitreten |
+| `/party leave` | `/party leave` | Party verlassen |
+| `/party chat <message>` | `/party chat Hallo` | Party-Chat |
+| `/p <...>` | `/p chat Hi` | Shortcut für `/party` |
+
+## Gilden
+
+| Befehl | Beispiel | Zweck |
+| --- | --- | --- |
+| `/guild create <id> <name>` | `/guild create knights "Die Ritter"` | Gilde erstellen |
+| `/guild invite <player>` | `/guild invite Alex` | Einladen |
+| `/guild accept` | `/guild accept` | Einladung annehmen |
+| `/guild leave` | `/guild leave` | Gilde verlassen |
+| `/guild disband` | `/guild disband` | Gilde auflösen |
+| `/guild info` | `/guild info` | Info anzeigen |
+| `/guild chat <message>` | `/guild chat Hallo` | Gilden-Chat |
+| `/guild bank balance` | `/guild bank balance` | Bankstand |
+| `/guild bank deposit <amount>` | `/guild bank deposit 100` | Einzahlen |
+| `/guild bank withdraw <amount>` | `/guild bank withdraw 50` | Abheben |
+| `/guild quest list` | `/guild quest list` | Gildenquests |
+| `/guild quest create <id> <goal> <name>` | `/guild quest create wolfhunt 25 "Wolfjagd"` | Quest erstellen |
+| `/guild quest progress <id> <amount>` | `/guild quest progress wolfhunt 5` | Fortschritt |
+| `/guild quest complete <id>` | `/guild quest complete wolfhunt` | Quest abschließen |
+| `/g <message>` | `/g Hallo` | Shortcut Gilden-Chat |
+
+## Handel, Auktion, PvP, Dungeons
+
+| Befehl | Beispiel | Zweck |
+| --- | --- | --- |
+| `/auction list` | `/auction list` | Auktionen anzeigen |
+| `/auction sell <price>` | `/auction sell 250` | Item verkaufen |
+| `/auction buy <id>` | `/auction buy 1a2b3c4d` | Auktion kaufen |
+| `/trade request <player>` | `/trade request Alex` | Handel anfragen |
+| `/trade accept` | `/trade accept` | Handel annehmen |
+| `/trade offer <gold>` | `/trade offer 100` | Gold anbieten |
+| `/trade requestgold <gold>` | `/trade requestgold 50` | Gold verlangen |
+| `/trade ready` | `/trade ready` | Handel bestätigen |
+| `/trade cancel` | `/trade cancel` | Handel abbrechen |
+| `/dungeon enter` | `/dungeon enter` | Dungeon betreten |
+| `/dungeon leave` | `/dungeon leave` | Dungeon verlassen |
+| `/dungeon generate <theme>` | `/dungeon generate wfc` | Instanz generieren |
+| `/pvp join` | `/pvp join` | PvP-Queue |
+| `/pvp top` | `/pvp top` | Rangliste |
+| `/voicechat party` | `/voicechat party` | Party-Voice |
+| `/voicechat guild` | `/voicechat guild` | Gilden-Voice |
+| `/voicechat leave` | `/voicechat leave` | Voice verlassen |
+| `/lootchat [true|false]` | `/lootchat false` | Lootchat an/aus |
+
+## Admin-Befehle
+
+| Befehl | Beispiel | Zweck |
+| --- | --- | --- |
+| `/rpgadmin` | `/rpgadmin` | Admin-Menü |
+| `/rpgadmin wand` | `/rpgadmin wand` | Editor-Wand |
+| `/rpgadmin zone create <id>` | `/rpgadmin zone create startzone` | Zone erstellen |
+| `/rpgadmin zone setlevel <id> <min> <max>` | `/rpgadmin zone setlevel startzone 1 10` | Level-Range |
+| `/rpgadmin zone setmod <id> <slow> <damage>` | `/rpgadmin zone setmod startzone 0.9 1.1` | Zone-Modifier |
+| `/rpgadmin npc create <id> <role>` | `/rpgadmin npc create guide QUESTGIVER` | NPC erstellen |
+| `/rpgadmin npc dialog <id>` | `/rpgadmin npc dialog guide` | Dialog setzen |
+| `/rpgadmin npc linkquest <npcId> <questId>` | `/rpgadmin npc linkquest guide starter` | Quest verlinken |
+| `/rpgadmin npc linkshop <npcId> <shopId>` | `/rpgadmin npc linkshop guide village_merchant` | Shop verlinken |
+| `/rpgadmin quest create <id> <name>` | `/rpgadmin quest create starter "Start"` | Quest erstellen |
+| `/rpgadmin quest addstep <id> <type> <target> <amount>` | `/rpgadmin quest addstep starter KILL ZOMBIE 3` | Quest-Step |
+| `/rpgadmin loot create <id> <appliesTo>` | `/rpgadmin loot create forest ZOMBIE` | Loot-Tabelle |
+| `/rpgadmin loot addentry <id> <material> <chance> <min> <max> <rarity>` | `/rpgadmin loot addentry forest GOLD_NUGGET 0.5 1 3 COMMON` | Loot-Entry |
+| `/rpgadmin skill create <id>` | `/rpgadmin skill create dash` | Skill erstellen |
+| `/rpgadmin skill set <id> <cooldown|mana|category|type|name|requires> <value>` | `/rpgadmin skill set dash cooldown 3` | Skill setzen |
+| `/rpgadmin skill addeffect <id> <effectType> <param:value>...` | `/rpgadmin skill addeffect dash VELOCITY x:0.8 y:0.3` | Effekt hinzufügen |
+| `/rpgadmin mob spawn <mobId>` | `/rpgadmin mob spawn forest_zombie` | Custom-Mob spawnen |
+| `/rpgadmin spawner create <id> <zoneId>` | `/rpgadmin spawner create forest_spawn startzone` | Spawner erstellen |
+| `/rpgadmin spawner addmob <id> <mobId> <chance>` | `/rpgadmin spawner addmob forest_spawn forest_zombie 1.0` | Mob hinzufügen |
+| `/rpgadmin spawner setlimit <id> <amount>` | `/rpgadmin spawner setlimit forest_spawn 8` | Spawn-Limit |
+| `/rpgadmin build` / `/rpgadmin build gui` | `/rpgadmin build gui` | Bau-Manager |
+| `/rpgadmin build <id>` | `/rpgadmin build cottage` | Gebäude platzieren |
+| `/rpgadmin build undo` | `/rpgadmin build undo` | Undo |
+| `/rpgadmin build move` | `/rpgadmin build move` | Move-GUI |
+| `/rpgadmin perms` | `/rpgadmin perms` | Permissions-GUI |
+| `/rpgadmin perms role create <key> <displayName>` | `/rpgadmin perms role create mod "Moderator"` | Rolle erstellen |
+| `/rpgadmin perms role delete <key>` | `/rpgadmin perms role delete mod` | Rolle löschen |
+| `/rpgadmin perms role rename <key> <displayName>` | `/rpgadmin perms role rename mod "Mod"` | Rolle umbenennen |
+| `/rpgadmin perms role parent add <role> <parent>` | `/rpgadmin perms role parent add mod admin` | Parent hinzufügen |
+| `/rpgadmin perms role parent remove <role> <parent>` | `/rpgadmin perms role parent remove mod admin` | Parent entfernen |
+| `/rpgadmin perms role node <role> <node> <allow|deny|inherit>` | `/rpgadmin perms role node mod rpg.admin allow` | Node setzen |
+| `/rpgadmin perms user setprimary <player> <role>` | `/rpgadmin perms user setprimary Alex mod` | Primary Rolle |
+| `/rpgadmin perms user add <player> <role>` | `/rpgadmin perms user add Alex mod` | Rolle hinzufügen |
+| `/rpgadmin perms user remove <player> <role>` | `/rpgadmin perms user remove Alex mod` | Rolle entfernen |
+| `/rpgadmin perms user info <player> <node>` | `/rpgadmin perms user info Alex rpg.admin` | Node prüfen |
+| `/behavior edit <tree>` | `/behavior edit skeleton_king` | Behavior-Editor |
+
+---
+
+# 🧭 In-Game Möglichkeiten (GUI & Systeme)
+
+- **RPG-Menü**: `/rpg` öffnet Charakter, Skills, Quests, Fraktionen.
+- **Skill-GUI**: Skills lernen und verwalten.
+- **Skillbaum**: `/rpg skilltree` öffnet den visuellen Baum.
+- **Admin-Menü**: `/rpgadmin` mit Debug, Bau-Manager, Permissions.
+- **Bau-Manager**: Kategorien, Gebäude, Einzel-Schemata, Undo, Move-GUI.
+- **Permissions-GUI**: Rollen, Vererbung, Nodes, Spielerrollen, Audit-Log.
+- **Behavior-Editor**: KI-Bäume per GUI.
+- **Voice-Chat**: Party/Gilden-Channels via `/voicechat`.
+- **Auktionshaus**: Listings via `/auction`.
+- **Gildenbank & Gildenquests** per `/guild`.
+- **Dungeon-Instanzen** via `/dungeon generate`.
+- **PvP-Matchmaking** via `/pvp join`.

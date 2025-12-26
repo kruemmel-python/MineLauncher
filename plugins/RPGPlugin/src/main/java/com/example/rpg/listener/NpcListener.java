@@ -3,6 +3,9 @@ package com.example.rpg.listener;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.model.Npc;
 import com.example.rpg.model.NpcRole;
+import com.example.rpg.model.DialogueNode;
+import com.example.rpg.model.DialogueOption;
+import com.example.rpg.model.FactionRank;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Rarity;
 import com.example.rpg.model.ShopDefinition;
@@ -42,10 +45,21 @@ public class NpcListener implements Listener {
             return;
         }
         Player player = event.getPlayer();
-        if (!npc.dialog().isEmpty()) {
+        if (!npc.dialogueNodes().isEmpty()) {
+            openDialogue(player, npc, "start");
+        } else if (!npc.dialog().isEmpty()) {
             player.sendMessage(Text.mm("<gold>" + npc.name() + ":"));
             for (String line : npc.dialog()) {
                 player.sendMessage(Text.mm("<gray>" + line));
+            }
+        }
+        if (npc.factionId() != null && npc.requiredRankId() != null) {
+            PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+            int rep = profile.factionRep().getOrDefault(npc.factionId(), 0);
+            FactionRank rank = plugin.factionManager().getRank(npc.factionId(), rep);
+            if (rank == null || !rank.id().equalsIgnoreCase(npc.requiredRankId())) {
+                player.sendMessage(Text.mm("<red>Dein Ruf reicht nicht aus."));
+                return;
             }
         }
         if (npc.role() == NpcRole.QUESTGIVER && npc.questLink() != null) {
@@ -57,6 +71,7 @@ public class NpcListener implements Listener {
                 openStaticShop(player, npc);
             } else {
                 ShopDefinition shop = buildMixedVendorShop(npc, player);
+                applyFactionDiscount(npc, player, shop);
                 plugin.guiManager().openShop(player, shop);
             }
             return;
@@ -66,6 +81,7 @@ public class NpcListener implements Listener {
             || npc.role() == NpcRole.ITEM_VENDOR
             || npc.role() == NpcRole.RESOURCE_VENDOR) {
             ShopDefinition shop = buildVendorShop(npc, player);
+            applyFactionDiscount(npc, player, shop);
             plugin.guiManager().openShop(player, shop);
         }
     }
@@ -199,5 +215,89 @@ public class NpcListener implements Listener {
             }
         }
         return Rarity.COMMON;
+    }
+
+    private void applyFactionDiscount(Npc npc, Player player, ShopDefinition shop) {
+        if (npc.factionId() == null) {
+            return;
+        }
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        int rep = profile.factionRep().getOrDefault(npc.factionId(), 0);
+        FactionRank rank = plugin.factionManager().getRank(npc.factionId(), rep);
+        if (rank == null || rank.shopDiscount() <= 0) {
+            return;
+        }
+        for (ShopItem item : shop.items().values()) {
+            int buy = item.buyPrice();
+            if (buy <= 0) {
+                continue;
+            }
+            int discounted = (int) Math.max(1, Math.round(buy * (1 - rank.shopDiscount())));
+            item.setBuyPrice(discounted);
+        }
+    }
+
+    private void openDialogue(Player player, Npc npc, String nodeId) {
+        DialogueNode node = npc.dialogueNodes().get(nodeId);
+        if (node == null) {
+            return;
+        }
+        player.sendMessage(Text.mm("<gold>" + npc.name() + ": <white>" + node.text()));
+        if (node.options().isEmpty()) {
+            return;
+        }
+        java.util.List<DialogueOption> available = new java.util.ArrayList<>();
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        for (DialogueOption option : node.options()) {
+            if (option.requiredFactionId() != null) {
+                int rep = profile.factionRep().getOrDefault(option.requiredFactionId(), 0);
+                if (rep < option.minRep()) {
+                    continue;
+                }
+            }
+            if (option.requiredQuestId() != null) {
+                boolean completed = profile.completedQuests().contains(option.requiredQuestId());
+                boolean active = profile.activeQuests().containsKey(option.requiredQuestId());
+                if (option.requireQuestCompleted() && !completed) {
+                    continue;
+                }
+                if (!option.requireQuestCompleted() && !active && !completed) {
+                    continue;
+                }
+            }
+            available.add(option);
+        }
+        if (available.isEmpty()) {
+            player.sendMessage(Text.mm("<gray>Keine Optionen verfügbar."));
+            return;
+        }
+        int index = 1;
+        for (DialogueOption option : available) {
+            player.sendMessage(Text.mm("<yellow>" + index++ + ". <white>" + option.text()));
+        }
+        plugin.promptManager().prompt(player, Text.mm("<gray>Wähle eine Option (Zahl):"), input -> {
+            int choice;
+            try {
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                player.sendMessage(Text.mm("<red>Ungültige Auswahl."));
+                return;
+            }
+            if (choice < 1 || choice > available.size()) {
+                player.sendMessage(Text.mm("<red>Ungültige Auswahl."));
+                return;
+            }
+            DialogueOption selected = available.get(choice - 1);
+            if (selected.grantQuestId() != null) {
+                var quest = plugin.questManager().getQuest(selected.grantQuestId());
+                if (quest != null && !profile.activeQuests().containsKey(quest.id())) {
+                    profile.activeQuests().put(quest.id(), new com.example.rpg.model.QuestProgress(quest.id()));
+                    player.sendMessage(Text.mm("<green>Quest angenommen: " + quest.name()));
+                }
+            }
+            if (selected.nextId() != null && !"end".equalsIgnoreCase(selected.nextId())) {
+                openDialogue(player, npc, selected.nextId());
+            }
+        });
     }
 }

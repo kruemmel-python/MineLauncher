@@ -126,10 +126,17 @@ public class CombatListener implements Listener {
                     if (step.type() == QuestStepType.KILL && step.target().equalsIgnoreCase(event.getEntity().getType().name())) {
                         progress.incrementStepClamped(i, 1, step.amount());
                     }
-                }
-                plugin.completeQuestIfReady(member, quest, progress);
             }
+            plugin.completeQuestIfReady(member, quest, progress);
         }
+
+        String zoneId = plugin.zoneManager().getZoneAt(event.getEntity().getLocation()) != null
+            ? plugin.zoneManager().getZoneAt(event.getEntity().getLocation()).id()
+            : null;
+        for (Player member : recipients) {
+            plugin.worldEventManager().handleKill(member, event.getEntity().getType().name(), zoneId);
+        }
+    }
     }
 
     @EventHandler
@@ -138,6 +145,10 @@ public class CombatListener implements Listener {
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         profile.addXp(1);
         profile.applyAttributes(player);
+        String zoneId = plugin.zoneManager().getZoneAt(event.getBlock().getLocation()) != null
+            ? plugin.zoneManager().getZoneAt(event.getBlock().getLocation()).id()
+            : null;
+        plugin.worldEventManager().handleCollect(player, event.getBlock().getType().name(), zoneId);
     }
 
     @EventHandler
@@ -148,6 +159,10 @@ public class CombatListener implements Listener {
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         profile.addXp(2);
         profile.applyAttributes(player);
+        String zoneId = plugin.zoneManager().getZoneAt(player.getLocation()) != null
+            ? plugin.zoneManager().getZoneAt(player.getLocation()).id()
+            : null;
+        plugin.worldEventManager().handleCraft(player, event.getRecipe().getResult().getType().name(), zoneId);
     }
 
     private Player resolveAttacker(EntityDamageByEntityEvent event) {

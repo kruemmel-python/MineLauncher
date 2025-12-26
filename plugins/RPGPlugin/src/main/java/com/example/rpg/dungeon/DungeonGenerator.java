@@ -36,7 +36,7 @@ public class DungeonGenerator {
         this.wfcGenerator = new WfcGenerator(plugin);
     }
 
-    public DungeonInstance generate(String theme, List<Player> party) {
+    public DungeonInstance generate(String theme, List<Player> party, java.util.Set<java.util.UUID> participants, double scale) {
         String worldName = "dungeon_" + System.currentTimeMillis();
         World world = plugin.getServer().createWorld(new WorldCreator(worldName));
         int baseY = plugin.getConfig().getInt("dungeon.fixedBaseY", 150);
@@ -54,12 +54,14 @@ public class DungeonGenerator {
             Location start = plan.startRoom().center(world);
             Location bossRoom = plan.bossRoom().center(world);
             spawnSigns(start, bossRoom, theme);
-            return new DungeonInstance(world, start, bossRoom);
+            return new DungeonInstance(world, start, bossRoom, participants, scale);
         }
-        return new DungeonInstance(world, new Location(world, 0, baseY + 2, 0), new Location(world, 0, baseY + 2, 0));
+        return new DungeonInstance(world, new Location(world, 0, baseY + 2, 0), new Location(world, 0, baseY + 2, 0),
+            participants, scale);
     }
 
-    public void generateWfc(String theme, List<Player> party, Consumer<DungeonInstance> callback) {
+    public void generateWfc(String theme, List<Player> party, java.util.Set<java.util.UUID> participants, double scale,
+                            Consumer<DungeonInstance> callback) {
         String worldName = "dungeon_" + System.currentTimeMillis();
         World world = plugin.getServer().createWorld(new WorldCreator(worldName));
         int width = plugin.getConfig().getInt("dungeon.wfc.width", 10);
@@ -90,7 +92,7 @@ public class DungeonGenerator {
                         bossRoom = plan.bossRoom().center(world);
                         spawnSigns(start, bossRoom, theme);
                     }
-                    DungeonInstance instance = new DungeonInstance(world, start, bossRoom);
+                    DungeonInstance instance = new DungeonInstance(world, start, bossRoom, participants, scale);
                     callback.accept(instance);
                 }
             }.runTask(plugin);

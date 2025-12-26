@@ -16,6 +16,7 @@ public class MobDefinition {
     private int xp;
     private String lootTable;
     private String behaviorTree;
+    private boolean boss;
 
     public MobDefinition(String id) {
         this.id = id;
@@ -111,5 +112,13 @@ public class MobDefinition {
 
     public void setBehaviorTree(String behaviorTree) {
         this.behaviorTree = behaviorTree;
+    }
+
+    public boolean boss() {
+        return boss;
+    }
+
+    public void setBoss(boolean boss) {
+        this.boss = boss;
     }
 }

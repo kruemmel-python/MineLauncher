@@ -39,7 +39,11 @@ public class RPGCommand implements CommandExecutor {
             case "skilltree" -> plugin.skillTreeGui().open(player);
             case "enchant" -> plugin.guiManager().openEnchanting(player, null);
             case "combatlog" -> handleCombatLog(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind|money|pay|profession|skilltree|enchant|combatlog>"));
+            case "event" -> handleEvent(player, args);
+            case "order" -> handleOrder(player, args);
+            case "home" -> handleHome(player, args);
+            case "faction" -> handleFaction(player);
+            default -> player.sendMessage(Text.mm("<gray>/rpg <skill|quest|respec|class|bind|money|pay|profession|skilltree|enchant|combatlog|event|order|home|faction>"));
         }
         return true;
     }
@@ -254,5 +258,239 @@ public class RPGCommand implements CommandExecutor {
             return;
         }
         player.sendMessage(Text.mm("<gray>/rpg combatlog <on|off>"));
+    }
+
+    private void handleEvent(Player player, String[] args) {
+        if (args.length < 2 || "list".equalsIgnoreCase(args[1])) {
+            player.sendMessage(Text.mm("<gold>Aktive Events:"));
+            boolean any = false;
+            for (var event : plugin.worldEventManager().events().values()) {
+                if (!event.active()) {
+                    continue;
+                }
+                any = true;
+                String zone = event.zoneId() != null ? event.zoneId() : "global";
+                player.sendMessage(Text.mm("<gray>- <white>" + event.name() + " <gray>(Zone: " + zone + ")"));
+            }
+            if (!any) {
+                player.sendMessage(Text.mm("<yellow>Keine aktiven Events."));
+            }
+            return;
+        }
+        if ("status".equalsIgnoreCase(args[1]) && args.length >= 3) {
+            var event = plugin.worldEventManager().getEvent(args[2]);
+            if (event == null) {
+                player.sendMessage(Text.mm("<red>Event nicht gefunden."));
+                return;
+            }
+            player.sendMessage(Text.mm("<gold>Event: <white>" + event.name()));
+            for (int i = 0; i < event.steps().size(); i++) {
+                var step = event.steps().get(i);
+                int current = event.progress().getOrDefault(i, 0);
+                player.sendMessage(Text.mm("<gray>Step " + (i + 1) + ": " + step.type()
+                    + " " + step.target() + " <white>" + current + "/" + step.amount()));
+            }
+            return;
+        }
+        player.sendMessage(Text.mm("<gray>/rpg event <list|status <id>>"));
+    }
+
+    private void handleOrder(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpg order <list|create|fulfill>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "list" -> {
+                if (plugin.craftingOrderManager().orders().isEmpty()) {
+                    player.sendMessage(Text.mm("<yellow>Keine Aufträge."));
+                    return;
+                }
+                player.sendMessage(Text.mm("<gold>Crafting-Aufträge:"));
+                for (var order : plugin.craftingOrderManager().orders().values()) {
+                    player.sendMessage(Text.mm("<gray>" + order.id() + ": <white>" + order.amount() + "x "
+                        + order.material() + " <gold>(" + order.rewardGold() + " Gold)"));
+                }
+            }
+            case "create" -> createOrder(player, args);
+            case "fulfill" -> fulfillOrder(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpg order <list|create|fulfill>"));
+        }
+    }
+
+    private void createOrder(Player player, String[] args) {
+        if (args.length < 5) {
+            player.sendMessage(Text.mm("<gray>/rpg order create <material> <amount> <reward>"));
+            return;
+        }
+        String material = args[2].toUpperCase();
+        if (org.bukkit.Material.matchMaterial(material) == null) {
+            player.sendMessage(Text.mm("<red>Material ungültig."));
+            return;
+        }
+        Integer amount = parseAmount(player, args[3]);
+        Integer reward = parseAmount(player, args[4]);
+        if (amount == null || reward == null) {
+            return;
+        }
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        if (profile.gold() < reward) {
+            player.sendMessage(Text.mm("<red>Nicht genug Gold."));
+            return;
+        }
+        String id = "order_" + (plugin.craftingOrderManager().orders().size() + 1);
+        var order = new com.example.rpg.model.CraftingOrder(id);
+        order.setRequester(player.getUniqueId());
+        order.setMaterial(material);
+        order.setAmount(amount);
+        order.setRewardGold(reward);
+        plugin.craftingOrderManager().orders().put(id, order);
+        plugin.craftingOrderManager().saveOrder(order);
+        profile.setGold(profile.gold() - reward);
+        player.sendMessage(Text.mm("<green>Auftrag erstellt: " + id));
+    }
+
+    private void fulfillOrder(Player player, String[] args) {
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/rpg order fulfill <id>"));
+            return;
+        }
+        var order = plugin.craftingOrderManager().getOrder(args[2]);
+        if (order == null) {
+            player.sendMessage(Text.mm("<red>Auftrag nicht gefunden."));
+            return;
+        }
+        org.bukkit.Material material = org.bukkit.Material.matchMaterial(order.material());
+        if (material == null) {
+            player.sendMessage(Text.mm("<red>Ungültiges Material."));
+            return;
+        }
+        int total = countMaterial(player, material);
+        if (total < order.amount()) {
+            player.sendMessage(Text.mm("<red>Nicht genug Materialien."));
+            return;
+        }
+        removeMaterial(player, material, order.amount());
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        profile.setGold(profile.gold() + order.rewardGold());
+        plugin.craftingOrderManager().removeOrder(order.id());
+        player.sendMessage(Text.mm("<green>Auftrag erfüllt! +" + order.rewardGold() + " Gold."));
+    }
+
+    private void handleHome(Player player, String[] args) {
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpg home <set|go|upgrade>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "set" -> {
+                var loc = player.getLocation();
+                profile.setHome(loc.getWorld().getName(), loc.getX(), loc.getY(), loc.getZ());
+                player.sendMessage(Text.mm("<green>Home gesetzt."));
+            }
+            case "go" -> {
+                if (profile.homeWorld() == null) {
+                    player.sendMessage(Text.mm("<red>Kein Home gesetzt."));
+                    return;
+                }
+                var world = player.getServer().getWorld(profile.homeWorld());
+                if (world == null) {
+                    player.sendMessage(Text.mm("<red>Home-Welt nicht verfügbar."));
+                    return;
+                }
+                player.teleport(new org.bukkit.Location(world, profile.homeX(), profile.homeY(), profile.homeZ()));
+                player.sendMessage(Text.mm("<green>Teleportiert."));
+            }
+            case "upgrade" -> upgradeHome(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpg home <set|go|upgrade>"));
+        }
+    }
+
+    private void upgradeHome(Player player, String[] args) {
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/rpg home upgrade <craft|teleport|buff>"));
+            return;
+        }
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        String type = args[2].toLowerCase();
+        int current = profile.housingUpgrades().getOrDefault(type, 0);
+        int cost = switch (type) {
+            case "craft" -> 200 + (current * 150);
+            case "teleport" -> 300 + (current * 200);
+            case "buff" -> 400 + (current * 250);
+            default -> -1;
+        };
+        if (cost < 0) {
+            player.sendMessage(Text.mm("<red>Unbekanntes Upgrade."));
+            return;
+        }
+        if (profile.gold() < cost) {
+            player.sendMessage(Text.mm("<red>Nicht genug Gold. Benötigt: " + cost));
+            return;
+        }
+        profile.setGold(profile.gold() - cost);
+        profile.housingUpgrades().put(type, current + 1);
+        player.sendMessage(Text.mm("<green>Upgrade verbessert: " + type + " (Stufe " + (current + 1) + ")"));
+    }
+
+    private void handleFaction(Player player) {
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        if (profile.factionRep().isEmpty()) {
+            player.sendMessage(Text.mm("<yellow>Keine Fraktionswerte."));
+            return;
+        }
+        player.sendMessage(Text.mm("<gold>Fraktionsruf:"));
+        for (var entry : profile.factionRep().entrySet()) {
+            var faction = plugin.factionManager().getFaction(entry.getKey());
+            String name = faction != null ? faction.name() : entry.getKey();
+            player.sendMessage(Text.mm("<gray>" + name + ": <white>" + entry.getValue()));
+        }
+    }
+
+    private Integer parseAmount(Player player, String input) {
+        int amount;
+        try {
+            amount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            player.sendMessage(Text.mm("<red>Betrag ungültig."));
+            return null;
+        }
+        if (amount <= 0) {
+            player.sendMessage(Text.mm("<red>Betrag muss > 0 sein."));
+            return null;
+        }
+        return amount;
+    }
+
+    private int countMaterial(Player player, org.bukkit.Material material) {
+        int total = 0;
+        for (var stack : player.getInventory().getContents()) {
+            if (stack != null && stack.getType() == material) {
+                total += stack.getAmount();
+            }
+        }
+        return total;
+    }
+
+    private void removeMaterial(Player player, org.bukkit.Material material, int amount) {
+        int remaining = amount;
+        var contents = player.getInventory().getContents();
+        for (int i = 0; i < contents.length; i++) {
+            var stack = contents[i];
+            if (stack == null || stack.getType() != material) {
+                continue;
+            }
+            int take = Math.min(remaining, stack.getAmount());
+            stack.setAmount(stack.getAmount() - take);
+            if (stack.getAmount() <= 0) {
+                contents[i] = null;
+            }
+            remaining -= take;
+            if (remaining <= 0) {
+                break;
+            }
+        }
+        player.getInventory().setContents(contents);
     }
 }

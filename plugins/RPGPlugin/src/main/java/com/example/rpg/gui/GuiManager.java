@@ -4,6 +4,7 @@ import com.example.rpg.manager.ClassManager;
 import com.example.rpg.manager.FactionManager;
 import com.example.rpg.manager.PlayerDataManager;
 import com.example.rpg.manager.QuestManager;
+import com.example.rpg.manager.WorldEventManager;
 import com.example.rpg.manager.BuildingManager;
 import com.example.rpg.manager.SkillManager;
 import com.example.rpg.model.PlayerProfile;
@@ -32,6 +33,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class GuiManager {
     private final PlayerDataManager playerDataManager;
     private final QuestManager questManager;
+    private final WorldEventManager worldEventManager;
     private final SkillManager skillManager;
     private final ClassManager classManager;
     private final FactionManager factionManager;
@@ -49,16 +51,16 @@ public class GuiManager {
     private final NamespacedKey permActionKey;
     private final NamespacedKey enchantRecipeKey;
 
-    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, SkillManager skillManager,
-                      ClassManager classManager, FactionManager factionManager, BuildingManager buildingManager,
-                      com.example.rpg.permissions.PermissionService permissionService,
-                      com.example.rpg.manager.EnchantManager enchantManager,
-                      ItemGenerator itemGenerator,
+    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
+                      SkillManager skillManager, ClassManager classManager, FactionManager factionManager,
+                      BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
+                      com.example.rpg.manager.EnchantManager enchantManager, ItemGenerator itemGenerator,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
         this.playerDataManager = playerDataManager;
         this.questManager = questManager;
+        this.worldEventManager = worldEventManager;
         this.skillManager = skillManager;
         this.classManager = classManager;
         this.factionManager = factionManager;
@@ -195,6 +197,9 @@ public class GuiManager {
         for (Quest quest : questManager.quests().values()) {
             if (slot >= inv.getSize()) {
                 break;
+            }
+            if (quest.requiredEvent() != null && !worldEventManager.isCompleted(quest.requiredEvent())) {
+                continue;
             }
             ItemStack item = new ItemBuilder(Material.BOOK)
                 .name(Text.mm("<green>" + quest.name()))

@@ -31,6 +31,16 @@ public class PlayerProfile {
     private final Map<String, Integer> professions = new HashMap<>();
     private String guildId;
     private int elo = 1000;
+    private String dungeonRole = "DPS";
+    private String homeWorld;
+    private double homeX;
+    private double homeY;
+    private double homeZ;
+    private final Map<String, Integer> housingUpgrades = new HashMap<>();
+    private String lastSkillId;
+    private long lastSkillTime;
+    private final Set<String> cosmetics = new HashSet<>();
+    private String title;
 
     public PlayerProfile(UUID uuid) {
         this.uuid = uuid;
@@ -145,6 +155,66 @@ public class PlayerProfile {
 
     public void setElo(int elo) {
         this.elo = Math.max(0, elo);
+    }
+
+    public String dungeonRole() {
+        return dungeonRole;
+    }
+
+    public void setDungeonRole(String dungeonRole) {
+        this.dungeonRole = dungeonRole;
+    }
+
+    public String homeWorld() {
+        return homeWorld;
+    }
+
+    public void setHome(String world, double x, double y, double z) {
+        this.homeWorld = world;
+        this.homeX = x;
+        this.homeY = y;
+        this.homeZ = z;
+    }
+
+    public double homeX() {
+        return homeX;
+    }
+
+    public double homeY() {
+        return homeY;
+    }
+
+    public double homeZ() {
+        return homeZ;
+    }
+
+    public Map<String, Integer> housingUpgrades() {
+        return housingUpgrades;
+    }
+
+    public String lastSkillId() {
+        return lastSkillId;
+    }
+
+    public void setLastSkill(String skillId, long time) {
+        this.lastSkillId = skillId;
+        this.lastSkillTime = time;
+    }
+
+    public long lastSkillTime() {
+        return lastSkillTime;
+    }
+
+    public Set<String> cosmetics() {
+        return cosmetics;
+    }
+
+    public String title() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void addXp(int amount) {

@@ -90,6 +90,10 @@ public class GuiListener implements Listener {
             if (quest == null) {
                 return;
             }
+            if (quest.requiredEvent() != null && !plugin.worldEventManager().isCompleted(quest.requiredEvent())) {
+                player.sendMessage(Text.mm("<red>Quest noch gesperrt."));
+                return;
+            }
             PlayerProfile profile = plugin.playerDataManager().getProfile(player);
             if (profile.level() < quest.minLevel()) {
                 player.sendMessage(Text.mm("<red>Du brauchst Level " + quest.minLevel() + "."));

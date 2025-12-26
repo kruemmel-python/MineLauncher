@@ -1,5 +1,7 @@
 package com.example.rpg.manager;
 
+import com.example.rpg.model.DialogueNode;
+import com.example.rpg.model.DialogueOption;
 import com.example.rpg.model.Npc;
 import com.example.rpg.model.NpcRole;
 import java.io.File;
@@ -81,6 +83,9 @@ public class NpcManager {
         section.set("dialog", npc.dialog());
         section.set("questLink", npc.questLink());
         section.set("shopId", npc.shopId());
+        section.set("factionId", npc.factionId());
+        section.set("requiredRankId", npc.requiredRankId());
+        section.set("dialogueNodes", serializeDialogue(npc));
         section.set("uuid", npc.uuid() != null ? npc.uuid().toString() : null);
         save();
     }
@@ -107,6 +112,9 @@ public class NpcManager {
             npc.setDialog(section.getStringList("dialog"));
             npc.setQuestLink(section.getString("questLink", null));
             npc.setShopId(section.getString("shopId", null));
+            npc.setFactionId(section.getString("factionId", null));
+            npc.setRequiredRankId(section.getString("requiredRankId", null));
+            loadDialogue(section, npc);
             npc.setUuid(section.contains("uuid") ? UUID.fromString(section.getString("uuid")) : null);
             World world = Bukkit.getWorld(npc.world());
             double x = section.getDouble("x");
@@ -120,6 +128,73 @@ public class NpcManager {
                 npc.setRawLocation(npc.world(), x, y, z, yaw, pitch);
             }
             npcs.put(id, npc);
+        }
+    }
+
+    private java.util.List<java.util.Map<String, Object>> serializeDialogue(Npc npc) {
+        java.util.List<java.util.Map<String, Object>> nodes = new java.util.ArrayList<>();
+        for (DialogueNode node : npc.dialogueNodes().values()) {
+            java.util.Map<String, Object> data = new java.util.HashMap<>();
+            data.put("id", node.id());
+            data.put("text", node.text());
+            java.util.List<java.util.Map<String, Object>> options = new java.util.ArrayList<>();
+            for (DialogueOption option : node.options()) {
+                java.util.Map<String, Object> optionData = new java.util.HashMap<>();
+                optionData.put("text", option.text());
+                optionData.put("nextId", option.nextId());
+                optionData.put("requiredFactionId", option.requiredFactionId());
+                optionData.put("minRep", option.minRep());
+                optionData.put("requiredQuestId", option.requiredQuestId());
+                optionData.put("requireQuestCompleted", option.requireQuestCompleted());
+                optionData.put("grantQuestId", option.grantQuestId());
+                options.add(optionData);
+            }
+            data.put("options", options);
+            nodes.add(data);
+        }
+        return nodes;
+    }
+
+    private void loadDialogue(ConfigurationSection section, Npc npc) {
+        npc.dialogueNodes().clear();
+        for (java.util.Map<?, ?> raw : section.getMapList("dialogueNodes")) {
+            Object idValue = raw.getOrDefault("id", "start");
+            DialogueNode node = new DialogueNode(String.valueOf(idValue));
+            node.setText(String.valueOf(raw.getOrDefault("text", "")));
+            Object optionsRaw = raw.get("options");
+            if (optionsRaw instanceof java.util.List<?> options) {
+                for (Object entry : options) {
+                    if (!(entry instanceof java.util.Map<?, ?> optRaw)) {
+                        continue;
+                    }
+                    DialogueOption option = new DialogueOption();
+                    option.setText(String.valueOf(optRaw.getOrDefault("text", "Weiter")));
+                    option.setNextId(String.valueOf(optRaw.getOrDefault("nextId", "end")));
+                    option.setRequiredFactionId(valueOrNull(optRaw.get("requiredFactionId")));
+                    option.setMinRep(parseInt(optRaw.getOrDefault("minRep", 0)));
+                    option.setRequiredQuestId(valueOrNull(optRaw.get("requiredQuestId")));
+                    option.setRequireQuestCompleted(Boolean.parseBoolean(String.valueOf(optRaw.getOrDefault("requireQuestCompleted", false))));
+                    option.setGrantQuestId(valueOrNull(optRaw.get("grantQuestId")));
+                    node.options().add(option);
+                }
+            }
+            npc.dialogueNodes().put(node.id(), node);
+        }
+    }
+
+    private String valueOrNull(Object raw) {
+        if (raw == null) {
+            return null;
+        }
+        String value = String.valueOf(raw);
+        return value.isBlank() ? null : value;
+    }
+
+    private int parseInt(Object raw) {
+        try {
+            return Integer.parseInt(String.valueOf(raw));
+        } catch (NumberFormatException e) {
+            return 0;
         }
     }
 

@@ -19,6 +19,9 @@ public class Npc {
     private List<String> dialog = new ArrayList<>();
     private String questLink;
     private String shopId;
+    private String factionId;
+    private String requiredRankId;
+    private final java.util.Map<String, DialogueNode> dialogueNodes = new java.util.HashMap<>();
 
     public Npc(String id) {
         this.id = id;
@@ -124,5 +127,25 @@ public class Npc {
 
     public void setShopId(String shopId) {
         this.shopId = shopId;
+    }
+
+    public String factionId() {
+        return factionId;
+    }
+
+    public void setFactionId(String factionId) {
+        this.factionId = factionId;
+    }
+
+    public String requiredRankId() {
+        return requiredRankId;
+    }
+
+    public void setRequiredRankId(String requiredRankId) {
+        this.requiredRankId = requiredRankId;
+    }
+
+    public java.util.Map<String, DialogueNode> dialogueNodes() {
+        return dialogueNodes;
     }
 }

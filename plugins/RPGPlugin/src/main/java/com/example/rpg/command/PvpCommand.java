@@ -23,13 +23,14 @@ public class PvpCommand implements CommandExecutor {
             return true;
         }
         if (args.length < 1) {
-            player.sendMessage(Text.mm("<gray>/pvp <join|top>"));
+            player.sendMessage(Text.mm("<gray>/pvp <join|top|season>"));
             return true;
         }
         switch (args[0].toLowerCase()) {
             case "join" -> plugin.arenaManager().joinQueue(player);
             case "top" -> showTop(player);
-            default -> player.sendMessage(Text.mm("<gray>/pvp <join|top>"));
+            case "season" -> showSeason(player);
+            default -> player.sendMessage(Text.mm("<gray>/pvp <join|top|season>"));
         }
         return true;
     }
@@ -46,5 +47,14 @@ public class PvpCommand implements CommandExecutor {
             player.sendMessage(Text.mm("<gray>" + index++ + ". <white>" + name
                 + " <gold>(" + profile.elo() + ")"));
         }
+    }
+
+    private void showSeason(Player player) {
+        var season = plugin.pvpSeasonManager().currentSeason();
+        if (season == null) {
+            player.sendMessage(Text.mm("<yellow>Keine aktive Saison."));
+            return;
+        }
+        player.sendMessage(Text.mm("<gold>PvP-Saison:</gold> " + season.name()));
     }
 }

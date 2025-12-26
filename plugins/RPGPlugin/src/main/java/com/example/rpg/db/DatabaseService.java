@@ -75,6 +75,11 @@ public class DatabaseService {
                 gold INT,
                 guild_id TEXT,
                 elo INT,
+                dungeon_role TEXT,
+                home_world TEXT,
+                home_x DOUBLE PRECISION,
+                home_y DOUBLE PRECISION,
+                home_z DOUBLE PRECISION,
                 professions JSONB,
                 stats JSONB,
                 learned_skills JSONB,
@@ -82,7 +87,10 @@ public class DatabaseService {
                 completed_quests JSONB,
                 faction_rep JSONB,
                 skill_cooldowns JSONB,
-                skill_bindings JSONB
+                skill_bindings JSONB,
+                housing_upgrades JSONB,
+                cosmetics JSONB,
+                title TEXT
             )
             """;
         String skillsTable = """

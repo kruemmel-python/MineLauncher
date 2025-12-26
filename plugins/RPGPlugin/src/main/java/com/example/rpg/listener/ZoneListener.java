@@ -40,6 +40,7 @@ public class ZoneListener implements Listener {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 200, 0));
                 }
                 handleExploreQuests(player, zone);
+                plugin.worldEventManager().handleExplore(player, zone.id());
             } else {
                 player.sendMessage(ChatColor.GRAY + "Zone verlassen.");
             }

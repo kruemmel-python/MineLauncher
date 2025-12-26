@@ -38,6 +38,7 @@ import com.example.rpg.manager.DungeonManager;
 import com.example.rpg.manager.GuildManager;
 import com.example.rpg.manager.FactionManager;
 import com.example.rpg.manager.ItemStatManager;
+import com.example.rpg.manager.PvpSeasonManager;
 import com.example.rpg.manager.LootManager;
 import com.example.rpg.manager.MobManager;
 import com.example.rpg.manager.NpcManager;
@@ -45,6 +46,7 @@ import com.example.rpg.manager.PartyManager;
 import com.example.rpg.manager.PlayerDataManager;
 import com.example.rpg.manager.SkillTreeManager;
 import com.example.rpg.manager.QuestManager;
+import com.example.rpg.manager.WorldEventManager;
 import com.example.rpg.manager.AuctionHouseManager;
 import com.example.rpg.manager.ShopManager;
 import com.example.rpg.manager.SkillHotbarManager;
@@ -53,6 +55,9 @@ import com.example.rpg.manager.SpawnerManager;
 import com.example.rpg.manager.ZoneManager;
 import com.example.rpg.manager.TradeManager;
 import com.example.rpg.manager.ProfessionManager;
+import com.example.rpg.manager.ResourceNodeManager;
+import com.example.rpg.manager.CraftingOrderManager;
+import com.example.rpg.manager.SkillSynergyManager;
 import com.example.rpg.manager.BuildingManager;
 import com.example.rpg.manager.VoiceChatManager;
 import com.example.rpg.util.ItemGenerator;
@@ -97,8 +102,11 @@ public class RPGPlugin extends JavaPlugin {
     private AuctionHouseManager auctionHouseManager;
     private TradeManager tradeManager;
     private ProfessionManager professionManager;
+    private ResourceNodeManager resourceNodeManager;
+    private CraftingOrderManager craftingOrderManager;
     private DungeonManager dungeonManager;
     private ArenaManager arenaManager;
+    private PvpSeasonManager pvpSeasonManager;
     private BehaviorTreeManager behaviorTreeManager;
     private GuildManager guildManager;
     private FactionManager factionManager;
@@ -115,6 +123,8 @@ public class RPGPlugin extends JavaPlugin {
     private PromptManager promptManager;
     private ItemGenerator itemGenerator;
     private SkillEffectRegistry skillEffects;
+    private WorldEventManager worldEventManager;
+    private SkillSynergyManager skillSynergyManager;
     private final Set<UUID> debugPlayers = new HashSet<>();
     private final Set<UUID> combatLogDisabled = new HashSet<>();
     private CustomMobListener customMobListener;
@@ -140,6 +150,7 @@ public class RPGPlugin extends JavaPlugin {
         PlayerDao playerDao = new SqlPlayerDao(databaseService);
         playerDataManager = new PlayerDataManager(this, playerDao);
         questManager = new QuestManager(this);
+        worldEventManager = new WorldEventManager(this);
         zoneManager = new ZoneManager(this);
         npcManager = new NpcManager(this);
         lootManager = new LootManager(this);
@@ -155,8 +166,11 @@ public class RPGPlugin extends JavaPlugin {
         auctionHouseManager = new AuctionHouseManager(this);
         tradeManager = new TradeManager();
         professionManager = new ProfessionManager(this);
+        resourceNodeManager = new ResourceNodeManager(this);
+        craftingOrderManager = new CraftingOrderManager(this);
         dungeonManager = new DungeonManager(this);
         arenaManager = new ArenaManager(this);
+        pvpSeasonManager = new PvpSeasonManager(this);
         guildManager = new GuildManager(this);
         partyManager = new PartyManager();
         promptManager = new PromptManager();
@@ -188,6 +202,7 @@ public class RPGPlugin extends JavaPlugin {
         behaviorTreeEditorGui = new BehaviorTreeEditorGui(this);
         auditLog = new AuditLog(this);
         enchantManager = new EnchantManager(this);
+        skillSynergyManager = new SkillSynergyManager(this);
         permissionService = new PermissionService(this, databaseService,
             getConfig().getBoolean("permissions.enabled", true),
             getConfig().getString("permissions.defaultRole", "player"),
@@ -195,9 +210,9 @@ public class RPGPlugin extends JavaPlugin {
             getConfig().getBoolean("permissions.opBypass", true),
             getConfig().getBoolean("permissions.auditEnabled", true),
             getConfig().getLong("permissions.cacheTtlSeconds", 30));
-        guiManager = new GuiManager(playerDataManager, questManager, skillManager, classManager, factionManager, buildingManager,
-            permissionService, enchantManager, itemGenerator, questKey, skillKey, buildingKey, buildingCategoryKey, permRoleKey,
-            permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
+        guiManager = new GuiManager(playerDataManager, questManager, worldEventManager, skillManager, classManager, factionManager,
+            buildingManager, permissionService, enchantManager, itemGenerator, questKey, skillKey, buildingKey, buildingCategoryKey,
+            permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getPluginManager().registerEvents(new CombatListener(this), this);
@@ -235,6 +250,8 @@ public class RPGPlugin extends JavaPlugin {
         startDebugTask();
         startManaRegenTask();
         startHudTask();
+        startGuildHallBuffTask();
+        startSeasonCheckTask();
     }
 
     @Override
@@ -244,6 +261,9 @@ public class RPGPlugin extends JavaPlugin {
         }
         if (questManager != null) {
             questManager.saveAll();
+        }
+        if (worldEventManager != null) {
+            worldEventManager.saveAll();
         }
         if (zoneManager != null) {
             zoneManager.saveAll();
@@ -278,6 +298,9 @@ public class RPGPlugin extends JavaPlugin {
         if (guildManager != null) {
             guildManager.saveAll();
         }
+        if (resourceNodeManager != null) {
+            resourceNodeManager.saveAll();
+        }
         if (dungeonManager != null) {
             getLogger().info("Cleaning up dungeon worlds...");
             dungeonManager.shutdown();
@@ -293,6 +316,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public QuestManager questManager() {
         return questManager;
+    }
+
+    public WorldEventManager worldEventManager() {
+        return worldEventManager;
     }
 
     public ZoneManager zoneManager() {
@@ -351,6 +378,10 @@ public class RPGPlugin extends JavaPlugin {
         return skillEffects;
     }
 
+    public SkillSynergyManager skillSynergyManager() {
+        return skillSynergyManager;
+    }
+
     public SpawnerManager spawnerManager() {
         return spawnerManager;
     }
@@ -371,12 +402,24 @@ public class RPGPlugin extends JavaPlugin {
         return professionManager;
     }
 
+    public ResourceNodeManager resourceNodeManager() {
+        return resourceNodeManager;
+    }
+
+    public CraftingOrderManager craftingOrderManager() {
+        return craftingOrderManager;
+    }
+
     public DungeonManager dungeonManager() {
         return dungeonManager;
     }
 
     public ArenaManager arenaManager() {
         return arenaManager;
+    }
+
+    public PvpSeasonManager pvpSeasonManager() {
+        return pvpSeasonManager;
     }
 
     public GuildManager guildManager() {
@@ -505,6 +548,7 @@ public class RPGPlugin extends JavaPlugin {
         }
         profile.skillCooldowns().put(skillId, now);
         player.sendMessage("§aSkill benutzt: " + skill.name());
+        skillSynergyManager.onSkillUsed(player, skillId);
         return true;
     }
 
@@ -671,6 +715,38 @@ public class RPGPlugin extends JavaPlugin {
                 profile.setMana(Math.min(profile.maxMana(), profile.mana() + 5));
             }
         }, 20L, 40L);
+    }
+
+    private void startGuildHallBuffTask() {
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                var guildOpt = guildManager.guildFor(player.getUniqueId());
+                if (guildOpt.isEmpty()) {
+                    continue;
+                }
+                var guild = guildOpt.get();
+                var hall = guildManager.hallLocation(guild);
+                if (hall == null || !hall.getWorld().equals(player.getWorld())) {
+                    continue;
+                }
+                if (player.getLocation().distanceSquared(hall) > 20 * 20) {
+                    continue;
+                }
+                int buffLevel = guild.hallUpgrades().getOrDefault("buff", 0);
+                if (buffLevel > 0) {
+                    player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                        org.bukkit.potion.PotionEffectType.REGENERATION, 200, Math.max(0, buffLevel - 1), true, false));
+                    player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+                        org.bukkit.potion.PotionEffectType.DAMAGE_RESISTANCE, 200, Math.max(0, buffLevel - 1), true, false));
+                }
+            }
+        }, 40L, 40L);
+    }
+
+    private void startSeasonCheckTask() {
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            pvpSeasonManager.checkSeasonEnd();
+        }, 20L * 60L, 20L * 60L);
     }
 
     public boolean completeQuestIfReady(Player player, com.example.rpg.model.Quest quest, com.example.rpg.model.QuestProgress progress) {

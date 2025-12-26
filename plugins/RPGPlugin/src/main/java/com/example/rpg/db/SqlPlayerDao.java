@@ -35,8 +35,10 @@ public class SqlPlayerDao implements PlayerDao {
         return CompletableFuture.supplyAsync(() -> {
             String sql = """
                 INSERT INTO rpg_players (uuid, level, xp, skill_points, mana, max_mana, class_id, gold, guild_id, elo,
-                    professions, stats, learned_skills, active_quests, completed_quests, faction_rep, skill_cooldowns, skill_bindings)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb)
+                    dungeon_role, home_world, home_x, home_y, home_z,
+                    professions, stats, learned_skills, active_quests, completed_quests, faction_rep, skill_cooldowns, skill_bindings,
+                    housing_upgrades, cosmetics, title)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?, ?)
                 ON CONFLICT (uuid) DO UPDATE SET
                     level = EXCLUDED.level,
                     xp = EXCLUDED.xp,
@@ -47,6 +49,11 @@ public class SqlPlayerDao implements PlayerDao {
                     gold = EXCLUDED.gold,
                     guild_id = EXCLUDED.guild_id,
                     elo = EXCLUDED.elo,
+                    dungeon_role = EXCLUDED.dungeon_role,
+                    home_world = EXCLUDED.home_world,
+                    home_x = EXCLUDED.home_x,
+                    home_y = EXCLUDED.home_y,
+                    home_z = EXCLUDED.home_z,
                     professions = EXCLUDED.professions,
                     stats = EXCLUDED.stats,
                     learned_skills = EXCLUDED.learned_skills,
@@ -54,7 +61,10 @@ public class SqlPlayerDao implements PlayerDao {
                     completed_quests = EXCLUDED.completed_quests,
                     faction_rep = EXCLUDED.faction_rep,
                     skill_cooldowns = EXCLUDED.skill_cooldowns,
-                    skill_bindings = EXCLUDED.skill_bindings
+                    skill_bindings = EXCLUDED.skill_bindings,
+                    housing_upgrades = EXCLUDED.housing_upgrades,
+                    cosmetics = EXCLUDED.cosmetics,
+                    title = EXCLUDED.title
                 """;
             try (Connection connection = databaseService.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -68,14 +78,22 @@ public class SqlPlayerDao implements PlayerDao {
                 statement.setInt(8, profile.gold());
                 statement.setString(9, profile.guildId());
                 statement.setInt(10, profile.elo());
-                statement.setString(11, gson.toJson(profile.professions()));
-                statement.setString(12, gson.toJson(statsToMap(profile.stats())));
-                statement.setString(13, gson.toJson(profile.learnedSkills()));
-                statement.setString(14, gson.toJson(questsToMap(profile.activeQuests())));
-                statement.setString(15, gson.toJson(profile.completedQuests().stream().toList()));
-                statement.setString(16, gson.toJson(profile.factionRep()));
-                statement.setString(17, gson.toJson(profile.skillCooldowns()));
-                statement.setString(18, gson.toJson(profile.skillBindings()));
+                statement.setString(11, profile.dungeonRole());
+                statement.setString(12, profile.homeWorld());
+                statement.setObject(13, profile.homeWorld() != null ? profile.homeX() : null);
+                statement.setObject(14, profile.homeWorld() != null ? profile.homeY() : null);
+                statement.setObject(15, profile.homeWorld() != null ? profile.homeZ() : null);
+                statement.setString(16, gson.toJson(profile.professions()));
+                statement.setString(17, gson.toJson(statsToMap(profile.stats())));
+                statement.setString(18, gson.toJson(profile.learnedSkills()));
+                statement.setString(19, gson.toJson(questsToMap(profile.activeQuests())));
+                statement.setString(20, gson.toJson(profile.completedQuests().stream().toList()));
+                statement.setString(21, gson.toJson(profile.factionRep()));
+                statement.setString(22, gson.toJson(profile.skillCooldowns()));
+                statement.setString(23, gson.toJson(profile.skillBindings()));
+                statement.setString(24, gson.toJson(profile.housingUpgrades()));
+                statement.setString(25, gson.toJson(profile.cosmetics().stream().toList()));
+                statement.setString(26, profile.title());
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -105,6 +123,15 @@ public class SqlPlayerDao implements PlayerDao {
                     profile.setGold(resultSet.getInt("gold"));
                     profile.setGuildId(resultSet.getString("guild_id"));
                     profile.setElo(resultSet.getInt("elo"));
+                    String role = resultSet.getString("dungeon_role");
+                    profile.setDungeonRole(role != null ? role : "DPS");
+                    String homeWorld = resultSet.getString("home_world");
+                    if (homeWorld != null) {
+                        profile.setHome(homeWorld,
+                            resultSet.getDouble("home_x"),
+                            resultSet.getDouble("home_y"),
+                            resultSet.getDouble("home_z"));
+                    }
                     applyMap(resultSet.getString("professions"), profile.professions(), mapStringInt);
                     Map<String, Integer> stats = fromJson(resultSet.getString("stats"), mapStringInt);
                     if (stats != null) {
@@ -128,6 +155,12 @@ public class SqlPlayerDao implements PlayerDao {
                     if (bindings != null) {
                         profile.skillBindings().putAll(bindings);
                     }
+                    applyMap(resultSet.getString("housing_upgrades"), profile.housingUpgrades(), mapStringInt);
+                    List<String> cosmetics = fromJson(resultSet.getString("cosmetics"), listString);
+                    if (cosmetics != null) {
+                        profile.cosmetics().addAll(cosmetics);
+                    }
+                    profile.setTitle(resultSet.getString("title"));
                     return profile;
                 }
             } catch (SQLException e) {

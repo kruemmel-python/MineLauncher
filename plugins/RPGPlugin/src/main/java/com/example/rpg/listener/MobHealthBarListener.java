@@ -55,9 +55,10 @@ public class MobHealthBarListener implements Listener {
 
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
-        if (!(event.getEntity() instanceof LivingEntity living)) {
+        if (!(event.getEntity() instanceof LivingEntity)) {
             return;
         }
+        LivingEntity living = (LivingEntity) event.getEntity();
         removeHealthBar(living);
     }
 

@@ -1,0 +1,51 @@
+buildings:
+  cottage:
+    name: "Kleines Wohnhaus"
+    category: RESIDENTIAL
+    schematic: "cottage_ground.schem"
+    floorSchematic: "cottage_floor.schem"
+    minFloors: 1
+    maxFloors: 2
+    floorHeight: 5
+    basement:
+      schematic: "cottage_basement.schem"
+      depth: 4
+    offset:
+      x: 0
+      y: 0
+      z: 0
+    furniture:
+      - schematic: "cottage_furniture.schem"
+        x: 0
+        y: 0
+        z: 0
+        rotation: 0
+  market:
+    name: "Marktstand"
+    category: SHOP
+    schematic: "market_stall.schem"
+    minFloors: 1
+    maxFloors: 1
+    floorHeight: 4
+  townhall:
+    name: "Rathaus"
+    category: PUBLIC
+    schematic: "townhall_ground.schem"
+    floorSchematic: "townhall_floor.schem"
+    minFloors: 2
+    maxFloors: 3
+    floorHeight: 6
+  forge:
+    name: "Schmiede"
+    category: CRAFTING
+    schematic: "forge.schem"
+    minFloors: 1
+    maxFloors: 1
+    floorHeight: 5
+  testhouse:
+    name: "Testhaus"
+    category: RESIDENTIAL
+    schematic: "testhouse.schem"
+    minFloors: 1
+    maxFloors: 1
+    floorHeight: 5

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MineLauncher RPG – Admin Wiki</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-2: #a78bfa;
+      --border: #1f2937;
+      --code-bg: #0b1220;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 32px 40px 16px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(120deg, rgba(56, 189, 248, 0.15), rgba(167, 139, 250, 0.12));
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+    }
+    main {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      padding: 32px 40px;
+    }
+    nav {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    nav h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    nav a {
+      display: block;
+      padding: 8px 10px;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    nav a:hover {
+      background: rgba(56, 189, 248, 0.12);
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    section h2 {
+      margin-top: 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    section h3 {
+      margin-bottom: 8px;
+    }
+    code, pre {
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    pre {
+      background: var(--code-bg);
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 0;
+    }
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 8px;
+    }
+    th {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: var(--muted);
+    }
+    footer {
+      padding: 24px 40px 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (max-width: 980px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        position: relative;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MineLauncher RPG – Admin Wiki</h1>
+    <p>Professionelles Administrationshandbuch für PaperMC 1.20.4+, inklusive Build-System, Dungeons, Gilden, Handel und Behavior-Editor.</p>
+  </header>
+  <main>
+    <nav>
+      <h3>Inhalt</h3>
+      <a href="#overview">Überblick</a>
+      <a href="#requirements">Voraussetzungen</a>
+      <a href="#installation">Installation & Datenbank</a>
+      <a href="#core-config">Kern-Konfiguration</a>
+      <a href="#admin-commands">Admin-Befehle</a>
+      <a href="#skills-classes">Skills & Klassen</a>
+      <a href="#loot-shops">Loot & Shops</a>
+      <a href="#zones-mobs">Zonen & Mobs</a>
+      <a href="#quests">Quests</a>
+      <a href="#dungeons">Dungeons</a>
+      <a href="#guilds-party">Gilden & Party</a>
+      <a href="#auctions">Auktionshaus</a>
+      <a href="#buildings">Gebäude & Schemata</a>
+      <a href="#behavior-editor">Behavior-Editor</a>
+      <a href="#pvp">PvP & Elo</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#faq">FAQ</a>
+      <a href="#glossary">Glossar</a>
+    </nav>
+
+    <div>
+      <section id="overview">
+        <h2>Überblick</h2>
+        <p>MineLauncher RPG ist ein vollwertiges MMORPG-Framework für PaperMC-Server. Es bietet Klassen, Skills, Quests, Dungeons, Gilden, Handel, PvP und ein Build-System mit nativen Sponge-Schematics.</p>
+        <div class="grid-2">
+          <div class="callout">
+            <strong>Highlight:</strong> Native <code>.schem</code>-Engine ohne WorldEdit, inklusive BlockEntities, Entities und Undo.
+          </div>
+          <div class="callout">
+            <strong>Hinweis:</strong> PostgreSQL ist zwingend erforderlich für persistente Spielerdaten.
+          </div>
+        </div>
+      </section>
+
+      <section id="requirements">
+        <h2>Voraussetzungen</h2>
+        <ul>
+          <li><span class="badge">Server</span> PaperMC 1.20.4+</li>
+          <li><span class="badge">Java</span> JDK 17+</li>
+          <li><span class="badge">Datenbank</span> PostgreSQL (Pflicht)</li>
+        </ul>
+      </section>
+
+      <section id="installation">
+        <h2>Installation & Datenbank</h2>
+        <ol>
+          <li>Plugin <code>rpg-plugin-1.0.0.jar</code> in den <code>plugins/</code>-Ordner legen.</li>
+          <li>Server starten und wieder stoppen, um Configs zu generieren.</li>
+          <li><code>plugins/RPGPlugin/config.yml</code> öffnen und PostgreSQL-Zugangsdaten setzen.</li>
+        </ol>
+        <pre><code>database:
+  host: localhost
+  port: 5432
+  name: rpg_db
+  user: dein_user
+  password: dein_passwort
+  poolSize: 10
+</code></pre>
+        <p>Beim Start erstellt das Plugin automatisch die Tabellen.</p>
+      </section>
+
+      <section id="core-config">
+        <h2>Kern-Konfiguration</h2>
+        <h3>Wichtige Dateien</h3>
+        <ul>
+          <li><code>config.yml</code> – globale Settings (Datenbank, Dungeon, Schematics)</li>
+          <li><code>skills.yml</code> – Skills</li>
+          <li><code>classes.yml</code> – Klassen</li>
+          <li><code>mobs.yml</code> – Custom Mobs</li>
+          <li><code>loot.yml</code> – Loot Tabellen</li>
+          <li><code>shops.yml</code> – Shops</li>
+          <li><code>buildings.yml</code> – Gebäudedefinitionen</li>
+        </ul>
+      </section>
+
+      <section id="admin-commands">
+        <h2>Admin-Befehle</h2>
+        <table>
+          <thead>
+            <tr><th>Befehl</th><th>Beschreibung</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>/rpgadmin</code></td><td>Öffnet das Admin-Menü</td></tr>
+            <tr><td><code>/rpgadmin wand</code></td><td>Editor-Wand für Zonen</td></tr>
+            <tr><td><code>/rpgadmin zone ...</code></td><td>Zonen erstellen & konfigurieren</td></tr>
+            <tr><td><code>/rpgadmin npc ...</code></td><td>NPC erstellen, Dialoge, Shops, Quests</td></tr>
+            <tr><td><code>/rpgadmin quest ...</code></td><td>Quests erstellen</td></tr>
+            <tr><td><code>/rpgadmin skill ...</code></td><td>Skills verwalten</td></tr>
+            <tr><td><code>/rpgadmin mob ...</code></td><td>Custom Mobs anlegen</td></tr>
+            <tr><td><code>/rpgadmin spawner ...</code></td><td>Spawner konfigurieren</td></tr>
+            <tr><td><code>/rpgadmin build gui</code></td><td>Bau-Manager GUI</td></tr>
+            <tr><td><code>/rpgadmin build &lt;id&gt;</code></td><td>Gebäude platzieren</td></tr>
+            <tr><td><code>/rpgadmin build undo</code></td><td>Letzte Platzierung zurücknehmen</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="skills-classes">
+        <h2>Skills & Klassen</h2>
+        <h3>Skill-Beispiel</h3>
+        <pre><code>fireball:
+  name: "Feuerball"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 5
+  manaCost: 20
+  effects:
+  - type: PROJECTILE
+    params: { type: SMALL_FIREBALL }
+  - type: SOUND
+    params: { sound: ENTITY_BLAZE_SHOOT }
+  - type: DAMAGE
+    params: { amount: 8 }
+</code></pre>
+        <h3>Klassen-Beispiel</h3>
+        <pre><code>mage:
+  name: "&9Magier"
+  startSkills:
+  - fireball
+</code></pre>
+      </section>
+
+      <section id="loot-shops">
+        <h2>Loot & Shops</h2>
+        <h3>Loot-Tabelle</h3>
+        <pre><code>starter_loot:
+  appliesTo: ZOMBIE
+  entries:
+  - material: GOLD_NUGGET
+    chance: 0.8
+    minAmount: 1
+    maxAmount: 3
+    rarity: COMMON
+</code></pre>
+        <h3>Shop</h3>
+        <pre><code>village_merchant:
+  title: "Dorfhändler"
+  items:
+    - slot: 0
+      material: GOLD_NUGGET
+      name: "&eGoldklumpen"
+      buyPrice: 0
+      sellPrice: 10
+</code></pre>
+      </section>
+
+      <section id="zones-mobs">
+        <h2>Zonen & Mobs</h2>
+        <h3>Zone setzen</h3>
+        <ol>
+          <li><code>/rpgadmin wand</code> → Bereich markieren</li>
+          <li><code>/rpgadmin zone create wald_zone</code></li>
+          <li><code>/rpgadmin zone setlevel wald_zone 1 10</code></li>
+        </ol>
+        <h3>Mob-Definition</h3>
+        <pre><code>forest_zombie:
+  name: "&2Waldschlurfer"
+  type: ZOMBIE
+  health: 30
+  damage: 5
+  xp: 15
+  lootTable: starter_loot
+</code></pre>
+      </section>
+
+      <section id="quests">
+        <h2>Quests</h2>
+        <ol>
+          <li><code>/rpgadmin quest create wald_reinigung "Reinigung des Waldes"</code></li>
+          <li><code>/rpgadmin quest addstep wald_reinigung KILL ZOMBIE 5</code></li>
+          <li><code>/rpgadmin quest addstep wald_reinigung COLLECT GOLD_NUGGET 3</code></li>
+        </ol>
+      </section>
+
+      <section id="dungeons">
+        <h2>Dungeons</h2>
+        <p>Instanziierte Dungeons werden per Befehl generiert und nach Timeout entfernt.</p>
+        <pre><code>/dungeon generate wfc
+/dungeon generate gruft
+</code></pre>
+      </section>
+
+      <section id="guilds-party">
+        <h2>Gilden & Party</h2>
+        <ul>
+          <li><code>/party invite &lt;Name&gt;</code> – Party erstellen</li>
+          <li><code>/guild create &lt;ID&gt; &lt;Name&gt;</code> – Gilde erstellen</li>
+        </ul>
+      </section>
+
+      <section id="auctions">
+        <h2>Auktionshaus</h2>
+        <p>Item in die Hand nehmen → <code>/auction sell &lt;Preis&gt;</code>.</p>
+      </section>
+
+      <section id="buildings">
+        <h2>Gebäude & Schemata</h2>
+        <h3>Schematics bereitstellen</h3>
+        <p>Lege <code>.schem</code>-Dateien unter <code>plugins/RPGPlugin/schematics/</code> ab.</p>
+        <h3>Gebäude definieren</h3>
+        <pre><code>buildings:
+  cottage:
+    name: "Kleines Wohnhaus"
+    category: RESIDENTIAL
+    schematic: "cottage_ground.schem"
+    floorSchematic: "cottage_floor.schem"
+    minFloors: 1
+    maxFloors: 2
+    floorHeight: 5
+    basement:
+      schematic: "cottage_basement.schem"
+      depth: 4
+</code></pre>
+        <h3>Einzel-Schema platzieren</h3>
+        <ol>
+          <li>Admin-Menü öffnen: <code>/rpgadmin</code></li>
+          <li>Bau-Manager → Einzel-Schema</li>
+          <li>Dateiname eingeben (z. B. <code>haus.schem</code>)</li>
+          <li>Rechtsklick zum Platzieren</li>
+        </ol>
+        <h3>Undo</h3>
+        <p><code>/rpgadmin build undo</code> macht die letzte Platzierung rückgängig.</p>
+      </section>
+
+      <section id="behavior-editor">
+        <h2>Behavior-Editor</h2>
+        <p>Der Behavior-Editor verwaltet KI-Bäume für Custom Mobs.</p>
+        <pre><code>/behavior edit skeleton_king</code></pre>
+        <h3>Beispiel-Flow</h3>
+        <ul>
+          <li><strong>Selector</strong>
+            <ul>
+              <li>Sequence → Cooldown(8s) → CastSkill(ember_shot)</li>
+              <li>MeleeAttack</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section id="pvp">
+        <h2>PvP & Elo</h2>
+        <p><code>/pvp join</code> startet ein Matchmaking. Arenen werden in <code>arenas.yml</code> definiert.</p>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li><strong>"Unsupported schematic format"</strong> → Nur Sponge v2 (.schem) verwenden.</li>
+          <li><strong>DB-Fehler</strong> → Zugangsdaten prüfen, PostgreSQL erreichbar?</li>
+          <li><strong>GUI öffnet nicht</strong> → Permissions prüfen (<code>rpg.admin</code>).</li>
+        </ul>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+        <h3>Wie platziere ich nur ein einzelnes Schema?</h3>
+        <p>Über das Admin-Menü → Bau-Manager → Einzel-Schema.</p>
+        <h3>Wie kann ich eine Platzierung rückgängig machen?</h3>
+        <p><code>/rpgadmin build undo</code> macht die letzte Platzierung pro Admin rückgängig.</p>
+      </section>
+
+      <section id="glossary">
+        <h2>Glossar</h2>
+        <ul>
+          <li><strong>Behavior Tree</strong> – Graphische KI-Logik für Mobs.</li>
+          <li><strong>Schematic</strong> – Vorlage eines Bauwerks als <code>.schem</code>.</li>
+          <li><strong>Spawner</strong> – Automatisches Mob-Spawnsystem.</li>
+          <li><strong>WFC</strong> – Wave Function Collapse, prozedurale Dungeon-Generierung.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer>
+    MineLauncher RPG – Admin Wiki · Stand: v1.0.0
+  </footer>
+</body>
+</html>

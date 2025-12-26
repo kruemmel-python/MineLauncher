@@ -1,0 +1,48 @@
+rpg:
+  dataVersion: 1
+  xp:
+    mobBase: 10
+    blockBreak: 1
+    craft: 2
+  manaRegenPerTick: 5
+  party:
+    xpSplit: true
+lootchat:
+  enabled: true
+database:
+  host: localhost
+  port: 5432
+  name: rpg
+  user: rpg
+  password: minecraft
+  poolSize: 10
+permissions:
+  enabled: true
+  defaultRole: player
+  opBypass: true
+  defaultDecision: DENY
+  auditEnabled: true
+  cacheTtlSeconds: 30
+dungeon:
+  wfc:
+    width: 10
+    height: 3
+    depth: 10
+    originY: 60
+  themes:
+    crypt:
+      floor_material: STONE_BRICKS
+      wall_material: COBBLESTONE
+      corridor_material: COBBLESTONE
+  entrance:
+    world: world
+    x: 0
+    y: 64
+    z: 0
+  exit:
+    world: world
+    x: 0
+    y: 64
+    z: 0
+building:
+  schematicsFolder: schematics

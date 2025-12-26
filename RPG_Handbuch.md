@@ -65,6 +65,23 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - **Gold anzeigen:** `/rpg money`
 - **Gold senden:** `/rpg pay <player> <amount>`
 
+### 2.7 Welt‑Events
+- **Aktive Events:** `/rpg event list`
+- **Event‑Status:** `/rpg event status <id>`
+
+### 2.8 Crafting‑Aufträge
+- **Aufträge anzeigen:** `/rpg order list`
+- **Auftrag erstellen:** `/rpg order create <material> <amount> <reward>`
+- **Auftrag erfüllen:** `/rpg order fulfill <id>`
+
+### 2.9 Housing / Home
+- **Home setzen:** `/rpg home set`
+- **Home teleportieren:** `/rpg home go`
+- **Upgrade:** `/rpg home upgrade <craft|teleport|buff>`
+
+### 2.10 Fraktionen
+- **Ruf anzeigen:** `/rpg faction`
+
 ---
 
 ## 3) Party, Gilden & Kommunikation
@@ -98,6 +115,11 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - `/guild quest progress <id> <amount>`
 - `/guild quest complete <id>`
 
+**Gildenhalle:**
+- `/guild hall set` (Leader)
+- `/guild hall go`
+- `/guild hall upgrade <craft|teleport|buff>`
+
 ### 3.3 Voice‑Chat
 - `/voicechat party` (Party‑Channel)
 - `/voicechat guild` (Gilden‑Channel)
@@ -123,11 +145,15 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 ### 4.3 PvP
 - `/pvp join` (Queue)
 - `/pvp top` (Rangliste)
+- `/pvp season` (aktive Saison)
 
 ### 4.4 Dungeons
 - `/dungeon enter`
 - `/dungeon leave`
 - `/dungeon generate <theme>` (z. B. `wfc`, `gruft`)
+- `/dungeon queue <theme>` (Matchmaking)
+- `/dungeon leavequeue`
+- `/dungeon role <tank|heal|dps>`
 
 ---
 
@@ -152,6 +178,8 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - `/rpgadmin npc dialog <id>`
 - `/rpgadmin npc linkquest <npcId> <questId>`
 - `/rpgadmin npc linkshop <npcId> <shopId>`
+- `/rpgadmin npc faction <npcId> <factionId>`
+- `/rpgadmin npc rank <npcId> <rankId>`
 
 ### 5.5 Quests
 - `/rpgadmin quest create <id> <name>`
@@ -173,6 +201,21 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - `/rpgadmin spawner create <id> <zoneId>`
 - `/rpgadmin spawner addmob <id> <mobId> <chance>`
 - `/rpgadmin spawner setlimit <id> <amount>`
+
+### 5.8.1 Welt‑Events
+- `/rpgadmin event create <id> <zoneId> <name>`
+- `/rpgadmin event addstep <id> <type> <target> <amount>`
+- `/rpgadmin event reward <id> <xp> <gold>`
+- `/rpgadmin event unlock <id> <questId>`
+- `/rpgadmin event start <id>`
+- `/rpgadmin event stop <id>`
+
+### 5.8.2 Ressourcen‑Nodes
+- `/rpgadmin node create <profession> <material> <respawnSeconds> <xp>`
+
+### 5.8.3 PvP‑Saison
+- `/rpgadmin pvp seasonstart <id> <name> <days>`
+- `/rpgadmin pvp seasonend`
 
 ### 5.9 Gebäude & Schemata
 - `/rpgadmin build` oder `/rpgadmin build gui` (Bau‑Manager)

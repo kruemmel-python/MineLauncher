@@ -88,6 +88,12 @@ public class GuiManager {
             .loreLine(Text.mm("<gray>Level: <white>" + profile.level()))
             .loreLine(Text.mm("<gray>XP: <white>" + profile.xp() + "/" + profile.xpNeeded()))
             .loreLine(Text.mm("<gray>Klasse: <white>" + resolveClassName(profile.classId())))
+            .loreLine(Text.mm("<gray>Gelernte Skills: <white>" + profile.learnedSkills().size()))
+            .loreLine(Text.mm("<gray>Skillpunkte: <white>" + profile.skillPoints()))
+            .loreLine(Text.mm("<gray>Stärke: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.STRENGTH, 0)))
+            .loreLine(Text.mm("<gray>Geschick: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.DEXTERITY, 0)))
+            .loreLine(Text.mm("<gray>Konstitution: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.CONSTITUTION, 0)))
+            .loreLine(Text.mm("<gray>Intelligenz: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.INTELLIGENCE, 0)))
             .build());
 
         inv.setItem(12, new ItemBuilder(Material.NETHER_STAR)

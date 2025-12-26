@@ -253,6 +253,53 @@ Erstellt eine temporäre Welt für eine Gruppe.
 
 ---
 
+## 🧠 Teil 7: Behavior-Editor (Mob KI)
+
+Mit dem Behavior-Tree-Editor kannst du KI-Bäume für Mobs erstellen und testen.
+
+### 1. Behavior-Editor öffnen
+*   `/behavior edit <tree>` öffnet den Editor.
+*   Beispiel: `/behavior edit skeleton_king`
+
+> Tipp: Der Tree-Name muss mit `behaviorTree` in `mobs.yml` übereinstimmen (z. B. `skeleton_king`).
+
+### 2. Basis-Workflow
+1.  Editor öffnen: `/behavior edit skeleton_king`
+2.  Knoten hinzufügen (z. B. `Selector`, `Sequence`, `Cooldown`, `MeleeAttack`, `CastSkill`)
+3.  Speichern/Anwenden im GUI (je nach Buttons im Editor)
+4.  Mob spawnen, um das Verhalten zu testen.
+
+### 3. Beispiel-Baum (Konzept)
+Ziel: Der Boss greift im Nahkampf an und nutzt alle 8 Sekunden einen Skill.
+
+*   **Selector**
+    *   **Sequence**
+        *   `Cooldown(8s)`
+        *   `CastSkill(ember_shot)`
+    *   `MeleeAttack`
+
+### 4. Beispiel in `mobs.yml`
+```yaml
+skeleton_king:
+  name: "&cSkelettkönig"
+  type: SKELETON
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - shield_wall
+    - ember_shot
+  skillIntervalSeconds: 8
+  xp: 180
+  lootTable: forest_mobs
+  behaviorTree: skeleton_king
+```
+
+> Danach `/behavior edit skeleton_king` öffnen und den Baum passend aufbauen.
+
+---
+
 ## ✅ Walkthrough: Das Spieler-Erlebnis
 
 So sieht der Loop für deine Spieler aus:

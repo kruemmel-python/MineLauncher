@@ -375,7 +375,7 @@ public class BuildingManager {
             minZ = Math.min(minZ, corner[2]);
             maxZ = Math.max(maxZ, corner[2]);
         }
-        return new Bounds(minX - buffer, maxX + buffer, minY - buffer, maxY + buffer, minZ - buffer, maxZ + buffer);
+        return new Bounds(minX - buffer, maxX + buffer, minY, maxY, minZ - buffer, maxZ + buffer);
     }
 
     private CompletableFuture<Schematic> loadSchematicAsync(String name) {

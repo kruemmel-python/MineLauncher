@@ -24,6 +24,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -144,7 +145,13 @@ public class BuildingManager {
                 }
                 try {
                     com.example.rpg.schematic.UndoBuffer undoBuffer = new com.example.rpg.schematic.UndoBuffer();
-                    pasteBuilding(origin, definition, rotation, finalBaseFuture.join(),
+                    int floors = resolveFloors(definition);
+                    if (!hasPlacementClearance(origin, definition, rotation, floors, finalBaseFuture, finalFloorFuture,
+                        finalBasementFuture, furnitureFutures)) {
+                        player.sendMessage(Text.mm("<red>Zu wenig Platz um das Gebäude herum (3 Blöcke Freifläche nötig)."));
+                        return;
+                    }
+                    pasteBuilding(origin, definition, rotation, floors, finalBaseFuture.join(),
                         finalFloorFuture != null ? finalFloorFuture.join() : null,
                         finalBasementFuture != null ? finalBasementFuture.join() : null,
                         furnitureFutures,
@@ -170,6 +177,11 @@ public class BuildingManager {
                 SchematicPaster paster = new SchematicPaster(plugin);
                 Transform transform = new Transform(rotation, 0, 0, 0);
                 com.example.rpg.schematic.UndoBuffer undoBuffer = new com.example.rpg.schematic.UndoBuffer();
+                if (!hasClearance(origin, schematic, transform, 3)) {
+                    player.sendMessage(Text.mm("<red>Zu wenig Platz um das Schema herum (3 Blöcke Freifläche nötig)."));
+                    return;
+                }
+                clearVolume(origin, schematic, transform, undoBuffer);
                 paster.pasteInBatches(origin.getWorld(), origin, schematic,
                     new SchematicPaster.PasteOptions(false, transform, undoBuffer), 5000);
                 pushUndo(player.getUniqueId(), undoBuffer);
@@ -198,24 +210,24 @@ public class BuildingManager {
         undoHistory.computeIfAbsent(playerId, key -> new ArrayDeque<>()).push(buffer);
     }
 
-    private void pasteBuilding(Location origin, BuildingDefinition definition, Transform.Rotation rotation, Schematic base,
+    private void pasteBuilding(Location origin, BuildingDefinition definition, Transform.Rotation rotation, int floors, Schematic base,
                                Schematic floor, Schematic basement, Map<FurnitureDefinition, CompletableFuture<Schematic>> furnitureFutures,
                                com.example.rpg.schematic.UndoBuffer undoBuffer) {
         SchematicPaster paster = new SchematicPaster(plugin);
-        int minFloors = Math.max(1, definition.minFloors());
-        int maxFloors = Math.max(minFloors, definition.maxFloors());
-        int floors = Math.max(1, random.nextInt(maxFloors - minFloors + 1) + minFloors);
         Transform baseTransform = new Transform(rotation, definition.offsetX(), definition.offsetY(), definition.offsetZ());
+        clearVolume(origin, base, baseTransform, undoBuffer);
         paster.pasteInBatches(origin.getWorld(), origin, base,
             new SchematicPaster.PasteOptions(definition.includeAir(), baseTransform, undoBuffer), 5000);
         if (basement != null && definition.basementDepth() > 0) {
             Transform basementTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() - definition.basementDepth(), definition.offsetZ());
+            clearVolume(origin, basement, basementTransform, undoBuffer);
             paster.pasteInBatches(origin.getWorld(), origin, basement,
                 new SchematicPaster.PasteOptions(definition.includeAir(), basementTransform, undoBuffer), 5000);
         }
         for (int i = 1; i < floors; i++) {
             Schematic floorSchematic = floor != null ? floor : base;
             Transform floorTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() + definition.floorHeight() * i, definition.offsetZ());
+            clearVolume(origin, floorSchematic, floorTransform, undoBuffer);
             paster.pasteInBatches(origin.getWorld(), origin, floorSchematic,
                 new SchematicPaster.PasteOptions(definition.includeAir(), floorTransform, undoBuffer), 5000);
         }
@@ -227,9 +239,143 @@ public class BuildingManager {
                 definition.offsetX() + furniture.offsetX(),
                 definition.offsetY() + furniture.offsetY(),
                 definition.offsetZ() + furniture.offsetZ());
+            clearVolume(origin, furnitureSchematic, transform, undoBuffer);
             paster.pasteInBatches(origin.getWorld(), origin, furnitureSchematic,
                 new SchematicPaster.PasteOptions(definition.includeAir(), transform, undoBuffer), 2000);
         }
+    }
+
+    private boolean hasPlacementClearance(Location origin, BuildingDefinition definition, Transform.Rotation rotation, int floors,
+                                          CompletableFuture<Schematic> baseFuture, CompletableFuture<Schematic> floorFuture,
+                                          CompletableFuture<Schematic> basementFuture,
+                                          Map<FurnitureDefinition, CompletableFuture<Schematic>> furnitureFutures) {
+        Schematic base = baseFuture.join();
+        Transform baseTransform = new Transform(rotation, definition.offsetX(), definition.offsetY(), definition.offsetZ());
+        if (!hasClearance(origin, base, baseTransform, 3)) {
+            return false;
+        }
+        if (basementFuture != null && definition.basementDepth() > 0) {
+            Schematic basement = basementFuture.join();
+            Transform basementTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() - definition.basementDepth(), definition.offsetZ());
+            if (!hasClearance(origin, basement, basementTransform, 3)) {
+                return false;
+            }
+        }
+        for (int i = 1; i < floors; i++) {
+            Schematic floorSchematic = floorFuture != null ? floorFuture.join() : base;
+            Transform floorTransform = new Transform(rotation, definition.offsetX(), definition.offsetY() + definition.floorHeight() * i, definition.offsetZ());
+            if (!hasClearance(origin, floorSchematic, floorTransform, 3)) {
+                return false;
+            }
+        }
+        for (var entry : furnitureFutures.entrySet()) {
+            FurnitureDefinition furniture = entry.getKey();
+            Schematic furnitureSchematic = entry.getValue().join();
+            Transform.Rotation combinedRotation = rotationForDegrees((rotationToDegrees(rotation) + furniture.rotation()) % 360);
+            Transform transform = new Transform(combinedRotation,
+                definition.offsetX() + furniture.offsetX(),
+                definition.offsetY() + furniture.offsetY(),
+                definition.offsetZ() + furniture.offsetZ());
+            if (!hasClearance(origin, furnitureSchematic, transform, 3)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private int resolveFloors(BuildingDefinition definition) {
+        int minFloors = Math.max(1, definition.minFloors());
+        int maxFloors = Math.max(minFloors, definition.maxFloors());
+        return Math.max(1, random.nextInt(maxFloors - minFloors + 1) + minFloors);
+    }
+
+    private boolean hasClearance(Location origin, Schematic schematic, Transform transform, int buffer) {
+        if (origin.getWorld() == null) {
+            return false;
+        }
+        Bounds bounds = calculateBounds(schematic, transform);
+        loadChunks(origin, bounds, buffer);
+        for (int x = bounds.minX - buffer; x <= bounds.maxX + buffer; x++) {
+            for (int y = bounds.minY; y <= bounds.maxY; y++) {
+                for (int z = bounds.minZ - buffer; z <= bounds.maxZ + buffer; z++) {
+                    if (x >= bounds.minX && x <= bounds.maxX && z >= bounds.minZ && z <= bounds.maxZ) {
+                        continue;
+                    }
+                    Material type = origin.getWorld().getBlockAt(origin.getBlockX() + x, origin.getBlockY() + y, origin.getBlockZ() + z).getType();
+                    if (type != Material.AIR && type != Material.CAVE_AIR && type != Material.VOID_AIR) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private void clearVolume(Location origin, Schematic schematic, Transform transform, com.example.rpg.schematic.UndoBuffer undoBuffer) {
+        if (origin.getWorld() == null) {
+            return;
+        }
+        Bounds bounds = calculateBounds(schematic, transform);
+        loadChunks(origin, bounds, 0);
+        for (int x = bounds.minX; x <= bounds.maxX; x++) {
+            for (int y = bounds.minY; y <= bounds.maxY; y++) {
+                for (int z = bounds.minZ; z <= bounds.maxZ; z++) {
+                    var block = origin.getWorld().getBlockAt(origin.getBlockX() + x, origin.getBlockY() + y, origin.getBlockZ() + z);
+                    if (undoBuffer != null) {
+                        undoBuffer.add(block.getLocation(), block.getBlockData());
+                    }
+                    block.setType(Material.AIR, false);
+                }
+            }
+        }
+    }
+
+    private void loadChunks(Location origin, Bounds bounds, int buffer) {
+        if (origin.getWorld() == null) {
+            return;
+        }
+        int minX = origin.getBlockX() + bounds.minX - buffer;
+        int maxX = origin.getBlockX() + bounds.maxX + buffer;
+        int minZ = origin.getBlockZ() + bounds.minZ - buffer;
+        int maxZ = origin.getBlockZ() + bounds.maxZ + buffer;
+        for (int x = minX >> 4; x <= maxX >> 4; x++) {
+            for (int z = minZ >> 4; z <= maxZ >> 4; z++) {
+                if (!origin.getWorld().isChunkLoaded(x, z)) {
+                    origin.getWorld().getChunkAt(x, z);
+                }
+            }
+        }
+    }
+
+    private Bounds calculateBounds(Schematic schematic, Transform transform) {
+        int width = schematic.width();
+        int height = schematic.height();
+        int length = schematic.length();
+        int[][] corners = new int[][]{
+            transform.apply(0, 0, 0, width, length),
+            transform.apply(width - 1, 0, 0, width, length),
+            transform.apply(0, 0, length - 1, width, length),
+            transform.apply(width - 1, 0, length - 1, width, length),
+            transform.apply(0, height - 1, 0, width, length),
+            transform.apply(width - 1, height - 1, 0, width, length),
+            transform.apply(0, height - 1, length - 1, width, length),
+            transform.apply(width - 1, height - 1, length - 1, width, length)
+        };
+        int minX = corners[0][0];
+        int maxX = corners[0][0];
+        int minY = corners[0][1];
+        int maxY = corners[0][1];
+        int minZ = corners[0][2];
+        int maxZ = corners[0][2];
+        for (int[] corner : corners) {
+            minX = Math.min(minX, corner[0]);
+            maxX = Math.max(maxX, corner[0]);
+            minY = Math.min(minY, corner[1]);
+            maxY = Math.max(maxY, corner[1]);
+            minZ = Math.min(minZ, corner[2]);
+            maxZ = Math.max(maxZ, corner[2]);
+        }
+        return new Bounds(minX, maxX, minY, maxY, minZ, maxZ);
     }
 
     private CompletableFuture<Schematic> loadSchematicAsync(String name) {
@@ -340,5 +486,8 @@ public class BuildingManager {
     }
 
     private record PlacementSession(String buildingId, String schematicName, Transform.Rotation rotation) {
+    }
+
+    private record Bounds(int minX, int maxX, int minY, int maxY, int minZ, int maxZ) {
     }
 }

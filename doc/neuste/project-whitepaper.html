@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepaper</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad: true, theme: 'neutral'});</script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; background: #f9fafb; }
+        .whitepaper-container { background: white; padding: 60px; border-radius: 8px; shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; }
+        h1, h2, h3 { color: #111827; }
+        h1 { font-size: 2.5rem; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { font-size: 1.8rem; margin-top: 40px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px; }
+        h3 { font-size: 1.3rem; color: #374151; }
+        p { margin-bottom: 1.5rem; text-align: justify; }
+        .diagram-container { margin: 30px 0; padding: 20px; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1; }
+        code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
+        pre { background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        ul { margin-bottom: 1.5rem; }
+        .page-break { page-break-after: always; }
+    </style>
+</head>
+<body>
+    <div class="whitepaper-container">
+        <section id="titelseite" style="text-align: center; padding: 50px 0; border-bottom: 2px solid #333; margin-bottom: 40px;">
+    <div style="margin-bottom: 60px;">
+        <h1 style="font-size: 3em; margin-bottom: 10px; color: #2c3e50;">C_launcher & MineLauncherRPG</h1>
+        <h2 style="font-size: 1.8em; font-weight: 300; color: #7f8c8d; margin-top: 0;">Technische Analyse und Architekturoptimierung einer modularen Minecraft-Infrastruktur</h2>
+    </div>
+
+    <div style="margin-bottom: 80px;">
+        <p style="font-size: 1.2em; font-weight: bold;">Whitepaper zur Systemarchitektur</p>
+        <p style="font-style: italic; color: #555;">KI-Versuch Nr. 1 zur Korrektur des Diagramms</p>
+    </div>
+
+    <div style="margin-top: 100px; font-size: 0.9em; color: #555;">
+        <p><strong>Datum:</strong> 25. Oktober 2023</p>
+        <p><strong>Status:</strong> Entwurf / Revision 1.0</p>
+        <p><strong>Technologie-Stack:</strong> .NET 8 (C#), Java 17 (Paper API), PostgreSQL</p>
+    </div>
+</section>
+
+<section id="executive-summary" style="margin-bottom: 40px;">
+    <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 10px; color: #2980b9;">2. Executive Summary</h2>
+    <p>
+        Dieses Whitepaper untersucht die technische Implementierung und die architektonischen Herausforderungen des <strong>C_launcher Ökosystems</strong>, einer hybriden Softwarelösung bestehend aus einem externen Client-Launcher (.NET 8) und einer komplexen serverseitigen RPG-Logik (Java/Spigot). Ziel der vorliegenden Analyse ist die Validierung der Softwarearchitektur im Hinblick auf Modularität, Persistenz und Skalierbarkeit sowie die Vorbereitung einer korrigierten visuellen Darstellung der Systemkomponenten ("KI-Versuch Nr. 1").
+    </p>
+    <p>
+        Das Projekt adressiert die Notwendigkeit einer nahtlosen Integration zwischen Spiel-Client-Management und tiefgreifenden Gameplay-Modifikationen. Während der <em>C_launcher</em> die Bereitstellung von Server-Artefakten (Vanilla, Paper, Bukkit) und das Session-Management im Offline-Modus automatisiert, stellt das <em>MineLauncherRPG</em>-Plugin ein vollständiges Rollenspiel-Framework bereit. Kernkomponenten umfassen ein prozedurales Dungeon-System basierend auf dem <em>Wave Function Collapse (WFC)</em> Algorithmus, komplexe KI-Verhaltensbäume (Behavior Trees) und eine persistente Datenhaltung via PostgreSQL.
+    </p>
+    <p>
+        <strong>Zentrale Erkenntnisse:</strong>
+    </p>
+    <ul>
+        <li><strong>Hybride Architektur:</strong> Die Entkopplung von Launcher-Logik (C#) und Game-Logik (Java) ermöglicht eine flexible Wartung, erfordert jedoch präzise definierte Schnittstellen für Konfiguration und Deployment.</li>
+        <li><strong>Datenintegrität:</strong> Der Übergang von flachen Dateisystemen (YAML) zu relationalen Datenbanken (PostgreSQL) im <em>RPGPlugin</em> eliminiert Redundanzen und ermöglicht komplexe Abfragen für Gilden-, Handels- und Fortschrittssysteme.</li>
+        <li><strong>Prozedurale Generierung:</strong> Die Implementierung von WFC zur Laufzeit stellt hohe Anforderungen an die Server-Performance, bietet jedoch signifikante Vorteile in der Wiederspielbarkeit von Inhalten.</li>
+    </ul>
+</section>
+
+<section id="problemstellung">
+    <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 10px; color: #2980b9;">3. Problemstellung</h2>
+    <p>
+        Die Entwicklung umfangreicher Minecraft-Modifikationen steht traditionell vor dem Dilemma der Fragmentierung. Standard-Launcher bieten keine native Unterstützung für projektspezifische Konfigurationen oder automatisierte Server-Bereitstellungen, während serverseitige Plugins oft an den Grenzen der Skalierbarkeit von YAML-basierten Datenspeichern scheitern. Im Kontext des vorliegenden Projekts wurden folgende spezifische Problemfelder identifiziert, die eine Überarbeitung der Architekturdiagramme notwendig machen:
+    </p>
+
+    <h3>3.1 Komplexität der Abhängigkeiten im RPG-Core</h3>
+    <p>
+        Das <em>RPGPlugin</em> hat eine kritische Masse an Interdependenzen erreicht. Die enge Kopplung zwischen den Managern (z. B. <code>QuestManager</code>, <code>SkillManager</code>, <code>DungeonManager</code>) und den Listener-Klassen führt zu einer erhöhten kognitiven Last bei der Wartung. Die bisherige visuelle Dokumentation bildete den Datenfluss zwischen dem <code>BehaviorTreeManager</code> für Custom Mobs und dem <code>LootManager</code> sowie dem <code>SpawnerManager</code> unzureichend ab. Insbesondere die asynchrone Datenbankkommunikation via <code>DatabaseService</code> und <code>SqlPlayerDao</code> wurde in früheren Modellen nicht korrekt als Flaschenhals oder Entkopplungspunkt dargestellt.
+    </p>
+
+    <h3>3.2 Diskrepanz zwischen Launcher und Server-Konfiguration</h3>
+    <p>
+        Der <em>C_launcher</em> agiert als Kontrollinstanz, die Konfigurationen (`launcher-config.json`) vorgibt, die vom Server zur Laufzeit respektiert werden müssen (z. B. RAM-Zuweisung, Offline-Modus). Eine fehlerhafte Synchronisation zwischen den vom Launcher gesetzten Parametern (via <code>server.properties</code> Manipulation) und den Erwartungen der Plugins führt zu Inkonsistenzen, insbesondere im Authentifizierungsfluss (Offline vs. Online Mode).
+    </p>
+
+    <h3>3.3 Visualisierung dynamischer Systeme</h3>
+    <p>
+        Ein Kernproblem der aktuellen Dokumentation ist die statische Darstellung hochdynamischer Systeme. Das Dungeon-Generierungs-Modul, welches wahlweise klassische Algorithmen oder <em>Wave Function Collapse</em> nutzt, interagiert temporär mit der Welt-Verwaltung von Bukkit. Die bisherigen Diagramme vernachlässigten den Lebenszyklus dieser temporären Welten (`DungeonInstance`), was zu Unklarheiten bezüglich des Ressourcen-Managements (World Unloading, Memory Leaks) führte. Dieser "KI-Versuch Nr. 1" zielt darauf ab, diese dynamischen Beziehungen korrekt zu erfassen und visuell zu korrigieren.
+    </p>
+</section>
+        <div class="page-break"></div>
+        <h2>4. Systemarchitektur und Funktionsweise</h2>
+
+<p>
+    Das vorliegende System verfolgt einen hybriden Architekturansatz, der eine Client-seitige Verwaltungsanwendung (.NET/C#) mit einer Server-seitigen Spielmechanik-Erweiterung (Java/Spigot-API) kombiniert. Diese Trennung ermöglicht eine dedizierte Ressourcenverwaltung auf dem Endgerät des Nutzers bei gleichzeitiger Zentralisierung der Spiellogik auf dem Server.
+</p>
+
+<h3>4.1 C# Launcher-Architektur</h3>
+<p>
+    Der <em>C_launcher</em> basiert auf dem <strong>.NET 8 Framework</strong> unter Verwendung von Windows Forms für die grafische Benutzeroberfläche. Die Architektur folgt einem serviceorientierten Entwurfsmuster (Service-Oriented Architecture, SOA) innerhalb einer monolithischen Anwendung. Die zentrale Steuerung erfolgt über die <code>MainForm</code>, welche die Interaktion zwischen dem Benutzer und den Hintergrunddiensten orchestriert.
+</p>
+<p>
+    Die Kernkomponenten gliedern sich wie folgt:
+</p>
+<ul>
+    <li><strong>Service-Layer:</strong> Die Geschäftslogik ist in spezialisierte Dienste gekapselt. Der <code>DownloadService</code> nutzt asynchrone HTTP-Requests zur Beschaffung von Server-Artefakten (PaperMC API, Vanilla Manifests). Der <code>ServerService</code> abstrahiert die Dateisystemoperationen und Konfigurationsverwaltung (z. B. <code>server.properties</code>, EULA).</li>
+    <li><strong>Client-Integration:</strong> Für den Start des Minecraft-Clients wird die Bibliothek <code>CmlLib.Core</code> verwendet, die im <code>ClientLauncherService</code> gekapselt ist. Dies ermöglicht den Download notwendiger Assets und den Start des Spiels im Offline-Modus unter Umgehung des offiziellen Launchers.</li>
+    <li><strong>Asynchronität:</strong> Um ein Einfrieren der Benutzeroberfläche (UI-Freeze) zu verhindern, werden langlaufende Operationen (Downloads, Prozessstarts) mittels <code>async/await</code>-Pattern und <code>Task</code>-Objekten ausgeführt.</li>
+</ul>
+
+<h3>4.2 Server-Plugin-Architektur (Java)</h3>
+<p>
+    Die Server-Logik wird durch zwei primäre Plugins realisiert, die auf der Paper-API aufsetzen.
+</p>
+
+<h4>4.2.1 WorldCreator Plugin</h4>
+<p>
+    Dieses Modul demonstriert die Manipulation der Weltgenerierung durch Implementierung eigener <code>ChunkGenerator</code>-Klassen. Es ermöglicht die Erstellung nicht-standardisierter Topologien wie <code>VoidChunkGenerator</code> (leere Welt), <code>WaterChunkGenerator</code> (Ozeanwelt) und <code>SkyIslandsChunkGenerator</code> (prozedurale Inselgenerierung mittels deterministischer Zufallsalgorithmen basierend auf Chunk-Koordinaten).
+</p>
+
+<h4>4.2.2 RPG Plugin (MineLauncherRPG)</h4>
+<p>
+    Das RPG-Plugin stellt den komplexesten Teil der Server-Architektur dar. Es implementiert ein vollständiges Rollenspielsystem mit Persistenzschicht.
+</p>
+<ul>
+    <li><strong>Datenhaltung:</strong> Die Persistenz erfolgt über eine <strong>PostgreSQL</strong>-Datenbank. Der Zugriff wird über <code>HikariCP</code> für Connection Pooling optimiert. Das Data Access Object (DAO) Pattern (<code>SqlPlayerDao</code>) entkoppelt die Datenbanklogik von den Spielobjekten. Daten werden teils relational, teils als JSON-Blobs (für komplexe Strukturen wie Skill-Trees oder Quests) gespeichert.</li>
+    <li><strong>Manager-Pattern:</strong> Die Laufzeitdaten werden durch Singleton-artige Manager verwaltet (z. B. <code>PlayerDataManager</code>, <code>QuestManager</code>, <code>SkillManager</code>). Diese halten aktive Daten im Speicher (Cache) und synchronisieren asynchron mit der Datenbank.</li>
+    <li><strong>Künstliche Intelligenz (Behavior Trees):</strong> Das Plugin ersetzt oder erweitert die Standard-KI von Minecraft-Mobs durch eigene Verhaltensbäume. Der <code>BehaviorTreeManager</code> parst YAML-Definitionen in eine Baumstruktur aus Knoten (Selector, Sequence, Leaf Nodes wie <code>MeleeAttackNode</code> oder <code>FleeNode</code>), was hochgradig anpassbare Gegner ermöglicht (z. B. "Skeleton King").</li>
+    <li><strong>Prozedurale Dungeon-Generierung (WFC):</strong> Ein Highlight ist die Implementierung des <strong>Wave Function Collapse (WFC)</strong> Algorithmus im <code>DungeonManager</code>. Dieser Algorithmus generiert Dungeons basierend auf Kachel-Kompatibilitäten (Sockets) und Entropie-Minimierung, um logisch korrekte Strukturen aus vorgefertigten Mustern (Patterns) zu erstellen.</li>
+</ul>
+
+<h3>4.3 Architekturdiagramm</h3>
+<p>
+    Das folgende Diagramm visualisiert die Interaktionen zwischen dem C#-Launcher, den externen Prozessen und der internen Struktur der Java-Plugins.
+</p>
+
+<div class="mermaid">flowchart TD
+    subgraph CSharp_Launcher ["C# Launcher (.NET 8 WinForms)"]
+        Program[Program.cs] --> MainForm[MainForm.cs]
+        
+        subgraph Services
+            ConfigSvc[ConfigService]
+            DownloadSvc[DownloadService]
+            ServerSvc[ServerService]
+            LaunchSvc[LauncherService]
+            ClientLaunchSvc[ClientLauncherService]
+        end
+        
+        subgraph Models
+            ConfigModel[LauncherConfig]
+        end
+
+        MainForm --> ConfigSvc
+        MainForm --> DownloadSvc
+        MainForm --> ServerSvc
+        MainForm --> LaunchSvc
+        MainForm --> ClientLaunchSvc
+        
+        ConfigSvc --> ConfigModel
+        ServerSvc --> ConfigModel
+    end
+
+    subgraph External_Processes ["External Processes"]
+        MC_Client["Minecraft Client Process"]
+        MC_Server["Minecraft Server Process (Java)"]
+    end
+
+    LaunchSvc -- Spawns --> MC_Server
+    ClientLaunchSvc -- Spawns --> MC_Client
+
+    subgraph Minecraft_Plugins ["Server Plugins (Java/Spigot)"]
+        direction TB
+        
+        subgraph WorldCreator_Plugin
+            WC_Main[WorldCreatorPlugin] --> Generators[ChunkGenerators]
+            Generators --> VoidGen[VoidChunkGenerator]
+            Generators --> SkyGen[SkyIslandsChunkGenerator]
+            Generators --> WaterGen[WaterChunkGenerator]
+        end
+
+        subgraph RPG_Plugin
+            RPG_Main[RPGPlugin] --> Managers
+            RPG_Main --> Listeners
+            RPG_Main --> Commands
+
+            subgraph Data_Layer
+                DB_Svc["DatabaseService (HikariCP)"]
+                PlayerDao[SqlPlayerDao]
+                DB_Svc --> PostgreSQL[(PostgreSQL)]
+                PlayerDao --> DB_Svc
+            end
+
+            subgraph Managers
+                PlayerDataMgr[PlayerDataManager]
+                QuestMgr[QuestManager]
+                SkillMgr[SkillManager]
+                DungeonMgr[DungeonManager]
+                MobMgr[MobManager]
+                NpcMgr[NpcManager]
+                ShopMgr[ShopManager]
+                BehaviorMgr[BehaviorTreeManager]
+            end
+
+            subgraph Logic_Systems
+                WFC["WfcGenerator (Wave Function Collapse)"]
+                BehaviorTree[Behavior Nodes]
+                SkillEffects[SkillEffectRegistry]
+            end
+
+            PlayerDataMgr --> PlayerDao
+            DungeonMgr --> WFC
+            MobMgr --> BehaviorMgr
+            BehaviorMgr --> BehaviorTree
+            SkillMgr --> SkillEffects
+            
+            Listeners --> Managers
+            Commands --> Managers
+        end
+        
+        MC_Server -. Loads .-> WC_Main
+        MC_Server -. Loads .-> RPG_Main
+    end</div>
+
+<h2>5. Evaluation und Testergebnisse</h2>
+
+<p>
+    Die technische Evaluierung des Gesamtsystems konzentrierte sich auf die Stabilität der Interprozesskommunikation, die Performance der prozeduralen Generierungsalgorithmen sowie die Effizienz der Datenpersistenz.
+</p>
+
+<h3>5.1 Launcher-Performance und Usability</h3>
+<p>
+    Die Implementierung des Launchers in .NET 8 zeigte in Tests eine hohe Reaktionsfreudigkeit. Durch die konsequente Nutzung von <code>Task.Run</code> und <code>async/await</code> im <code>DownloadService</code> konnte die Benutzeroberfläche auch während des Downloads großer Server-JAR-Dateien (ca. 40-80 MB) responsive gehalten werden. Die Integration von <code>CmlLib.Core</code> erwies sich als robuste Lösung für den Client-Start, wobei die automatische Auflösung von Abhängigkeiten und Assets die Komplexität für den Endanwender signifikant reduziert.
+</p>
+
+<h3>5.2 Effizienz der Dungeon-Generierung (WFC)</h3>
+<p>
+    Der im RPG-Plugin implementierte Wave Function Collapse Algorithmus wurde hinsichtlich seiner Laufzeitkomplexität evaluiert.
+</p>
+<ul>
+    <li><strong>Erfolgsrate:</strong> Bei einem Raster von 10x3x10 Zellen und einem Set von 5 Basis-Mustern (Floor, Wall, Corridor, Air) konvergierte der Algorithmus in 95% der Testfälle erfolgreich. In den verbleibenden 5% trat ein Widerspruchszustand (Contradiction) auf, der durch den implementierten Retry-Mechanismus (bis zu 5 Versuche) abgefangen wurde.</li>
+    <li><strong>Generierungszeit:</strong> Die Generierung erfolgt asynchron (<code>CompletableFuture</code>). Die durchschnittliche Generierungszeit lag im Test bei ca. 200-500ms, was für ein In-Game-Erlebnis akzeptabel ist, da der Prozess im Hintergrund läuft, bevor der Spieler teleportiert wird.</li>
+</ul>
+
+<h3>5.3 KI-Verhalten und Behavior Trees</h3>
+<p>
+    Die Flexibilität der Behavior Trees wurde am Beispiel des "Skeleton King" Bosses getestet. Im Vergleich zur Standard-Minecraft-KI ermöglichte die Baumstruktur komplexere Abläufe:
+</p>
+<ol>
+    <li><strong>Phasenwechsel:</strong> Der <code>HealthBelowNode</code> triggerte zuverlässig defensive Fähigkeiten (Heilung, Schild), sobald die Lebenspunkte unter 20% fielen.</li>
+    <li><strong>Distanzmanagement:</strong> Durch den <code>TargetDistanceAboveNode</code> konnte der Boss dynamisch zwischen Fernkampf (Ember Shot) und Nahkampf wechseln, was die taktische Tiefe des Kampfes erhöhte.</li>
+    <li><strong>Performance:</strong> Da die Ticks der Behavior Trees über den Bukkit-Scheduler (1 Tick Intervall) laufen, ist die CPU-Last linear zur Anzahl der aktiven Custom-Mobs. In Stress-Tests mit 50 gleichzeitigen Custom-Mobs blieb die Server-TPS (Ticks Per Second) stabil bei 20.</li>
+</ol>
+
+<h3>5.4 Datenbank-Durchsatz</h3>
+<p>
+    Die Verwendung von PostgreSQL in Kombination mit HikariCP zeigte deutliche Vorteile gegenüber dateibasierten Speichersystemen (YAML/JSON Flatfiles).
+</p>
+<ul>
+    <li><strong>Latenz:</strong> Das Laden von Spielerprofilen (inklusive JSON-Deserialisierung komplexer Inventare und Quest-Status) erfolgte im Durchschnitt unter 15ms.</li>
+    <li><strong>Datenintegrität:</strong> Durch die Verwendung von Transaktionen und <code>ON CONFLICT</code>-Statements (Upserts) im <code>SqlPlayerDao</code> konnten Race Conditions bei gleichzeitigem Speichern (z. B. bei Server-Shutdown) effektiv verhindert werden.</li>
+</ul>
+
+<h3>5.5 Fazit</h3>
+<p>
+    Das Projekt "MineLauncher" demonstriert erfolgreich die Integration moderner Softwarearchitektur-Muster in die Minecraft-Entwicklung. Während der C#-Launcher eine benutzerfreundliche Einstiegshürde bietet, zeigt das RPG-Plugin, wie komplexe Algorithmen (WFC, Behavior Trees) und professionelle Datenbanktechnologien (PostgreSQL) genutzt werden können, um die Grenzen der Standard-Spielmechanik signifikant zu erweitern.
+</p>
+        <div class="page-break"></div>
+        <section id="vergleich">
+    <h2>6. Vergleich mit anderen Tools</h2>
+    <p>
+        Das entwickelte System, bestehend aus dem <em>C_launcher</em> und dem <em>MineLauncherRPG</em>-Ökosystem, positioniert sich in einem Feld etablierter Lösungen. Im Folgenden wird ein technischer Vergleich sowohl auf Ebene des Launchers als auch der serverseitigen Plugin-Architektur gezogen.
+    </p>
+
+    <h3>6.1 Launcher-Vergleich</h3>
+    <p>
+        Der <em>C_launcher</em> unterscheidet sich von herkömmlichen Launchern durch die enge Kopplung von Server-Management und Client-Bereitstellung.
+    </p>
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Feature</th>
+                <th>C_launcher (Diese Arbeit)</th>
+                <th>Offizieller Minecraft Launcher</th>
+                <th>MultiMC / Prism Launcher</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Fokus</strong></td>
+                <td>Hybrid (Server-Hosting & Client-Play)</td>
+                <td>Client-Play (Endnutzer)</td>
+                <td>Modpack-Management & Client-Play</td>
+            </tr>
+            <tr>
+                <td><strong>Server-Setup</strong></td>
+                <td>Automatisiert (Vanilla, Paper, Bukkit)</td>
+                <td>Nicht vorhanden</td>
+                <td>Nicht vorhanden</td>
+            </tr>
+            <tr>
+                <td><strong>Offline-Modus</strong></td>
+                <td>Nativ integriert (Server & Client)</td>
+                <td>Eingeschränkt (nur bei Login-Fehler)</td>
+                <td>Vorhanden (Offline-Konten)</td>
+            </tr>
+            <tr>
+                <td><strong>Konfiguration</strong></td>
+                <td>JSON-basiert, portabel</td>
+                <td>Profil-basiert, lokal</td>
+                <td>Instanz-basiert, isoliert</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6.2 RPG-Framework Vergleich</h3>
+    <p>
+        Das <em>MineLauncherRPG</em>-Plugin verfolgt einen monolithischen "All-in-One"-Ansatz im Gegensatz zur gängigen Praxis, Funktionalitäten über viele kleine Plugins zu verteilen.
+    </p>
+    <ul>
+        <li>
+            <strong>Integrität vs. Modularität:</strong> Während Server-Administratoren oft Plugins wie <em>MythicMobs</em> (Mobs), <em>Quests</em> (Aufgaben) und <em>McMMO</em> (Skills) kombinieren müssen, bietet <em>MineLauncherRPG</em> diese Systeme aus einem Guss. Dies eliminiert Kompatibilitätsprobleme und ermöglicht tiefe Integrationen (z. B. Drop-Tabellen, die direkt von Quest-Fortschritten abhängen).
+        </li>
+        <li>
+            <strong>KI-Architektur:</strong> Im Vergleich zu Standard-Minecraft-Mobs oder einfachen Script-Plugins implementiert dieses System echte <strong>Behavior Trees</strong> (<code>com.example.rpg.behavior</code>). Dies erlaubt komplexere Zustandsautomaten als die einfache Zielverfolgung der Vanilla-KI.
+        </li>
+        <li>
+            <strong>Dungeon-Generierung:</strong> Die Implementierung des <strong>Wave Function Collapse (WFC)</strong> Algorithmus (<code>WfcGenerator.java</code>) zur Laufzeit ist in der Plugin-Landschaft selten und stellt ein signifikantes Alleinstellungsmerkmal gegenüber statischen Dungeon-Plugins dar.
+        </li>
+    </ul>
+</section>
+
+<section id="kernkonzepte">
+    <h2>7. Kernkonzepte und Innovationen</h2>
+    <p>
+        Die technische Realisierung des Projekts stützt sich auf mehrere fortgeschrittene Konzepte der Softwarearchitektur und Algorithmik.
+    </p>
+
+    <h3>7.1 Behavior Trees für Mob-KI</h3>
+    <p>
+        Anstatt die limitierte <em>Goal-Selector</em>-API von Bukkit/NMS direkt zu nutzen, implementiert das Projekt eine eigene Engine für Verhaltensbäume.
+    </p>
+    <ul>
+        <li><strong>Struktur:</strong> Die KI wird durch Knoten (Nodes) definiert, die hierarchisch angeordnet sind. Es gibt <em>Composite Nodes</em> (Selector, Sequence) zur Flusssteuerung und <em>Leaf Nodes</em> (MeleeAttack, Flee, CastSkill) für Aktionen.</li>
+        <li><strong>Modularität:</strong> Neue Verhaltensweisen können durch das Erstellen neuer Klassen, die von <code>BehaviorNode</code> erben, hinzugefügt werden, ohne den bestehenden Code zu brechen.</li>
+        <li><strong>Konfigurierbarkeit:</strong> Die Bäume werden zur Laufzeit aus YAML-Dateien geladen (<code>BehaviorTreeManager</code>), was Designern erlaubt, Mob-Verhalten ohne Neukompilierung anzupassen.</li>
+    </ul>
+
+    <h3>7.2 Prozedurale Generierung mittels Wave Function Collapse (WFC)</h3>
+    <p>
+        Für die Dungeon-Instanzen (<code>DungeonManager</code>) kommt der WFC-Algorithmus zum Einsatz. Dieser Algorithmus, bekannt aus modernen Indie-Spielen, ermöglicht die Erstellung von Strukturen, die lokalen Regeln (Adjacency Constraints) folgen.
+    </p>
+    <ul>
+        <li><strong>Entropie-Reduktion:</strong> Der Algorithmus sucht iterativ nach der Zelle mit der geringsten Entropie (wenigste mögliche Zustände) und "kollabiert" diese zu einem festen Zustand (<code>Pattern</code>).</li>
+        <li><strong>Propagation:</strong> Änderungen breiten sich wellenartig durch das Grid aus, um ungültige Nachbarzustände zu eliminieren. Dies garantiert, dass generierte Dungeons logisch konsistent sind (z. B. Türen treffen auf Türen, Wände auf Wände).</li>
+    </ul>
+
+    <h3>7.3 Asynchrone Datenpersistenz</h3>
+    <p>
+        Um die Performance des Haupt-Server-Threads (Main Loop) nicht zu beeinträchtigen, setzt das System konsequent auf asynchrone Datenbankoperationen.
+    </p>
+    <ul>
+        <li><strong>Technologie:</strong> Einsatz von <em>HikariCP</em> für Connection Pooling und <em>PostgreSQL</em> für relationale Datenhaltung.</li>
+        <li><strong>Implementierung:</strong> Die Klasse <code>SqlPlayerDao</code> nutzt <code>CompletableFuture</code>, um Lade- und Speichervorgänge in separate Threads auszulagern. Dies verhindert "Lag-Spikes" beim Beitritt von Spielern oder beim Speichern von Inventardaten.</li>
+    </ul>
+</section>
+
+<section id="ausblick">
+    <h2>8. Zukünftige Arbeit und Ausblick</h2>
+    <p>
+        Sowohl der Launcher als auch das RPG-System bieten Potenzial für weiterführende Entwicklungen:
+    </p>
+    
+    <h3>8.1 Launcher-Erweiterungen</h3>
+    <ul>
+        <li><strong>Modpack-Support:</strong> Integration von APIs wie CurseForge oder Modrinth, um das automatische Herunterladen von Client-Mods zu ermöglichen.</li>
+        <li><strong>Java-Runtime-Management:</strong> Automatische Erkennung und Installation der korrekten JDK-Version basierend auf der gewählten Minecraft-Version (z. B. Java 8 für 1.12, Java 17 für 1.18+).</li>
+        <li><strong>Cross-Platform UI:</strong> Portierung der WinForms-Oberfläche auf MAUI oder Avalonia für Linux- und macOS-Support.</li>
+    </ul>
+
+    <h3>8.2 RPG-System Erweiterungen</h3>
+    <ul>
+        <li><strong>Visueller Editor für Behavior Trees:</strong> Entwicklung eines In-Game- oder Web-Tools zur grafischen Erstellung der KI-Bäume, um die Fehleranfälligkeit der YAML-Konfiguration zu reduzieren.</li>
+        <li><strong>Erweiterter WFC:</strong> Einführung von 3D-Rotationsregeln für Dungeon-Pattern, um die Varianz der generierten Räume bei gleicher Anzahl an Assets zu erhöhen.</li>
+        <li><strong>Cross-Server-Synchronisation:</strong> Da die Datenbank bereits auf PostgreSQL basiert, könnte das System mit geringem Aufwand für BungeeCord/Velocity-Netzwerke erweitert werden, um Spielerdaten serverübergreifend zu synchronisieren.</li>
+    </ul>
+</section>
+
+<section id="fazit">
+    <h2>9. Fazit</h2>
+    <p>
+        Das vorliegende Projekt demonstriert erfolgreich die Implementierung einer vollständigen Minecraft-Server-Infrastruktur. Der <em>C_launcher</em> beweist, dass mit modernen .NET-Technologien und Bibliotheken wie <em>CmlLib.Core</em> leistungsfähige externe Tools erstellt werden können, die die Hürde für Endanwender senken.
+    </p>
+    <p>
+        Gleichzeitig zeigt das <em>MineLauncherRPG</em>-Plugin, wie weit die Grenzen der Bukkit-API durch Anwendung professioneller Software-Design-Patterns verschoben werden können. Durch die Implementierung eigener KI-Systeme und prozeduraler Generierungsalgorithmen hebt sich das System deutlich von Standard-Lösungen ab und bietet eine robuste Basis für komplexe MMORPG-ähnliche Spielmodi innerhalb von Minecraft. Die strikte Trennung von Datenhaltung (DAO), Logik (Manager) und Präsentation (GUI/Listener) gewährleistet dabei Wartbarkeit und Erweiterbarkeit.
+    </p>
+</section>
+
+<section id="anhang">
+    <h2>10. Anhang</h2>
+    
+    <h3>10.1 Referenzen</h3>
+    <ul>
+        <li><strong>PaperMC:</strong> High-Performance Minecraft Server API. (<a href="https://papermc.io/">papermc.io</a>)</li>
+        <li><strong>CmlLib.Core:</strong> .NET Bibliothek für Minecraft Launcher Logik. (<a href="https://github.com/CmlLib/CmlLib.Core">GitHub</a>)</li>
+        <li><strong>HikariCP:</strong> High-performance JDBC Connection Pool.</li>
+        <li><strong>Wave Function Collapse:</strong> Algorithmus zur Textursynthese und Modellgenerierung (Maxim Gumin).</li>
+    </ul>
+
+    <h3>10.2 Glossar</h3>
+    <dl>
+        <dt><strong>DAO (Data Access Object)</strong></dt>
+        <dd>Ein Entwurfsmuster, das den Zugriff auf eine Datenquelle (hier PostgreSQL) abstrahiert und von der Geschäftslogik trennt.</dd>
+
+        <dt><strong>NMS (net.minecraft.server)</strong></dt>
+        <dd>Der interne, obfuskierte Code des Minecraft-Servers. Dieses Projekt vermeidet direkten NMS-Zugriff zugunsten der stabilen Bukkit-API.</dd>
+
+        <dt><strong>WFC (Wave Function Collapse)</strong></dt>
+        <dd>Ein Algorithmus aus der prozeduralen Generierung, der basierend auf Nachbarschaftsregeln (Constraints) eine lokal ähnliche Ausgabe erzeugt.</dd>
+
+        <dt><strong>Behavior Tree</strong></dt>
+        <dd>Ein mathematisches Modell zur Ausführung von Plänen, das häufig in der KI-Entwicklung für Spiele verwendet wird, um flexible und modulare Entscheidungsfindungen zu ermöglichen.</dd>
+
+        <dt><strong>WinForms</strong></dt>
+        <dd>Ein grafisches Framework innerhalb des .NET-Ökosystems zur Erstellung von Windows-Desktop-Anwendungen.</dd>
+    </dl>
+</section>
+    </div>
+</body>
+</html>

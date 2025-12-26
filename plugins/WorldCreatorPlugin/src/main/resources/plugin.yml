@@ -1,0 +1,9 @@
+name: WorldCreatorPlugin
+main: com.example.worldcreator.WorldCreatorPlugin
+version: 1.0.0
+author: LauncherTeam
+api-version: 1.20
+commands:
+  worlds:
+    description: Open world creator menu
+    usage: /worlds

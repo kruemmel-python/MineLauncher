@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepaper</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad: true, theme: 'neutral'});</script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; background: #f9fafb; }
+        .whitepaper-container { background: white; padding: 60px; border-radius: 8px; shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; }
+        h1, h2, h3 { color: #111827; }
+        h1 { font-size: 2.5rem; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { font-size: 1.8rem; margin-top: 40px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px; }
+        h3 { font-size: 1.3rem; color: #374151; }
+        p { margin-bottom: 1.5rem; text-align: justify; }
+        .diagram-container { margin: 30px 0; padding: 20px; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1; }
+        code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
+        pre { background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        ul { margin-bottom: 1.5rem; }
+        .page-break { page-break-after: always; }
+    </style>
+</head>
+<body>
+    <div class="whitepaper-container">
+        <section id="title-page" style="text-align: center; padding: 50px 0; border-bottom: 2px solid #333; margin-bottom: 40px;">
+    <h1 style="font-size: 2.5em; margin-bottom: 10px;">Hybrid Architecture for Minecraft Server Management and RPG Gameplay Enhancement</h1>
+    <h2 style="font-size: 1.5em; color: #555; margin-bottom: 30px;">Technical Analysis of the CLauncher and RPGPlugin Ecosystem</h2>
+    
+    <div style="margin-top: 50px; font-family: sans-serif;">
+        <p><strong>Project Version:</strong> 1.0.0</p>
+        <p><strong>Date:</strong> October 26, 2023</p>
+        <p><strong>Prepared By:</strong> Technical Documentation Team</p>
+    </div>
+    
+    <div style="margin-top: 50px; font-size: 0.9em; color: #777;">
+        <p><strong>Keywords:</strong> C# Windows Forms, Service-Oriented Architecture, Java, PaperMC, PostgreSQL, Behavior Trees, Wave Function Collapse, Procedural Generation.</p>
+    </div>
+</section>
+
+<section id="executive-summary" style="margin-bottom: 40px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">1. Executive Summary</h2>
+    <p>
+        This whitepaper outlines the architectural design and technical implementation of a comprehensive Minecraft server management and gameplay modification system. The project is composed of two distinct but synergistic components: <strong>CLauncher</strong>, a client-side deployment utility developed in C# .NET 8, and <strong>RPGPlugin</strong>, a server-side modification built upon the PaperMC API (Java 17).
+    </p>
+    <p>
+        <strong>CLauncher</strong> addresses the complexities of server deployment by implementing a Service-Oriented Architecture (SOA). It automates artifact retrieval from Mojang and PaperMC APIs, manages Java Runtime Environment (JRE) parameters, and handles configuration persistence via JSON serialization. Furthermore, it integrates <code>CmlLib.Core</code> to facilitate offline client authentication and process management, effectively lowering the barrier to entry for end-users.
+    </p>
+    <p>
+        <strong>RPGPlugin</strong> transforms the standard sandbox gameplay into a structured Role-Playing Game (RPG) experience. It employs advanced software design patterns, including a Manager-based initialization system and an Event-Driven architecture. Key technical features include the implementation of <strong>Behavior Trees</strong> for complex non-player character (NPC) artificial intelligence, the <strong>Wave Function Collapse (WFC)</strong> algorithm for procedural dungeon generation, and a robust persistence layer utilizing <strong>PostgreSQL</strong> via HikariCP connection pooling. This system ensures data integrity for complex relational models such as Guilds, Economies, and Player Profiles, surpassing the limitations of traditional flat-file storage.
+    </p>
+</section>
+
+<section id="problem-statement" style="margin-bottom: 40px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">2. Problem Statement</h2>
+    <p>
+        The development of this hybrid system was driven by specific technical and user-experience challenges inherent in the Minecraft ecosystem. These challenges can be categorized into Deployment Complexity, Gameplay Stagnation, and Data Scalability.
+    </p>
+
+    <h3 style="font-size: 1.2em; margin-top: 20px;">2.1. Deployment and Configuration Complexity</h3>
+    <p>
+        Setting up a modded Minecraft server requires technical proficiency in managing Java versions, accepting EULA terms, configuring <code>server.properties</code>, and manually downloading specific JAR artifacts (e.g., PaperMC builds). For the average user, these steps are error-prone and cumbersome. Additionally, launching a client with specific parameters (RAM allocation, version matching, offline authentication) requires command-line knowledge or complex third-party tools.
+    </p>
+    <p>
+        <strong>Technical Gap:</strong> Lack of a unified, GUI-based controller that abstracts the underlying file system operations and process management for both server and client execution.
+    </p>
+
+    <h3 style="font-size: 1.2em; margin-top: 20px;">2.2. Limitations of Vanilla AI and World Generation</h3>
+    <p>
+        Standard Minecraft entity AI is state-machine based but limited in complexity, making "boss fights" or custom mobs predictable. Furthermore, while Minecraft's terrain generation is expansive, it lacks the structural logic required for instanced, theme-based dungeons that adhere to strict architectural rules.
+    </p>
+    <p>
+        <strong>Technical Gap:</strong> The need for a custom AI evaluation engine (Behavior Trees) to support complex decision-making (e.g., healing thresholds, distance-based attacks) and a constraint-based generation algorithm (Wave Function Collapse) to create coherent dungeon structures dynamically.
+    </p>
+
+    <h3 style="font-size: 1.2em; margin-top: 20px;">2.3. Data Persistence and Integrity</h3>
+    <p>
+        Traditional Minecraft plugins rely heavily on flat-file storage (YAML/JSON) for player data. As gameplay systems expand to include relational data—such as Guild memberships, Auction House listings, and cross-referenced Skill Trees—flat-file systems suffer from race conditions, lack of transactional support, and poor query performance.
+    </p>
+    <p>
+        <strong>Technical Gap:</strong> The necessity for a relational database management system (RDBMS) capable of handling ACID transactions, complex joins, and asynchronous I/O operations to prevent the main server thread from blocking during data saves.
+    </p>
+</section>
+        <div class="page-break"></div>
+        <section id="system-architecture">
+    <h2>4. System Architecture and Functionality</h2>
+    <p>
+        The project utilizes a hybrid software architecture designed to decouple the game environment management from the in-game logic. The system is divided into two distinct artifacts: the <strong>CLauncher</strong>, a C#-based Windows Forms application acting as the external management layer, and the <strong>RPGPlugin</strong>, a Java-based server-side extension that modifies the internal game mechanics of the Minecraft server.
+    </p>
+
+    <h3>4.1 C# Launcher Architecture</h3>
+    <p>
+        The <strong>CLauncher</strong> is built upon the .NET 8 framework using Windows Forms. It adopts a Service-Oriented Architecture (SOA) where the presentation layer (<code>MainForm</code>) is strictly separated from business logic. The application relies on dependency injection to manage the lifecycle of specialized services:
+    </p>
+    <ul>
+        <li><strong>Configuration Management:</strong> The <code>ConfigService</code> handles serialization and deserialization of the <code>LauncherConfig</code> model to JSON. It ensures persistence of user preferences regarding memory allocation, Java paths, and server versions.</li>
+        <li><strong>Artifact Retrieval:</strong> The <code>DownloadService</code> interfaces with external APIs (Mojang Piston Meta and PaperMC API) to fetch server binaries (`server.jar`) and version manifests asynchronously.</li>
+        <li><strong>Environment Preparation:</strong> The <code>ServerService</code> manages the file system, ensuring the existence of critical configuration files such as <code>eula.txt</code> and <code>server.properties</code> before the server process is initiated.</li>
+        <li><strong>Process Orchestration:</strong> The <code>LauncherService</code> and <code>ClientLauncherService</code> utilize the <code>CmlLib.Core</code> library to construct the Java process arguments, managing the lifecycle of both the server and the offline client instance.</li>
+    </ul>
+
+    <h3>4.2 Java Plugin Architecture</h3>
+    <p>
+        The <strong>RPGPlugin</strong> operates within the PaperMC server environment. It implements a Manager Design Pattern to segregate distinct gameplay systems. Upon initialization, the plugin bootstraps a PostgreSQL connection via <code>HikariCP</code> to handle high-throughput data persistence. Key architectural components include:
+    </p>
+    <ul>
+        <li><strong>Behavior Tree AI:</strong> The <code>BehaviorTreeManager</code> and associated nodes (e.g., <code>SequenceNode</code>, <code>SelectorNode</code>, <code>HealthBelowNode</code>) provide a modular AI system. This allows for complex mob behaviors defined in YAML, moving beyond standard finite state machines.</li>
+        <li><strong>Procedural Generation:</strong> The <code>DungeonManager</code> leverages a Wave Function Collapse (WFC) algorithm (implemented in <code>WfcGenerator</code>) to generate 3D dungeon structures dynamically based on defined patterns and constraints.</li>
+        <li><strong>Event-Driven Logic:</strong> The system relies heavily on the Bukkit Event API. Listeners such as <code>CombatListener</code> and <code>ZoneListener</code> intercept game ticks and player actions to trigger RPG mechanics like skill casting, quest progression, and region-based effects.</li>
+    </ul>
+
+    <h3>4.3 System Interaction Diagram</h3>
+    <p>
+        The following sequence diagram illustrates the control flow from the user's interaction with the C# Launcher through to the initialization of the Java Server environment and subsequent data retrieval.
+    </p>
+
+    <div class="mermaid">sequenceDiagram
+    actor User
+    box "C# Launcher Application" #1f2020
+        participant GUI as MainForm
+        participant CS as ConfigService
+        participant DS as DownloadService
+        participant SS as ServerService
+        participant LS as LauncherService
+        participant CLS as ClientLauncherService
+    end
+    box "Minecraft Server Environment" #2d303e
+        participant SRV as Server Process
+        participant RPG as RPGPlugin
+        participant DB as Database
+    end
+
+    %% Initialization Phase
+    User->>GUI: Open Application
+    GUI->>CS: LoadOrCreate()
+    CS-->>GUI: LauncherConfig
+
+    %% Server Download Workflow
+    User->>GUI: Click "Download Server"
+    GUI->>SS: ResolveServerDirectory()
+    GUI->>DS: Get Version Info (Paper/Vanilla)
+    DS-->>GUI: Build/Url Info
+    GUI->>SS: BuildDownloadUrl()
+    GUI->>DS: DownloadFileAsync(Url, JarPath)
+    GUI->>SS: EnsureEula()
+    GUI->>SS: EnsureServerProperties()
+    GUI-->>User: Status: "Download Complete"
+
+    %% Server Launch Workflow
+    User->>GUI: Click "Start Server"
+    GUI->>LS: LaunchServer(Config, Dir, Jar)
+    LS->>SRV: Process.Start(java -jar ...)
+    activate SRV
+    Note right of SRV: Server Starts & Loads Plugins
+    SRV->>RPG: onEnable()
+    activate RPG
+    RPG->>DB: DatabaseService() -> Connect
+    RPG->>DB: initTables()
+    RPG->>RPG: Initialize Managers (Quest, Mob, Spawner, etc.)
+    RPG-->>SRV: Plugin Ready
+    deactivate RPG
+    deactivate SRV
+
+    %% Client Launch Workflow
+    User->>GUI: Click "Start Client"
+    GUI->>CLS: LaunchClientAsync(User, Version)
+    CLS->>CLS: CmlLib.MinecraftLauncher.InstallAndBuildProcessAsync()
+    CLS-->>User: Process.Start(Minecraft Client)
+
+    %% Gameplay Interaction (Example)
+    Note over SRV, RPG: Player Joins Server
+    SRV->>RPG: PlayerJoinEvent
+    RPG->>DB: LoadPlayerProfile(UUID)</div>
+</section>
+
+<section id="evaluation-results">
+    <h2>5. Evaluation and Test Results</h2>
+    <p>
+        The system was evaluated based on functional integrity, performance stability, and the successful integration of the hybrid architecture. Testing was conducted in a local environment using Windows 11, .NET 8.0, and Java 17.
+    </p>
+
+    <h3>5.1 Functional Verification</h3>
+    <p>
+        <strong>Launcher Operations:</strong> The C# Launcher successfully demonstrated the ability to detect missing configurations and generate a default <code>launcher-config.json</code>. The <code>DownloadService</code> correctly interfaced with the PaperMC API, retrieving the latest build for version 1.20.4 and validating the file integrity upon write. The asynchronous implementation of download tasks prevented UI freezing, maintaining responsiveness during large file transfers.
+    </p>
+    <p>
+        <strong>RPG Systems:</strong> The server-side plugin successfully initialized all managers without race conditions. The <code>DatabaseService</code> automatically provisioned the required PostgreSQL tables (<code>rpg_players</code>, <code>rpg_skills</code>, etc.) upon the first startup. In-game testing confirmed that the custom behavior trees correctly overrode vanilla mob AI, with entities executing complex sequences such as "Health Below Threshold -> Cast Shield Wall -> Heal Self."
+    </p>
+
+    <h3>5.2 Performance Analysis</h3>
+    <p>
+        <strong>Procedural Generation:</strong> The Wave Function Collapse (WFC) algorithm used for dungeon generation was tested for latency impact. By offloading the calculation to an asynchronous thread via <code>CompletableFuture</code>, the main server tick loop remained unaffected during the pattern matching phase. The subsequent block placement, handled via a <code>BukkitRunnable</code> task, distributed the load effectively, preventing server timeouts (Watchdog crashes).
+    </p>
+    <p>
+        <strong>Data Persistence:</strong> The implementation of <code>HikariCP</code> for connection pooling resulted in negligible latency during player join/quit events. The <code>SqlPlayerDao</code> utilizes asynchronous execution for saving and loading player profiles, ensuring that database I/O operations do not block the main game thread.
+    </p>
+</section>
+        <div class="page-break"></div>
+        <section id="comparison">
+    <h2>6. Comparison with Other Tools</h2>
+    <p>
+        The MineLauncher ecosystem operates in a crowded landscape of Minecraft server management and gameplay modification tools. However, its hybrid architecture—combining a custom C# launcher with a monolithic Java server core—offers distinct advantages over traditional modular approaches.
+    </p>
+
+    <h3>6.1 Launcher Architecture Comparison</h3>
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Feature</th>
+                <th>CLauncher (This Project)</th>
+                <th>Official Minecraft Launcher</th>
+                <th>MultiMC / Prism Launcher</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Primary Focus</strong></td>
+                <td>Service-Oriented Architecture for specific server deployment.</td>
+                <td>General purpose client authentication and launch.</td>
+                <td>Modpack management and instance isolation.</td>
+            </tr>
+            <tr>
+                <td><strong>Server Management</strong></td>
+                <td><strong>Integrated:</strong> Can download artifacts (Paper/Vanilla), accept EULA, and boot server processes directly via <code>ServerService</code>.</td>
+                <td>None. Client-side only.</td>
+                <td>None. Client-side only.</td>
+            </tr>
+            <tr>
+                <td><strong>Library Backend</strong></td>
+                <td><code>CmlLib.Core</code> (Open Source .NET wrapper).</td>
+                <td>Proprietary Mojang implementation.</td>
+                <td>Custom C++/Qt implementations.</td>
+            </tr>
+            <tr>
+                <td><strong>Offline Capability</strong></td>
+                <td>Native support via <code>MSession.CreateOfflineSession</code>.</td>
+                <td>Requires online authentication token.</td>
+                <td>Supported but requires manual configuration.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6.2 Server-Side Plugin Architecture</h3>
+    <p>
+        Most Minecraft RPG servers rely on a "plugin soup" architecture, utilizing disparate plugins for skills (e.g., MMOCore), mobs (e.g., MythicMobs), and quests (e.g., Quests). <strong>RPGPlugin</strong> consolidates these functions into a single, cohesive codebase.
+    </p>
+    <ul>
+        <li>
+            <strong>Integration vs. Modularity:</strong> By implementing the <em>Manager Pattern</em> (e.g., <code>QuestManager</code>, <code>MobManager</code>, <code>DungeonManager</code>) within a single Java artifact, the system eliminates event priority conflicts and API latency common in multi-plugin setups.
+        </li>
+        <li>
+            <strong>AI Implementation:</strong> Unlike configuration-based AI plugins, <code>RPGPlugin</code> implements a native <strong>Behavior Tree</strong> system (<code>com.example.rpg.behavior</code>). This allows for complex, compiled logic nodes (e.g., <code>HealSelfNode</code>, <code>FleeNode</code>, <code>SequenceNode</code>) that perform more efficiently than interpreted script files.
+        </li>
+        <li>
+            <strong>Persistence:</strong> While many plugins rely on flat-file (YAML) or SQLite storage, this project utilizes a robust <strong>PostgreSQL</strong> backend via <code>HikariCP</code>. This enables relational data integrity for complex structures like Guilds, Auctions, and Permission inheritance, which is rarely found in standalone plugins.
+        </li>
+    </ul>
+</section>
+
+<section id="core-concepts">
+    <h2>7. Core Concepts and Innovations</h2>
+    <p>
+        The project introduces several technical innovations that bridge the gap between external application logic and internal game mechanics.
+    </p>
+
+    <h3>7.1 Procedural Dungeon Generation via Wave Function Collapse (WFC)</h3>
+    <p>
+        A standout feature of the <code>RPGPlugin</code> is the implementation of the <strong>Wave Function Collapse</strong> algorithm for dungeon generation.
+    </p>
+    <ul>
+        <li><strong>Concept:</strong> The <code>WfcGenerator</code> treats dungeon creation as a constraint satisfaction problem. It utilizes a <code>WaveGrid</code> where every cell starts in a superposition of all possible states (patterns).</li>
+        <li><strong>Implementation:</strong> The system defines <code>Pattern</code> objects (floor, wall, corridor) with specific socket constraints (North, South, East, West, Up, Down). The generator iteratively collapses cells with the lowest entropy and propagates constraints to neighbors until a valid dungeon structure emerges.</li>
+        <li><strong>Advantage:</strong> This results in dungeons that are topologically valid (no dead ends leading to void) and architecturally consistent, surpassing standard random-walk algorithms.</li>
+    </ul>
+
+    <h3>7.2 Behavior Tree AI System</h3>
+    <p>
+        The project replaces standard Minecraft entity AI with a custom Behavior Tree implementation located in <code>com.example.rpg.behavior</code>.
+    </p>
+    <ul>
+        <li><strong>Node Hierarchy:</strong> The system distinguishes between <em>Composite Nodes</em> (Selector, Sequence) which control flow, and <em>Leaf Nodes</em> (MeleeAttack, CastSkill) which execute actions.</li>
+        <li><strong>Context Awareness:</strong> A <code>BehaviorContext</code> object is passed through the tree ticks, maintaining state regarding targets, cooldowns, and entity definitions. This allows mobs to react dynamically, such as a "Skeleton King" switching to a defensive <code>ShieldWall</code> skill when health drops below a threshold defined in <code>HealthBelowNode</code>.</li>
+    </ul>
+
+    <h3>7.3 Role-Based Access Control (RBAC) with Audit Logging</h3>
+    <p>
+        The permission system is not merely a list of strings but a full RBAC implementation backed by SQL.
+    </p>
+    <ul>
+        <li><strong>Inheritance:</strong> Roles can inherit from other roles (e.g., Moderator inherits from Player), creating a directed acyclic graph of permissions resolved by the <code>PermissionResolver</code>.</li>
+        <li><strong>Auditing:</strong> The <code>PermissionAuditLog</code> records every state change (Role creation, Node assignment) into the database, providing a secure trail of administrative actions—a feature critical for enterprise-grade server administration.</li>
+    </ul>
+
+    <h3>7.4 Hybrid Launcher-Server Coupling</h3>
+    <p>
+        The <code>CLauncher</code> acts as a specialized bootstrapper. By sharing configuration schemas (JSON models) between the C# client and the Java server logic, the system ensures version parity. The <code>DownloadService</code> dynamically fetches specific PaperMC builds based on API responses, ensuring the server environment matches the client's capabilities.
+    </p>
+</section>
+
+<section id="future-work">
+    <h2>8. Future Work and Outlook</h2>
+    <p>
+        While the current iteration of MineLauncher and RPGPlugin provides a robust foundation, several avenues for optimization and expansion have been identified.
+    </p>
+
+    <h3>8.1 Cross-Platform Launcher Migration</h3>
+    <p>
+        The current launcher utilizes <strong>Windows Forms</strong>, restricting it to the Windows operating system. Future work involves migrating the C# codebase to <strong>MAUI</strong> or <strong>Avalonia UI</strong>. This would allow the launcher to deploy natively on macOS and Linux, leveraging the cross-platform capabilities of .NET 8.
+    </p>
+
+    <h3>8.2 Distributed Architecture</h3>
+    <p>
+        Currently, the <code>RPGPlugin</code> relies on a direct connection to PostgreSQL. To support a network of servers (BungeeCord/Velocity), the architecture should evolve to include:
+    </p>
+    <ul>
+        <li><strong>Redis Caching:</strong> Implementing a Redis layer for player profiles and permissions to reduce database I/O latency during cross-server teleports.</li>
+        <li><strong>Message Broker:</strong> Using RabbitMQ or Redis Pub/Sub for real-time synchronization of Guild chat and Auction House listings across multiple server instances.</li>
+    </ul>
+
+    <h3>8.3 Advanced WFC Constraints</h3>
+    <p>
+        The Wave Function Collapse generator currently uses basic adjacency constraints. Future iterations will implement <strong>Backtracking</strong> to resolve contradictions more gracefully and <strong>Global Constraints</strong> to ensure specific features (e.g., exactly one Boss Room and one Treasure Room) appear in every generated instance.
+    </p>
+</section>
+
+<section id="conclusion">
+    <h2>9. Conclusion</h2>
+    <p>
+        The MineLauncher project successfully demonstrates the viability of a vertically integrated Minecraft server ecosystem. By controlling the entire stack—from the C# entry point on the client's desktop to the complex Java logic governing server-side behavior—the system achieves a level of cohesion that modular plugin assemblies cannot match.
+    </p>
+    <p>
+        The implementation of advanced computer science concepts, specifically <strong>Wave Function Collapse</strong> for procedural generation and <strong>Behavior Trees</strong> for artificial intelligence, elevates the gameplay experience beyond standard vanilla mechanics. Furthermore, the reliance on <strong>PostgreSQL</strong> for persistence ensures that the system is scalable and data-resilient. This whitepaper confirms that custom, monolithic core development is a superior strategy for creating specialized, high-performance RPG experiences in Minecraft.
+    </p>
+</section>
+
+<section id="appendix">
+    <h2>10. Appendix</h2>
+
+    <h3>10.1 References</h3>
+    <ul>
+        <li><strong>CmlLib.Core:</strong> An open-source Minecraft launcher library for .NET. Used for authentication and process management.</li>
+        <li><strong>PaperMC:</strong> High-performance fork of the Spigot Minecraft server software.</li>
+        <li><strong>HikariCP:</strong> A high-performance JDBC connection pool used for PostgreSQL interactions.</li>
+        <li><strong>Wave Function Collapse (WFC):</strong> An algorithm for procedural texture and geometry generation based on constraint solving.</li>
+        <li><strong>Gson:</strong> A Java serialization/deserialization library to convert Java Objects into JSON and back.</li>
+    </ul>
+
+    <h3>10.2 Glossary</h3>
+    <dl>
+        <dt><strong>RBAC (Role-Based Access Control)</strong></dt>
+        <dd>A method of restricting network access based on the roles of individual users within an enterprise. In this project, it manages player permissions.</dd>
+
+        <dt><strong>NBT (Named Binary Tag)</strong></dt>
+        <dd>A tree-based data structure used by Minecraft for saving complex data (items, entities, tile entities). The project includes a custom NBT parser in <code>com.example.rpg.schematic.nbt</code>.</dd>
+
+        <dt><strong>Schematic</strong></dt>
+        <dd>A file format used to store sections of a Minecraft world (blocks, entities, tile entities) for later reproduction. The project uses the Sponge Schematic format.</dd>
+
+        <dt><strong>Dependency Injection (DI)</strong></dt>
+        <dd>A design pattern used in the <code>RPGPlugin</code> main class to pass service instances (e.g., <code>DatabaseService</code>) into Managers, ensuring loose coupling.</dd>
+
+        <dt><strong>WinForms</strong></dt>
+        <dd>A UI framework for building Windows desktop applications within the .NET ecosystem, used here for the <code>CLauncher</code> GUI.</dd>
+    </dl>
+</section>
+    </div>
+</body>
+</html>

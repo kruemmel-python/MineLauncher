@@ -39,15 +39,18 @@ public class ShopManager {
         ConfigurationSection section = config.createSection(shop.id());
         section.set("title", shop.title());
         List<Map<String, Object>> items = new java.util.ArrayList<>();
-        for (ShopItem item : shop.items().values()) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("slot", item.slot());
-            map.put("material", item.material());
-            map.put("name", item.name());
-            map.put("buyPrice", item.buyPrice());
-            map.put("sellPrice", item.sellPrice());
-            items.add(map);
-        }
+            for (ShopItem item : shop.items().values()) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("slot", item.slot());
+                map.put("material", item.material());
+                map.put("name", item.name());
+                map.put("buyPrice", item.buyPrice());
+                map.put("sellPrice", item.sellPrice());
+                map.put("rpgItem", item.rpgItem());
+                map.put("rarity", item.rarity());
+                map.put("minLevel", item.minLevel());
+                items.add(map);
+            }
         section.set("items", items);
         save();
     }
@@ -77,11 +80,17 @@ public class ShopManager {
                 Object nameValue = raw.containsKey("name") ? raw.get("name") : "";
                 Object buyValue = raw.containsKey("buyPrice") ? raw.get("buyPrice") : 0;
                 Object sellValue = raw.containsKey("sellPrice") ? raw.get("sellPrice") : 0;
+                Object rpgValue = raw.containsKey("rpgItem") ? raw.get("rpgItem") : false;
+                Object rarityValue = raw.containsKey("rarity") ? raw.get("rarity") : null;
+                Object minLevelValue = raw.containsKey("minLevel") ? raw.get("minLevel") : 1;
                 item.setSlot(Integer.parseInt(String.valueOf(slotValue)));
                 item.setMaterial(String.valueOf(materialValue));
                 item.setName(String.valueOf(nameValue));
                 item.setBuyPrice(Integer.parseInt(String.valueOf(buyValue)));
                 item.setSellPrice(Integer.parseInt(String.valueOf(sellValue)));
+                item.setRpgItem(Boolean.parseBoolean(String.valueOf(rpgValue)));
+                item.setRarity(rarityValue != null ? String.valueOf(rarityValue) : null);
+                item.setMinLevel(Integer.parseInt(String.valueOf(minLevelValue)));
                 items.put(item.slot(), item);
             }
             shop.setItems(items);

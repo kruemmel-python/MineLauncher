@@ -8,14 +8,17 @@ import com.example.rpg.manager.BuildingManager;
 import com.example.rpg.manager.SkillManager;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Quest;
+import com.example.rpg.model.Rarity;
 import com.example.rpg.model.ShopDefinition;
 import com.example.rpg.model.ShopItem;
 import com.example.rpg.model.BuildingCategory;
 import com.example.rpg.model.BuildingDefinition;
+import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Bukkit;
@@ -35,6 +38,7 @@ public class GuiManager {
     private final BuildingManager buildingManager;
     private final com.example.rpg.permissions.PermissionService permissionService;
     private final com.example.rpg.manager.EnchantManager enchantManager;
+    private final ItemGenerator itemGenerator;
     private final NamespacedKey questKey;
     private final NamespacedKey skillKey;
     private final NamespacedKey buildingKey;
@@ -49,6 +53,7 @@ public class GuiManager {
                       ClassManager classManager, FactionManager factionManager, BuildingManager buildingManager,
                       com.example.rpg.permissions.PermissionService permissionService,
                       com.example.rpg.manager.EnchantManager enchantManager,
+                      ItemGenerator itemGenerator,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
@@ -60,6 +65,7 @@ public class GuiManager {
         this.buildingManager = buildingManager;
         this.permissionService = permissionService;
         this.enchantManager = enchantManager;
+        this.itemGenerator = itemGenerator;
         this.questKey = questKey;
         this.skillKey = skillKey;
         this.buildingKey = buildingKey;
@@ -481,18 +487,31 @@ public class GuiManager {
             if (material == null) {
                 continue;
             }
-            ItemBuilder builder = new ItemBuilder(material);
-            if (item.name() != null && !item.name().isBlank()) {
-                builder.name(net.kyori.adventure.text.Component.text(
-                    org.bukkit.ChatColor.translateAlternateColorCodes('&', item.name())));
+            ItemStack displayItem;
+            if (item.rpgItem()) {
+                Rarity rarity = parseRarity(item.rarity());
+                displayItem = itemGenerator.createRpgItem(material, rarity, Math.max(1, item.minLevel()));
+            } else {
+                ItemBuilder builder = new ItemBuilder(material);
+                if (item.name() != null && !item.name().isBlank()) {
+                    builder.name(net.kyori.adventure.text.Component.text(
+                        org.bukkit.ChatColor.translateAlternateColorCodes('&', item.name())));
+                }
+                displayItem = builder.build();
             }
-            if (item.buyPrice() > 0) {
-                builder.loreLine(Text.mm("<gray>Kaufen: <gold>" + item.buyPrice() + " Gold"));
+            ItemMeta meta = displayItem.getItemMeta();
+            if (meta != null) {
+                List<Component> lore = meta.lore() != null ? new ArrayList<>(meta.lore()) : new ArrayList<>();
+                if (item.buyPrice() > 0) {
+                    lore.add(Text.mm("<gray>Kaufen: <gold>" + item.buyPrice() + " Gold"));
+                }
+                if (item.sellPrice() > 0) {
+                    lore.add(Text.mm("<gray>Verkaufen: <gold>" + item.sellPrice() + " Gold"));
+                }
+                meta.lore(lore);
+                displayItem.setItemMeta(meta);
             }
-            if (item.sellPrice() > 0) {
-                builder.loreLine(Text.mm("<gray>Verkaufen: <gold>" + item.sellPrice() + " Gold"));
-            }
-            inv.setItem(item.slot(), builder.build());
+            inv.setItem(item.slot(), displayItem);
         }
         player.openInventory(inv);
     }
@@ -503,5 +522,16 @@ public class GuiManager {
         }
         var definition = classManager.getClass(classId);
         return definition != null ? definition.name() : classId;
+    }
+
+    private Rarity parseRarity(String raw) {
+        if (raw == null) {
+            return Rarity.COMMON;
+        }
+        try {
+            return Rarity.valueOf(raw.toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+            return Rarity.COMMON;
+        }
     }
 }

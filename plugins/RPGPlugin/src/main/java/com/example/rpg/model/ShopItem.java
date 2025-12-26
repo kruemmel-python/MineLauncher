@@ -6,6 +6,9 @@ public class ShopItem {
     private String name;
     private int buyPrice;
     private int sellPrice;
+    private boolean rpgItem;
+    private String rarity;
+    private int minLevel;
 
     public int slot() {
         return slot;
@@ -45,5 +48,29 @@ public class ShopItem {
 
     public void setSellPrice(int sellPrice) {
         this.sellPrice = sellPrice;
+    }
+
+    public boolean rpgItem() {
+        return rpgItem;
+    }
+
+    public void setRpgItem(boolean rpgItem) {
+        this.rpgItem = rpgItem;
+    }
+
+    public String rarity() {
+        return rarity;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
+    public int minLevel() {
+        return minLevel;
+    }
+
+    public void setMinLevel(int minLevel) {
+        this.minLevel = minLevel;
     }
 }

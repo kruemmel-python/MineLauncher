@@ -38,4 +38,8 @@ public class ItemGenerator {
         item.setAmount(1 + random.nextInt(1));
         return item;
     }
+
+    public NamespacedKey itemKey() {
+        return itemKey;
+    }
 }

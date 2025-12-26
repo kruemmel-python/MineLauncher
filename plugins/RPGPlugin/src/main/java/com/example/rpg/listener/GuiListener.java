@@ -476,11 +476,21 @@ public class GuiListener implements Listener {
                 player.sendMessage(Text.mm("<red>Dieses Item kann nicht verkauft werden."));
                 return;
             }
-            if (!player.getInventory().contains(material)) {
-                player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
-                return;
+            if (shopItem.rpgItem()) {
+                ItemStack[] contents = player.getInventory().getContents();
+                if (!containsRpgItem(contents, material)) {
+                    player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
+                    return;
+                }
+                removeOneRpgItem(contents, material);
+                player.getInventory().setContents(contents);
+            } else {
+                if (!player.getInventory().contains(material)) {
+                    player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
+                    return;
+                }
+                removeOne(player.getInventory(), material);
             }
-            removeOne(player.getInventory(), material);
             profile.setGold(profile.gold() + sellPrice);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1.2f);
             player.sendMessage(Text.mm("<green>Verkauft für <gold>" + sellPrice + "</gold> Gold."));
@@ -495,12 +505,68 @@ public class GuiListener implements Listener {
                 return;
             }
             profile.setGold(profile.gold() - buyPrice);
-            player.getInventory().addItem(new ItemStack(material));
+            if (shopItem.rpgItem()) {
+                var rarity = parseRarity(shopItem.rarity());
+                ItemStack item = plugin.itemGenerator().createRpgItem(material, rarity, Math.max(1, shopItem.minLevel()));
+                player.getInventory().addItem(item);
+            } else {
+                player.getInventory().addItem(new ItemStack(material));
+            }
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1.2f);
             player.sendMessage(Text.mm("<green>Gekauft für <gold>" + buyPrice + "</gold> Gold."));
         }
         player.updateInventory();
         plugin.playerDataManager().saveProfile(profile);
+    }
+
+    private boolean containsRpgItem(ItemStack[] contents, Material material) {
+        for (ItemStack item : contents) {
+            if (item == null || item.getType() != material) {
+                continue;
+            }
+            ItemMeta meta = item.getItemMeta();
+            if (meta == null) {
+                continue;
+            }
+            if (meta.getPersistentDataContainer().has(plugin.itemGenerator().itemKey(), PersistentDataType.INTEGER)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void removeOneRpgItem(ItemStack[] contents, Material material) {
+        for (int i = 0; i < contents.length; i++) {
+            ItemStack item = contents[i];
+            if (item == null || item.getType() != material) {
+                continue;
+            }
+            ItemMeta meta = item.getItemMeta();
+            if (meta == null) {
+                continue;
+            }
+            if (!meta.getPersistentDataContainer().has(plugin.itemGenerator().itemKey(), PersistentDataType.INTEGER)) {
+                continue;
+            }
+            int amount = item.getAmount();
+            if (amount <= 1) {
+                contents[i] = null;
+            } else {
+                item.setAmount(amount - 1);
+            }
+            return;
+        }
+    }
+
+    private com.example.rpg.model.Rarity parseRarity(String raw) {
+        if (raw == null) {
+            return com.example.rpg.model.Rarity.COMMON;
+        }
+        try {
+            return com.example.rpg.model.Rarity.valueOf(raw.toUpperCase(java.util.Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+            return com.example.rpg.model.Rarity.COMMON;
+        }
     }
 
     private void removeOne(Inventory inventory, Material material) {

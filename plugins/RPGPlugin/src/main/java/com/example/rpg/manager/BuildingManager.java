@@ -116,6 +116,9 @@ public class BuildingManager {
             furnitureFutures.put(furniture, furnitureFuture);
             futures.add(furnitureFuture);
         }
+        final CompletableFuture<Schematic> finalBaseFuture = baseFuture;
+        final CompletableFuture<Schematic> finalFloorFuture = floorFuture;
+        final CompletableFuture<Schematic> finalBasementFuture = basementFuture;
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
             .whenCompleteAsync((ignored, throwable) -> plugin.getServer().getScheduler().runTask(plugin, () -> {
                 if (throwable != null) {
@@ -124,9 +127,9 @@ public class BuildingManager {
                     return;
                 }
                 try {
-                    pasteBuilding(origin, definition, rotation, baseFuture.join(),
-                        floorFuture != null ? floorFuture.join() : null,
-                        basementFuture != null ? basementFuture.join() : null,
+                    pasteBuilding(origin, definition, rotation, finalBaseFuture.join(),
+                        finalFloorFuture != null ? finalFloorFuture.join() : null,
+                        finalBasementFuture != null ? finalBasementFuture.join() : null,
                         furnitureFutures);
                     player.sendMessage(Text.mm("<green>Gebäude platziert: " + definition.name()));
                 } catch (Exception ex) {

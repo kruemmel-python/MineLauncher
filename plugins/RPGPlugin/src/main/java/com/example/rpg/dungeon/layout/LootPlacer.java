@@ -30,7 +30,7 @@ public class LootPlacer {
                 LootTable table = lookupTable(settings.lootTable(), world);
                 if (table != null) {
                     lootable.setLootTable(table);
-                    lootable.update();
+                    state.update();
                 }
             }
         }

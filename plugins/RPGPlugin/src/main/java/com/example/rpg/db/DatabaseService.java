@@ -99,6 +99,17 @@ public class DatabaseService {
                 data JSONB
             )
             """;
+        String playersAlter = """
+            ALTER TABLE rpg_players
+                ADD COLUMN IF NOT EXISTS dungeon_role TEXT,
+                ADD COLUMN IF NOT EXISTS home_world TEXT,
+                ADD COLUMN IF NOT EXISTS home_x DOUBLE PRECISION,
+                ADD COLUMN IF NOT EXISTS home_y DOUBLE PRECISION,
+                ADD COLUMN IF NOT EXISTS home_z DOUBLE PRECISION,
+                ADD COLUMN IF NOT EXISTS housing_upgrades JSONB DEFAULT '{}'::jsonb,
+                ADD COLUMN IF NOT EXISTS cosmetics JSONB DEFAULT '[]'::jsonb,
+                ADD COLUMN IF NOT EXISTS title TEXT
+            """;
         String questsTable = """
             CREATE TABLE IF NOT EXISTS rpg_quests (
                 player_uuid UUID PRIMARY KEY,
@@ -139,6 +150,7 @@ public class DatabaseService {
             statement.execute(rolesTable);
             statement.execute(playerRolesTable);
             statement.execute(auditTable);
+            statement.execute(playersAlter);
         } catch (SQLException e) {
             plugin.getLogger().severe("Failed to init database tables: " + e.getMessage());
         }

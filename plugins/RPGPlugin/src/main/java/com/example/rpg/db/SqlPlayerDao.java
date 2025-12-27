@@ -38,7 +38,7 @@ public class SqlPlayerDao implements PlayerDao {
                     dungeon_role, home_world, home_x, home_y, home_z,
                     professions, stats, learned_skills, active_quests, completed_quests, faction_rep, skill_cooldowns, skill_bindings,
                     housing_upgrades, cosmetics, title)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?::jsonb, ?)
                 ON CONFLICT (uuid) DO UPDATE SET
                     level = EXCLUDED.level,
                     xp = EXCLUDED.xp,

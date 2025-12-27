@@ -125,6 +125,7 @@ public class EnchantManager {
         }
         plugin.itemStatManager().updateLore(meta);
         target.setItemMeta(meta);
+        setTargetItem(player, recipe.targetSlot(), target);
         applyEffects(player, profile, recipe.effects());
         if (changeLines.isEmpty()) {
             player.sendMessage(Text.mm("<green>Verzauberung angewendet auf <white>" + itemName));
@@ -220,6 +221,18 @@ public class EnchantManager {
             case ARMOR_LEGS -> player.getInventory().getLeggings();
             case ARMOR_FEET -> player.getInventory().getBoots();
         };
+    }
+
+    private void setTargetItem(Player player, EnchantTargetSlot targetSlot, ItemStack item) {
+        switch (targetSlot) {
+            case HAND -> player.getInventory().setItemInMainHand(item);
+            case OFF_HAND, SHIELD -> player.getInventory().setItemInOffHand(item);
+            case ARMOR_HEAD -> player.getInventory().setHelmet(item);
+            case ARMOR_CHEST -> player.getInventory().setChestplate(item);
+            case ARMOR_LEGS -> player.getInventory().setLeggings(item);
+            case ARMOR_FEET -> player.getInventory().setBoots(item);
+        }
+        player.updateInventory();
     }
 
     private boolean hasCostItem(Player player, EnchantmentRecipe recipe) {

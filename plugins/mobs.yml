@@ -2656,6 +2656,7 @@ lvl01_behavior_001:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_001
+  boss: false
 
 lvl01_behavior_031:
   name: "&cGegner Lvl 1"
@@ -2671,6 +2672,7 @@ lvl01_behavior_031:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_031
+  boss: false
 
 lvl01_behavior_061:
   name: "&cGegner Lvl 1"
@@ -2686,6 +2688,7 @@ lvl01_behavior_061:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_061
+  boss: false
 
 lvl01_behavior_091:
   name: "&cGegner Lvl 1"
@@ -2701,6 +2704,7 @@ lvl01_behavior_091:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_091
+  boss: false
 
 lvl01_behavior_121:
   name: "&cGegner Lvl 1"
@@ -2716,6 +2720,7 @@ lvl01_behavior_121:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_121
+  boss: false
 
 lvl01_behavior_151:
   name: "&cGegner Lvl 1"
@@ -2731,6 +2736,7 @@ lvl01_behavior_151:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_151
+  boss: false
 
 lvl01_behavior_181:
   name: "&cGegner Lvl 1"
@@ -2746,6 +2752,7 @@ lvl01_behavior_181:
   xp: 26
   lootTable: forest_mobs
   behaviorTree: lvl01_behavior_181
+  boss: false
 
 lvl02_behavior_002:
   name: "&cGegner Lvl 2"
@@ -2761,6 +2768,7 @@ lvl02_behavior_002:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_002
+  boss: false
 
 lvl02_behavior_032:
   name: "&cGegner Lvl 2"
@@ -2776,6 +2784,7 @@ lvl02_behavior_032:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_032
+  boss: false
 
 lvl02_behavior_062:
   name: "&cGegner Lvl 2"
@@ -2791,6 +2800,7 @@ lvl02_behavior_062:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_062
+  boss: false
 
 lvl02_behavior_092:
   name: "&cGegner Lvl 2"
@@ -2806,6 +2816,7 @@ lvl02_behavior_092:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_092
+  boss: false
 
 lvl02_behavior_122:
   name: "&cGegner Lvl 2"
@@ -2821,6 +2832,7 @@ lvl02_behavior_122:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_122
+  boss: false
 
 lvl02_behavior_152:
   name: "&cGegner Lvl 2"
@@ -2836,6 +2848,7 @@ lvl02_behavior_152:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_152
+  boss: false
 
 lvl02_behavior_182:
   name: "&cGegner Lvl 2"
@@ -2851,6 +2864,7 @@ lvl02_behavior_182:
   xp: 32
   lootTable: forest_mobs
   behaviorTree: lvl02_behavior_182
+  boss: false
 
 lvl03_behavior_003:
   name: "&cGegner Lvl 3"
@@ -2866,6 +2880,7 @@ lvl03_behavior_003:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_003
+  boss: false
 
 lvl03_behavior_033:
   name: "&cGegner Lvl 3"
@@ -2881,6 +2896,7 @@ lvl03_behavior_033:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_033
+  boss: false
 
 lvl03_behavior_063:
   name: "&cGegner Lvl 3"
@@ -2896,6 +2912,7 @@ lvl03_behavior_063:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_063
+  boss: false
 
 lvl03_behavior_093:
   name: "&cGegner Lvl 3"
@@ -2911,6 +2928,7 @@ lvl03_behavior_093:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_093
+  boss: false
 
 lvl03_behavior_123:
   name: "&cGegner Lvl 3"
@@ -2926,6 +2944,7 @@ lvl03_behavior_123:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_123
+  boss: false
 
 lvl03_behavior_153:
   name: "&cGegner Lvl 3"
@@ -2941,6 +2960,7 @@ lvl03_behavior_153:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_153
+  boss: false
 
 lvl03_behavior_183:
   name: "&cGegner Lvl 3"
@@ -2956,6 +2976,7 @@ lvl03_behavior_183:
   xp: 38
   lootTable: forest_mobs
   behaviorTree: lvl03_behavior_183
+  boss: false
 
 lvl04_behavior_004:
   name: "&cGegner Lvl 4"
@@ -2971,6 +2992,7 @@ lvl04_behavior_004:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_004
+  boss: false
 
 lvl04_behavior_034:
   name: "&cGegner Lvl 4"
@@ -2986,6 +3008,7 @@ lvl04_behavior_034:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_034
+  boss: false
 
 lvl04_behavior_064:
   name: "&cGegner Lvl 4"
@@ -3001,6 +3024,7 @@ lvl04_behavior_064:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_064
+  boss: false
 
 lvl04_behavior_094:
   name: "&cGegner Lvl 4"
@@ -3016,6 +3040,7 @@ lvl04_behavior_094:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_094
+  boss: false
 
 lvl04_behavior_124:
   name: "&cGegner Lvl 4"
@@ -3031,6 +3056,7 @@ lvl04_behavior_124:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_124
+  boss: false
 
 lvl04_behavior_154:
   name: "&cGegner Lvl 4"
@@ -3046,6 +3072,7 @@ lvl04_behavior_154:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_154
+  boss: false
 
 lvl04_behavior_184:
   name: "&cGegner Lvl 4"
@@ -3061,6 +3088,7 @@ lvl04_behavior_184:
   xp: 44
   lootTable: forest_mobs
   behaviorTree: lvl04_behavior_184
+  boss: false
 
 lvl05_behavior_005:
   name: "&cGegner Lvl 5"
@@ -3076,6 +3104,7 @@ lvl05_behavior_005:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_005
+  boss: false
 
 lvl05_behavior_035:
   name: "&cGegner Lvl 5"
@@ -3091,6 +3120,7 @@ lvl05_behavior_035:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_035
+  boss: false
 
 lvl05_behavior_065:
   name: "&cGegner Lvl 5"
@@ -3106,6 +3136,7 @@ lvl05_behavior_065:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_065
+  boss: false
 
 lvl05_behavior_095:
   name: "&cGegner Lvl 5"
@@ -3121,6 +3152,7 @@ lvl05_behavior_095:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_095
+  boss: false
 
 lvl05_behavior_125:
   name: "&cGegner Lvl 5"
@@ -3136,6 +3168,7 @@ lvl05_behavior_125:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_125
+  boss: false
 
 lvl05_behavior_155:
   name: "&cGegner Lvl 5"
@@ -3151,6 +3184,7 @@ lvl05_behavior_155:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_155
+  boss: false
 
 lvl05_behavior_185:
   name: "&cGegner Lvl 5"
@@ -3166,6 +3200,7 @@ lvl05_behavior_185:
   xp: 50
   lootTable: forest_mobs
   behaviorTree: lvl05_behavior_185
+  boss: false
 
 lvl06_behavior_006:
   name: "&cGegner Lvl 6"
@@ -3181,6 +3216,7 @@ lvl06_behavior_006:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_006
+  boss: false
 
 lvl06_behavior_036:
   name: "&cGegner Lvl 6"
@@ -3196,6 +3232,7 @@ lvl06_behavior_036:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_036
+  boss: false
 
 lvl06_behavior_066:
   name: "&cGegner Lvl 6"
@@ -3211,6 +3248,7 @@ lvl06_behavior_066:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_066
+  boss: false
 
 lvl06_behavior_096:
   name: "&cGegner Lvl 6"
@@ -3226,6 +3264,7 @@ lvl06_behavior_096:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_096
+  boss: false
 
 lvl06_behavior_126:
   name: "&cGegner Lvl 6"
@@ -3241,6 +3280,7 @@ lvl06_behavior_126:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_126
+  boss: false
 
 lvl06_behavior_156:
   name: "&cGegner Lvl 6"
@@ -3256,6 +3296,7 @@ lvl06_behavior_156:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_156
+  boss: false
 
 lvl06_behavior_186:
   name: "&cGegner Lvl 6"
@@ -3271,6 +3312,7 @@ lvl06_behavior_186:
   xp: 56
   lootTable: forest_mobs
   behaviorTree: lvl06_behavior_186
+  boss: false
 
 lvl07_behavior_007:
   name: "&cGegner Lvl 7"
@@ -3286,6 +3328,7 @@ lvl07_behavior_007:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_007
+  boss: false
 
 lvl07_behavior_037:
   name: "&cGegner Lvl 7"
@@ -3301,6 +3344,7 @@ lvl07_behavior_037:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_037
+  boss: false
 
 lvl07_behavior_067:
   name: "&cGegner Lvl 7"
@@ -3316,6 +3360,7 @@ lvl07_behavior_067:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_067
+  boss: false
 
 lvl07_behavior_097:
   name: "&cGegner Lvl 7"
@@ -3331,6 +3376,7 @@ lvl07_behavior_097:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_097
+  boss: false
 
 lvl07_behavior_127:
   name: "&cGegner Lvl 7"
@@ -3346,6 +3392,7 @@ lvl07_behavior_127:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_127
+  boss: false
 
 lvl07_behavior_157:
   name: "&cGegner Lvl 7"
@@ -3361,6 +3408,7 @@ lvl07_behavior_157:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_157
+  boss: false
 
 lvl07_behavior_187:
   name: "&cGegner Lvl 7"
@@ -3376,6 +3424,7 @@ lvl07_behavior_187:
   xp: 62
   lootTable: forest_mobs
   behaviorTree: lvl07_behavior_187
+  boss: false
 
 lvl08_behavior_008:
   name: "&cGegner Lvl 8"
@@ -3391,6 +3440,7 @@ lvl08_behavior_008:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_008
+  boss: false
 
 lvl08_behavior_038:
   name: "&cGegner Lvl 8"
@@ -3406,6 +3456,7 @@ lvl08_behavior_038:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_038
+  boss: false
 
 lvl08_behavior_068:
   name: "&cGegner Lvl 8"
@@ -3421,6 +3472,7 @@ lvl08_behavior_068:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_068
+  boss: false
 
 lvl08_behavior_098:
   name: "&cGegner Lvl 8"
@@ -3436,6 +3488,7 @@ lvl08_behavior_098:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_098
+  boss: false
 
 lvl08_behavior_128:
   name: "&cGegner Lvl 8"
@@ -3451,6 +3504,7 @@ lvl08_behavior_128:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_128
+  boss: false
 
 lvl08_behavior_158:
   name: "&cGegner Lvl 8"
@@ -3466,6 +3520,7 @@ lvl08_behavior_158:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_158
+  boss: false
 
 lvl08_behavior_188:
   name: "&cGegner Lvl 8"
@@ -3481,6 +3536,7 @@ lvl08_behavior_188:
   xp: 68
   lootTable: forest_mobs
   behaviorTree: lvl08_behavior_188
+  boss: false
 
 lvl09_behavior_009:
   name: "&cGegner Lvl 9"
@@ -3496,6 +3552,7 @@ lvl09_behavior_009:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_009
+  boss: false
 
 lvl09_behavior_039:
   name: "&cGegner Lvl 9"
@@ -3511,6 +3568,7 @@ lvl09_behavior_039:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_039
+  boss: false
 
 lvl09_behavior_069:
   name: "&cGegner Lvl 9"
@@ -3526,6 +3584,7 @@ lvl09_behavior_069:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_069
+  boss: false
 
 lvl09_behavior_099:
   name: "&cGegner Lvl 9"
@@ -3541,6 +3600,7 @@ lvl09_behavior_099:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_099
+  boss: false
 
 lvl09_behavior_129:
   name: "&cGegner Lvl 9"
@@ -3556,6 +3616,7 @@ lvl09_behavior_129:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_129
+  boss: false
 
 lvl09_behavior_159:
   name: "&cGegner Lvl 9"
@@ -3571,6 +3632,7 @@ lvl09_behavior_159:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_159
+  boss: false
 
 lvl09_behavior_189:
   name: "&cGegner Lvl 9"
@@ -3586,6 +3648,7 @@ lvl09_behavior_189:
   xp: 74
   lootTable: forest_mobs
   behaviorTree: lvl09_behavior_189
+  boss: false
 
 lvl10_behavior_010:
   name: "&cGegner Lvl 10"
@@ -3601,6 +3664,7 @@ lvl10_behavior_010:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_010
+  boss: false
 
 lvl10_behavior_040:
   name: "&cGegner Lvl 10"
@@ -3616,6 +3680,7 @@ lvl10_behavior_040:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_040
+  boss: false
 
 lvl10_behavior_070:
   name: "&cGegner Lvl 10"
@@ -3631,6 +3696,7 @@ lvl10_behavior_070:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_070
+  boss: false
 
 lvl10_behavior_100:
   name: "&cGegner Lvl 10"
@@ -3646,6 +3712,7 @@ lvl10_behavior_100:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_100
+  boss: false
 
 lvl10_behavior_130:
   name: "&cGegner Lvl 10"
@@ -3661,6 +3728,7 @@ lvl10_behavior_130:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_130
+  boss: false
 
 lvl10_behavior_160:
   name: "&cGegner Lvl 10"
@@ -3676,6 +3744,7 @@ lvl10_behavior_160:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_160
+  boss: false
 
 lvl10_behavior_190:
   name: "&cGegner Lvl 10"
@@ -3691,6 +3760,7 @@ lvl10_behavior_190:
   xp: 80
   lootTable: forest_mobs
   behaviorTree: lvl10_behavior_190
+  boss: false
 
 lvl11_behavior_011:
   name: "&cGegner Lvl 11"
@@ -3706,6 +3776,7 @@ lvl11_behavior_011:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_011
+  boss: false
 
 lvl11_behavior_041:
   name: "&cGegner Lvl 11"
@@ -3721,6 +3792,7 @@ lvl11_behavior_041:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_041
+  boss: false
 
 lvl11_behavior_071:
   name: "&cGegner Lvl 11"
@@ -3736,6 +3808,7 @@ lvl11_behavior_071:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_071
+  boss: false
 
 lvl11_behavior_101:
   name: "&cGegner Lvl 11"
@@ -3751,6 +3824,7 @@ lvl11_behavior_101:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_101
+  boss: false
 
 lvl11_behavior_131:
   name: "&cGegner Lvl 11"
@@ -3766,6 +3840,7 @@ lvl11_behavior_131:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_131
+  boss: false
 
 lvl11_behavior_161:
   name: "&cGegner Lvl 11"
@@ -3781,6 +3856,7 @@ lvl11_behavior_161:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_161
+  boss: false
 
 lvl11_behavior_191:
   name: "&cGegner Lvl 11"
@@ -3796,6 +3872,7 @@ lvl11_behavior_191:
   xp: 86
   lootTable: dungeon_mobs
   behaviorTree: lvl11_behavior_191
+  boss: false
 
 lvl12_behavior_012:
   name: "&cGegner Lvl 12"
@@ -3811,6 +3888,7 @@ lvl12_behavior_012:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_012
+  boss: false
 
 lvl12_behavior_042:
   name: "&cGegner Lvl 12"
@@ -3826,6 +3904,7 @@ lvl12_behavior_042:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_042
+  boss: false
 
 lvl12_behavior_072:
   name: "&cGegner Lvl 12"
@@ -3841,6 +3920,7 @@ lvl12_behavior_072:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_072
+  boss: false
 
 lvl12_behavior_102:
   name: "&cGegner Lvl 12"
@@ -3856,6 +3936,7 @@ lvl12_behavior_102:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_102
+  boss: false
 
 lvl12_behavior_132:
   name: "&cGegner Lvl 12"
@@ -3871,6 +3952,7 @@ lvl12_behavior_132:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_132
+  boss: false
 
 lvl12_behavior_162:
   name: "&cGegner Lvl 12"
@@ -3886,6 +3968,7 @@ lvl12_behavior_162:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_162
+  boss: false
 
 lvl12_behavior_192:
   name: "&cGegner Lvl 12"
@@ -3901,6 +3984,7 @@ lvl12_behavior_192:
   xp: 92
   lootTable: dungeon_mobs
   behaviorTree: lvl12_behavior_192
+  boss: false
 
 lvl13_behavior_013:
   name: "&cGegner Lvl 13"
@@ -3916,6 +4000,7 @@ lvl13_behavior_013:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_013
+  boss: false
 
 lvl13_behavior_043:
   name: "&cGegner Lvl 13"
@@ -3931,6 +4016,7 @@ lvl13_behavior_043:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_043
+  boss: false
 
 lvl13_behavior_073:
   name: "&cGegner Lvl 13"
@@ -3946,6 +4032,7 @@ lvl13_behavior_073:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_073
+  boss: false
 
 lvl13_behavior_103:
   name: "&cGegner Lvl 13"
@@ -3961,6 +4048,7 @@ lvl13_behavior_103:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_103
+  boss: false
 
 lvl13_behavior_133:
   name: "&cGegner Lvl 13"
@@ -3976,6 +4064,7 @@ lvl13_behavior_133:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_133
+  boss: false
 
 lvl13_behavior_163:
   name: "&cGegner Lvl 13"
@@ -3991,6 +4080,7 @@ lvl13_behavior_163:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_163
+  boss: false
 
 lvl13_behavior_193:
   name: "&cGegner Lvl 13"
@@ -4006,6 +4096,7 @@ lvl13_behavior_193:
   xp: 98
   lootTable: dungeon_mobs
   behaviorTree: lvl13_behavior_193
+  boss: false
 
 lvl14_behavior_014:
   name: "&cGegner Lvl 14"
@@ -4021,6 +4112,7 @@ lvl14_behavior_014:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_014
+  boss: false
 
 lvl14_behavior_044:
   name: "&cGegner Lvl 14"
@@ -4036,6 +4128,7 @@ lvl14_behavior_044:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_044
+  boss: false
 
 lvl14_behavior_074:
   name: "&cGegner Lvl 14"
@@ -4051,6 +4144,7 @@ lvl14_behavior_074:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_074
+  boss: false
 
 lvl14_behavior_104:
   name: "&cGegner Lvl 14"
@@ -4066,6 +4160,7 @@ lvl14_behavior_104:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_104
+  boss: false
 
 lvl14_behavior_134:
   name: "&cGegner Lvl 14"
@@ -4081,6 +4176,7 @@ lvl14_behavior_134:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_134
+  boss: false
 
 lvl14_behavior_164:
   name: "&cGegner Lvl 14"
@@ -4096,6 +4192,7 @@ lvl14_behavior_164:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_164
+  boss: false
 
 lvl14_behavior_194:
   name: "&cGegner Lvl 14"
@@ -4111,6 +4208,7 @@ lvl14_behavior_194:
   xp: 104
   lootTable: dungeon_mobs
   behaviorTree: lvl14_behavior_194
+  boss: false
 
 lvl15_behavior_015:
   name: "&cGegner Lvl 15"
@@ -4126,6 +4224,7 @@ lvl15_behavior_015:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_015
+  boss: false
 
 lvl15_behavior_045:
   name: "&cGegner Lvl 15"
@@ -4141,6 +4240,7 @@ lvl15_behavior_045:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_045
+  boss: false
 
 lvl15_behavior_075:
   name: "&cGegner Lvl 15"
@@ -4156,6 +4256,7 @@ lvl15_behavior_075:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_075
+  boss: false
 
 lvl15_behavior_105:
   name: "&cGegner Lvl 15"
@@ -4171,6 +4272,7 @@ lvl15_behavior_105:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_105
+  boss: false
 
 lvl15_behavior_135:
   name: "&cGegner Lvl 15"
@@ -4186,6 +4288,7 @@ lvl15_behavior_135:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_135
+  boss: false
 
 lvl15_behavior_165:
   name: "&cGegner Lvl 15"
@@ -4201,6 +4304,7 @@ lvl15_behavior_165:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_165
+  boss: false
 
 lvl15_behavior_195:
   name: "&cGegner Lvl 15"
@@ -4216,6 +4320,7 @@ lvl15_behavior_195:
   xp: 110
   lootTable: dungeon_mobs
   behaviorTree: lvl15_behavior_195
+  boss: false
 
 lvl16_behavior_016:
   name: "&cGegner Lvl 16"
@@ -4231,6 +4336,7 @@ lvl16_behavior_016:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_016
+  boss: false
 
 lvl16_behavior_046:
   name: "&cGegner Lvl 16"
@@ -4246,6 +4352,7 @@ lvl16_behavior_046:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_046
+  boss: false
 
 lvl16_behavior_076:
   name: "&cGegner Lvl 16"
@@ -4261,6 +4368,7 @@ lvl16_behavior_076:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_076
+  boss: false
 
 lvl16_behavior_106:
   name: "&cGegner Lvl 16"
@@ -4276,6 +4384,7 @@ lvl16_behavior_106:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_106
+  boss: false
 
 lvl16_behavior_136:
   name: "&cGegner Lvl 16"
@@ -4291,6 +4400,7 @@ lvl16_behavior_136:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_136
+  boss: false
 
 lvl16_behavior_166:
   name: "&cGegner Lvl 16"
@@ -4306,6 +4416,7 @@ lvl16_behavior_166:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_166
+  boss: false
 
 lvl16_behavior_196:
   name: "&cGegner Lvl 16"
@@ -4321,6 +4432,7 @@ lvl16_behavior_196:
   xp: 116
   lootTable: dungeon_mobs
   behaviorTree: lvl16_behavior_196
+  boss: false
 
 lvl17_behavior_017:
   name: "&cGegner Lvl 17"
@@ -4336,6 +4448,7 @@ lvl17_behavior_017:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_017
+  boss: false
 
 lvl17_behavior_047:
   name: "&cGegner Lvl 17"
@@ -4351,6 +4464,7 @@ lvl17_behavior_047:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_047
+  boss: false
 
 lvl17_behavior_077:
   name: "&cGegner Lvl 17"
@@ -4366,6 +4480,7 @@ lvl17_behavior_077:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_077
+  boss: false
 
 lvl17_behavior_107:
   name: "&cGegner Lvl 17"
@@ -4381,6 +4496,7 @@ lvl17_behavior_107:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_107
+  boss: false
 
 lvl17_behavior_137:
   name: "&cGegner Lvl 17"
@@ -4396,6 +4512,7 @@ lvl17_behavior_137:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_137
+  boss: false
 
 lvl17_behavior_167:
   name: "&cGegner Lvl 17"
@@ -4411,6 +4528,7 @@ lvl17_behavior_167:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_167
+  boss: false
 
 lvl17_behavior_197:
   name: "&cGegner Lvl 17"
@@ -4426,6 +4544,7 @@ lvl17_behavior_197:
   xp: 122
   lootTable: dungeon_mobs
   behaviorTree: lvl17_behavior_197
+  boss: false
 
 lvl18_behavior_018:
   name: "&cGegner Lvl 18"
@@ -4441,6 +4560,7 @@ lvl18_behavior_018:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_018
+  boss: false
 
 lvl18_behavior_048:
   name: "&cGegner Lvl 18"
@@ -4456,6 +4576,7 @@ lvl18_behavior_048:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_048
+  boss: false
 
 lvl18_behavior_078:
   name: "&cGegner Lvl 18"
@@ -4471,6 +4592,7 @@ lvl18_behavior_078:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_078
+  boss: false
 
 lvl18_behavior_108:
   name: "&cGegner Lvl 18"
@@ -4486,6 +4608,7 @@ lvl18_behavior_108:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_108
+  boss: false
 
 lvl18_behavior_138:
   name: "&cGegner Lvl 18"
@@ -4501,6 +4624,7 @@ lvl18_behavior_138:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_138
+  boss: false
 
 lvl18_behavior_168:
   name: "&cGegner Lvl 18"
@@ -4516,6 +4640,7 @@ lvl18_behavior_168:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_168
+  boss: false
 
 lvl18_behavior_198:
   name: "&cGegner Lvl 18"
@@ -4531,6 +4656,7 @@ lvl18_behavior_198:
   xp: 128
   lootTable: dungeon_mobs
   behaviorTree: lvl18_behavior_198
+  boss: false
 
 lvl19_behavior_019:
   name: "&cGegner Lvl 19"
@@ -4546,6 +4672,7 @@ lvl19_behavior_019:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_019
+  boss: false
 
 lvl19_behavior_049:
   name: "&cGegner Lvl 19"
@@ -4561,6 +4688,7 @@ lvl19_behavior_049:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_049
+  boss: false
 
 lvl19_behavior_079:
   name: "&cGegner Lvl 19"
@@ -4576,6 +4704,7 @@ lvl19_behavior_079:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_079
+  boss: false
 
 lvl19_behavior_109:
   name: "&cGegner Lvl 19"
@@ -4591,6 +4720,7 @@ lvl19_behavior_109:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_109
+  boss: false
 
 lvl19_behavior_139:
   name: "&cGegner Lvl 19"
@@ -4606,6 +4736,7 @@ lvl19_behavior_139:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_139
+  boss: false
 
 lvl19_behavior_169:
   name: "&cGegner Lvl 19"
@@ -4621,6 +4752,7 @@ lvl19_behavior_169:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_169
+  boss: false
 
 lvl19_behavior_199:
   name: "&cGegner Lvl 19"
@@ -4636,6 +4768,7 @@ lvl19_behavior_199:
   xp: 134
   lootTable: dungeon_mobs
   behaviorTree: lvl19_behavior_199
+  boss: false
 
 lvl20_behavior_020:
   name: "&cGegner Lvl 20"
@@ -4651,6 +4784,7 @@ lvl20_behavior_020:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_020
+  boss: false
 
 lvl20_behavior_050:
   name: "&cGegner Lvl 20"
@@ -4666,6 +4800,7 @@ lvl20_behavior_050:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_050
+  boss: false
 
 lvl20_behavior_080:
   name: "&cGegner Lvl 20"
@@ -4681,6 +4816,7 @@ lvl20_behavior_080:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_080
+  boss: false
 
 lvl20_behavior_110:
   name: "&cGegner Lvl 20"
@@ -4696,6 +4832,7 @@ lvl20_behavior_110:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_110
+  boss: false
 
 lvl20_behavior_140:
   name: "&cGegner Lvl 20"
@@ -4711,6 +4848,7 @@ lvl20_behavior_140:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_140
+  boss: false
 
 lvl20_behavior_170:
   name: "&cGegner Lvl 20"
@@ -4726,6 +4864,7 @@ lvl20_behavior_170:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_170
+  boss: false
 
 lvl20_behavior_200:
   name: "&cGegner Lvl 20"
@@ -4741,6 +4880,7 @@ lvl20_behavior_200:
   xp: 140
   lootTable: dungeon_mobs
   behaviorTree: lvl20_behavior_200
+  boss: false
 
 lvl21_behavior_021:
   name: "&cGegner Lvl 21"
@@ -4756,6 +4896,7 @@ lvl21_behavior_021:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_021
+  boss: false
 
 lvl21_behavior_051:
   name: "&cGegner Lvl 21"
@@ -4771,6 +4912,7 @@ lvl21_behavior_051:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_051
+  boss: false
 
 lvl21_behavior_081:
   name: "&cGegner Lvl 21"
@@ -4786,6 +4928,7 @@ lvl21_behavior_081:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_081
+  boss: false
 
 lvl21_behavior_111:
   name: "&cGegner Lvl 21"
@@ -4801,6 +4944,7 @@ lvl21_behavior_111:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_111
+  boss: false
 
 lvl21_behavior_141:
   name: "&cGegner Lvl 21"
@@ -4816,6 +4960,7 @@ lvl21_behavior_141:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_141
+  boss: false
 
 lvl21_behavior_171:
   name: "&cGegner Lvl 21"
@@ -4831,6 +4976,7 @@ lvl21_behavior_171:
   xp: 146
   lootTable: elite_mobs
   behaviorTree: lvl21_behavior_171
+  boss: false
 
 lvl22_behavior_022:
   name: "&cGegner Lvl 22"
@@ -4846,6 +4992,7 @@ lvl22_behavior_022:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_022
+  boss: false
 
 lvl22_behavior_052:
   name: "&cGegner Lvl 22"
@@ -4861,6 +5008,7 @@ lvl22_behavior_052:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_052
+  boss: false
 
 lvl22_behavior_082:
   name: "&cGegner Lvl 22"
@@ -4876,6 +5024,7 @@ lvl22_behavior_082:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_082
+  boss: false
 
 lvl22_behavior_112:
   name: "&cGegner Lvl 22"
@@ -4891,6 +5040,7 @@ lvl22_behavior_112:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_112
+  boss: false
 
 lvl22_behavior_142:
   name: "&cGegner Lvl 22"
@@ -4906,6 +5056,7 @@ lvl22_behavior_142:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_142
+  boss: false
 
 lvl22_behavior_172:
   name: "&cGegner Lvl 22"
@@ -4921,6 +5072,7 @@ lvl22_behavior_172:
   xp: 152
   lootTable: elite_mobs
   behaviorTree: lvl22_behavior_172
+  boss: false
 
 lvl23_behavior_023:
   name: "&cGegner Lvl 23"
@@ -4936,6 +5088,7 @@ lvl23_behavior_023:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_023
+  boss: false
 
 lvl23_behavior_053:
   name: "&cGegner Lvl 23"
@@ -4951,6 +5104,7 @@ lvl23_behavior_053:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_053
+  boss: false
 
 lvl23_behavior_083:
   name: "&cGegner Lvl 23"
@@ -4966,6 +5120,7 @@ lvl23_behavior_083:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_083
+  boss: false
 
 lvl23_behavior_113:
   name: "&cGegner Lvl 23"
@@ -4981,6 +5136,7 @@ lvl23_behavior_113:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_113
+  boss: false
 
 lvl23_behavior_143:
   name: "&cGegner Lvl 23"
@@ -4996,6 +5152,7 @@ lvl23_behavior_143:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_143
+  boss: false
 
 lvl23_behavior_173:
   name: "&cGegner Lvl 23"
@@ -5011,6 +5168,7 @@ lvl23_behavior_173:
   xp: 158
   lootTable: elite_mobs
   behaviorTree: lvl23_behavior_173
+  boss: false
 
 lvl24_behavior_024:
   name: "&cGegner Lvl 24"
@@ -5026,6 +5184,7 @@ lvl24_behavior_024:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_024
+  boss: false
 
 lvl24_behavior_054:
   name: "&cGegner Lvl 24"
@@ -5041,6 +5200,7 @@ lvl24_behavior_054:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_054
+  boss: false
 
 lvl24_behavior_084:
   name: "&cGegner Lvl 24"
@@ -5056,6 +5216,7 @@ lvl24_behavior_084:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_084
+  boss: false
 
 lvl24_behavior_114:
   name: "&cGegner Lvl 24"
@@ -5071,6 +5232,7 @@ lvl24_behavior_114:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_114
+  boss: false
 
 lvl24_behavior_144:
   name: "&cGegner Lvl 24"
@@ -5086,6 +5248,7 @@ lvl24_behavior_144:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_144
+  boss: false
 
 lvl24_behavior_174:
   name: "&cGegner Lvl 24"
@@ -5101,6 +5264,7 @@ lvl24_behavior_174:
   xp: 164
   lootTable: elite_mobs
   behaviorTree: lvl24_behavior_174
+  boss: false
 
 lvl25_behavior_025:
   name: "&cGegner Lvl 25"
@@ -5116,6 +5280,7 @@ lvl25_behavior_025:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_025
+  boss: false
 
 lvl25_behavior_055:
   name: "&cGegner Lvl 25"
@@ -5131,6 +5296,7 @@ lvl25_behavior_055:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_055
+  boss: false
 
 lvl25_behavior_085:
   name: "&cGegner Lvl 25"
@@ -5146,6 +5312,7 @@ lvl25_behavior_085:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_085
+  boss: false
 
 lvl25_behavior_115:
   name: "&cGegner Lvl 25"
@@ -5161,6 +5328,7 @@ lvl25_behavior_115:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_115
+  boss: false
 
 lvl25_behavior_145:
   name: "&cGegner Lvl 25"
@@ -5176,6 +5344,7 @@ lvl25_behavior_145:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_145
+  boss: false
 
 lvl25_behavior_175:
   name: "&cGegner Lvl 25"
@@ -5191,6 +5360,7 @@ lvl25_behavior_175:
   xp: 170
   lootTable: elite_mobs
   behaviorTree: lvl25_behavior_175
+  boss: false
 
 lvl26_behavior_026:
   name: "&cGegner Lvl 26"
@@ -5206,6 +5376,7 @@ lvl26_behavior_026:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_026
+  boss: false
 
 lvl26_behavior_056:
   name: "&cGegner Lvl 26"
@@ -5221,6 +5392,7 @@ lvl26_behavior_056:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_056
+  boss: false
 
 lvl26_behavior_086:
   name: "&cGegner Lvl 26"
@@ -5236,6 +5408,7 @@ lvl26_behavior_086:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_086
+  boss: false
 
 lvl26_behavior_116:
   name: "&cGegner Lvl 26"
@@ -5251,6 +5424,7 @@ lvl26_behavior_116:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_116
+  boss: false
 
 lvl26_behavior_146:
   name: "&cGegner Lvl 26"
@@ -5266,6 +5440,7 @@ lvl26_behavior_146:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_146
+  boss: false
 
 lvl26_behavior_176:
   name: "&cGegner Lvl 26"
@@ -5281,6 +5456,7 @@ lvl26_behavior_176:
   xp: 176
   lootTable: elite_mobs
   behaviorTree: lvl26_behavior_176
+  boss: false
 
 lvl27_behavior_027:
   name: "&cGegner Lvl 27"
@@ -5296,6 +5472,7 @@ lvl27_behavior_027:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_027
+  boss: false
 
 lvl27_behavior_057:
   name: "&cGegner Lvl 27"
@@ -5311,6 +5488,7 @@ lvl27_behavior_057:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_057
+  boss: false
 
 lvl27_behavior_087:
   name: "&cGegner Lvl 27"
@@ -5326,6 +5504,7 @@ lvl27_behavior_087:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_087
+  boss: false
 
 lvl27_behavior_117:
   name: "&cGegner Lvl 27"
@@ -5341,6 +5520,7 @@ lvl27_behavior_117:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_117
+  boss: false
 
 lvl27_behavior_147:
   name: "&cGegner Lvl 27"
@@ -5356,6 +5536,7 @@ lvl27_behavior_147:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_147
+  boss: false
 
 lvl27_behavior_177:
   name: "&cGegner Lvl 27"
@@ -5371,6 +5552,7 @@ lvl27_behavior_177:
   xp: 182
   lootTable: elite_mobs
   behaviorTree: lvl27_behavior_177
+  boss: false
 
 lvl28_behavior_028:
   name: "&cGegner Lvl 28"
@@ -5386,6 +5568,7 @@ lvl28_behavior_028:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_028
+  boss: false
 
 lvl28_behavior_058:
   name: "&cGegner Lvl 28"
@@ -5401,6 +5584,7 @@ lvl28_behavior_058:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_058
+  boss: false
 
 lvl28_behavior_088:
   name: "&cGegner Lvl 28"
@@ -5416,6 +5600,7 @@ lvl28_behavior_088:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_088
+  boss: false
 
 lvl28_behavior_118:
   name: "&cGegner Lvl 28"
@@ -5431,6 +5616,7 @@ lvl28_behavior_118:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_118
+  boss: false
 
 lvl28_behavior_148:
   name: "&cGegner Lvl 28"
@@ -5446,6 +5632,7 @@ lvl28_behavior_148:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_148
+  boss: false
 
 lvl28_behavior_178:
   name: "&cGegner Lvl 28"
@@ -5461,6 +5648,7 @@ lvl28_behavior_178:
   xp: 188
   lootTable: elite_mobs
   behaviorTree: lvl28_behavior_178
+  boss: false
 
 lvl29_behavior_029:
   name: "&cGegner Lvl 29"
@@ -5476,6 +5664,7 @@ lvl29_behavior_029:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_029
+  boss: false
 
 lvl29_behavior_059:
   name: "&cGegner Lvl 29"
@@ -5491,6 +5680,7 @@ lvl29_behavior_059:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_059
+  boss: false
 
 lvl29_behavior_089:
   name: "&cGegner Lvl 29"
@@ -5506,6 +5696,7 @@ lvl29_behavior_089:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_089
+  boss: false
 
 lvl29_behavior_119:
   name: "&cGegner Lvl 29"
@@ -5521,6 +5712,7 @@ lvl29_behavior_119:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_119
+  boss: false
 
 lvl29_behavior_149:
   name: "&cGegner Lvl 29"
@@ -5536,6 +5728,7 @@ lvl29_behavior_149:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_149
+  boss: false
 
 lvl29_behavior_179:
   name: "&cGegner Lvl 29"
@@ -5551,6 +5744,7 @@ lvl29_behavior_179:
   xp: 194
   lootTable: elite_mobs
   behaviorTree: lvl29_behavior_179
+  boss: false
 
 lvl30_behavior_030:
   name: "&cGegner Lvl 30"
@@ -5566,6 +5760,7 @@ lvl30_behavior_030:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_030
+  boss: false
 
 lvl30_behavior_060:
   name: "&cGegner Lvl 30"
@@ -5581,6 +5776,7 @@ lvl30_behavior_060:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_060
+  boss: false
 
 lvl30_behavior_090:
   name: "&cGegner Lvl 30"
@@ -5596,6 +5792,7 @@ lvl30_behavior_090:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_090
+  boss: false
 
 lvl30_behavior_120:
   name: "&cGegner Lvl 30"
@@ -5611,6 +5808,7 @@ lvl30_behavior_120:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_120
+  boss: false
 
 lvl30_behavior_150:
   name: "&cGegner Lvl 30"
@@ -5626,6 +5824,7 @@ lvl30_behavior_150:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_150
+  boss: false
 
 lvl30_behavior_180:
   name: "&cGegner Lvl 30"
@@ -5641,3 +5840,4 @@ lvl30_behavior_180:
   xp: 200
   lootTable: elite_mobs
   behaviorTree: lvl30_behavior_180
+  boss: false

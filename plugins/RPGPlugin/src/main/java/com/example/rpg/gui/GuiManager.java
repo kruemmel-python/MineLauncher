@@ -261,10 +261,13 @@ public class GuiManager {
         int slot = 0;
         for (int i = startIndex; i < materials.size() && slot < pageSize; i++) {
             Material material = materials.get(i);
-            ItemStack item = new ItemBuilder(material)
-                .name(Text.mm("<yellow>" + material.name()))
-                .loreLine(Text.mm("<gray>Klick: Bereich füllen"))
-                .build();
+            ItemStack item = new ItemStack(material);
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null) {
+                meta.displayName(Text.mm("<yellow>" + material.name()));
+                meta.lore(List.of(Text.mm("<gray>Klick: Bereich füllen")));
+                item.setItemMeta(meta);
+            }
             inv.setItem(slot++, item);
         }
         inv.setItem(45, new ItemBuilder(Material.ARROW)

@@ -33,6 +33,30 @@ public final class GuiHolders {
         }
     }
 
+    public static final class WorldBuildingHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class BlockFillHolder implements InventoryHolder {
+        private final int page;
+
+        public BlockFillHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     public static final class ZoneEditorHolder implements InventoryHolder {
         private final int page;
 

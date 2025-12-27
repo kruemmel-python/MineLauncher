@@ -25,6 +25,8 @@ import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -184,6 +186,10 @@ public class GuiManager {
             .name(Text.mm("<gold>Dungeons"))
             .loreLine(Text.mm("<gray>Dungeon-Generator"))
             .build());
+        inv.setItem(19, new ItemBuilder(Material.GOLDEN_PICKAXE)
+            .name(Text.mm("<gold>Worldbuilding"))
+            .loreLine(Text.mm("<gray>Wand & Area-Fill"))
+            .build());
         player.openInventory(inv);
     }
 
@@ -226,6 +232,64 @@ public class GuiManager {
             .loreLine(Text.mm("<gray>Admin-Menü"))
             .build());
         player.openInventory(inv);
+    }
+
+    public void openWorldBuildingMenu(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.WorldBuildingHolder(), 27, Component.text("Worldbuilding"));
+        inv.setItem(11, new ItemBuilder(Material.STICK)
+            .name(Text.mm("<gold>Wand Tool"))
+            .loreLine(Text.mm("<gray>Pos1/Pos2 setzen"))
+            .build());
+        inv.setItem(13, new ItemBuilder(Material.BRICKS)
+            .name(Text.mm("<green>Bereich füllen"))
+            .loreLine(Text.mm("<gray>Block auswählen"))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Zurück"))
+            .loreLine(Text.mm("<gray>Admin-Menü"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openBlockFillMenu(Player player, int page) {
+        List<Material> materials = fillMaterials();
+        int pageSize = 45;
+        int maxPage = materials.isEmpty() ? 0 : (materials.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.BlockFillHolder(safePage), 54, Component.text("Block auswählen"));
+        int startIndex = safePage * pageSize;
+        int slot = 0;
+        for (int i = startIndex; i < materials.size() && slot < pageSize; i++) {
+            Material material = materials.get(i);
+            ItemStack item = new ItemStack(material);
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null) {
+                meta.displayName(Text.mm("<yellow>" + material.name()));
+                meta.lore(List.of(Text.mm("<gray>Klick: Bereich füllen")));
+                item.setItemMeta(meta);
+            }
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.BARRIER)
+            .name(Text.mm("<red>Zurück"))
+            .loreLine(Text.mm("<gray>Worldbuilding"))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        player.openInventory(inv);
+    }
+
+    private List<Material> fillMaterials() {
+        return Arrays.stream(Material.values())
+            .filter(Material::isBlock)
+            .sorted(Comparator.comparing(Material::name))
+            .toList();
     }
 
     public void openZoneEditor(Player player) {

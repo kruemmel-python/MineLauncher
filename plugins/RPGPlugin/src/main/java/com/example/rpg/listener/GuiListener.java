@@ -19,6 +19,7 @@ import com.example.rpg.model.SkillType;
 import com.example.rpg.schematic.Transform;
 import com.example.rpg.skill.SkillEffectConfig;
 import com.example.rpg.skill.SkillEffectType;
+import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
 import java.util.List;
 import java.util.Locale;
@@ -81,9 +82,48 @@ public class GuiListener implements Listener {
                 case 16 -> plugin.guiManager().openBuildingCategories(player);
                 case 17 -> plugin.guiManager().openPermissionsMain(player);
                 case 18 -> plugin.guiManager().openDungeonAdmin(player);
+                case 19 -> plugin.guiManager().openWorldBuildingMenu(player);
                 default -> {
                 }
             }
+            return;
+        }
+        if (holder instanceof GuiHolders.WorldBuildingHolder) {
+            event.setCancelled(true);
+            switch (event.getSlot()) {
+                case 11 -> giveWand(player);
+                case 13 -> plugin.guiManager().openBlockFillMenu(player, 0);
+                case 22 -> plugin.guiManager().openAdminMenu(player);
+                default -> {
+                }
+            }
+            return;
+        }
+        if (holder instanceof GuiHolders.BlockFillHolder fillHolder) {
+            event.setCancelled(true);
+            int page = fillHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openBlockFillMenu(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openBlockFillMenu(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
+                plugin.guiManager().openWorldBuildingMenu(player);
+                return;
+            }
+            ItemStack item = event.getCurrentItem();
+            if (item == null) {
+                return;
+            }
+            Material material = item.getType();
+            if (!material.isBlock()) {
+                return;
+            }
+            fillSelection(player, material);
+            plugin.guiManager().openBlockFillMenu(player, page);
             return;
         }
         if (holder instanceof GuiHolders.DungeonAdminHolder) {
@@ -1415,6 +1455,45 @@ public class GuiListener implements Listener {
         player.sendMessage(Text.mm("<gray>Beispiele: <white>start_room.schem, boss_room.schem</white>"));
         player.sendMessage(Text.mm("<gray>Jigsaw-Socket: <white>name = corridor_ns</white>"));
         player.sendMessage(Text.mm("<gray>WFC-Patterns: <white>plugins/RPGPlugin/wfc/<theme>/</white>"));
+    }
+
+    private void giveWand(Player player) {
+        ItemStack wand = new ItemBuilder(Material.STICK)
+            .name(Text.mm("<yellow>Editor Wand"))
+            .loreLine(Text.mm("<gray>Links: Pos1, Rechts: Pos2"))
+            .build();
+        var meta = wand.getItemMeta();
+        meta.getPersistentDataContainer().set(plugin.wandKey(), PersistentDataType.BYTE, (byte) 1);
+        wand.setItemMeta(meta);
+        player.getInventory().addItem(wand);
+        player.sendMessage(Text.mm("<green>Editor Wand erhalten."));
+    }
+
+    private void fillSelection(Player player, Material material) {
+        Location pos1 = readPosition(player, "pos1");
+        Location pos2 = readPosition(player, "pos2");
+        if (pos1 == null || pos2 == null) {
+            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+            return;
+        }
+        if (!pos1.getWorld().equals(pos2.getWorld())) {
+            player.sendMessage(Text.mm("<red>Pos1/Pos2 müssen in derselben Welt sein."));
+            return;
+        }
+        int minX = Math.min(pos1.getBlockX(), pos2.getBlockX());
+        int minY = Math.min(pos1.getBlockY(), pos2.getBlockY());
+        int minZ = Math.min(pos1.getBlockZ(), pos2.getBlockZ());
+        int maxX = Math.max(pos1.getBlockX(), pos2.getBlockX());
+        int maxY = Math.max(pos1.getBlockY(), pos2.getBlockY());
+        int maxZ = Math.max(pos1.getBlockZ(), pos2.getBlockZ());
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y <= maxY; y++) {
+                for (int z = minZ; z <= maxZ; z++) {
+                    pos1.getWorld().getBlockAt(x, y, z).setType(material, false);
+                }
+            }
+        }
+        player.sendMessage(Text.mm("<green>Bereich gefüllt mit: " + material.name()));
     }
 
     private Quest resolveQuest(ItemStack item) {

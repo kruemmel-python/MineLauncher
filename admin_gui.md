@@ -164,6 +164,18 @@ Im NPC-Editor findest du fertige **Shop-Vorlagen** in der unteren Reihe. So nutz
      ```
      move
      ```
+     -> setzt den NPC an deine aktuelle Position und spawnt ihn dort neu.
+
+### Vorhandenen NPC am aktuellen Ort spawnen
+Wenn ein NPC bereits existiert und du ihn an deiner aktuellen Position platzieren willst:
+
+1. Öffne den **NPC-Editor**.
+2. **Linksklick** auf den gewünschten NPC.
+3. Gib im Chat ein:
+   ```
+   move
+   ```
+4. Der NPC wird **neu gespawnt** und steht danach an deiner aktuellen Position.
 
 ### NPC löschen
 - **Rechtsklick** auf einen NPC.

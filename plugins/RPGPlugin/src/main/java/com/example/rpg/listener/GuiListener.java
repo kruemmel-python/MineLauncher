@@ -16,6 +16,7 @@ import com.example.rpg.model.Rarity;
 import com.example.rpg.model.Skill;
 import com.example.rpg.model.SkillCategory;
 import com.example.rpg.model.SkillType;
+import com.example.rpg.schematic.Transform;
 import com.example.rpg.skill.SkillEffectConfig;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.util.Text;
@@ -30,12 +31,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.Sound;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 
 public class GuiListener implements Listener {
     private final RPGPlugin plugin;
@@ -88,9 +89,11 @@ public class GuiListener implements Listener {
         if (holder instanceof GuiHolders.DungeonAdminHolder) {
             event.setCancelled(true);
             switch (event.getSlot()) {
+                case 9 -> promptSchematicPlacement(player);
                 case 11 -> toggleDungeonSetting(player, "dungeon.jigsaw.enabled");
                 case 13 -> toggleDungeonSetting(player, "dungeon.jigsaw.wfcFill");
                 case 15 -> promptDungeonTheme(player);
+                case 17 -> sendDungeonSetupInfo(player);
                 case 22 -> plugin.guiManager().openAdminMenu(player);
                 default -> {
                 }
@@ -1368,6 +1371,27 @@ public class GuiListener implements Listener {
             player.sendMessage(Text.mm("<green>Dungeon-Generierung gestartet: " + theme));
             plugin.guiManager().openDungeonAdmin(player);
         });
+    }
+
+    private void promptSchematicPlacement(Player player) {
+        plugin.promptManager().prompt(player, Text.mm("<yellow>Schematic-Dateiname (z.B. start_room.schem):"), input -> {
+            String name = input.trim();
+            if (name.isBlank()) {
+                player.sendMessage(Text.mm("<red>Dateiname darf nicht leer sein."));
+                return;
+            }
+            plugin.buildingManager().beginSingleSchematicPlacement(player, name, Transform.Rotation.NONE);
+            player.sendMessage(Text.mm("<green>Platzierungsmodus aktiv für: " + name));
+            player.sendMessage(Text.mm("<gray>Rechtsklick auf einen Block zum Platzieren."));
+        });
+    }
+
+    private void sendDungeonSetupInfo(Player player) {
+        player.sendMessage(Text.mm("<gold>Dungeon Setup (Kurzinfo)</gold>"));
+        player.sendMessage(Text.mm("<gray>Schematics: <white>plugins/RPGPlugin/dungeon_rooms/<theme>/</white>"));
+        player.sendMessage(Text.mm("<gray>Beispiele: <white>start_room.schem, boss_room.schem</white>"));
+        player.sendMessage(Text.mm("<gray>Jigsaw-Socket: <white>name = corridor_ns</white>"));
+        player.sendMessage(Text.mm("<gray>WFC-Patterns: <white>plugins/RPGPlugin/wfc/<theme>/</white>"));
     }
 
     private Quest resolveQuest(ItemStack item) {

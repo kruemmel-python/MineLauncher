@@ -69,6 +69,7 @@ dungeon:
 3. Stelle ein:
    - **Jigsaw Modus** → an/aus  
    - **WFC Raum‑Füllung** → an/aus  
+   - **Schematic platzieren** → platziert einzelne `.schem` direkt im Spiel (Rechtsklick zum Setzen)
 4. Klicke **„Dungeon generieren“** und gib ein Theme ein (z. B. `crypt`).
 
 Der Dungeon wird sofort generiert und du wirst in die Instanz teleportiert.
@@ -90,6 +91,9 @@ Lege sie in:
 ```
 plugins/RPGPlugin/dungeon_rooms/crypt/
 ```
+
+> **Hinweis:** Zum Platzieren einzelner Schemata im Spiel kannst du
+> im `/rpgadmin`‑Menü unter **Dungeons** den Punkt **„Schematic platzieren“** nutzen.
 
 ### Schritt 2: Jigsaw‑Sockets setzen
 In jedem Raum an Türen Jigsaw‑Blöcke setzen:

@@ -191,6 +191,11 @@ public class GuiManager {
         Inventory inv = Bukkit.createInventory(new GuiHolders.DungeonAdminHolder(), 27, Component.text("Dungeon Admin"));
         boolean jigsawEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.enabled", false);
         boolean wfcFillEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.wfcFill", false);
+        inv.setItem(9, new ItemBuilder(Material.STRUCTURE_BLOCK)
+            .name(Text.mm("<gold>Schematic platzieren"))
+            .loreLine(Text.mm("<gray>Einzelnes .schem setzen"))
+            .loreLine(Text.mm("<yellow>Klick: Dateiname eingeben"))
+            .build());
         inv.setItem(11, new ItemBuilder(Material.JIGSAW)
             .name(Text.mm("<gold>Jigsaw Modus"))
             .loreLine(Text.mm("<gray>Status: <white>" + (jigsawEnabled ? "Aktiv" : "Inaktiv") + "</white>"))
@@ -205,6 +210,11 @@ public class GuiManager {
             .name(Text.mm("<aqua>Dungeon generieren"))
             .loreLine(Text.mm("<gray>Erstellt eine neue Instanz"))
             .loreLine(Text.mm("<yellow>Klick: Theme angeben"))
+            .build());
+        inv.setItem(17, new ItemBuilder(Material.BOOK)
+            .name(Text.mm("<yellow>Setup-Info"))
+            .loreLine(Text.mm("<gray>Ordner & Socket-Hilfe"))
+            .loreLine(Text.mm("<yellow>Klick: Chat-Info"))
             .build());
         inv.setItem(22, new ItemBuilder(Material.ARROW)
             .name(Text.mm("<yellow>Zurück"))

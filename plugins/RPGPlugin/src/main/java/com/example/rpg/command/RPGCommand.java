@@ -137,7 +137,7 @@ public class RPGCommand implements CommandExecutor {
 
     private void handleBind(Player player, String[] args) {
         if (args.length < 3) {
-            player.sendMessage(Text.mm("<gray>/rpg bind <slot 1-9> <skillId>"));
+            player.sendMessage(Text.mm("<gray>/rpg bind <slot 1-9> <skillId|Skillname>"));
             return;
         }
         Integer slot;
@@ -151,12 +151,13 @@ public class RPGCommand implements CommandExecutor {
             player.sendMessage(Text.mm("<red>Slot muss 1-9 sein."));
             return;
         }
-        String skillId = args[2].toLowerCase();
-        Skill skill = plugin.skillManager().getSkill(skillId);
+        String input = String.join(" ", java.util.Arrays.copyOfRange(args, 2, args.length));
+        Skill skill = resolveSkillByIdOrName(input);
         if (skill == null) {
-            player.sendMessage(Text.mm("<red>Unbekannter Skill."));
+            player.sendMessage(Text.mm("<red>Unbekannter Skill: " + input));
             return;
         }
+        String skillId = skill.id().toLowerCase();
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         if (!profile.learnedSkills().containsKey(skillId)) {
             player.sendMessage(Text.mm("<red>Skill nicht gelernt."));
@@ -164,6 +165,20 @@ public class RPGCommand implements CommandExecutor {
         }
         plugin.skillHotbarManager().bindSkill(profile, slot, skillId);
         player.sendMessage(Text.mm("<green>Skill gebunden: Slot " + slot + " -> " + skill.name()));
+    }
+
+    private Skill resolveSkillByIdOrName(String input) {
+        String normalized = input.trim().toLowerCase();
+        Skill skill = plugin.skillManager().getSkill(normalized);
+        if (skill != null) {
+            return skill;
+        }
+        for (Skill entry : plugin.skillManager().skills().values()) {
+            if (entry.name() != null && entry.name().trim().equalsIgnoreCase(input.trim())) {
+                return entry;
+            }
+        }
+        return null;
     }
 
     private void handleMoney(Player player) {

@@ -1,0 +1,121 @@
+boss_zombie:
+  name: "§cSeuchenbringer"
+  type: "ZOMBIE"
+  health: 60
+  damage: 8
+  mainHand: "IRON_SWORD"
+  helmet: "IRON_HELMET"
+  skills:
+    - ember_shot
+    - whirlwind
+  skillIntervalSeconds: 10
+  xp: 120
+  lootTable: "forest_mobs"
+  boss: true
+skeleton_king:
+  name: "§cSkelettkönig"
+  type: "SKELETON"
+  health: 80
+  damage: 10
+  mainHand: "DIAMOND_SWORD"
+  helmet: "GOLDEN_HELMET"
+  skills:
+    - shield_wall
+    - ember_shot
+  skillIntervalSeconds: 8
+  xp: 180
+  lootTable: "undead_mobs"
+  behaviorTree: "skeleton_king"
+  boss: true
+forest_bandit:
+  name: "§eWaldbandit"
+  type: "PILLAGER"
+  health: 36
+  damage: 6
+  mainHand: "CROSSBOW"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - quick_shot
+  skillIntervalSeconds: 12
+  xp: 70
+  lootTable: "bandit_mobs"
+  boss: false
+forest_scout:
+  name: "§aWaldspäher"
+  type: "ZOMBIE"
+  health: 28
+  damage: 5
+  mainHand: "STONE_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - bleed_strike
+  skillIntervalSeconds: 14
+  xp: 55
+  lootTable: "forest_mobs"
+  boss: false
+swamp_witch:
+  name: "§5Sumpfhexe"
+  type: "WITCH"
+  health: 30
+  damage: 4
+  mainHand: "STICK"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - poison_cloud
+    - swamp_snare
+  skillIntervalSeconds: 10
+  xp: 85
+  lootTable: "swamp_mobs"
+  boss: false
+cave_spider:
+  name: "§2Höhlenspinne"
+  type: "CAVE_SPIDER"
+  health: 24
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - venom_bite
+  skillIntervalSeconds: 16
+  xp: 50
+  lootTable: "spider_mobs"
+  boss: false
+frost_wolf:
+  name: "§bFrostwolf"
+  type: "WOLF"
+  health: 34
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_howl
+  skillIntervalSeconds: 12
+  xp: 75
+  lootTable: "frost_mobs"
+  boss: false
+drowned_pirate:
+  name: "§3Ertrunkener Freibeuter"
+  type: "DROWNED"
+  health: 32
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: "CHAINMAIL_HELMET"
+  skills:
+    - tidal_strike
+  skillIntervalSeconds: 12
+  xp: 80
+  lootTable: "coast_mobs"
+  boss: false
+phantom_lord:
+  name: "§dPhantomfürst"
+  type: "PHANTOM"
+  health: 40
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - screech
+  skillIntervalSeconds: 10
+  xp: 110
+  lootTable: "sky_mobs"
+  boss: true

@@ -1,0 +1,144 @@
+forest_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.5
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "EMERALD"
+      chance: 0.12
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+undead_mobs:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "BONE"
+      chance: 0.6
+      minAmount: 1
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "ARROW"
+      chance: 0.4
+      minAmount: 2
+      maxAmount: 6
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.2
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "DIAMOND"
+      chance: 0.05
+      minAmount: 1
+      maxAmount: 1
+      rarity: "EPIC"
+bandit_mobs:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "ARROW"
+      chance: 0.55
+      minAmount: 2
+      maxAmount: 8
+      rarity: "COMMON"
+    - material: "IRON_INGOT"
+      chance: 0.2
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+    - material: "CROSSBOW"
+      chance: 0.08
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+spider_mobs:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "STRING"
+      chance: 0.7
+      minAmount: 1
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "SPIDER_EYE"
+      chance: 0.3
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+swamp_mobs:
+  appliesTo: "WITCH"
+  entries:
+    - material: "GLASS_BOTTLE"
+      chance: 0.5
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "GHAST_TEAR"
+      chance: 0.08
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+coast_mobs:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.55
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "COPPER_INGOT"
+      chance: 0.25
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+    - material: "TRIDENT"
+      chance: 0.03
+      minAmount: 1
+      maxAmount: 1
+      rarity: "LEGENDARY"
+frost_mobs:
+  appliesTo: "WOLF"
+  entries:
+    - material: "BONE"
+      chance: 0.4
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "SNOWBALL"
+      chance: 0.4
+      minAmount: 2
+      maxAmount: 6
+      rarity: "COMMON"
+    - material: "PACKED_ICE"
+      chance: 0.12
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+sky_mobs:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "PHANTOM_MEMBRANE"
+      chance: 0.6
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "FEATHER"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "ELYTRA"
+      chance: 0.01
+      minAmount: 1
+      maxAmount: 1
+      rarity: "LEGENDARY"

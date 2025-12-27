@@ -1,0 +1,220 @@
+NPC_Wache:
+  name: "Wache Arik"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 5.5
+  y: 64.0
+  z: -12.5
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Halt, Reisender! Die Straßen sind gefährlich."
+    - "Wenn du helfen willst, sprich mich an."
+  questLink: "q001"
+  factionId: "guard"
+  dialogueNodes:
+    - id: "start"
+      text: "Wir brauchen Hilfe bei der Stadtwache."
+      options:
+        - text: "Hast du eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q001"
+        - text: "Vielleicht später."
+          nextId: "end"
+    - id: "quest"
+      text: "Berichte mir, sobald du den Auftrag erledigt hast."
+      options:
+        - text: "Alles klar."
+          nextId: "end"
+NPC_Schmied:
+  name: "Schmiedin Branna"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -4.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Gutes Werkzeug ist die halbe Miete."
+    - "Bring mir Materialien, dann schmiede ich dir Ausrüstung."
+  questLink: "q005"
+  shopId: "blacksmith_shop"
+  dialogueNodes:
+    - id: "start"
+      text: "Meine Esse glüht heiß."
+      options:
+        - text: "Ich brauche Ausrüstung."
+          nextId: "shop"
+        - text: "Hast du Arbeit?"
+          nextId: "quest"
+          grantQuestId: "q005"
+    - id: "shop"
+      text: "Sieh dich um, ich habe gute Klingen."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Bring mir die Materialien, dann bist du versorgt."
+      options:
+        - text: "Ich kümmere mich darum."
+          nextId: "end"
+NPC_Heilerin:
+  name: "Heilerin Liora"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: -8.0
+  y: 64.0
+  z: -6.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Bleib ruhig, ich kann dich versorgen."
+    - "Die Kräuter hier sind kostbar."
+  questLink: "q004"
+  shopId: "healer_supplies"
+  dialogueNodes:
+    - id: "start"
+      text: "Du siehst erschöpft aus."
+      options:
+        - text: "Hast du Heiltränke?"
+          nextId: "shop"
+        - text: "Gibt es eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q004"
+    - id: "shop"
+      text: "Hier sind ein paar Vorräte."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Wir brauchen mehr Heiltränke für die Wache."
+      options:
+        - text: "Ich bringe welche."
+          nextId: "end"
+NPC_Haendler:
+  name: "Händler Viko"
+  role: "VENDOR"
+  world: "world"
+  x: 18.5
+  y: 64.0
+  z: 6.5
+  yaw: -90.0
+  pitch: 0.0
+  dialog:
+    - "Frische Ware aus allen Regionen!"
+    - "Suchst du etwas Bestimmtes?"
+  questLink: "q008"
+  shopId: "general_goods"
+  dialogueNodes:
+    - id: "start"
+      text: "Willkommen bei meinen Ständen."
+      options:
+        - text: "Zeig mir deine Waren."
+          nextId: "shop"
+        - text: "Brauchst du Hilfe?"
+          nextId: "quest"
+          grantQuestId: "q008"
+    - id: "shop"
+      text: "Greif zu, solange der Vorrat reicht."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Begleite die nächste Karawane sicher."
+      options:
+        - text: "Ich mache mich bereit."
+          nextId: "end"
+NPC_Buergermeister:
+  name: "Bürgermeisterin Elara"
+  role: "QUESTGIVER"
+  world: "world"
+  x: -2.0
+  y: 64.0
+  z: 10.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Unsere Stadt braucht tapfere Helfer."
+    - "Sprich mit mir, wenn du etwas suchst."
+  questLink: "q020"
+  factionId: "council"
+  dialogueNodes:
+    - id: "start"
+      text: "Die Lage in den Außenposten ist angespannt."
+      options:
+        - text: "Wie kann ich helfen?"
+          nextId: "quest"
+          grantQuestId: "q020"
+        - text: "Ich schaue später vorbei."
+          nextId: "end"
+    - id: "quest"
+      text: "Sichere die Routen und bringe Bericht."
+      options:
+        - text: "Verstanden."
+          nextId: "end"
+NPC_Gelehrter:
+  name: "Gelehrter Milo"
+  role: "TRAINER"
+  world: "world"
+  x: -15.0
+  y: 64.0
+  z: 3.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Wissen ist die schärfste Waffe."
+    - "Ich kann dir mehr über die Ruinen erzählen."
+  questLink: "q012"
+  dialogueNodes:
+    - id: "start"
+      text: "Die alten Ruinen bergen viele Geheimnisse."
+      options:
+        - text: "Erzähl mir mehr."
+          nextId: "lore"
+        - text: "Gibt es eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q012"
+    - id: "lore"
+      text: "Sei vorsichtig, manche Wege sind verflucht."
+      options:
+        - text: "Danke für die Warnung."
+          nextId: "end"
+    - id: "quest"
+      text: "Bringe mir alte Relikte aus den Ruinen."
+      options:
+        - text: "Ich mache mich auf den Weg."
+          nextId: "end"
+NPC_Alchemist:
+  name: "Alchemist Serap"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -18.0
+  yaw: 20.0
+  pitch: 0.0
+  dialog:
+    - "Ein Tropfen hiervon, und du fühlst dich wie neu."
+    - "Suchst du seltene Zutaten?"
+  questLink: "q014"
+  shopId: "alchemy_shop"
+  dialogueNodes:
+    - id: "start"
+      text: "Mein Labor duftet nach Magie."
+      options:
+        - text: "Zeig mir deine Tränke."
+          nextId: "shop"
+        - text: "Brauchst du Hilfe?"
+          nextId: "quest"
+          grantQuestId: "q014"
+    - id: "shop"
+      text: "Hier findest du stärkende Elixiere."
+      options:
+        - text: "Ich nehme welche."
+          nextId: "end"
+    - id: "quest"
+      text: "Bring mir seltene Kräuter aus dem Sumpf."
+      options:
+        - text: "Ich gehe sofort los."
+          nextId: "end"

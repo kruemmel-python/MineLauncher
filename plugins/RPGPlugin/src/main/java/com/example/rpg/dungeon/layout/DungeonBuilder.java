@@ -1,6 +1,10 @@
 package com.example.rpg.dungeon.layout;
 
 import com.example.rpg.RPGPlugin;
+import com.example.rpg.dungeon.wfc.RoomWfcFiller;
+import com.example.rpg.dungeon.wfc.WfcGenerator;
+import com.example.rpg.schematic.SchematicPaster;
+import com.example.rpg.schematic.Transform;
 import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,6 +18,8 @@ public class DungeonBuilder {
     private final DungeonDecorator decorator;
     private final SpawnPlacer spawnPlacer;
     private final LootPlacer lootPlacer;
+    private final SchematicPaster schematicPaster;
+    private final RoomWfcFiller roomWfcFiller;
 
     public DungeonBuilder(RPGPlugin plugin, Random random) {
         this.plugin = plugin;
@@ -21,13 +27,19 @@ public class DungeonBuilder {
         this.decorator = new DungeonDecorator();
         this.spawnPlacer = new SpawnPlacer(plugin, random);
         this.lootPlacer = new LootPlacer(random);
+        this.schematicPaster = new SchematicPaster(plugin);
+        this.roomWfcFiller = new RoomWfcFiller(plugin, new WfcGenerator(plugin));
     }
 
-    public void build(World world, DungeonPlan plan, DungeonSettings settings) {
+    public void build(World world, DungeonPlan plan, DungeonSettings settings, String theme) {
         BlockBuffer buffer = new BlockBuffer();
         for (Room room : plan.rooms()) {
-            carveRoom(buffer, room, settings);
-            decorator.decorateRoom(world, buffer, room, settings, random);
+            if (room.template() != null) {
+                pasteRoomStructure(world, room, settings, theme);
+            } else {
+                carveRoom(buffer, room, settings);
+                decorator.decorateRoom(world, buffer, room, settings, random);
+            }
         }
         for (Corridor corridor : plan.corridors()) {
             carveCorridor(buffer, corridor, plan.bounds(), settings);
@@ -85,6 +97,9 @@ public class DungeonBuilder {
     private void applyDoors(BlockBuffer buffer, DungeonPlan plan, DungeonSettings settings) {
         Material doorMaterial = settings.doorBlock();
         for (Room room : plan.rooms()) {
+            if (room.template() != null) {
+                continue;
+            }
             for (Location door : room.doorPoints()) {
                 int x = door.getBlockX();
                 int y = door.getBlockY();
@@ -114,6 +129,9 @@ public class DungeonBuilder {
             }
         }
         for (Room room : plan.rooms()) {
+            if (room.template() != null) {
+                continue;
+            }
             if (random.nextDouble() > settings.floodRoomChance()) {
                 continue;
             }
@@ -132,5 +150,27 @@ public class DungeonBuilder {
                 buffer.set(maxX, y, z, Material.WATER);
             }
         }
+    }
+
+    private void pasteRoomStructure(World world, Room room, DungeonSettings settings, String theme) {
+        var template = room.template();
+        if (template == null) {
+            return;
+        }
+        Location origin = new Location(world, room.bounds().getMinX(), room.bounds().getMinY(), room.bounds().getMinZ());
+        SchematicPaster.PasteOptions options = new SchematicPaster.PasteOptions(true, new Transform(Transform.Rotation.NONE, 0, 0, 0), null);
+        schematicPaster.pasteInBatches(world, origin, template.schematic(), options, 2500)
+            .thenRun(() -> maybeFillRoom(world, room, settings, theme));
+    }
+
+    private void maybeFillRoom(World world, Room room, DungeonSettings settings, String theme) {
+        if (!settings.wfcRoomFillEnabled()) {
+            return;
+        }
+        String wfcTheme = settings.wfcRoomTheme();
+        if (wfcTheme == null || wfcTheme.isBlank()) {
+            wfcTheme = theme;
+        }
+        roomWfcFiller.fillRoom(world, room, wfcTheme);
     }
 }

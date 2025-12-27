@@ -25,7 +25,7 @@ public class CorridorRouter {
         List<Corridor> corridors = new ArrayList<>();
         for (RoomEdge edge : edges) {
             Location doorA = chooseDoor(edge.a(), edge.b());
-            Location doorB = chooseDoor(edge.b(), edge.a());
+            Location doorB = chooseDoor(edge.b(), edge.a(), doorA);
             edge.a().doorPoints().add(doorA);
             edge.b().doorPoints().add(doorB);
             Corridor corridor = new Corridor();
@@ -37,6 +37,13 @@ public class CorridorRouter {
     }
 
     private Location chooseDoor(Room from, Room to) {
+        return chooseDoor(from, to, null);
+    }
+
+    private Location chooseDoor(Room from, Room to, Location targetDoor) {
+        if (!from.sockets().isEmpty()) {
+            return selectSocket(from, to, targetDoor);
+        }
         BoundingBox box = from.bounds();
         double centerX = (box.getMinX() + box.getMaxX()) / 2.0;
         double centerZ = (box.getMinZ() + box.getMaxZ()) / 2.0;
@@ -52,6 +59,40 @@ public class CorridorRouter {
             z = dz > 0 ? box.getMaxZ() : box.getMinZ();
         }
         return new Location(null, Math.round(x), box.getMinY() + 1, Math.round(z));
+    }
+
+    private Location selectSocket(Room from, Room to, Location targetDoor) {
+        if (!to.sockets().isEmpty()) {
+            for (RoomSocket socket : from.sockets()) {
+                for (RoomSocket target : to.sockets()) {
+                    if (socket.name().equalsIgnoreCase(target.name())) {
+                        return socket.location();
+                    }
+                }
+            }
+        }
+        Location target = targetDoor != null
+            ? targetDoor
+            : new Location(null, to.bounds().getCenterX(), to.bounds().getMinY() + 1, to.bounds().getCenterZ());
+        RoomSocket best = null;
+        double bestDistance = Double.MAX_VALUE;
+        for (RoomSocket socket : from.sockets()) {
+            double distance = distanceSquared(socket.location(), target);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                best = socket;
+            }
+        }
+        return best != null
+            ? best.location()
+            : new Location(null, from.bounds().getCenterX(), from.bounds().getMinY() + 1, from.bounds().getCenterZ());
+    }
+
+    private double distanceSquared(Location a, Location b) {
+        double dx = a.getX() - b.getX();
+        double dy = a.getY() - b.getY();
+        double dz = a.getZ() - b.getZ();
+        return dx * dx + dy * dy + dz * dz;
     }
 
     private List<Vector> findPath(BoundingBox bounds, List<Room> rooms, Location start, Location goal) {

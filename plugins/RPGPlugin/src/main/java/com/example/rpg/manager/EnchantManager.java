@@ -271,6 +271,7 @@ public class EnchantManager {
         PersistentDataContainer data = meta.getPersistentDataContainer();
         int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
         data.set(key, PersistentDataType.INTEGER, current + 1);
+        applyBaseStatBonus(meta, recipe.statToImprove(), 1);
         return 1;
     }
 
@@ -294,6 +295,7 @@ public class EnchantManager {
         NamespacedKey statKey = plugin.itemStatManager().enchantStatKey(statBonus);
         int currentStat = data.getOrDefault(statKey, PersistentDataType.INTEGER, 0);
         data.set(statKey, PersistentDataType.INTEGER, currentStat + 1);
+        applyBaseStatBonus(meta, statBonus, 1);
         return new AffixResult(added, recipe.affix(), statBonus, 1);
     }
 
@@ -320,6 +322,30 @@ public class EnchantManager {
             return meta.getDisplayName();
         }
         return item.getType().name().toLowerCase().replace("_", " ");
+    }
+
+    private void applyBaseStatBonus(ItemMeta meta, RPGStat stat, int amount) {
+        PersistentDataContainer data = meta.getPersistentDataContainer();
+        switch (stat) {
+            case STRENGTH -> {
+                NamespacedKey key = plugin.itemStatManager().strengthKey();
+                int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
+                data.set(key, PersistentDataType.INTEGER, current + amount);
+            }
+            case DEXTERITY -> {
+                NamespacedKey key = plugin.itemStatManager().critKey();
+                double current = data.getOrDefault(key, PersistentDataType.DOUBLE, 0.0);
+                data.set(key, PersistentDataType.DOUBLE, current + (amount * 0.01));
+            }
+            case CONSTITUTION -> {
+                NamespacedKey key = plugin.itemStatManager().healthKey();
+                int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
+                data.set(key, PersistentDataType.INTEGER, current + amount);
+            }
+            case INTELLIGENCE, LUCK -> {
+                // No direct base stat stored; keep as enchant stat only.
+            }
+        }
     }
 
     private record AffixResult(boolean added, String affixName, RPGStat statBonus, int statDelta) {

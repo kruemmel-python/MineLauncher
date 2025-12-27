@@ -89,6 +89,7 @@ public class GuiListener implements Listener {
         if (holder instanceof GuiHolders.DungeonAdminHolder) {
             event.setCancelled(true);
             switch (event.getSlot()) {
+                case 7 -> promptSchematicSave(player);
                 case 9 -> promptSchematicPlacement(player);
                 case 11 -> toggleDungeonSetting(player, "dungeon.jigsaw.enabled");
                 case 13 -> toggleDungeonSetting(player, "dungeon.jigsaw.wfcFill");
@@ -1386,8 +1387,30 @@ public class GuiListener implements Listener {
         });
     }
 
+    private void promptSchematicSave(Player player) {
+        Location pos1 = readPosition(player, "pos1");
+        Location pos2 = readPosition(player, "pos2");
+        if (pos1 == null || pos2 == null) {
+            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+            return;
+        }
+        plugin.promptManager().prompt(player,
+            Text.mm("<yellow>Zielpfad (z.B. dungeon_rooms/crypt/start_room.schem):"),
+            input -> {
+                String path = input.trim();
+                if (path.isBlank()) {
+                    player.sendMessage(Text.mm("<red>Dateiname darf nicht leer sein."));
+                    return;
+                }
+                plugin.buildingManager().saveSelectionAsSchematic(player, path, pos1, pos2);
+                plugin.guiManager().openDungeonAdmin(player);
+            });
+    }
+
     private void sendDungeonSetupInfo(Player player) {
         player.sendMessage(Text.mm("<gold>Dungeon Setup (Kurzinfo)</gold>"));
+        player.sendMessage(Text.mm("<gray>Wand: <white>/rpgadmin wand</white> -> Pos1/Pos2 setzen"));
+        player.sendMessage(Text.mm("<gray>Speichern: <white>Dungeons → Schematic speichern</white>"));
         player.sendMessage(Text.mm("<gray>Schematics: <white>plugins/RPGPlugin/dungeon_rooms/<theme>/</white>"));
         player.sendMessage(Text.mm("<gray>Beispiele: <white>start_room.schem, boss_room.schem</white>"));
         player.sendMessage(Text.mm("<gray>Jigsaw-Socket: <white>name = corridor_ns</white>"));

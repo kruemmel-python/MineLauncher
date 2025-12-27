@@ -6,6 +6,7 @@ import com.example.rpg.model.BuildingDefinition;
 import com.example.rpg.model.FurnitureDefinition;
 import com.example.rpg.schematic.Schematic;
 import com.example.rpg.schematic.SchematicPaster;
+import com.example.rpg.schematic.SchematicSaver;
 import com.example.rpg.schematic.SpongeSchemLoader;
 import com.example.rpg.schematic.Transform;
 import com.example.rpg.util.Text;
@@ -37,6 +38,7 @@ public class BuildingManager {
     private final Map<String, BuildingDefinition> buildings = new HashMap<>();
     private final Map<UUID, PlacementSession> placementSessions = new HashMap<>();
     private final SpongeSchemLoader loader = new SpongeSchemLoader();
+    private final SchematicSaver saver = new SchematicSaver();
     private final Map<String, CompletableFuture<Schematic>> schematicCache = new ConcurrentHashMap<>();
     private final Map<UUID, Deque<com.example.rpg.schematic.UndoBuffer>> undoHistory = new HashMap<>();
     private final Map<UUID, PlacementRecord> lastPlacement = new HashMap<>();
@@ -90,6 +92,29 @@ public class BuildingManager {
         }
         placementSessions.put(player.getUniqueId(), new PlacementSession(null, schematicName.trim(), rotation));
         player.sendMessage(Text.mm("<green>Platzierungsmodus aktiv. Rechtsklick auf einen Block zum Platzieren."));
+    }
+
+    public void saveSelectionAsSchematic(Player player, String relativePath, Location pos1, Location pos2) {
+        if (relativePath == null || relativePath.isBlank()) {
+            player.sendMessage(Text.mm("<red>Dateiname fehlt."));
+            return;
+        }
+        String cleanPath = relativePath.trim().replace("\\", "/");
+        if (cleanPath.contains("..") || cleanPath.startsWith("/")) {
+            player.sendMessage(Text.mm("<red>Ungültiger Pfad."));
+            return;
+        }
+        if (!cleanPath.endsWith(".schem")) {
+            cleanPath = cleanPath + ".schem";
+        }
+        File file = new File(plugin.getDataFolder(), cleanPath);
+        try {
+            saver.saveSelection(player.getWorld(), pos1, pos2, file);
+            player.sendMessage(Text.mm("<green>Schematic gespeichert: " + cleanPath));
+        } catch (IOException ex) {
+            plugin.getLogger().warning("Failed to save schematic: " + ex.getMessage());
+            player.sendMessage(Text.mm("<red>Schematic konnte nicht gespeichert werden."));
+        }
     }
 
     public boolean handlePlacement(Player player, Location target) {

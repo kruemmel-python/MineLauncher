@@ -3,14 +3,17 @@ package com.example.rpg.schematic;
 import com.example.rpg.schematic.nbt.*;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PushbackInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 public final class NbtIO {
     private NbtIO() {
@@ -25,6 +28,15 @@ public final class NbtIO {
             }
             data.readUTF();
             return readCompound(data);
+        }
+    }
+
+    public static void write(File file, NbtCompound root) throws IOException {
+        try (OutputStream output = new GZIPOutputStream(java.nio.file.Files.newOutputStream(file.toPath()));
+             DataOutputStream data = new DataOutputStream(output)) {
+            data.writeByte(NbtType.COMPOUND);
+            data.writeUTF("");
+            writeCompound(data, root);
         }
     }
 
@@ -60,11 +72,34 @@ public final class NbtIO {
         };
     }
 
+    private static void writeTagPayload(DataOutputStream data, NbtTag tag) throws IOException {
+        switch (tag.typeId()) {
+            case NbtType.BYTE -> data.writeByte(((NbtByte) tag).value());
+            case NbtType.SHORT -> data.writeShort(((NbtShort) tag).value());
+            case NbtType.INT -> data.writeInt(((NbtInt) tag).value());
+            case NbtType.LONG -> data.writeLong(((NbtLong) tag).value());
+            case NbtType.FLOAT -> data.writeFloat(((NbtFloat) tag).value());
+            case NbtType.DOUBLE -> data.writeDouble(((NbtDouble) tag).value());
+            case NbtType.STRING -> data.writeUTF(((NbtString) tag).value());
+            case NbtType.BYTE_ARRAY -> writeByteArray(data, ((NbtByteArray) tag).value());
+            case NbtType.INT_ARRAY -> writeIntArray(data, ((NbtIntArray) tag).value());
+            case NbtType.LONG_ARRAY -> writeLongArray(data, ((NbtLongArray) tag).value());
+            case NbtType.LIST -> writeList(data, (NbtList) tag);
+            case NbtType.COMPOUND -> writeCompound(data, (NbtCompound) tag);
+            default -> throw new IOException("Unsupported NBT tag type: " + tag.typeId());
+        }
+    }
+
     private static byte[] readByteArray(DataInputStream data) throws IOException {
         int length = data.readInt();
         byte[] values = new byte[length];
         data.readFully(values);
         return values;
+    }
+
+    private static void writeByteArray(DataOutputStream data, byte[] values) throws IOException {
+        data.writeInt(values.length);
+        data.write(values);
     }
 
     private static int[] readIntArray(DataInputStream data) throws IOException {
@@ -76,6 +111,13 @@ public final class NbtIO {
         return values;
     }
 
+    private static void writeIntArray(DataOutputStream data, int[] values) throws IOException {
+        data.writeInt(values.length);
+        for (int value : values) {
+            data.writeInt(value);
+        }
+    }
+
     private static long[] readLongArray(DataInputStream data) throws IOException {
         int length = data.readInt();
         long[] values = new long[length];
@@ -83,6 +125,13 @@ public final class NbtIO {
             values[i] = data.readLong();
         }
         return values;
+    }
+
+    private static void writeLongArray(DataOutputStream data, long[] values) throws IOException {
+        data.writeInt(values.length);
+        for (long value : values) {
+            data.writeLong(value);
+        }
     }
 
     private static NbtList readList(DataInputStream data) throws IOException {
@@ -93,6 +142,14 @@ public final class NbtIO {
             values.add(readTagPayload(data, elementType));
         }
         return new NbtList(elementType, values);
+    }
+
+    private static void writeList(DataOutputStream data, NbtList list) throws IOException {
+        data.writeByte(list.elementType());
+        data.writeInt(list.size());
+        for (NbtTag tag : list.values()) {
+            writeTagPayload(data, tag);
+        }
     }
 
     private static NbtCompound readCompound(DataInputStream data) throws IOException {
@@ -106,5 +163,15 @@ public final class NbtIO {
             compound.put(name, readTagPayload(data, type));
         }
         return compound;
+    }
+
+    private static void writeCompound(DataOutputStream data, NbtCompound compound) throws IOException {
+        for (var entry : compound.values().entrySet()) {
+            NbtTag tag = entry.getValue();
+            data.writeByte(tag.typeId());
+            data.writeUTF(entry.getKey());
+            writeTagPayload(data, tag);
+        }
+        data.writeByte(NbtType.END);
     }
 }

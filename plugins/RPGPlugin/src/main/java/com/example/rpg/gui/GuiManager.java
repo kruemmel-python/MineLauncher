@@ -191,6 +191,11 @@ public class GuiManager {
         Inventory inv = Bukkit.createInventory(new GuiHolders.DungeonAdminHolder(), 27, Component.text("Dungeon Admin"));
         boolean jigsawEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.enabled", false);
         boolean wfcFillEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.wfcFill", false);
+        inv.setItem(7, new ItemBuilder(Material.WRITABLE_BOOK)
+            .name(Text.mm("<gold>Schematic speichern"))
+            .loreLine(Text.mm("<gray>Wand-Auswahl sichern"))
+            .loreLine(Text.mm("<yellow>Klick: Pfad eingeben"))
+            .build());
         inv.setItem(9, new ItemBuilder(Material.STRUCTURE_BLOCK)
             .name(Text.mm("<gold>Schematic platzieren"))
             .loreLine(Text.mm("<gray>Einzelnes .schem setzen"))

@@ -70,6 +70,7 @@ dungeon:
    - **Jigsaw Modus** → an/aus  
    - **WFC Raum‑Füllung** → an/aus  
    - **Schematic platzieren** → platziert einzelne `.schem` direkt im Spiel (Rechtsklick zum Setzen)
+   - **Schematic speichern** → speichert die Wand‑Auswahl direkt als `.schem`
 4. Klicke **„Dungeon generieren“** und gib ein Theme ein (z. B. `crypt`).
 
 Der Dungeon wird sofort generiert und du wirst in die Instanz teleportiert.
@@ -79,7 +80,7 @@ Der Dungeon wird sofort generiert und du wirst in die Instanz teleportiert.
 ## 4) Beispiel: Von 0 zum fertigen Dungeon
 
 ### Schritt 1: Räume bauen und exportieren
-Baue im Spiel folgende Räume und exportiere sie als `.schem`:
+Baue im Spiel folgende Räume, markiere sie mit der Wand und speichere sie als `.schem`:
 ```
 start_room.schem
 combat_room_01.schem
@@ -87,6 +88,12 @@ combat_room_02.schem
 loot_room.schem
 boss_room.schem
 ```
+**In‑Game Ablauf:**
+1. Wand holen: `/rpgadmin wand`
+2. Pos1/Pos2 mit der Wand setzen.
+3. `/rpgadmin` → **Dungeons** → **Schematic speichern**  
+   Zielpfad eingeben, z. B. `dungeon_rooms/crypt/start_room.schem`.
+
 Lege sie in:
 ```
 plugins/RPGPlugin/dungeon_rooms/crypt/

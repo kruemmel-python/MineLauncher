@@ -14,6 +14,9 @@ import com.example.rpg.model.ShopDefinition;
 import com.example.rpg.model.ShopItem;
 import com.example.rpg.model.BuildingCategory;
 import com.example.rpg.model.BuildingDefinition;
+import com.example.rpg.model.ClassDefinition;
+import com.example.rpg.model.LootTable;
+import com.example.rpg.model.Skill;
 import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
@@ -169,12 +172,21 @@ public class GuiManager {
     }
 
     public void openZoneEditor(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.ZoneEditorHolder(), 54, Component.text("Zonen-Editor"));
+        openZoneEditor(player, 0);
+    }
+
+    public void openZoneEditor(Player player, int page) {
+        var zones = new java.util.ArrayList<>(com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class)
+            .zoneManager().zones().values());
+        zones.sort(java.util.Comparator.comparing(com.example.rpg.model.Zone::id));
+        int pageSize = 45;
+        int maxPage = zones.isEmpty() ? 0 : (zones.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ZoneEditorHolder(safePage), 54, Component.text("Zonen-Editor"));
         int slot = 0;
-        for (var zone : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).zoneManager().zones().values()) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < zones.size() && slot < pageSize; i++) {
+            var zone = zones.get(i);
             ItemStack item = new ItemBuilder(Material.MAP)
                 .name(Text.mm("<gold>" + zone.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + zone.id()))
@@ -189,20 +201,40 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Zone erstellen"))
             .loreLine(Text.mm("<gray>Nutze die Wand (Pos1/Pos2)"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }
 
     public void openNpcEditor(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.NpcEditorHolder(), 54, Component.text("NPC-Editor"));
+        openNpcEditor(player, 0);
+    }
+
+    public void openNpcEditor(Player player, int page) {
+        var npcs = new java.util.ArrayList<>(com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class)
+            .npcManager().npcs().values());
+        npcs.sort(java.util.Comparator.comparing(Npc::id));
+        int pageSize = 36;
+        int maxPage = npcs.isEmpty() ? 0 : (npcs.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.NpcEditorHolder(safePage), 54, Component.text("NPC-Editor"));
         int slot = 0;
-        for (var npc : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).npcManager().npcs().values()) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < npcs.size() && slot < pageSize; i++) {
+            var npc = npcs.get(i);
             ItemStack item = new ItemBuilder(Material.VILLAGER_SPAWN_EGG)
                 .name(Text.mm("<green>" + npc.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + npc.id()))
@@ -217,21 +249,32 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(45, buildNpcTemplate(Material.WRITABLE_BOOK, "<gold>Questgiver",
+        inv.setItem(36, buildNpcTemplate(Material.WRITABLE_BOOK, "<gold>Questgiver",
             com.example.rpg.model.NpcRole.QUESTGIVER, "<gray>Quest-NPC erstellen"));
-        inv.setItem(46, buildNpcTemplate(Material.CHEST, "<yellow>Shop (shops.yml)",
+        inv.setItem(37, buildNpcTemplate(Material.CHEST, "<yellow>Shop (shops.yml)",
             com.example.rpg.model.NpcRole.VENDOR, "<gray>Shop-ID wird abgefragt"));
-        inv.setItem(47, buildNpcTemplate(Material.IRON_SWORD, "<red>Waffenhändler",
+        inv.setItem(38, buildNpcTemplate(Material.IRON_SWORD, "<red>Waffenhändler",
             com.example.rpg.model.NpcRole.WEAPON_VENDOR, "<gray>Alle Waffen kaufen/verkaufen"));
-        inv.setItem(48, buildNpcTemplate(Material.DIAMOND_CHESTPLATE, "<blue>Rüstungshändler",
+        inv.setItem(39, buildNpcTemplate(Material.DIAMOND_CHESTPLATE, "<blue>Rüstungshändler",
             com.example.rpg.model.NpcRole.ARMOR_VENDOR, "<gray>Alle Rüstungen kaufen/verkaufen"));
-        inv.setItem(49, buildNpcTemplate(Material.APPLE, "<green>Gegenstandshändler",
+        inv.setItem(40, buildNpcTemplate(Material.APPLE, "<green>Gegenstandshändler",
             com.example.rpg.model.NpcRole.ITEM_VENDOR, "<gray>Items & Verbrauchsgüter"));
-        inv.setItem(50, buildNpcTemplate(Material.EMERALD, "<aqua>Rohstoffhändler",
+        inv.setItem(41, buildNpcTemplate(Material.EMERALD, "<aqua>Rohstoffhändler",
             com.example.rpg.model.NpcRole.RESOURCE_VENDOR, "<gray>Erze & Rohstoffe"));
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>NPC erstellen"))
             .loreLine(Text.mm("<gray>Erstellt an deiner Position"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }
@@ -294,12 +337,21 @@ public class GuiManager {
     }
 
     public void openLootEditor(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.LootEditorHolder(), 54, Component.text("Loot-Tabellen"));
+        openLootEditor(player, 0);
+    }
+
+    public void openLootEditor(Player player, int page) {
+        var tables = new java.util.ArrayList<>(com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class)
+            .lootManager().tables().values());
+        tables.sort(java.util.Comparator.comparing(LootTable::id));
+        int pageSize = 45;
+        int maxPage = tables.isEmpty() ? 0 : (tables.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.LootEditorHolder(safePage), 54, Component.text("Loot-Tabellen"));
         int slot = 0;
-        for (var table : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).lootManager().tables().values()) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < tables.size() && slot < pageSize; i++) {
+            var table = tables.get(i);
             ItemStack item = new ItemBuilder(Material.CHEST)
                 .name(Text.mm("<yellow>" + table.id()))
                 .loreLine(Text.mm("<gray>Applies: <white>" + table.appliesTo()))
@@ -312,20 +364,38 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Loot-Tabelle erstellen"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }
 
     public void openSkillAdmin(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillAdminHolder(), 54, Component.text("Skills verwalten"));
+        openSkillAdmin(player, 0);
+    }
+
+    public void openSkillAdmin(Player player, int page) {
+        var skills = new java.util.ArrayList<>(skillManager.skills().values());
+        skills.sort(java.util.Comparator.comparing(Skill::id));
+        int pageSize = 45;
+        int maxPage = skills.isEmpty() ? 0 : (skills.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillAdminHolder(safePage), 54, Component.text("Skills verwalten"));
         int slot = 0;
-        for (var entry : skillManager.skills().entrySet()) {
-            if (slot >= 45) {
-                break;
-            }
-            var skill = entry.getValue();
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < skills.size() && slot < pageSize; i++) {
+            var skill = skills.get(i);
             ItemStack item = new ItemBuilder(Material.ENCHANTED_BOOK)
                 .name(Text.mm("<light_purple>" + skill.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + skill.id()))
@@ -339,24 +409,42 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(51, new ItemBuilder(Material.WRITABLE_BOOK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(48, new ItemBuilder(Material.WRITABLE_BOOK)
             .name(Text.mm("<aqua>Klassen verwalten"))
             .loreLine(Text.mm("<yellow>Klick: öffnen"))
             .build());
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Skill erstellen"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }
 
     public void openClassAdmin(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.ClassAdminHolder(), 54, Component.text("Klassen verwalten"));
+        openClassAdmin(player, 0);
+    }
+
+    public void openClassAdmin(Player player, int page) {
+        var classes = new java.util.ArrayList<>(classManager.classes().values());
+        classes.sort(java.util.Comparator.comparing(ClassDefinition::id));
+        int pageSize = 45;
+        int maxPage = classes.isEmpty() ? 0 : (classes.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ClassAdminHolder(safePage), 54, Component.text("Klassen verwalten"));
         int slot = 0;
-        for (var entry : classManager.classes().entrySet()) {
-            if (slot >= 45) {
-                break;
-            }
-            var definition = entry.getValue();
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < classes.size() && slot < pageSize; i++) {
+            var definition = classes.get(i);
             ItemStack item = new ItemBuilder(Material.BOOKSHELF)
                 .name(Text.mm("<gold>" + definition.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + definition.id()))
@@ -369,8 +457,19 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Klasse erstellen"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }
@@ -401,12 +500,21 @@ public class GuiManager {
     }
 
     public void openBuildingList(Player player, BuildingCategory category) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.BuildingListHolder(category.name()), 54, Component.text(category.displayName()));
+        openBuildingList(player, category, 0);
+    }
+
+    public void openBuildingList(Player player, BuildingCategory category, int page) {
+        var buildings = new java.util.ArrayList<>(buildingManager.byCategory().getOrDefault(category, List.of()));
+        buildings.sort(java.util.Comparator.comparing(BuildingDefinition::id));
+        int pageSize = 45;
+        int maxPage = buildings.isEmpty() ? 0 : (buildings.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.BuildingListHolder(category.name(), safePage), 54,
+            Component.text(category.displayName()));
         int slot = 0;
-        for (BuildingDefinition building : buildingManager.byCategory().getOrDefault(category, List.of())) {
-            if (slot >= inv.getSize()) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < buildings.size() && slot < pageSize; i++) {
+            BuildingDefinition building = buildings.get(i);
             ItemStack item = new ItemBuilder(Material.OAK_DOOR)
                 .name(Text.mm("<green>" + building.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + building.id()))
@@ -417,19 +525,37 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 
     public void openQuestList(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestListHolder(), 27, Component.text("Quests"));
+        openQuestList(player, 0);
+    }
+
+    public void openQuestList(Player player, int page) {
+        var quests = questManager.quests().values().stream()
+            .filter(quest -> quest.requiredEvent() == null || worldEventManager.isCompleted(quest.requiredEvent()))
+            .sorted(java.util.Comparator.comparing(Quest::id))
+            .toList();
+        int pageSize = 18;
+        int maxPage = quests.isEmpty() ? 0 : (quests.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestListHolder(safePage), 27, Component.text("Quests"));
         int slot = 0;
-        for (Quest quest : questManager.quests().values()) {
-            if (slot >= inv.getSize()) {
-                break;
-            }
-            if (quest.requiredEvent() != null && !worldEventManager.isCompleted(quest.requiredEvent())) {
-                continue;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < quests.size() && slot < pageSize; i++) {
+            Quest quest = quests.get(i);
             ItemStack item = new ItemBuilder(Material.BOOK)
                 .name(Text.mm("<green>" + quest.name()))
                 .loreLine(Text.mm("<gray>" + quest.description()))
@@ -441,19 +567,37 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
+        inv.setItem(18, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(26, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 
     public void openSkillList(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillListHolder(), 27, Component.text("Skills"));
+        openSkillList(player, 0);
+    }
+
+    public void openSkillList(Player player, int page) {
+        var skills = new java.util.ArrayList<>(skillManager.skills().values());
+        skills.sort(java.util.Comparator.comparing(Skill::id));
+        int pageSize = 18;
+        int maxPage = skills.isEmpty() ? 0 : (skills.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillListHolder(safePage), 27, Component.text("Skills"));
         PlayerProfile profile = playerDataManager.getProfile(player);
         int slot = 0;
-        for (var entry : skillManager.skills().entrySet()) {
-            if (slot >= inv.getSize()) {
-                break;
-            }
-            String id = entry.getKey();
-            var skill = entry.getValue();
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < skills.size() && slot < pageSize; i++) {
+            var skill = skills.get(i);
+            String id = skill.id();
             List<Component> lore = new ArrayList<>();
             lore.add(Text.mm("<gray>Kategorie: <white>" + skill.category()));
             lore.add(Text.mm("<gray>Typ: <white>" + skill.type()));
@@ -478,6 +622,17 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
+        inv.setItem(18, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(26, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 
@@ -666,12 +821,20 @@ public class GuiManager {
     }
 
     public void openPlayerList(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.PlayerListHolder(), 54, Component.text("Spieler Rollen"));
+        openPlayerList(player, 0);
+    }
+
+    public void openPlayerList(Player player, int page) {
+        var players = new java.util.ArrayList<>(Bukkit.getOnlinePlayers());
+        players.sort(java.util.Comparator.comparing(Player::getName, String.CASE_INSENSITIVE_ORDER));
+        int pageSize = 45;
+        int maxPage = players.isEmpty() ? 0 : (players.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.PlayerListHolder(safePage), 54, Component.text("Spieler Rollen"));
         int slot = 0;
-        for (Player online : Bukkit.getOnlinePlayers()) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < players.size() && slot < pageSize; i++) {
+            Player online = players.get(i);
             ItemStack item = new ItemBuilder(Material.PLAYER_HEAD)
                 .name(Text.mm("<yellow>" + online.getName()))
                 .loreLine(Text.mm("<gray>UUID: <white>" + online.getUniqueId()))
@@ -681,8 +844,19 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(45, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Zurück")).build());
-        inv.setItem(53, new ItemBuilder(Material.ANVIL).name(Text.mm("<green>Spieler suchen")).build());
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(47, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Zurück")).build());
+        inv.setItem(49, new ItemBuilder(Material.ANVIL).name(Text.mm("<green>Spieler suchen")).build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 
@@ -701,16 +875,34 @@ public class GuiManager {
     }
 
     public void openAuditLog(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.PermissionAuditHolder(), 54, Component.text("Audit Log"));
-        List<String> entries = permissionService.auditLog().recent(50);
+        openAuditLog(player, 0);
+    }
+
+    public void openAuditLog(Player player, int page) {
+        List<String> entries = permissionService.auditLog().recent(200);
+        int pageSize = 45;
+        int maxPage = entries.isEmpty() ? 0 : (entries.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.PermissionAuditHolder(safePage), 54,
+            Component.text("Audit Log"));
         int slot = 0;
-        for (String line : entries) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < entries.size() && slot < pageSize; i++) {
+            String line = entries.get(i);
             inv.setItem(slot++, new ItemBuilder(Material.PAPER).name(Text.mm("<gray>" + line)).build());
         }
-        inv.setItem(45, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Zurück")).build());
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.ARROW).name(Text.mm("<yellow>Zurück")).build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 

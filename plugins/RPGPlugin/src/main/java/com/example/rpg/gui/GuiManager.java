@@ -648,6 +648,10 @@ public class GuiManager {
     }
 
     public void openEnchanting(Player player, String selectedRecipeId) {
+        openEnchanting(player, selectedRecipeId, 0);
+    }
+
+    public void openEnchanting(Player player, String selectedRecipeId, int page) {
         ItemStack target = player.getInventory().getItemInMainHand();
         List<com.example.rpg.model.EnchantmentRecipe> available = enchantManager.availableRecipes(player, target);
         if (available.isEmpty()) {
@@ -657,7 +661,11 @@ public class GuiManager {
         if (recipeId == null && !available.isEmpty()) {
             recipeId = available.get(0).id();
         }
-        Inventory inv = Bukkit.createInventory(new GuiHolders.EnchantingHolder(recipeId), 27, Component.text("Verzauberungen"));
+        int pageSize = 9;
+        int maxPage = available.isEmpty() ? 0 : (available.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.EnchantingHolder(recipeId, safePage), 27,
+            Component.text("Verzauberungen"));
         ItemStack displayTarget = target == null ? null : target.clone();
         if (displayTarget != null) {
             displayTarget.setAmount(1);
@@ -665,8 +673,9 @@ public class GuiManager {
         } else {
             inv.setItem(10, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Kein Ziel-Item")).build());
         }
-        for (int i = 0; i < Math.min(available.size(), 9); i++) {
-            var recipe = available.get(i);
+        int startIndex = safePage * pageSize;
+        for (int i = 0; i < pageSize && startIndex + i < available.size(); i++) {
+            var recipe = available.get(startIndex + i);
             ItemBuilder builder = new ItemBuilder(Material.ENCHANTED_BOOK)
                 .name(Text.mm("<yellow>" + recipe.id()))
                 .loreLine(Text.mm("<gray>Typ: <white>" + recipe.type()))
@@ -704,7 +713,18 @@ public class GuiManager {
         } else {
             inv.setItem(22, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Kein Rezept ausgewählt")).build());
         }
-        inv.setItem(26, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Schließen")).build());
+        inv.setItem(18, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(24, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(25, new ItemBuilder(Material.BARRIER).name(Text.mm("<red>Schließen")).build());
+        inv.setItem(26, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
         player.openInventory(inv);
     }
 

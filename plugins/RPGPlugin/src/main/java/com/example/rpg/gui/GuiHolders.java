@@ -374,13 +374,19 @@ public final class GuiHolders {
 
     public static final class EnchantingHolder implements InventoryHolder {
         private final String recipeId;
+        private final int page;
 
-        public EnchantingHolder(String recipeId) {
+        public EnchantingHolder(String recipeId, int page) {
             this.recipeId = recipeId;
+            this.page = page;
         }
 
         public String recipeId() {
             return recipeId;
+        }
+
+        public int page() {
+            return page;
         }
 
         @Override

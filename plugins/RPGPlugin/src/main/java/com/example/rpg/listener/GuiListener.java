@@ -1257,7 +1257,16 @@ public class GuiListener implements Listener {
         }
         if (holder instanceof GuiHolders.EnchantingHolder enchantingHolder) {
             event.setCancelled(true);
+            int page = enchantingHolder.page();
+            if (event.getSlot() == 18) {
+                plugin.guiManager().openEnchanting(player, enchantingHolder.recipeId(), page - 1);
+                return;
+            }
             if (event.getSlot() == 26) {
+                plugin.guiManager().openEnchanting(player, enchantingHolder.recipeId(), page + 1);
+                return;
+            }
+            if (event.getSlot() == 25) {
                 player.closeInventory();
                 return;
             }
@@ -1268,12 +1277,12 @@ public class GuiListener implements Listener {
                     return;
                 }
                 plugin.enchantManager().applyRecipe(player, recipeId);
-                plugin.guiManager().openEnchanting(player, recipeId);
+                plugin.guiManager().openEnchanting(player, recipeId, page);
                 return;
             }
             String recipeId = resolveEnchantRecipeId(current);
             if (recipeId != null) {
-                plugin.guiManager().openEnchanting(player, recipeId);
+                plugin.guiManager().openEnchanting(player, recipeId, page);
             }
         }
     }

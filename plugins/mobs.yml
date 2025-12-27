@@ -2641,3 +2641,3003 @@ mob_200:
   xp: 60
   lootTable: "loot_000"
   boss: true
+
+lvl01_behavior_001:
+  name: "&cGegner Lvl 1"
+  type: ZOMBIE
+  health: 24
+  damage: 3
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_001
+
+lvl01_behavior_031:
+  name: "&cGegner Lvl 1"
+  type: WITHER_SKELETON
+  health: 24
+  damage: 3
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_031
+
+lvl01_behavior_061:
+  name: "&cGegner Lvl 1"
+  type: WITCH
+  health: 24
+  damage: 3
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_061
+
+lvl01_behavior_091:
+  name: "&cGegner Lvl 1"
+  type: STRAY
+  health: 24
+  damage: 3
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_091
+
+lvl01_behavior_121:
+  name: "&cGegner Lvl 1"
+  type: SKELETON
+  health: 24
+  damage: 3
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_121
+
+lvl01_behavior_151:
+  name: "&cGegner Lvl 1"
+  type: BLAZE
+  health: 24
+  damage: 3
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_151
+
+lvl01_behavior_181:
+  name: "&cGegner Lvl 1"
+  type: PILLAGER
+  health: 24
+  damage: 3
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_181
+
+lvl02_behavior_002:
+  name: "&cGegner Lvl 2"
+  type: SKELETON
+  health: 28
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_002
+
+lvl02_behavior_032:
+  name: "&cGegner Lvl 2"
+  type: BLAZE
+  health: 28
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_032
+
+lvl02_behavior_062:
+  name: "&cGegner Lvl 2"
+  type: PILLAGER
+  health: 28
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_062
+
+lvl02_behavior_092:
+  name: "&cGegner Lvl 2"
+  type: DROWNED
+  health: 28
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_092
+
+lvl02_behavior_122:
+  name: "&cGegner Lvl 2"
+  type: SPIDER
+  health: 28
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_122
+
+lvl02_behavior_152:
+  name: "&cGegner Lvl 2"
+  type: MAGMA_CUBE
+  health: 28
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_152
+
+lvl02_behavior_182:
+  name: "&cGegner Lvl 2"
+  type: VINDICATOR
+  health: 28
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_182
+
+lvl03_behavior_003:
+  name: "&cGegner Lvl 3"
+  type: SPIDER
+  health: 32
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_003
+
+lvl03_behavior_033:
+  name: "&cGegner Lvl 3"
+  type: MAGMA_CUBE
+  health: 32
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_033
+
+lvl03_behavior_063:
+  name: "&cGegner Lvl 3"
+  type: VINDICATOR
+  health: 32
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_063
+
+lvl03_behavior_093:
+  name: "&cGegner Lvl 3"
+  type: ENDERMAN
+  health: 32
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_093
+
+lvl03_behavior_123:
+  name: "&cGegner Lvl 3"
+  type: CREEPER
+  health: 32
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_123
+
+lvl03_behavior_153:
+  name: "&cGegner Lvl 3"
+  type: SILVERFISH
+  health: 32
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_153
+
+lvl03_behavior_183:
+  name: "&cGegner Lvl 3"
+  type: EVOKER
+  health: 32
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_183
+
+lvl04_behavior_004:
+  name: "&cGegner Lvl 4"
+  type: CREEPER
+  health: 36
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_004
+
+lvl04_behavior_034:
+  name: "&cGegner Lvl 4"
+  type: SILVERFISH
+  health: 36
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_034
+
+lvl04_behavior_064:
+  name: "&cGegner Lvl 4"
+  type: EVOKER
+  health: 36
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_064
+
+lvl04_behavior_094:
+  name: "&cGegner Lvl 4"
+  type: SLIME
+  health: 36
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_094
+
+lvl04_behavior_124:
+  name: "&cGegner Lvl 4"
+  type: HUSK
+  health: 36
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_124
+
+lvl04_behavior_154:
+  name: "&cGegner Lvl 4"
+  type: ZOMBIE
+  health: 36
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_154
+
+lvl04_behavior_184:
+  name: "&cGegner Lvl 4"
+  type: WITHER_SKELETON
+  health: 36
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_184
+
+lvl05_behavior_005:
+  name: "&cGegner Lvl 5"
+  type: HUSK
+  health: 40
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_005
+
+lvl05_behavior_035:
+  name: "&cGegner Lvl 5"
+  type: ZOMBIE
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_035
+
+lvl05_behavior_065:
+  name: "&cGegner Lvl 5"
+  type: WITHER_SKELETON
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_065
+
+lvl05_behavior_095:
+  name: "&cGegner Lvl 5"
+  type: WITCH
+  health: 40
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_095
+
+lvl05_behavior_125:
+  name: "&cGegner Lvl 5"
+  type: STRAY
+  health: 40
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_125
+
+lvl05_behavior_155:
+  name: "&cGegner Lvl 5"
+  type: SKELETON
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_155
+
+lvl05_behavior_185:
+  name: "&cGegner Lvl 5"
+  type: BLAZE
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_185
+
+lvl06_behavior_006:
+  name: "&cGegner Lvl 6"
+  type: STRAY
+  health: 44
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_006
+
+lvl06_behavior_036:
+  name: "&cGegner Lvl 6"
+  type: SKELETON
+  health: 44
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_036
+
+lvl06_behavior_066:
+  name: "&cGegner Lvl 6"
+  type: BLAZE
+  health: 44
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_066
+
+lvl06_behavior_096:
+  name: "&cGegner Lvl 6"
+  type: PILLAGER
+  health: 44
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_096
+
+lvl06_behavior_126:
+  name: "&cGegner Lvl 6"
+  type: DROWNED
+  health: 44
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_126
+
+lvl06_behavior_156:
+  name: "&cGegner Lvl 6"
+  type: SPIDER
+  health: 44
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_156
+
+lvl06_behavior_186:
+  name: "&cGegner Lvl 6"
+  type: MAGMA_CUBE
+  health: 44
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_186
+
+lvl07_behavior_007:
+  name: "&cGegner Lvl 7"
+  type: DROWNED
+  health: 48
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_007
+
+lvl07_behavior_037:
+  name: "&cGegner Lvl 7"
+  type: SPIDER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_037
+
+lvl07_behavior_067:
+  name: "&cGegner Lvl 7"
+  type: MAGMA_CUBE
+  health: 48
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_067
+
+lvl07_behavior_097:
+  name: "&cGegner Lvl 7"
+  type: VINDICATOR
+  health: 48
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_097
+
+lvl07_behavior_127:
+  name: "&cGegner Lvl 7"
+  type: ENDERMAN
+  health: 48
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_127
+
+lvl07_behavior_157:
+  name: "&cGegner Lvl 7"
+  type: CREEPER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_157
+
+lvl07_behavior_187:
+  name: "&cGegner Lvl 7"
+  type: SILVERFISH
+  health: 48
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_187
+
+lvl08_behavior_008:
+  name: "&cGegner Lvl 8"
+  type: ENDERMAN
+  health: 52
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_008
+
+lvl08_behavior_038:
+  name: "&cGegner Lvl 8"
+  type: CREEPER
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_038
+
+lvl08_behavior_068:
+  name: "&cGegner Lvl 8"
+  type: SILVERFISH
+  health: 52
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_068
+
+lvl08_behavior_098:
+  name: "&cGegner Lvl 8"
+  type: EVOKER
+  health: 52
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_098
+
+lvl08_behavior_128:
+  name: "&cGegner Lvl 8"
+  type: SLIME
+  health: 52
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_128
+
+lvl08_behavior_158:
+  name: "&cGegner Lvl 8"
+  type: HUSK
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_158
+
+lvl08_behavior_188:
+  name: "&cGegner Lvl 8"
+  type: ZOMBIE
+  health: 52
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_188
+
+lvl09_behavior_009:
+  name: "&cGegner Lvl 9"
+  type: SLIME
+  health: 56
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_009
+
+lvl09_behavior_039:
+  name: "&cGegner Lvl 9"
+  type: HUSK
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_039
+
+lvl09_behavior_069:
+  name: "&cGegner Lvl 9"
+  type: ZOMBIE
+  health: 56
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_069
+
+lvl09_behavior_099:
+  name: "&cGegner Lvl 9"
+  type: WITHER_SKELETON
+  health: 56
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_099
+
+lvl09_behavior_129:
+  name: "&cGegner Lvl 9"
+  type: WITCH
+  health: 56
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_129
+
+lvl09_behavior_159:
+  name: "&cGegner Lvl 9"
+  type: STRAY
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_159
+
+lvl09_behavior_189:
+  name: "&cGegner Lvl 9"
+  type: SKELETON
+  health: 56
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_189
+
+lvl10_behavior_010:
+  name: "&cGegner Lvl 10"
+  type: WITCH
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_010
+
+lvl10_behavior_040:
+  name: "&cGegner Lvl 10"
+  type: STRAY
+  health: 60
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_040
+
+lvl10_behavior_070:
+  name: "&cGegner Lvl 10"
+  type: SKELETON
+  health: 60
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_070
+
+lvl10_behavior_100:
+  name: "&cGegner Lvl 10"
+  type: BLAZE
+  health: 60
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_100
+
+lvl10_behavior_130:
+  name: "&cGegner Lvl 10"
+  type: PILLAGER
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_130
+
+lvl10_behavior_160:
+  name: "&cGegner Lvl 10"
+  type: DROWNED
+  health: 60
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_160
+
+lvl10_behavior_190:
+  name: "&cGegner Lvl 10"
+  type: SPIDER
+  health: 60
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_190
+
+lvl11_behavior_011:
+  name: "&cGegner Lvl 11"
+  type: PILLAGER
+  health: 64
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_011
+
+lvl11_behavior_041:
+  name: "&cGegner Lvl 11"
+  type: DROWNED
+  health: 64
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_041
+
+lvl11_behavior_071:
+  name: "&cGegner Lvl 11"
+  type: SPIDER
+  health: 64
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_071
+
+lvl11_behavior_101:
+  name: "&cGegner Lvl 11"
+  type: MAGMA_CUBE
+  health: 64
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_101
+
+lvl11_behavior_131:
+  name: "&cGegner Lvl 11"
+  type: VINDICATOR
+  health: 64
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_131
+
+lvl11_behavior_161:
+  name: "&cGegner Lvl 11"
+  type: ENDERMAN
+  health: 64
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_161
+
+lvl11_behavior_191:
+  name: "&cGegner Lvl 11"
+  type: CREEPER
+  health: 64
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_191
+
+lvl12_behavior_012:
+  name: "&cGegner Lvl 12"
+  type: VINDICATOR
+  health: 68
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_012
+
+lvl12_behavior_042:
+  name: "&cGegner Lvl 12"
+  type: ENDERMAN
+  health: 68
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_042
+
+lvl12_behavior_072:
+  name: "&cGegner Lvl 12"
+  type: CREEPER
+  health: 68
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_072
+
+lvl12_behavior_102:
+  name: "&cGegner Lvl 12"
+  type: SILVERFISH
+  health: 68
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_102
+
+lvl12_behavior_132:
+  name: "&cGegner Lvl 12"
+  type: EVOKER
+  health: 68
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_132
+
+lvl12_behavior_162:
+  name: "&cGegner Lvl 12"
+  type: SLIME
+  health: 68
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_162
+
+lvl12_behavior_192:
+  name: "&cGegner Lvl 12"
+  type: HUSK
+  health: 68
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_192
+
+lvl13_behavior_013:
+  name: "&cGegner Lvl 13"
+  type: EVOKER
+  health: 72
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_013
+
+lvl13_behavior_043:
+  name: "&cGegner Lvl 13"
+  type: SLIME
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_043
+
+lvl13_behavior_073:
+  name: "&cGegner Lvl 13"
+  type: HUSK
+  health: 72
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_073
+
+lvl13_behavior_103:
+  name: "&cGegner Lvl 13"
+  type: ZOMBIE
+  health: 72
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_103
+
+lvl13_behavior_133:
+  name: "&cGegner Lvl 13"
+  type: WITHER_SKELETON
+  health: 72
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_133
+
+lvl13_behavior_163:
+  name: "&cGegner Lvl 13"
+  type: WITCH
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_163
+
+lvl13_behavior_193:
+  name: "&cGegner Lvl 13"
+  type: STRAY
+  health: 72
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_193
+
+lvl14_behavior_014:
+  name: "&cGegner Lvl 14"
+  type: WITHER_SKELETON
+  health: 76
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_014
+
+lvl14_behavior_044:
+  name: "&cGegner Lvl 14"
+  type: WITCH
+  health: 76
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_044
+
+lvl14_behavior_074:
+  name: "&cGegner Lvl 14"
+  type: STRAY
+  health: 76
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_074
+
+lvl14_behavior_104:
+  name: "&cGegner Lvl 14"
+  type: SKELETON
+  health: 76
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_104
+
+lvl14_behavior_134:
+  name: "&cGegner Lvl 14"
+  type: BLAZE
+  health: 76
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_134
+
+lvl14_behavior_164:
+  name: "&cGegner Lvl 14"
+  type: PILLAGER
+  health: 76
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_164
+
+lvl14_behavior_194:
+  name: "&cGegner Lvl 14"
+  type: DROWNED
+  health: 76
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_194
+
+lvl15_behavior_015:
+  name: "&cGegner Lvl 15"
+  type: BLAZE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_015
+
+lvl15_behavior_045:
+  name: "&cGegner Lvl 15"
+  type: PILLAGER
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_045
+
+lvl15_behavior_075:
+  name: "&cGegner Lvl 15"
+  type: DROWNED
+  health: 80
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_075
+
+lvl15_behavior_105:
+  name: "&cGegner Lvl 15"
+  type: SPIDER
+  health: 80
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_105
+
+lvl15_behavior_135:
+  name: "&cGegner Lvl 15"
+  type: MAGMA_CUBE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_135
+
+lvl15_behavior_165:
+  name: "&cGegner Lvl 15"
+  type: VINDICATOR
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_165
+
+lvl15_behavior_195:
+  name: "&cGegner Lvl 15"
+  type: ENDERMAN
+  health: 80
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_195
+
+lvl16_behavior_016:
+  name: "&cGegner Lvl 16"
+  type: MAGMA_CUBE
+  health: 84
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_016
+
+lvl16_behavior_046:
+  name: "&cGegner Lvl 16"
+  type: VINDICATOR
+  health: 84
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_046
+
+lvl16_behavior_076:
+  name: "&cGegner Lvl 16"
+  type: ENDERMAN
+  health: 84
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_076
+
+lvl16_behavior_106:
+  name: "&cGegner Lvl 16"
+  type: CREEPER
+  health: 84
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_106
+
+lvl16_behavior_136:
+  name: "&cGegner Lvl 16"
+  type: SILVERFISH
+  health: 84
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_136
+
+lvl16_behavior_166:
+  name: "&cGegner Lvl 16"
+  type: EVOKER
+  health: 84
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_166
+
+lvl16_behavior_196:
+  name: "&cGegner Lvl 16"
+  type: SLIME
+  health: 84
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_196
+
+lvl17_behavior_017:
+  name: "&cGegner Lvl 17"
+  type: SILVERFISH
+  health: 88
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_017
+
+lvl17_behavior_047:
+  name: "&cGegner Lvl 17"
+  type: EVOKER
+  health: 88
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_047
+
+lvl17_behavior_077:
+  name: "&cGegner Lvl 17"
+  type: SLIME
+  health: 88
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_077
+
+lvl17_behavior_107:
+  name: "&cGegner Lvl 17"
+  type: HUSK
+  health: 88
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_107
+
+lvl17_behavior_137:
+  name: "&cGegner Lvl 17"
+  type: ZOMBIE
+  health: 88
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_137
+
+lvl17_behavior_167:
+  name: "&cGegner Lvl 17"
+  type: WITHER_SKELETON
+  health: 88
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_167
+
+lvl17_behavior_197:
+  name: "&cGegner Lvl 17"
+  type: WITCH
+  health: 88
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_197
+
+lvl18_behavior_018:
+  name: "&cGegner Lvl 18"
+  type: ZOMBIE
+  health: 92
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_018
+
+lvl18_behavior_048:
+  name: "&cGegner Lvl 18"
+  type: WITHER_SKELETON
+  health: 92
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_048
+
+lvl18_behavior_078:
+  name: "&cGegner Lvl 18"
+  type: WITCH
+  health: 92
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_078
+
+lvl18_behavior_108:
+  name: "&cGegner Lvl 18"
+  type: STRAY
+  health: 92
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_108
+
+lvl18_behavior_138:
+  name: "&cGegner Lvl 18"
+  type: SKELETON
+  health: 92
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_138
+
+lvl18_behavior_168:
+  name: "&cGegner Lvl 18"
+  type: BLAZE
+  health: 92
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_168
+
+lvl18_behavior_198:
+  name: "&cGegner Lvl 18"
+  type: PILLAGER
+  health: 92
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_198
+
+lvl19_behavior_019:
+  name: "&cGegner Lvl 19"
+  type: SKELETON
+  health: 96
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_019
+
+lvl19_behavior_049:
+  name: "&cGegner Lvl 19"
+  type: BLAZE
+  health: 96
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_049
+
+lvl19_behavior_079:
+  name: "&cGegner Lvl 19"
+  type: PILLAGER
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_079
+
+lvl19_behavior_109:
+  name: "&cGegner Lvl 19"
+  type: DROWNED
+  health: 96
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_109
+
+lvl19_behavior_139:
+  name: "&cGegner Lvl 19"
+  type: SPIDER
+  health: 96
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_139
+
+lvl19_behavior_169:
+  name: "&cGegner Lvl 19"
+  type: MAGMA_CUBE
+  health: 96
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_169
+
+lvl19_behavior_199:
+  name: "&cGegner Lvl 19"
+  type: VINDICATOR
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_199
+
+lvl20_behavior_020:
+  name: "&cGegner Lvl 20"
+  type: SPIDER
+  health: 100
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_020
+
+lvl20_behavior_050:
+  name: "&cGegner Lvl 20"
+  type: MAGMA_CUBE
+  health: 100
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_050
+
+lvl20_behavior_080:
+  name: "&cGegner Lvl 20"
+  type: VINDICATOR
+  health: 100
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_080
+
+lvl20_behavior_110:
+  name: "&cGegner Lvl 20"
+  type: ENDERMAN
+  health: 100
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_110
+
+lvl20_behavior_140:
+  name: "&cGegner Lvl 20"
+  type: CREEPER
+  health: 100
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_140
+
+lvl20_behavior_170:
+  name: "&cGegner Lvl 20"
+  type: SILVERFISH
+  health: 100
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_170
+
+lvl20_behavior_200:
+  name: "&cGegner Lvl 20"
+  type: EVOKER
+  health: 100
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_200
+
+lvl21_behavior_021:
+  name: "&cGegner Lvl 21"
+  type: CREEPER
+  health: 104
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_021
+
+lvl21_behavior_051:
+  name: "&cGegner Lvl 21"
+  type: SILVERFISH
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_051
+
+lvl21_behavior_081:
+  name: "&cGegner Lvl 21"
+  type: EVOKER
+  health: 104
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_081
+
+lvl21_behavior_111:
+  name: "&cGegner Lvl 21"
+  type: SLIME
+  health: 104
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_111
+
+lvl21_behavior_141:
+  name: "&cGegner Lvl 21"
+  type: HUSK
+  health: 104
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_141
+
+lvl21_behavior_171:
+  name: "&cGegner Lvl 21"
+  type: ZOMBIE
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_171
+
+lvl22_behavior_022:
+  name: "&cGegner Lvl 22"
+  type: HUSK
+  health: 108
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_022
+
+lvl22_behavior_052:
+  name: "&cGegner Lvl 22"
+  type: ZOMBIE
+  health: 108
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_052
+
+lvl22_behavior_082:
+  name: "&cGegner Lvl 22"
+  type: WITHER_SKELETON
+  health: 108
+  damage: 14
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_082
+
+lvl22_behavior_112:
+  name: "&cGegner Lvl 22"
+  type: WITCH
+  health: 108
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_112
+
+lvl22_behavior_142:
+  name: "&cGegner Lvl 22"
+  type: STRAY
+  health: 108
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_142
+
+lvl22_behavior_172:
+  name: "&cGegner Lvl 22"
+  type: SKELETON
+  health: 108
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_172
+
+lvl23_behavior_023:
+  name: "&cGegner Lvl 23"
+  type: STRAY
+  health: 112
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_023
+
+lvl23_behavior_053:
+  name: "&cGegner Lvl 23"
+  type: SKELETON
+  health: 112
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_053
+
+lvl23_behavior_083:
+  name: "&cGegner Lvl 23"
+  type: BLAZE
+  health: 112
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_083
+
+lvl23_behavior_113:
+  name: "&cGegner Lvl 23"
+  type: PILLAGER
+  health: 112
+  damage: 14
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_113
+
+lvl23_behavior_143:
+  name: "&cGegner Lvl 23"
+  type: DROWNED
+  health: 112
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_143
+
+lvl23_behavior_173:
+  name: "&cGegner Lvl 23"
+  type: SPIDER
+  health: 112
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_173
+
+lvl24_behavior_024:
+  name: "&cGegner Lvl 24"
+  type: DROWNED
+  health: 116
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_024
+
+lvl24_behavior_054:
+  name: "&cGegner Lvl 24"
+  type: SPIDER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_054
+
+lvl24_behavior_084:
+  name: "&cGegner Lvl 24"
+  type: MAGMA_CUBE
+  health: 116
+  damage: 15
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_084
+
+lvl24_behavior_114:
+  name: "&cGegner Lvl 24"
+  type: VINDICATOR
+  health: 116
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_114
+
+lvl24_behavior_144:
+  name: "&cGegner Lvl 24"
+  type: ENDERMAN
+  health: 116
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_144
+
+lvl24_behavior_174:
+  name: "&cGegner Lvl 24"
+  type: CREEPER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_174
+
+lvl25_behavior_025:
+  name: "&cGegner Lvl 25"
+  type: ENDERMAN
+  health: 120
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_025
+
+lvl25_behavior_055:
+  name: "&cGegner Lvl 25"
+  type: CREEPER
+  health: 120
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_055
+
+lvl25_behavior_085:
+  name: "&cGegner Lvl 25"
+  type: SILVERFISH
+  health: 120
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_085
+
+lvl25_behavior_115:
+  name: "&cGegner Lvl 25"
+  type: EVOKER
+  health: 120
+  damage: 15
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_115
+
+lvl25_behavior_145:
+  name: "&cGegner Lvl 25"
+  type: SLIME
+  health: 120
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_145
+
+lvl25_behavior_175:
+  name: "&cGegner Lvl 25"
+  type: HUSK
+  health: 120
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_175
+
+lvl26_behavior_026:
+  name: "&cGegner Lvl 26"
+  type: SLIME
+  health: 124
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_026
+
+lvl26_behavior_056:
+  name: "&cGegner Lvl 26"
+  type: HUSK
+  health: 124
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_056
+
+lvl26_behavior_086:
+  name: "&cGegner Lvl 26"
+  type: ZOMBIE
+  health: 124
+  damage: 16
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_086
+
+lvl26_behavior_116:
+  name: "&cGegner Lvl 26"
+  type: WITHER_SKELETON
+  health: 124
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_116
+
+lvl26_behavior_146:
+  name: "&cGegner Lvl 26"
+  type: WITCH
+  health: 124
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_146
+
+lvl26_behavior_176:
+  name: "&cGegner Lvl 26"
+  type: STRAY
+  health: 124
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_176
+
+lvl27_behavior_027:
+  name: "&cGegner Lvl 27"
+  type: WITCH
+  health: 128
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_027
+
+lvl27_behavior_057:
+  name: "&cGegner Lvl 27"
+  type: STRAY
+  health: 128
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_057
+
+lvl27_behavior_087:
+  name: "&cGegner Lvl 27"
+  type: SKELETON
+  health: 128
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_087
+
+lvl27_behavior_117:
+  name: "&cGegner Lvl 27"
+  type: BLAZE
+  health: 128
+  damage: 16
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_117
+
+lvl27_behavior_147:
+  name: "&cGegner Lvl 27"
+  type: PILLAGER
+  health: 128
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_147
+
+lvl27_behavior_177:
+  name: "&cGegner Lvl 27"
+  type: DROWNED
+  health: 128
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_177
+
+lvl28_behavior_028:
+  name: "&cGegner Lvl 28"
+  type: PILLAGER
+  health: 132
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_028
+
+lvl28_behavior_058:
+  name: "&cGegner Lvl 28"
+  type: DROWNED
+  health: 132
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_058
+
+lvl28_behavior_088:
+  name: "&cGegner Lvl 28"
+  type: SPIDER
+  health: 132
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_088
+
+lvl28_behavior_118:
+  name: "&cGegner Lvl 28"
+  type: MAGMA_CUBE
+  health: 132
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_118
+
+lvl28_behavior_148:
+  name: "&cGegner Lvl 28"
+  type: VINDICATOR
+  health: 132
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_148
+
+lvl28_behavior_178:
+  name: "&cGegner Lvl 28"
+  type: ENDERMAN
+  health: 132
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_178
+
+lvl29_behavior_029:
+  name: "&cGegner Lvl 29"
+  type: VINDICATOR
+  health: 136
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_029
+
+lvl29_behavior_059:
+  name: "&cGegner Lvl 29"
+  type: ENDERMAN
+  health: 136
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_059
+
+lvl29_behavior_089:
+  name: "&cGegner Lvl 29"
+  type: CREEPER
+  health: 136
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_089
+
+lvl29_behavior_119:
+  name: "&cGegner Lvl 29"
+  type: SILVERFISH
+  health: 136
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_119
+
+lvl29_behavior_149:
+  name: "&cGegner Lvl 29"
+  type: EVOKER
+  health: 136
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_149
+
+lvl29_behavior_179:
+  name: "&cGegner Lvl 29"
+  type: SLIME
+  health: 136
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_179
+
+lvl30_behavior_030:
+  name: "&cGegner Lvl 30"
+  type: EVOKER
+  health: 140
+  damage: 18
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_030
+
+lvl30_behavior_060:
+  name: "&cGegner Lvl 30"
+  type: SLIME
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_060
+
+lvl30_behavior_090:
+  name: "&cGegner Lvl 30"
+  type: HUSK
+  health: 140
+  damage: 18
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_090
+
+lvl30_behavior_120:
+  name: "&cGegner Lvl 30"
+  type: ZOMBIE
+  health: 140
+  damage: 18
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_120
+
+lvl30_behavior_150:
+  name: "&cGegner Lvl 30"
+  type: WITHER_SKELETON
+  health: 140
+  damage: 18
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_150
+
+lvl30_behavior_180:
+  name: "&cGegner Lvl 30"
+  type: WITCH
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_180

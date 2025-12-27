@@ -1,0 +1,2700 @@
+enchant_001:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 55
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_002:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 60
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_003:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 65
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_004:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 70
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_005:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 75
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_006:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 80
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_007:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 85
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_008:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 90
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_009:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 95
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_010:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 100
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_011:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 105
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_012:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 110
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_013:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 115
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_014:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 120
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_015:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 125
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_016:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 130
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_017:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 135
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_018:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 140
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_019:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 145
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_020:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 50
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_021:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 55
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_022:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 60
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_023:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 65
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_024:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 70
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_025:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 75
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_026:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 80
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_027:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 85
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_028:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 90
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_029:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 95
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_030:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 100
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_031:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 105
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_032:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 110
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_033:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 115
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_034:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 120
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_035:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 125
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_036:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 130
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_037:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 135
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_038:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 140
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_039:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 145
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_040:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 50
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_041:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 55
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_042:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 60
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_043:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 65
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_044:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 70
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_045:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 75
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_046:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 80
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_047:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 85
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_048:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 90
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_049:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 95
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_050:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 100
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_051:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 105
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_052:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 110
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_053:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 115
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_054:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 120
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_055:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 125
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_056:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 130
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_057:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 135
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_058:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 140
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_059:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 145
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_060:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 50
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_061:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 55
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_062:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 60
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_063:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 65
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_064:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 70
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_065:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 75
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_066:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 80
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_067:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 85
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_068:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 90
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_069:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 95
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_070:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 100
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_071:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 105
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_072:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 110
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_073:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 115
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_074:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 120
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_075:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 125
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_076:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 130
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_077:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 135
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_078:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 140
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_079:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 145
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_080:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 50
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_081:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 55
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_082:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 60
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_083:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 65
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_084:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 70
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_085:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 75
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_086:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 80
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_087:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 85
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_088:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 90
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_089:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 95
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_090:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 100
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_091:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 105
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_092:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 110
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_093:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 115
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_094:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 120
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_095:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 125
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_096:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 130
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_097:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 135
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_098:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 140
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_099:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 145
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_100:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 50
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_101:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 55
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_102:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 60
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_103:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 65
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_104:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 70
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_105:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 75
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_106:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 80
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_107:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 85
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_108:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 90
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_109:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 95
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_110:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 100
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_111:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 105
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_112:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 110
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_113:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 115
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_114:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 120
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_115:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 125
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_116:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 130
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_117:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 135
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_118:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 140
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_119:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 145
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_120:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 50
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_121:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 55
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_122:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 60
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_123:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 65
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_124:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 70
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_125:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 75
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_126:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 80
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_127:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 85
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_128:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 90
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_129:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 95
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_130:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 100
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_131:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 105
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_132:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 110
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_133:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 115
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_134:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 120
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_135:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 125
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_136:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 130
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_137:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 135
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_138:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 140
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_139:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 145
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_140:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 50
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_141:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 55
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_142:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 60
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_143:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 65
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_144:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 70
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_145:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 75
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_146:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 80
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_147:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 85
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_148:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 90
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_149:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 95
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_150:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 100
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_151:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 105
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_152:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 110
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_153:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 115
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_154:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 120
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_155:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 125
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_156:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 130
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_157:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 135
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_158:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 140
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_159:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 145
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_160:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 50
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_161:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 55
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_162:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 60
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_163:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 65
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_164:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 70
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_165:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 75
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_166:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 80
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_167:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 85
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_168:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 90
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_169:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 95
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_170:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 100
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_171:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: DEXTERITY
+  minLevel: 22
+  costGold: 105
+  costItem: "GOLD_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_172:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: CONSTITUTION
+  minLevel: 23
+  costGold: 110
+  costItem: "EMERALD:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_173:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: INTELLIGENCE
+  minLevel: 24
+  costGold: 115
+  costItem: "DIAMOND:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_174:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: LUCK
+  minLevel: 25
+  costGold: 120
+  costItem: "LAPIS_LAZULI:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_175:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: STRENGTH
+  minLevel: 26
+  costGold: 125
+  costItem: "IRON_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_176:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: DEXTERITY
+  minLevel: 27
+  costGold: 130
+  costItem: "GOLD_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_177:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: CONSTITUTION
+  minLevel: 28
+  costGold: 135
+  costItem: "EMERALD:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_178:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: INTELLIGENCE
+  minLevel: 29
+  costGold: 140
+  costItem: "DIAMOND:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_179:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: LUCK
+  minLevel: 30
+  costGold: 145
+  costItem: "LAPIS_LAZULI:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_180:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: STRENGTH
+  minLevel: 1
+  costGold: 50
+  costItem: "IRON_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_181:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: DEXTERITY
+  minLevel: 2
+  costGold: 55
+  costItem: "GOLD_INGOT:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_182:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: CONSTITUTION
+  minLevel: 3
+  costGold: 60
+  costItem: "EMERALD:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_183:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: INTELLIGENCE
+  minLevel: 4
+  costGold: 65
+  costItem: "DIAMOND:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_184:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: LUCK
+  minLevel: 5
+  costGold: 70
+  costItem: "LAPIS_LAZULI:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_185:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: STRENGTH
+  minLevel: 6
+  costGold: 75
+  costItem: "IRON_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_186:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: DEXTERITY
+  minLevel: 7
+  costGold: 80
+  costItem: "GOLD_INGOT:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_187:
+  type: AFFIX
+  targetSlot: ARMOR_FEET
+  statToImprove: CONSTITUTION
+  minLevel: 8
+  costGold: 85
+  costItem: "EMERALD:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_188:
+  type: STAT_UPGRADE
+  targetSlot: SHIELD
+  statToImprove: INTELLIGENCE
+  minLevel: 9
+  costGold: 90
+  costItem: "DIAMOND:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_189:
+  type: AFFIX
+  targetSlot: HAND
+  statToImprove: LUCK
+  minLevel: 10
+  costGold: 95
+  costItem: "LAPIS_LAZULI:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_190:
+  type: STAT_UPGRADE
+  targetSlot: OFF_HAND
+  statToImprove: STRENGTH
+  minLevel: 11
+  costGold: 100
+  costItem: "IRON_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_191:
+  type: AFFIX
+  targetSlot: ARMOR_HEAD
+  statToImprove: DEXTERITY
+  minLevel: 12
+  costGold: 105
+  costItem: "GOLD_INGOT:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_192:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_CHEST
+  statToImprove: CONSTITUTION
+  minLevel: 13
+  costGold: 110
+  costItem: "EMERALD:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_193:
+  type: AFFIX
+  targetSlot: ARMOR_LEGS
+  statToImprove: INTELLIGENCE
+  minLevel: 14
+  costGold: 115
+  costItem: "DIAMOND:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_194:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_FEET
+  statToImprove: LUCK
+  minLevel: 15
+  costGold: 120
+  costItem: "LAPIS_LAZULI:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_195:
+  type: AFFIX
+  targetSlot: SHIELD
+  statToImprove: STRENGTH
+  minLevel: 16
+  costGold: 125
+  costItem: "IRON_INGOT:1"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_196:
+  type: STAT_UPGRADE
+  targetSlot: HAND
+  statToImprove: DEXTERITY
+  minLevel: 17
+  costGold: 130
+  costItem: "GOLD_INGOT:2"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_197:
+  type: AFFIX
+  targetSlot: OFF_HAND
+  statToImprove: CONSTITUTION
+  minLevel: 18
+  costGold: 135
+  costItem: "EMERALD:3"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_198:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_HEAD
+  statToImprove: INTELLIGENCE
+  minLevel: 19
+  costGold: 140
+  costItem: "DIAMOND:1"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_199:
+  type: AFFIX
+  targetSlot: ARMOR_CHEST
+  statToImprove: LUCK
+  minLevel: 20
+  costGold: 145
+  costItem: "LAPIS_LAZULI:2"
+  affix: "Praezision"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2
+enchant_200:
+  type: STAT_UPGRADE
+  targetSlot: ARMOR_LEGS
+  statToImprove: STRENGTH
+  minLevel: 21
+  costGold: 50
+  costItem: "IRON_INGOT:3"
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.2

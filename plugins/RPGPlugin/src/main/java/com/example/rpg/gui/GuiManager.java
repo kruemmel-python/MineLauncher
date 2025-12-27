@@ -16,6 +16,7 @@ import com.example.rpg.model.BuildingCategory;
 import com.example.rpg.model.BuildingDefinition;
 import com.example.rpg.model.ClassDefinition;
 import com.example.rpg.model.LootTable;
+import com.example.rpg.model.Npc;
 import com.example.rpg.model.Skill;
 import com.example.rpg.util.ItemGenerator;
 import com.example.rpg.util.ItemBuilder;

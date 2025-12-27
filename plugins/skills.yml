@@ -1,0 +1,2185 @@
+heal_pulse:
+  name: "Heilpuls"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+greater_heal:
+  name: "Große Heilung"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+divine_blessing:
+  name: "Segen"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+ember_shot:
+  name: "Flammenstoß"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+frost_bolt:
+  name: "Frostbolzen"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+arcane_burst:
+  name: "Arkane Explosion"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+power_strike:
+  name: "Machtstoß"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+whirlwind:
+  name: "Wirbelwind"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+execute:
+  name: "Hinrichtung"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+shield_wall:
+  name: "Schildwall"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+fortify:
+  name: "Bollwerk"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+deflect:
+  name: "Abwehrhaltung"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+mining_focus:
+  name: "Bergbau-Fokus"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+crafting_insight:
+  name: "Handwerkskunst"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+alchemy_mastery:
+  name: "Alchemie-Meister"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_016:
+  name: "Fertigkeit 016"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_017:
+  name: "Fertigkeit 017"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_018:
+  name: "Fertigkeit 018"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_019:
+  name: "Fertigkeit 019"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_020:
+  name: "Fertigkeit 020"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_021:
+  name: "Fertigkeit 021"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_022:
+  name: "Fertigkeit 022"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_023:
+  name: "Fertigkeit 023"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_024:
+  name: "Fertigkeit 024"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_025:
+  name: "Fertigkeit 025"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_026:
+  name: "Fertigkeit 026"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 8
+        radius: 3
+skill_027:
+  name: "Fertigkeit 027"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_028:
+  name: "Fertigkeit 028"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_029:
+  name: "Fertigkeit 029"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_030:
+  name: "Fertigkeit 030"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_031:
+  name: "Fertigkeit 031"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 6
+        radius: 3
+skill_032:
+  name: "Fertigkeit 032"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_033:
+  name: "Fertigkeit 033"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_034:
+  name: "Fertigkeit 034"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_035:
+  name: "Fertigkeit 035"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_036:
+  name: "Fertigkeit 036"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 4
+        radius: 3
+skill_037:
+  name: "Fertigkeit 037"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_038:
+  name: "Fertigkeit 038"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_039:
+  name: "Fertigkeit 039"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_040:
+  name: "Fertigkeit 040"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_041:
+  name: "Fertigkeit 041"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 9
+        radius: 3
+skill_042:
+  name: "Fertigkeit 042"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_043:
+  name: "Fertigkeit 043"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_044:
+  name: "Fertigkeit 044"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_045:
+  name: "Fertigkeit 045"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_046:
+  name: "Fertigkeit 046"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 7
+        radius: 3
+skill_047:
+  name: "Fertigkeit 047"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_048:
+  name: "Fertigkeit 048"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_049:
+  name: "Fertigkeit 049"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_050:
+  name: "Fertigkeit 050"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_051:
+  name: "Fertigkeit 051"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_052:
+  name: "Fertigkeit 052"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_053:
+  name: "Fertigkeit 053"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_054:
+  name: "Fertigkeit 054"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_055:
+  name: "Fertigkeit 055"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_056:
+  name: "Fertigkeit 056"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_057:
+  name: "Fertigkeit 057"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_058:
+  name: "Fertigkeit 058"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_059:
+  name: "Fertigkeit 059"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_060:
+  name: "Fertigkeit 060"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_061:
+  name: "Fertigkeit 061"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 8
+        radius: 3
+skill_062:
+  name: "Fertigkeit 062"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_063:
+  name: "Fertigkeit 063"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_064:
+  name: "Fertigkeit 064"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_065:
+  name: "Fertigkeit 065"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_066:
+  name: "Fertigkeit 066"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 6
+        radius: 3
+skill_067:
+  name: "Fertigkeit 067"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_068:
+  name: "Fertigkeit 068"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_069:
+  name: "Fertigkeit 069"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_070:
+  name: "Fertigkeit 070"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_071:
+  name: "Fertigkeit 071"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 4
+        radius: 3
+skill_072:
+  name: "Fertigkeit 072"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_073:
+  name: "Fertigkeit 073"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_074:
+  name: "Fertigkeit 074"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_075:
+  name: "Fertigkeit 075"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_076:
+  name: "Fertigkeit 076"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 9
+        radius: 3
+skill_077:
+  name: "Fertigkeit 077"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_078:
+  name: "Fertigkeit 078"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_079:
+  name: "Fertigkeit 079"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_080:
+  name: "Fertigkeit 080"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_081:
+  name: "Fertigkeit 081"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 7
+        radius: 3
+skill_082:
+  name: "Fertigkeit 082"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_083:
+  name: "Fertigkeit 083"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_084:
+  name: "Fertigkeit 084"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_085:
+  name: "Fertigkeit 085"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_086:
+  name: "Fertigkeit 086"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_087:
+  name: "Fertigkeit 087"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_088:
+  name: "Fertigkeit 088"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_089:
+  name: "Fertigkeit 089"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_090:
+  name: "Fertigkeit 090"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_091:
+  name: "Fertigkeit 091"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_092:
+  name: "Fertigkeit 092"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_093:
+  name: "Fertigkeit 093"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_094:
+  name: "Fertigkeit 094"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_095:
+  name: "Fertigkeit 095"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_096:
+  name: "Fertigkeit 096"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 8
+        radius: 3
+skill_097:
+  name: "Fertigkeit 097"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_098:
+  name: "Fertigkeit 098"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_099:
+  name: "Fertigkeit 099"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_100:
+  name: "Fertigkeit 100"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_101:
+  name: "Fertigkeit 101"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 6
+        radius: 3
+skill_102:
+  name: "Fertigkeit 102"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_103:
+  name: "Fertigkeit 103"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_104:
+  name: "Fertigkeit 104"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_105:
+  name: "Fertigkeit 105"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_106:
+  name: "Fertigkeit 106"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 4
+        radius: 3
+skill_107:
+  name: "Fertigkeit 107"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_108:
+  name: "Fertigkeit 108"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_109:
+  name: "Fertigkeit 109"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_110:
+  name: "Fertigkeit 110"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_111:
+  name: "Fertigkeit 111"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 9
+        radius: 3
+skill_112:
+  name: "Fertigkeit 112"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_113:
+  name: "Fertigkeit 113"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_114:
+  name: "Fertigkeit 114"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_115:
+  name: "Fertigkeit 115"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_116:
+  name: "Fertigkeit 116"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 7
+        radius: 3
+skill_117:
+  name: "Fertigkeit 117"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_118:
+  name: "Fertigkeit 118"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_119:
+  name: "Fertigkeit 119"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_120:
+  name: "Fertigkeit 120"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_121:
+  name: "Fertigkeit 121"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_122:
+  name: "Fertigkeit 122"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_123:
+  name: "Fertigkeit 123"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_124:
+  name: "Fertigkeit 124"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_125:
+  name: "Fertigkeit 125"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_126:
+  name: "Fertigkeit 126"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_127:
+  name: "Fertigkeit 127"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_128:
+  name: "Fertigkeit 128"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_129:
+  name: "Fertigkeit 129"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_130:
+  name: "Fertigkeit 130"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_131:
+  name: "Fertigkeit 131"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 8
+        radius: 3
+skill_132:
+  name: "Fertigkeit 132"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_133:
+  name: "Fertigkeit 133"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_134:
+  name: "Fertigkeit 134"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_135:
+  name: "Fertigkeit 135"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_136:
+  name: "Fertigkeit 136"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 6
+        radius: 3
+skill_137:
+  name: "Fertigkeit 137"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_138:
+  name: "Fertigkeit 138"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_139:
+  name: "Fertigkeit 139"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_140:
+  name: "Fertigkeit 140"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_141:
+  name: "Fertigkeit 141"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 4
+        radius: 3
+skill_142:
+  name: "Fertigkeit 142"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_143:
+  name: "Fertigkeit 143"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_144:
+  name: "Fertigkeit 144"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_145:
+  name: "Fertigkeit 145"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_146:
+  name: "Fertigkeit 146"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 9
+        radius: 3
+skill_147:
+  name: "Fertigkeit 147"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_148:
+  name: "Fertigkeit 148"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_149:
+  name: "Fertigkeit 149"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_150:
+  name: "Fertigkeit 150"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_151:
+  name: "Fertigkeit 151"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 7
+        radius: 3
+skill_152:
+  name: "Fertigkeit 152"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_153:
+  name: "Fertigkeit 153"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_154:
+  name: "Fertigkeit 154"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_155:
+  name: "Fertigkeit 155"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_156:
+  name: "Fertigkeit 156"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_157:
+  name: "Fertigkeit 157"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_158:
+  name: "Fertigkeit 158"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_159:
+  name: "Fertigkeit 159"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_160:
+  name: "Fertigkeit 160"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_161:
+  name: "Fertigkeit 161"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_162:
+  name: "Fertigkeit 162"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_163:
+  name: "Fertigkeit 163"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_164:
+  name: "Fertigkeit 164"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_165:
+  name: "Fertigkeit 165"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_166:
+  name: "Fertigkeit 166"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 8
+        radius: 3
+skill_167:
+  name: "Fertigkeit 167"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_168:
+  name: "Fertigkeit 168"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_169:
+  name: "Fertigkeit 169"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_170:
+  name: "Fertigkeit 170"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6
+skill_171:
+  name: "Fertigkeit 171"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 26
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 6
+        radius: 3
+skill_172:
+  name: "Fertigkeit 172"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 27
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_173:
+  name: "Fertigkeit 173"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 28
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_174:
+  name: "Fertigkeit 174"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 29
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_175:
+  name: "Fertigkeit 175"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 30
+  effects:
+    - type: HEAL
+      params:
+        amount: 5
+skill_176:
+  name: "Fertigkeit 176"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 31
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 4
+        radius: 3
+skill_177:
+  name: "Fertigkeit 177"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 32
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_178:
+  name: "Fertigkeit 178"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 33
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_179:
+  name: "Fertigkeit 179"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 34
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_180:
+  name: "Fertigkeit 180"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 5
+  effects:
+    - type: HEAL
+      params:
+        amount: 4
+skill_181:
+  name: "Fertigkeit 181"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 7
+  manaCost: 6
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 9
+        radius: 3
+skill_182:
+  name: "Fertigkeit 182"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 8
+  manaCost: 7
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_183:
+  name: "Fertigkeit 183"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 9
+  manaCost: 8
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_184:
+  name: "Fertigkeit 184"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 10
+  manaCost: 9
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_185:
+  name: "Fertigkeit 185"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 11
+  manaCost: 10
+  effects:
+    - type: HEAL
+      params:
+        amount: 9
+skill_186:
+  name: "Fertigkeit 186"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 12
+  manaCost: 11
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 7
+        radius: 3
+skill_187:
+  name: "Fertigkeit 187"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 13
+  manaCost: 12
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_188:
+  name: "Fertigkeit 188"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 14
+  manaCost: 13
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_189:
+  name: "Fertigkeit 189"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 15
+  manaCost: 14
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_190:
+  name: "Fertigkeit 190"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 16
+  manaCost: 15
+  effects:
+    - type: HEAL
+      params:
+        amount: 8
+skill_191:
+  name: "Fertigkeit 191"
+  type: PASSIVE
+  category: MAGIC
+  cooldown: 17
+  manaCost: 16
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 5
+        radius: 3
+skill_192:
+  name: "Fertigkeit 192"
+  type: ACTIVE
+  category: ATTACK
+  cooldown: 18
+  manaCost: 17
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_193:
+  name: "Fertigkeit 193"
+  type: PASSIVE
+  category: DEFENSE
+  cooldown: 19
+  manaCost: 18
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_194:
+  name: "Fertigkeit 194"
+  type: ACTIVE
+  category: PROFESSION
+  cooldown: 20
+  manaCost: 19
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_195:
+  name: "Fertigkeit 195"
+  type: PASSIVE
+  category: HEALING
+  cooldown: 21
+  manaCost: 20
+  effects:
+    - type: HEAL
+      params:
+        amount: 7
+skill_196:
+  name: "Fertigkeit 196"
+  type: ACTIVE
+  category: MAGIC
+  cooldown: 22
+  manaCost: 21
+  effects:
+    - type: DAMAGE
+      params:
+        amount: 3
+        radius: 3
+skill_197:
+  name: "Fertigkeit 197"
+  type: PASSIVE
+  category: ATTACK
+  cooldown: 23
+  manaCost: 22
+  effects:
+    - type: POTION
+      params:
+        type: SPEED
+        duration: 80
+        amplifier: 0
+skill_198:
+  name: "Fertigkeit 198"
+  type: ACTIVE
+  category: DEFENSE
+  cooldown: 24
+  manaCost: 23
+  effects:
+    - type: SOUND
+      params:
+        sound: ENTITY_PLAYER_LEVELUP
+        volume: 1.0
+        pitch: 1.0
+skill_199:
+  name: "Fertigkeit 199"
+  type: PASSIVE
+  category: PROFESSION
+  cooldown: 25
+  manaCost: 24
+  effects:
+    - type: XP
+      params:
+        amount: 5
+skill_200:
+  name: "Fertigkeit 200"
+  type: ACTIVE
+  category: HEALING
+  cooldown: 6
+  manaCost: 25
+  effects:
+    - type: HEAL
+      params:
+        amount: 6

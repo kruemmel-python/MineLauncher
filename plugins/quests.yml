@@ -1,0 +1,2610 @@
+q001:
+  name: "Wacht-hilfe 001"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 2
+  steps:
+    - type: KILL
+      target: "ENDERMAN"
+      amount: 9
+  reward:
+    xp: 90
+    skillPoints: 1
+q002:
+  name: "Forscher-auftrag 002"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 3
+  steps:
+    - type: COLLECT
+      target: "LEATHER"
+      amount: 13
+  reward:
+    xp: 100
+    skillPoints: 1
+q003:
+  name: "Kuesten-auftrag 003"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 4
+  steps:
+    - type: TALK
+      target: "NPC_Wache"
+      amount: 1
+  reward:
+    xp: 110
+    skillPoints: 1
+q004:
+  name: "Grenz-mission 004"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 5
+  steps:
+    - type: EXPLORE
+      target: "Gletscherhoehle"
+      amount: 1
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 4
+  reward:
+    xp: 120
+    skillPoints: 1
+q005:
+  name: "Schmiede-probe 005"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 6
+  steps:
+    - type: CRAFT
+      target: "Steinspitzhacke"
+      amount: 2
+  reward:
+    xp: 130
+    skillPoints: 2
+q006:
+  name: "Ernte-gang 006"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 7
+  steps:
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 2
+  reward:
+    xp: 140
+    skillPoints: 1
+q007:
+  name: "Jagd-auftrag 007"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 8
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 3
+  reward:
+    xp: 150
+    skillPoints: 1
+q008:
+  name: "Gilden-auftrag 008"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 9
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "PILLAGER"
+      amount: 11
+  reward:
+    xp: 160
+    skillPoints: 1
+q009:
+  name: "Berg-hilfe 009"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 10
+  steps:
+    - type: KILL
+      target: "SKELETON"
+      amount: 5
+  reward:
+    xp: 170
+    skillPoints: 1
+q010:
+  name: "Grenz-runde 010"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 11
+  steps:
+    - type: COLLECT
+      target: "IRON_INGOT"
+      amount: 13
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 2
+  reward:
+    xp: 180
+    skillPoints: 2
+q011:
+  name: "Grenz-mission 011"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 12
+  steps:
+    - type: TALK
+      target: "NPC_Wache"
+      amount: 1
+  reward:
+    xp: 190
+    skillPoints: 1
+q012:
+  name: "Willkommens-gang 012"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 13
+  steps:
+    - type: EXPLORE
+      target: "Ruinenplatz"
+      amount: 1
+    - type: CRAFT
+      target: "Bogen"
+      amount: 2
+  reward:
+    xp: 200
+    skillPoints: 1
+q013:
+  name: "Wald-dienst 013"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 14
+  steps:
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 4
+  reward:
+    xp: 210
+    skillPoints: 1
+q014:
+  name: "Jagd-hilfe 014"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 15
+  steps:
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 2
+  reward:
+    xp: 220
+    skillPoints: 1
+q015:
+  name: "Boten-dienst 015"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 16
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 3
+  reward:
+    xp: 230
+    skillPoints: 2
+q016:
+  name: "Schmiede-dienst 016"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 17
+  steps:
+    - type: ESCORT
+      target: "Verletzter_Soldat"
+      amount: 1
+    - type: KILL
+      target: "CREEPER"
+      amount: 9
+  reward:
+    xp: 240
+    skillPoints: 1
+q017:
+  name: "Wald-hilfe 017"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 18
+  steps:
+    - type: KILL
+      target: "WOLF"
+      amount: 9
+  reward:
+    xp: 250
+    skillPoints: 1
+q018:
+  name: "Reise-probe 018"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 19
+  steps:
+    - type: COLLECT
+      target: "STRING"
+      amount: 5
+  reward:
+    xp: 260
+    skillPoints: 1
+q019:
+  name: "Wald-quest 019"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 20
+  steps:
+    - type: TALK
+      target: "NPC_Wache"
+      amount: 1
+  reward:
+    xp: 270
+    skillPoints: 1
+q020:
+  name: "Wacht-auftrag 020"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 21
+  steps:
+    - type: EXPLORE
+      target: "Wachturm"
+      amount: 1
+    - type: CRAFT
+      target: "Fackel"
+      amount: 3
+    - type: ESCORT
+      target: "Haendlerkarawane"
+      amount: 1
+  reward:
+    xp: 280
+    skillPoints: 2
+q021:
+  name: "Rats-auftrag 021"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 22
+  steps:
+    - type: CRAFT
+      target: "Bogen"
+      amount: 6
+  reward:
+    xp: 290
+    skillPoints: 1
+q022:
+  name: "Schmiede-gang 022"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 23
+  steps:
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 4
+  reward:
+    xp: 300
+    skillPoints: 1
+q023:
+  name: "Ruinen-hilfe 023"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 24
+  steps:
+    - type: DEFEND
+      target: "Aussenposten"
+      amount: 2
+  reward:
+    xp: 310
+    skillPoints: 1
+q024:
+  name: "Wacht-quest 024"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 25
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 8
+  reward:
+    xp: 320
+    skillPoints: 1
+q025:
+  name: "Verteidigungs-auftrag 025"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 26
+  steps:
+    - type: KILL
+      target: "PHANTOM"
+      amount: 12
+  reward:
+    xp: 330
+    skillPoints: 2
+q026:
+  name: "Rats-dienst 026"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 27
+  steps:
+    - type: COLLECT
+      target: "DIAMOND"
+      amount: 18
+  reward:
+    xp: 340
+    skillPoints: 1
+q027:
+  name: "Wacht-einsatz 027"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 28
+  steps:
+    - type: TALK
+      target: "NPC_Haendler"
+      amount: 1
+  reward:
+    xp: 350
+    skillPoints: 1
+q028:
+  name: "Handels-hilfe 028"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 29
+  steps:
+    - type: EXPLORE
+      target: "Ruinenplatz"
+      amount: 1
+    - type: CRAFT
+      target: "Fackel"
+      amount: 5
+  reward:
+    xp: 360
+    skillPoints: 1
+q029:
+  name: "Ruinen-probe 029"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 30
+  steps:
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 2
+  reward:
+    xp: 370
+    skillPoints: 1
+q030:
+  name: "Sumpf-mission 030"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 31
+  steps:
+    - type: USE_ITEM
+      target: "Windlaterne"
+      amount: 2
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 6
+  reward:
+    xp: 380
+    skillPoints: 2
+q031:
+  name: "Sumpf-dienst 031"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 32
+  steps:
+    - type: DEFEND
+      target: "Hafen"
+      amount: 3
+  reward:
+    xp: 390
+    skillPoints: 1
+q032:
+  name: "Wacht-einsatz 032"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 33
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 11
+  reward:
+    xp: 400
+    skillPoints: 1
+q033:
+  name: "Verteidigungs-einsatz 033"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 34
+  steps:
+    - type: KILL
+      target: "PHANTOM"
+      amount: 9
+  reward:
+    xp: 410
+    skillPoints: 1
+q034:
+  name: "Jagd-gang 034"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 35
+  steps:
+    - type: COLLECT
+      target: "LEATHER"
+      amount: 5
+  reward:
+    xp: 420
+    skillPoints: 1
+q035:
+  name: "Boten-einsatz 035"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 36
+  steps:
+    - type: TALK
+      target: "NPC_Buergermeister"
+      amount: 1
+  reward:
+    xp: 430
+    skillPoints: 2
+q036:
+  name: "Ernte-quest 036"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 37
+  steps:
+    - type: EXPLORE
+      target: "Nordwald"
+      amount: 1
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 3
+  reward:
+    xp: 440
+    skillPoints: 1
+q037:
+  name: "Forscher-hilfe 037"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 38
+  steps:
+    - type: CRAFT
+      target: "Fackel"
+      amount: 3
+  reward:
+    xp: 450
+    skillPoints: 1
+q038:
+  name: "Boten-einsatz 038"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 39
+  steps:
+    - type: USE_ITEM
+      target: "Angel"
+      amount: 2
+  reward:
+    xp: 460
+    skillPoints: 1
+q039:
+  name: "Verteidigungs-einsatz 039"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 40
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 2
+  reward:
+    xp: 470
+    skillPoints: 1
+q040:
+  name: "Rats-auftrag 040"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 41
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 8
+    - type: EXPLORE
+      target: "Flussdelta"
+      amount: 1
+  reward:
+    xp: 80
+    skillPoints: 2
+q041:
+  name: "Rats-auftrag 041"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 42
+  steps:
+    - type: KILL
+      target: "PILLAGER"
+      amount: 10
+  reward:
+    xp: 90
+    skillPoints: 1
+q042:
+  name: "Reise-einsatz 042"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 43
+  steps:
+    - type: COLLECT
+      target: "COBBLESTONE"
+      amount: 5
+  reward:
+    xp: 100
+    skillPoints: 1
+q043:
+  name: "Jagd-probe 043"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 44
+  steps:
+    - type: TALK
+      target: "NPC_Haendler"
+      amount: 1
+  reward:
+    xp: 110
+    skillPoints: 1
+q044:
+  name: "Reise-quest 044"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 45
+  steps:
+    - type: EXPLORE
+      target: "Nordwald"
+      amount: 1
+    - type: CRAFT
+      target: "Bogen"
+      amount: 5
+  reward:
+    xp: 120
+    skillPoints: 1
+q045:
+  name: "Kuesten-auftrag 045"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 46
+  steps:
+    - type: CRAFT
+      target: "Brot"
+      amount: 6
+  reward:
+    xp: 130
+    skillPoints: 2
+q046:
+  name: "Grenz-hilfe 046"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 47
+  steps:
+    - type: USE_ITEM
+      target: "Heiltrank"
+      amount: 1
+  reward:
+    xp: 140
+    skillPoints: 1
+q047:
+  name: "Dorf-probe 047"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 48
+  steps:
+    - type: DEFEND
+      target: "Tempelhof"
+      amount: 3
+  reward:
+    xp: 150
+    skillPoints: 1
+q048:
+  name: "Jagd-quest 048"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 49
+  steps:
+    - type: ESCORT
+      target: "Forscher"
+      amount: 1
+    - type: KILL
+      target: "PHANTOM"
+      amount: 5
+  reward:
+    xp: 160
+    skillPoints: 1
+q049:
+  name: "Sumpf-gang 049"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 50
+  steps:
+    - type: KILL
+      target: "SPIDER"
+      amount: 5
+  reward:
+    xp: 170
+    skillPoints: 1
+q050:
+  name: "Sumpf-gang 050"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 1
+  steps:
+    - type: COLLECT
+      target: "STRING"
+      amount: 14
+    - type: USE_ITEM
+      target: "Angel"
+      amount: 1
+  reward:
+    xp: 180
+    skillPoints: 2
+q051:
+  name: "Berg-auftrag 051"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 2
+  steps:
+    - type: TALK
+      target: "NPC_Alchemist"
+      amount: 1
+  reward:
+    xp: 190
+    skillPoints: 1
+q052:
+  name: "Rats-auftrag 052"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 3
+  steps:
+    - type: EXPLORE
+      target: "Gletscherhoehle"
+      amount: 1
+    - type: CRAFT
+      target: "Holzplanken"
+      amount: 3
+  reward:
+    xp: 200
+    skillPoints: 1
+q053:
+  name: "Kuesten-auftrag 053"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 4
+  steps:
+    - type: CRAFT
+      target: "Bogen"
+      amount: 1
+  reward:
+    xp: 210
+    skillPoints: 1
+q054:
+  name: "Verteidigungs-probe 054"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 5
+  steps:
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 2
+  reward:
+    xp: 220
+    skillPoints: 1
+q055:
+  name: "Wacht-auftrag 055"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 6
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 2
+  reward:
+    xp: 230
+    skillPoints: 2
+q056:
+  name: "Sumpf-runde 056"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 7
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "SKELETON"
+      amount: 4
+  reward:
+    xp: 240
+    skillPoints: 1
+q057:
+  name: "Berg-einsatz 057"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 8
+  steps:
+    - type: KILL
+      target: "SLIME"
+      amount: 11
+  reward:
+    xp: 250
+    skillPoints: 1
+q058:
+  name: "Forscher-dienst 058"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 9
+  steps:
+    - type: COLLECT
+      target: "POTATO"
+      amount: 15
+  reward:
+    xp: 260
+    skillPoints: 1
+q059:
+  name: "Jagd-hilfe 059"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 10
+  steps:
+    - type: TALK
+      target: "NPC_Buergermeister"
+      amount: 1
+  reward:
+    xp: 270
+    skillPoints: 1
+q060:
+  name: "Reise-auftrag 060"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 11
+  steps:
+    - type: EXPLORE
+      target: "Dunkelwald"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 2
+    - type: ESCORT
+      target: "Verletzter_Soldat"
+      amount: 1
+  reward:
+    xp: 280
+    skillPoints: 2
+q061:
+  name: "Jagd-gang 061"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 12
+  steps:
+    - type: CRAFT
+      target: "Holzplanken"
+      amount: 2
+  reward:
+    xp: 290
+    skillPoints: 1
+q062:
+  name: "Berg-gang 062"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 13
+  steps:
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 3
+  reward:
+    xp: 300
+    skillPoints: 1
+q063:
+  name: "Wacht-gang 063"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 14
+  steps:
+    - type: DEFEND
+      target: "Karawanenlager"
+      amount: 3
+  reward:
+    xp: 310
+    skillPoints: 1
+q064:
+  name: "Wacht-runde 064"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 15
+  steps:
+    - type: ESCORT
+      target: "Forscher"
+      amount: 1
+    - type: KILL
+      target: "SKELETON"
+      amount: 11
+  reward:
+    xp: 320
+    skillPoints: 1
+q065:
+  name: "Wald-dienst 065"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 16
+  steps:
+    - type: KILL
+      target: "CREEPER"
+      amount: 8
+  reward:
+    xp: 330
+    skillPoints: 2
+q066:
+  name: "Ruinen-gang 066"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 17
+  steps:
+    - type: COLLECT
+      target: "DIAMOND"
+      amount: 15
+  reward:
+    xp: 340
+    skillPoints: 1
+q067:
+  name: "Rats-hilfe 067"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 18
+  steps:
+    - type: TALK
+      target: "NPC_Alchemist"
+      amount: 1
+  reward:
+    xp: 350
+    skillPoints: 1
+q068:
+  name: "Berg-runde 068"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 19
+  steps:
+    - type: EXPLORE
+      target: "Nordwald"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 3
+  reward:
+    xp: 360
+    skillPoints: 1
+q069:
+  name: "Grenz-dienst 069"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 20
+  steps:
+    - type: CRAFT
+      target: "Bogen"
+      amount: 2
+  reward:
+    xp: 370
+    skillPoints: 1
+q070:
+  name: "Schmiede-dienst 070"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 21
+  steps:
+    - type: USE_ITEM
+      target: "Schaufel"
+      amount: 1
+    - type: COLLECT
+      target: "STRING"
+      amount: 15
+  reward:
+    xp: 380
+    skillPoints: 2
+q071:
+  name: "Wald-probe 071"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 22
+  steps:
+    - type: DEFEND
+      target: "Aussenposten"
+      amount: 2
+  reward:
+    xp: 390
+    skillPoints: 1
+q072:
+  name: "Jagd-mission 072"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 23
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 11
+  reward:
+    xp: 400
+    skillPoints: 1
+q073:
+  name: "Rats-hilfe 073"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 24
+  steps:
+    - type: KILL
+      target: "ENDERMAN"
+      amount: 10
+  reward:
+    xp: 410
+    skillPoints: 1
+q074:
+  name: "Ernte-dienst 074"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 25
+  steps:
+    - type: COLLECT
+      target: "DIAMOND"
+      amount: 6
+  reward:
+    xp: 420
+    skillPoints: 1
+q075:
+  name: "Heiler-quest 075"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 26
+  steps:
+    - type: TALK
+      target: "NPC_Alchemist"
+      amount: 1
+  reward:
+    xp: 430
+    skillPoints: 2
+q076:
+  name: "Dorf-einsatz 076"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 27
+  steps:
+    - type: EXPLORE
+      target: "Bergpass"
+      amount: 1
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 2
+  reward:
+    xp: 440
+    skillPoints: 1
+q077:
+  name: "Willkommens-einsatz 077"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 28
+  steps:
+    - type: CRAFT
+      target: "Steinspitzhacke"
+      amount: 2
+  reward:
+    xp: 450
+    skillPoints: 1
+q078:
+  name: "Berg-hilfe 078"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 29
+  steps:
+    - type: USE_ITEM
+      target: "Angel"
+      amount: 4
+  reward:
+    xp: 460
+    skillPoints: 1
+q079:
+  name: "Gilden-auftrag 079"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 30
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 2
+  reward:
+    xp: 470
+    skillPoints: 1
+q080:
+  name: "Wacht-dienst 080"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 31
+  steps:
+    - type: ESCORT
+      target: "Haendlerkarawane"
+      amount: 1
+    - type: KILL
+      target: "SPIDER"
+      amount: 10
+    - type: EXPLORE
+      target: "Verlassene_Mine"
+      amount: 1
+  reward:
+    xp: 80
+    skillPoints: 2
+q081:
+  name: "Grenz-auftrag 081"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 32
+  steps:
+    - type: KILL
+      target: "WOLF"
+      amount: 12
+  reward:
+    xp: 90
+    skillPoints: 1
+q082:
+  name: "Wald-dienst 082"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 33
+  steps:
+    - type: COLLECT
+      target: "DIAMOND"
+      amount: 18
+  reward:
+    xp: 100
+    skillPoints: 1
+q083:
+  name: "Wacht-dienst 083"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 34
+  steps:
+    - type: TALK
+      target: "NPC_Alchemist"
+      amount: 1
+  reward:
+    xp: 110
+    skillPoints: 1
+q084:
+  name: "Ruinen-gang 084"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 35
+  steps:
+    - type: EXPLORE
+      target: "Bergpass"
+      amount: 1
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 1
+  reward:
+    xp: 120
+    skillPoints: 1
+q085:
+  name: "Rats-hilfe 085"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 36
+  steps:
+    - type: CRAFT
+      target: "Steinspitzhacke"
+      amount: 4
+  reward:
+    xp: 130
+    skillPoints: 2
+q086:
+  name: "Schmiede-mission 086"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 37
+  steps:
+    - type: USE_ITEM
+      target: "Kompass"
+      amount: 3
+  reward:
+    xp: 140
+    skillPoints: 1
+q087:
+  name: "Handels-einsatz 087"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 38
+  steps:
+    - type: DEFEND
+      target: "Dorfplatz"
+      amount: 1
+  reward:
+    xp: 150
+    skillPoints: 1
+q088:
+  name: "Ruinen-gang 088"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 39
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "PHANTOM"
+      amount: 9
+  reward:
+    xp: 160
+    skillPoints: 1
+q089:
+  name: "Willkommens-mission 089"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 40
+  steps:
+    - type: KILL
+      target: "PHANTOM"
+      amount: 4
+  reward:
+    xp: 170
+    skillPoints: 1
+q090:
+  name: "Ernte-mission 090"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 41
+  steps:
+    - type: COLLECT
+      target: "IRON_INGOT"
+      amount: 7
+    - type: USE_ITEM
+      target: "Windlaterne"
+      amount: 4
+  reward:
+    xp: 180
+    skillPoints: 2
+q091:
+  name: "Ernte-hilfe 091"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 42
+  steps:
+    - type: TALK
+      target: "NPC_Schmied"
+      amount: 1
+  reward:
+    xp: 190
+    skillPoints: 1
+q092:
+  name: "Ruinen-dienst 092"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 43
+  steps:
+    - type: EXPLORE
+      target: "Pilzinsel"
+      amount: 1
+    - type: CRAFT
+      target: "Fackel"
+      amount: 1
+  reward:
+    xp: 200
+    skillPoints: 1
+q093:
+  name: "Wacht-auftrag 093"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 44
+  steps:
+    - type: CRAFT
+      target: "Brot"
+      amount: 2
+  reward:
+    xp: 210
+    skillPoints: 1
+q094:
+  name: "Verteidigungs-einsatz 094"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 45
+  steps:
+    - type: USE_ITEM
+      target: "Windlaterne"
+      amount: 4
+  reward:
+    xp: 220
+    skillPoints: 1
+q095:
+  name: "Verteidigungs-quest 095"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 46
+  steps:
+    - type: DEFEND
+      target: "Karawanenlager"
+      amount: 3
+  reward:
+    xp: 230
+    skillPoints: 2
+q096:
+  name: "Gilden-auftrag 096"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 47
+  steps:
+    - type: ESCORT
+      target: "Pilgergruppe"
+      amount: 1
+    - type: KILL
+      target: "SPIDER"
+      amount: 11
+  reward:
+    xp: 240
+    skillPoints: 1
+q097:
+  name: "Forscher-einsatz 097"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 48
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 8
+  reward:
+    xp: 250
+    skillPoints: 1
+q098:
+  name: "Handels-dienst 098"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 49
+  steps:
+    - type: COLLECT
+      target: "WHEAT"
+      amount: 8
+  reward:
+    xp: 260
+    skillPoints: 1
+q099:
+  name: "Grenz-einsatz 099"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 50
+  steps:
+    - type: TALK
+      target: "NPC_Heilerin"
+      amount: 1
+  reward:
+    xp: 270
+    skillPoints: 1
+q100:
+  name: "Grenz-gang 100"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 1
+  steps:
+    - type: EXPLORE
+      target: "Pilzinsel"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 3
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+  reward:
+    xp: 280
+    skillPoints: 2
+q101:
+  name: "Schmiede-auftrag 101"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 2
+  steps:
+    - type: CRAFT
+      target: "Fackel"
+      amount: 5
+  reward:
+    xp: 290
+    skillPoints: 1
+q102:
+  name: "Forscher-hilfe 102"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 3
+  steps:
+    - type: USE_ITEM
+      target: "Schaufel"
+      amount: 3
+  reward:
+    xp: 300
+    skillPoints: 1
+q103:
+  name: "Ruinen-hilfe 103"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 4
+  steps:
+    - type: DEFEND
+      target: "Bruecke"
+      amount: 3
+  reward:
+    xp: 310
+    skillPoints: 1
+q104:
+  name: "Rats-quest 104"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 5
+  steps:
+    - type: ESCORT
+      target: "Verletzter_Soldat"
+      amount: 1
+    - type: KILL
+      target: "SPIDER"
+      amount: 8
+  reward:
+    xp: 320
+    skillPoints: 1
+q105:
+  name: "Forscher-runde 105"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 6
+  steps:
+    - type: KILL
+      target: "WITHER_SKELETON"
+      amount: 4
+  reward:
+    xp: 330
+    skillPoints: 2
+q106:
+  name: "Sumpf-gang 106"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 7
+  steps:
+    - type: COLLECT
+      target: "LEATHER"
+      amount: 11
+  reward:
+    xp: 340
+    skillPoints: 1
+q107:
+  name: "Wald-hilfe 107"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 8
+  steps:
+    - type: TALK
+      target: "NPC_Gelehrter"
+      amount: 1
+  reward:
+    xp: 350
+    skillPoints: 1
+q108:
+  name: "Dorf-dienst 108"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 9
+  steps:
+    - type: EXPLORE
+      target: "Sumpfpfad"
+      amount: 1
+    - type: CRAFT
+      target: "Brot"
+      amount: 2
+  reward:
+    xp: 360
+    skillPoints: 1
+q109:
+  name: "Reise-mission 109"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 10
+  steps:
+    - type: CRAFT
+      target: "Bogen"
+      amount: 6
+  reward:
+    xp: 370
+    skillPoints: 1
+q110:
+  name: "Reise-quest 110"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 11
+  steps:
+    - type: USE_ITEM
+      target: "Kompass"
+      amount: 4
+    - type: COLLECT
+      target: "CARROT"
+      amount: 10
+  reward:
+    xp: 380
+    skillPoints: 2
+q111:
+  name: "Ernte-auftrag 111"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 12
+  steps:
+    - type: DEFEND
+      target: "Dorfplatz"
+      amount: 2
+  reward:
+    xp: 390
+    skillPoints: 1
+q112:
+  name: "Jagd-auftrag 112"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 13
+  steps:
+    - type: ESCORT
+      target: "Haendlerkarawane"
+      amount: 1
+    - type: KILL
+      target: "PHANTOM"
+      amount: 3
+  reward:
+    xp: 400
+    skillPoints: 1
+q113:
+  name: "Dorf-einsatz 113"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 14
+  steps:
+    - type: KILL
+      target: "SKELETON"
+      amount: 5
+  reward:
+    xp: 410
+    skillPoints: 1
+q114:
+  name: "Wald-hilfe 114"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 15
+  steps:
+    - type: COLLECT
+      target: "IRON_INGOT"
+      amount: 11
+  reward:
+    xp: 420
+    skillPoints: 1
+q115:
+  name: "Verteidigungs-probe 115"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 16
+  steps:
+    - type: TALK
+      target: "NPC_Schmied"
+      amount: 1
+  reward:
+    xp: 430
+    skillPoints: 2
+q116:
+  name: "Grenz-dienst 116"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 17
+  steps:
+    - type: EXPLORE
+      target: "Gletscherhoehle"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 2
+  reward:
+    xp: 440
+    skillPoints: 1
+q117:
+  name: "Jagd-auftrag 117"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 18
+  steps:
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 5
+  reward:
+    xp: 450
+    skillPoints: 1
+q118:
+  name: "Ernte-auftrag 118"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 19
+  steps:
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 2
+  reward:
+    xp: 460
+    skillPoints: 1
+q119:
+  name: "Reise-einsatz 119"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 20
+  steps:
+    - type: DEFEND
+      target: "Tempelhof"
+      amount: 2
+  reward:
+    xp: 470
+    skillPoints: 1
+q120:
+  name: "Willkommens-auftrag 120"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 21
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "ENDERMAN"
+      amount: 10
+    - type: EXPLORE
+      target: "Ruinenplatz"
+      amount: 1
+  reward:
+    xp: 80
+    skillPoints: 2
+q121:
+  name: "Heiler-auftrag 121"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 22
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 5
+  reward:
+    xp: 90
+    skillPoints: 1
+q122:
+  name: "Boten-dienst 122"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 23
+  steps:
+    - type: COLLECT
+      target: "WHEAT"
+      amount: 19
+  reward:
+    xp: 100
+    skillPoints: 1
+q123:
+  name: "Heiler-hilfe 123"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 24
+  steps:
+    - type: TALK
+      target: "NPC_Buergermeister"
+      amount: 1
+  reward:
+    xp: 110
+    skillPoints: 1
+q124:
+  name: "Grenz-auftrag 124"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 25
+  steps:
+    - type: EXPLORE
+      target: "Wachturm"
+      amount: 1
+    - type: CRAFT
+      target: "Holzplanken"
+      amount: 3
+  reward:
+    xp: 120
+    skillPoints: 1
+q125:
+  name: "Sumpf-mission 125"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 26
+  steps:
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 2
+  reward:
+    xp: 130
+    skillPoints: 2
+q126:
+  name: "Wald-runde 126"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 27
+  steps:
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 3
+  reward:
+    xp: 140
+    skillPoints: 1
+q127:
+  name: "Forscher-auftrag 127"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 28
+  steps:
+    - type: DEFEND
+      target: "Aussenposten"
+      amount: 3
+  reward:
+    xp: 150
+    skillPoints: 1
+q128:
+  name: "Verteidigungs-dienst 128"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 29
+  steps:
+    - type: ESCORT
+      target: "Verletzter_Soldat"
+      amount: 1
+    - type: KILL
+      target: "WITHER_SKELETON"
+      amount: 7
+  reward:
+    xp: 160
+    skillPoints: 1
+q129:
+  name: "Wacht-quest 129"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 30
+  steps:
+    - type: KILL
+      target: "WOLF"
+      amount: 9
+  reward:
+    xp: 170
+    skillPoints: 1
+q130:
+  name: "Dorf-runde 130"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 31
+  steps:
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 18
+    - type: USE_ITEM
+      target: "Kompass"
+      amount: 3
+  reward:
+    xp: 180
+    skillPoints: 2
+q131:
+  name: "Forscher-auftrag 131"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 32
+  steps:
+    - type: TALK
+      target: "NPC_Schmied"
+      amount: 1
+  reward:
+    xp: 190
+    skillPoints: 1
+q132:
+  name: "Ruinen-quest 132"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 33
+  steps:
+    - type: EXPLORE
+      target: "Sumpfpfad"
+      amount: 1
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 4
+  reward:
+    xp: 200
+    skillPoints: 1
+q133:
+  name: "Rats-auftrag 133"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 34
+  steps:
+    - type: CRAFT
+      target: "Brot"
+      amount: 1
+  reward:
+    xp: 210
+    skillPoints: 1
+q134:
+  name: "Wald-gang 134"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 35
+  steps:
+    - type: USE_ITEM
+      target: "Kompass"
+      amount: 4
+  reward:
+    xp: 220
+    skillPoints: 1
+q135:
+  name: "Wald-dienst 135"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 36
+  steps:
+    - type: DEFEND
+      target: "Tempelhof"
+      amount: 1
+  reward:
+    xp: 230
+    skillPoints: 2
+q136:
+  name: "Heiler-quest 136"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 37
+  steps:
+    - type: ESCORT
+      target: "Haendlerkarawane"
+      amount: 1
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 8
+  reward:
+    xp: 240
+    skillPoints: 1
+q137:
+  name: "Boten-auftrag 137"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 38
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 12
+  reward:
+    xp: 250
+    skillPoints: 1
+q138:
+  name: "Schmiede-mission 138"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 39
+  steps:
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 14
+  reward:
+    xp: 260
+    skillPoints: 1
+q139:
+  name: "Berg-einsatz 139"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 40
+  steps:
+    - type: TALK
+      target: "NPC_Buergermeister"
+      amount: 1
+  reward:
+    xp: 270
+    skillPoints: 1
+q140:
+  name: "Heiler-mission 140"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 41
+  steps:
+    - type: EXPLORE
+      target: "Verlassene_Mine"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 1
+    - type: ESCORT
+      target: "Forscher"
+      amount: 1
+  reward:
+    xp: 280
+    skillPoints: 2
+q141:
+  name: "Jagd-mission 141"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 42
+  steps:
+    - type: CRAFT
+      target: "Brot"
+      amount: 6
+  reward:
+    xp: 290
+    skillPoints: 1
+q142:
+  name: "Ernte-probe 142"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 43
+  steps:
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 3
+  reward:
+    xp: 300
+    skillPoints: 1
+q143:
+  name: "Forscher-runde 143"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 44
+  steps:
+    - type: DEFEND
+      target: "Kornfeld"
+      amount: 2
+  reward:
+    xp: 310
+    skillPoints: 1
+q144:
+  name: "Schmiede-quest 144"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 45
+  steps:
+    - type: ESCORT
+      target: "Pilgergruppe"
+      amount: 1
+    - type: KILL
+      target: "PHANTOM"
+      amount: 7
+  reward:
+    xp: 320
+    skillPoints: 1
+q145:
+  name: "Ruinen-dienst 145"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 46
+  steps:
+    - type: KILL
+      target: "SPIDER"
+      amount: 4
+  reward:
+    xp: 330
+    skillPoints: 2
+q146:
+  name: "Grenz-quest 146"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 47
+  steps:
+    - type: COLLECT
+      target: "OAK_LOG"
+      amount: 19
+  reward:
+    xp: 340
+    skillPoints: 1
+q147:
+  name: "Reise-probe 147"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 48
+  steps:
+    - type: TALK
+      target: "NPC_Gelehrter"
+      amount: 1
+  reward:
+    xp: 350
+    skillPoints: 1
+q148:
+  name: "Gilden-probe 148"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 49
+  steps:
+    - type: EXPLORE
+      target: "Kuestenpfad"
+      amount: 1
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 3
+  reward:
+    xp: 360
+    skillPoints: 1
+q149:
+  name: "Rats-probe 149"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 50
+  steps:
+    - type: CRAFT
+      target: "Bogen"
+      amount: 3
+  reward:
+    xp: 370
+    skillPoints: 1
+q150:
+  name: "Boten-quest 150"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 1
+  steps:
+    - type: USE_ITEM
+      target: "Feuerwerk"
+      amount: 2
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 8
+  reward:
+    xp: 380
+    skillPoints: 2
+q151:
+  name: "Gilden-auftrag 151"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 2
+  steps:
+    - type: DEFEND
+      target: "Aussenposten"
+      amount: 2
+  reward:
+    xp: 390
+    skillPoints: 1
+q152:
+  name: "Dorf-quest 152"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 3
+  steps:
+    - type: ESCORT
+      target: "Pilgergruppe"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 12
+  reward:
+    xp: 400
+    skillPoints: 1
+q153:
+  name: "Sumpf-auftrag 153"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 4
+  steps:
+    - type: KILL
+      target: "CREEPER"
+      amount: 3
+  reward:
+    xp: 410
+    skillPoints: 1
+q154:
+  name: "Reise-dienst 154"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 5
+  steps:
+    - type: COLLECT
+      target: "COBBLESTONE"
+      amount: 12
+  reward:
+    xp: 420
+    skillPoints: 1
+q155:
+  name: "Rats-quest 155"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 6
+  steps:
+    - type: TALK
+      target: "NPC_Heilerin"
+      amount: 1
+  reward:
+    xp: 430
+    skillPoints: 2
+q156:
+  name: "Heiler-gang 156"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 7
+  steps:
+    - type: EXPLORE
+      target: "Sumpfpfad"
+      amount: 1
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 3
+  reward:
+    xp: 440
+    skillPoints: 1
+q157:
+  name: "Boten-runde 157"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 8
+  steps:
+    - type: CRAFT
+      target: "Fackel"
+      amount: 1
+  reward:
+    xp: 450
+    skillPoints: 1
+q158:
+  name: "Reise-runde 158"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 9
+  steps:
+    - type: USE_ITEM
+      target: "Heiltrank"
+      amount: 1
+  reward:
+    xp: 460
+    skillPoints: 1
+q159:
+  name: "Ruinen-probe 159"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 10
+  steps:
+    - type: DEFEND
+      target: "Aussenposten"
+      amount: 1
+  reward:
+    xp: 470
+    skillPoints: 1
+q160:
+  name: "Ernte-gang 160"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 11
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "WITHER_SKELETON"
+      amount: 3
+    - type: EXPLORE
+      target: "Wachturm"
+      amount: 1
+  reward:
+    xp: 80
+    skillPoints: 2
+q161:
+  name: "Dorf-gang 161"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 12
+  steps:
+    - type: KILL
+      target: "WITHER_SKELETON"
+      amount: 12
+  reward:
+    xp: 90
+    skillPoints: 1
+q162:
+  name: "Jagd-auftrag 162"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 13
+  steps:
+    - type: COLLECT
+      target: "OAK_LOG"
+      amount: 17
+  reward:
+    xp: 100
+    skillPoints: 1
+q163:
+  name: "Boten-auftrag 163"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 14
+  steps:
+    - type: TALK
+      target: "NPC_Haendler"
+      amount: 1
+  reward:
+    xp: 110
+    skillPoints: 1
+q164:
+  name: "Rats-einsatz 164"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 15
+  steps:
+    - type: EXPLORE
+      target: "Bergpass"
+      amount: 1
+    - type: CRAFT
+      target: "Fackel"
+      amount: 2
+  reward:
+    xp: 120
+    skillPoints: 1
+q165:
+  name: "Reise-einsatz 165"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 16
+  steps:
+    - type: CRAFT
+      target: "Fackel"
+      amount: 4
+  reward:
+    xp: 130
+    skillPoints: 2
+q166:
+  name: "Dorf-gang 166"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 17
+  steps:
+    - type: USE_ITEM
+      target: "Angel"
+      amount: 1
+  reward:
+    xp: 140
+    skillPoints: 1
+q167:
+  name: "Reise-auftrag 167"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 18
+  steps:
+    - type: DEFEND
+      target: "Karawanenlager"
+      amount: 2
+  reward:
+    xp: 150
+    skillPoints: 1
+q168:
+  name: "Handels-dienst 168"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 19
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 9
+  reward:
+    xp: 160
+    skillPoints: 1
+q169:
+  name: "Gilden-einsatz 169"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 20
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 11
+  reward:
+    xp: 170
+    skillPoints: 1
+q170:
+  name: "Gilden-einsatz 170"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 21
+  steps:
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 11
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 3
+  reward:
+    xp: 180
+    skillPoints: 2
+q171:
+  name: "Rats-runde 171"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 22
+  steps:
+    - type: TALK
+      target: "NPC_Buergermeister"
+      amount: 1
+  reward:
+    xp: 190
+    skillPoints: 1
+q172:
+  name: "Boten-mission 172"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 23
+  steps:
+    - type: EXPLORE
+      target: "Pilzinsel"
+      amount: 1
+    - type: CRAFT
+      target: "Lederruestung"
+      amount: 1
+  reward:
+    xp: 200
+    skillPoints: 1
+q173:
+  name: "Ernte-quest 173"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 24
+  steps:
+    - type: CRAFT
+      target: "Holzplanken"
+      amount: 5
+  reward:
+    xp: 210
+    skillPoints: 1
+q174:
+  name: "Forscher-einsatz 174"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 25
+  steps:
+    - type: USE_ITEM
+      target: "Heiltrank"
+      amount: 1
+  reward:
+    xp: 220
+    skillPoints: 1
+q175:
+  name: "Reise-probe 175"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 26
+  steps:
+    - type: DEFEND
+      target: "Karawanenlager"
+      amount: 1
+  reward:
+    xp: 230
+    skillPoints: 2
+q176:
+  name: "Wald-auftrag 176"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 27
+  steps:
+    - type: ESCORT
+      target: "Verletzter_Soldat"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 7
+  reward:
+    xp: 240
+    skillPoints: 1
+q177:
+  name: "Kuesten-mission 177"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 28
+  steps:
+    - type: KILL
+      target: "WOLF"
+      amount: 3
+  reward:
+    xp: 250
+    skillPoints: 1
+q178:
+  name: "Ernte-probe 178"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 29
+  steps:
+    - type: COLLECT
+      target: "FEATHER"
+      amount: 10
+  reward:
+    xp: 260
+    skillPoints: 1
+q179:
+  name: "Berg-quest 179"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 30
+  steps:
+    - type: TALK
+      target: "NPC_Schmied"
+      amount: 1
+  reward:
+    xp: 270
+    skillPoints: 1
+q180:
+  name: "Wacht-auftrag 180"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 31
+  steps:
+    - type: EXPLORE
+      target: "Pilzinsel"
+      amount: 1
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 6
+    - type: ESCORT
+      target: "Forscher"
+      amount: 1
+  reward:
+    xp: 280
+    skillPoints: 2
+q181:
+  name: "Ernte-gang 181"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 32
+  steps:
+    - type: CRAFT
+      target: "Trank_der_Heilung"
+      amount: 3
+  reward:
+    xp: 290
+    skillPoints: 1
+q182:
+  name: "Wacht-einsatz 182"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 33
+  steps:
+    - type: USE_ITEM
+      target: "Windlaterne"
+      amount: 1
+  reward:
+    xp: 300
+    skillPoints: 1
+q183:
+  name: "Ruinen-hilfe 183"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: true
+  minLevel: 34
+  steps:
+    - type: DEFEND
+      target: "Karawanenlager"
+      amount: 2
+  reward:
+    xp: 310
+    skillPoints: 1
+q184:
+  name: "Ruinen-probe 184"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 35
+  steps:
+    - type: ESCORT
+      target: "Baeuerin"
+      amount: 1
+    - type: KILL
+      target: "SLIME"
+      amount: 11
+  reward:
+    xp: 320
+    skillPoints: 1
+q185:
+  name: "Willkommens-hilfe 185"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 36
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 8
+  reward:
+    xp: 330
+    skillPoints: 2
+q186:
+  name: "Grenz-runde 186"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 37
+  steps:
+    - type: COLLECT
+      target: "CARROT"
+      amount: 6
+  reward:
+    xp: 340
+    skillPoints: 1
+q187:
+  name: "Wacht-probe 187"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 38
+  steps:
+    - type: TALK
+      target: "NPC_Gelehrter"
+      amount: 1
+  reward:
+    xp: 350
+    skillPoints: 1
+q188:
+  name: "Verteidigungs-auftrag 188"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 39
+  steps:
+    - type: EXPLORE
+      target: "Wachturm"
+      amount: 1
+    - type: CRAFT
+      target: "Bogen"
+      amount: 3
+  reward:
+    xp: 360
+    skillPoints: 1
+q189:
+  name: "Schmiede-probe 189"
+  description: "Bringe Ordnung in die Region."
+  repeatable: true
+  minLevel: 40
+  steps:
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 3
+  reward:
+    xp: 370
+    skillPoints: 1
+q190:
+  name: "Ruinen-hilfe 190"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 41
+  steps:
+    - type: USE_ITEM
+      target: "Windlaterne"
+      amount: 3
+    - type: COLLECT
+      target: "OAK_LOG"
+      amount: 15
+  reward:
+    xp: 380
+    skillPoints: 2
+q191:
+  name: "Grenz-auftrag 191"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 42
+  steps:
+    - type: DEFEND
+      target: "Tempelhof"
+      amount: 1
+  reward:
+    xp: 390
+    skillPoints: 1
+q192:
+  name: "Boten-mission 192"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: true
+  minLevel: 43
+  steps:
+    - type: ESCORT
+      target: "Pilgergruppe"
+      amount: 1
+    - type: KILL
+      target: "PILLAGER"
+      amount: 5
+  reward:
+    xp: 400
+    skillPoints: 1
+q193:
+  name: "Wald-probe 193"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 44
+  steps:
+    - type: KILL
+      target: "ZOMBIE"
+      amount: 7
+  reward:
+    xp: 410
+    skillPoints: 1
+q194:
+  name: "Ernte-quest 194"
+  description: "Erledige den Auftrag und berichte zurueck."
+  repeatable: false
+  minLevel: 45
+  steps:
+    - type: COLLECT
+      target: "OAK_LOG"
+      amount: 5
+  reward:
+    xp: 420
+    skillPoints: 1
+q195:
+  name: "Berg-mission 195"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: true
+  minLevel: 46
+  steps:
+    - type: TALK
+      target: "NPC_Alchemist"
+      amount: 1
+  reward:
+    xp: 430
+    skillPoints: 2
+q196:
+  name: "Handels-auftrag 196"
+  description: "Bringe Ordnung in die Region."
+  repeatable: false
+  minLevel: 47
+  steps:
+    - type: EXPLORE
+      target: "Ruinenplatz"
+      amount: 1
+    - type: CRAFT
+      target: "Fackel"
+      amount: 6
+  reward:
+    xp: 440
+    skillPoints: 1
+q197:
+  name: "Gilden-dienst 197"
+  description: "Hilf den Bewohnern mit einer Aufgabe."
+  repeatable: false
+  minLevel: 48
+  steps:
+    - type: CRAFT
+      target: "Eisenschwert"
+      amount: 2
+  reward:
+    xp: 450
+    skillPoints: 1
+q198:
+  name: "Heiler-probe 198"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: true
+  minLevel: 49
+  steps:
+    - type: USE_ITEM
+      target: "Signalhorn"
+      amount: 1
+  reward:
+    xp: 460
+    skillPoints: 1
+q199:
+  name: "Heiler-quest 199"
+  description: "Eine kurze Mission fuer Abenteurer."
+  repeatable: false
+  minLevel: 50
+  steps:
+    - type: DEFEND
+      target: "Kornfeld"
+      amount: 1
+  reward:
+    xp: 470
+    skillPoints: 1
+q200:
+  name: "Jagd-runde 200"
+  description: "Ein Auftrag fuer erfahrene Helfer."
+  repeatable: false
+  minLevel: 1
+  steps:
+    - type: ESCORT
+      target: "Lehrling"
+      amount: 1
+    - type: KILL
+      target: "WITHER_SKELETON"
+      amount: 11
+    - type: EXPLORE
+      target: "Pilzinsel"
+      amount: 1
+  reward:
+    xp: 80
+    skillPoints: 2

@@ -1,0 +1,3600 @@
+forest_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.5
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "EMERALD"
+      chance: 0.12
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+undead_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "BONE"
+      chance: 0.6
+      minAmount: 1
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "ARROW"
+      chance: 0.4
+      minAmount: 2
+      maxAmount: 6
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.2
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "DIAMOND"
+      chance: 0.05
+      minAmount: 1
+      maxAmount: 1
+      rarity: "EPIC"
+bandit_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "ARROW"
+      chance: 0.55
+      minAmount: 2
+      maxAmount: 8
+      rarity: "COMMON"
+    - material: "IRON_INGOT"
+      chance: 0.2
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+    - material: "CROSSBOW"
+      chance: 0.08
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+spider_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "STRING"
+      chance: 0.7
+      minAmount: 1
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "SPIDER_EYE"
+      chance: 0.3
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+swamp_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "GLASS_BOTTLE"
+      chance: 0.5
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "GHAST_TEAR"
+      chance: 0.08
+      minAmount: 1
+      maxAmount: 1
+      rarity: "RARE"
+coast_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.55
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "COPPER_INGOT"
+      chance: 0.25
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+    - material: "TRIDENT"
+      chance: 0.03
+      minAmount: 1
+      maxAmount: 1
+      rarity: "LEGENDARY"
+frost_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "BONE"
+      chance: 0.4
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "SNOWBALL"
+      chance: 0.4
+      minAmount: 2
+      maxAmount: 6
+      rarity: "COMMON"
+    - material: "PACKED_ICE"
+      chance: 0.12
+      minAmount: 1
+      maxAmount: 2
+      rarity: "UNCOMMON"
+sky_mobs:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "PHANTOM_MEMBRANE"
+      chance: 0.6
+      minAmount: 1
+      maxAmount: 2
+      rarity: "COMMON"
+    - material: "FEATHER"
+      chance: 0.35
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "ELYTRA"
+      chance: 0.01
+      minAmount: 1
+      maxAmount: 1
+      rarity: "LEGENDARY"
+loot_009:
+  appliesTo: "STRAY"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_010:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_011:
+  appliesTo: "WOLF"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_012:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_013:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_014:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_015:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_016:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_017:
+  appliesTo: "WITCH"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_018:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_019:
+  appliesTo: "HUSK"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_020:
+  appliesTo: "STRAY"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_021:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_022:
+  appliesTo: "WOLF"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_023:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_024:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_025:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_026:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_027:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_028:
+  appliesTo: "WITCH"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_029:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_030:
+  appliesTo: "HUSK"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_031:
+  appliesTo: "STRAY"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_032:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_033:
+  appliesTo: "WOLF"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_034:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_035:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_036:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_037:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_038:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_039:
+  appliesTo: "WITCH"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_040:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_041:
+  appliesTo: "HUSK"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_042:
+  appliesTo: "STRAY"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_043:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_044:
+  appliesTo: "WOLF"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_045:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_046:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_047:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_048:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_049:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_050:
+  appliesTo: "WITCH"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_051:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_052:
+  appliesTo: "HUSK"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_053:
+  appliesTo: "STRAY"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_054:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_055:
+  appliesTo: "WOLF"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_056:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_057:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_058:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_059:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_060:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_061:
+  appliesTo: "WITCH"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_062:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_063:
+  appliesTo: "HUSK"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_064:
+  appliesTo: "STRAY"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_065:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_066:
+  appliesTo: "WOLF"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_067:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_068:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_069:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_070:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_071:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_072:
+  appliesTo: "WITCH"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_073:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_074:
+  appliesTo: "HUSK"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_075:
+  appliesTo: "STRAY"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_076:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_077:
+  appliesTo: "WOLF"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_078:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_079:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_080:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_081:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_082:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_083:
+  appliesTo: "WITCH"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_084:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_085:
+  appliesTo: "HUSK"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_086:
+  appliesTo: "STRAY"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_087:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_088:
+  appliesTo: "WOLF"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_089:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_090:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_091:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_092:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_093:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_094:
+  appliesTo: "WITCH"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_095:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_096:
+  appliesTo: "HUSK"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_097:
+  appliesTo: "STRAY"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_098:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_099:
+  appliesTo: "WOLF"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_100:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_101:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_102:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_103:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_104:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_105:
+  appliesTo: "WITCH"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_106:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_107:
+  appliesTo: "HUSK"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_108:
+  appliesTo: "STRAY"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_109:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_110:
+  appliesTo: "WOLF"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_111:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_112:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_113:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_114:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_115:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_116:
+  appliesTo: "WITCH"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_117:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_118:
+  appliesTo: "HUSK"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_119:
+  appliesTo: "STRAY"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_120:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_121:
+  appliesTo: "WOLF"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_122:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_123:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_124:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_125:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_126:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_127:
+  appliesTo: "WITCH"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_128:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_129:
+  appliesTo: "HUSK"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_130:
+  appliesTo: "STRAY"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_131:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_132:
+  appliesTo: "WOLF"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_133:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_134:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_135:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_136:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_137:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_138:
+  appliesTo: "WITCH"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_139:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_140:
+  appliesTo: "HUSK"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_141:
+  appliesTo: "STRAY"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_142:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_143:
+  appliesTo: "WOLF"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_144:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_145:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_146:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_147:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_148:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_149:
+  appliesTo: "WITCH"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_150:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_151:
+  appliesTo: "HUSK"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_152:
+  appliesTo: "STRAY"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_153:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_154:
+  appliesTo: "WOLF"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_155:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_156:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_157:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_158:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_159:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_160:
+  appliesTo: "WITCH"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_161:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_162:
+  appliesTo: "HUSK"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_163:
+  appliesTo: "STRAY"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_164:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_165:
+  appliesTo: "WOLF"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_166:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_167:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_168:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_169:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_170:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_171:
+  appliesTo: "WITCH"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_172:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_173:
+  appliesTo: "HUSK"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_174:
+  appliesTo: "STRAY"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_175:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_176:
+  appliesTo: "WOLF"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_177:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_178:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_179:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_180:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_181:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_182:
+  appliesTo: "WITCH"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_183:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_184:
+  appliesTo: "HUSK"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_185:
+  appliesTo: "STRAY"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_186:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_187:
+  appliesTo: "WOLF"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_188:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_189:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "GUNPOWDER"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_190:
+  appliesTo: "PILLAGER"
+  entries:
+    - material: "COAL"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "REDSTONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_191:
+  appliesTo: "SPIDER"
+  entries:
+    - material: "REDSTONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "IRON_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_192:
+  appliesTo: "CREEPER"
+  entries:
+    - material: "IRON_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "BONE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_193:
+  appliesTo: "WITCH"
+  entries:
+    - material: "BONE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "ROTTEN_FLESH"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_194:
+  appliesTo: "DROWNED"
+  entries:
+    - material: "ROTTEN_FLESH"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "EMERALD"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_195:
+  appliesTo: "HUSK"
+  entries:
+    - material: "EMERALD"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "ARROW"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_196:
+  appliesTo: "STRAY"
+  entries:
+    - material: "ARROW"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GOLD_NUGGET"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+loot_197:
+  appliesTo: "PHANTOM"
+  entries:
+    - material: "GOLD_NUGGET"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+    - material: "STRING"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+loot_198:
+  appliesTo: "WOLF"
+  entries:
+    - material: "STRING"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"
+    - material: "SPIDER_EYE"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+loot_199:
+  appliesTo: "ZOMBIE"
+  entries:
+    - material: "SPIDER_EYE"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "EPIC"
+    - material: "COPPER_INGOT"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "UNCOMMON"
+loot_200:
+  appliesTo: "SKELETON"
+  entries:
+    - material: "COPPER_INGOT"
+      chance: 0.45
+      minAmount: 1
+      maxAmount: 3
+      rarity: "COMMON"
+    - material: "GUNPOWDER"
+      chance: 0.33
+      minAmount: 2
+      maxAmount: 4
+      rarity: "UNCOMMON"
+    - material: "COAL"
+      chance: 0.21
+      minAmount: 1
+      maxAmount: 3
+      rarity: "RARE"

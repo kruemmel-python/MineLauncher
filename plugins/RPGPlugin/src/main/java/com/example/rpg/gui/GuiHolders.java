@@ -27,6 +27,16 @@ public final class GuiHolders {
     }
 
     public static final class ZoneEditorHolder implements InventoryHolder {
+        private final int page;
+
+        public ZoneEditorHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -34,6 +44,16 @@ public final class GuiHolders {
     }
 
     public static final class NpcEditorHolder implements InventoryHolder {
+        private final int page;
+
+        public NpcEditorHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -41,6 +61,16 @@ public final class GuiHolders {
     }
 
     public static final class QuestEditorHolder implements InventoryHolder {
+        private final int page;
+
+        public QuestEditorHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -48,6 +78,16 @@ public final class GuiHolders {
     }
 
     public static final class LootEditorHolder implements InventoryHolder {
+        private final int page;
+
+        public LootEditorHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -55,6 +95,16 @@ public final class GuiHolders {
     }
 
     public static final class SkillAdminHolder implements InventoryHolder {
+        private final int page;
+
+        public SkillAdminHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -62,6 +112,16 @@ public final class GuiHolders {
     }
 
     public static final class ClassAdminHolder implements InventoryHolder {
+        private final int page;
+
+        public ClassAdminHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -69,6 +129,62 @@ public final class GuiHolders {
     }
 
     public static final class QuestListHolder implements InventoryHolder {
+        private final int page;
+
+        public QuestListHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class QuestLogHolder implements InventoryHolder {
+        private final int page;
+
+        public QuestLogHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class QuestDetailHolder implements InventoryHolder {
+        private final String questId;
+        private final boolean active;
+        private final int page;
+
+        public QuestDetailHolder(String questId, boolean active, int page) {
+            this.questId = questId;
+            this.active = active;
+            this.page = page;
+        }
+
+        public String questId() {
+            return questId;
+        }
+
+        public boolean active() {
+            return active;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -76,6 +192,16 @@ public final class GuiHolders {
     }
 
     public static final class SkillListHolder implements InventoryHolder {
+        private final int page;
+
+        public SkillListHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -98,13 +224,19 @@ public final class GuiHolders {
 
     public static final class BuildingListHolder implements InventoryHolder {
         private final String category;
+        private final int page;
 
-        public BuildingListHolder(String category) {
+        public BuildingListHolder(String category, int page) {
             this.category = category;
+            this.page = page;
         }
 
         public String category() {
             return category;
+        }
+
+        public int page() {
+            return page;
         }
 
         @Override
@@ -236,6 +368,16 @@ public final class GuiHolders {
     }
 
     public static final class PlayerListHolder implements InventoryHolder {
+        private final int page;
+
+        public PlayerListHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -260,6 +402,16 @@ public final class GuiHolders {
     }
 
     public static final class PermissionAuditHolder implements InventoryHolder {
+        private final int page;
+
+        public PermissionAuditHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();
@@ -268,13 +420,19 @@ public final class GuiHolders {
 
     public static final class EnchantingHolder implements InventoryHolder {
         private final String recipeId;
+        private final int page;
 
-        public EnchantingHolder(String recipeId) {
+        public EnchantingHolder(String recipeId, int page) {
             this.recipeId = recipeId;
+            this.page = page;
         }
 
         public String recipeId() {
             return recipeId;
+        }
+
+        public int page() {
+            return page;
         }
 
         @Override

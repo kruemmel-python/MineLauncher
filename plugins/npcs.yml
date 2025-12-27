@@ -1,0 +1,4117 @@
+NPC_Wache:
+  name: "Wache Arik"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 5.5
+  y: 64.0
+  z: -12.5
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Halt, Reisender! Die Straßen sind gefährlich."
+    - "Wenn du helfen willst, sprich mich an."
+  questLink: "q001"
+  factionId: "guard"
+  dialogueNodes:
+    - id: "start"
+      text: "Wir brauchen Hilfe bei der Stadtwache."
+      options:
+        - text: "Hast du eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q001"
+        - text: "Vielleicht später."
+          nextId: "end"
+    - id: "quest"
+      text: "Berichte mir, sobald du den Auftrag erledigt hast."
+      options:
+        - text: "Alles klar."
+          nextId: "end"
+NPC_Schmied:
+  name: "Schmiedin Branna"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -4.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Gutes Werkzeug ist die halbe Miete."
+    - "Bring mir Materialien, dann schmiede ich dir Ausrüstung."
+  questLink: "q005"
+  shopId: "blacksmith_shop"
+  dialogueNodes:
+    - id: "start"
+      text: "Meine Esse glüht heiß."
+      options:
+        - text: "Ich brauche Ausrüstung."
+          nextId: "shop"
+        - text: "Hast du Arbeit?"
+          nextId: "quest"
+          grantQuestId: "q005"
+    - id: "shop"
+      text: "Sieh dich um, ich habe gute Klingen."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Bring mir die Materialien, dann bist du versorgt."
+      options:
+        - text: "Ich kümmere mich darum."
+          nextId: "end"
+NPC_Heilerin:
+  name: "Heilerin Liora"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: -8.0
+  y: 64.0
+  z: -6.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Bleib ruhig, ich kann dich versorgen."
+    - "Die Kräuter hier sind kostbar."
+  questLink: "q004"
+  shopId: "healer_supplies"
+  dialogueNodes:
+    - id: "start"
+      text: "Du siehst erschöpft aus."
+      options:
+        - text: "Hast du Heiltränke?"
+          nextId: "shop"
+        - text: "Gibt es eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q004"
+    - id: "shop"
+      text: "Hier sind ein paar Vorräte."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Wir brauchen mehr Heiltränke für die Wache."
+      options:
+        - text: "Ich bringe welche."
+          nextId: "end"
+NPC_Haendler:
+  name: "Händler Viko"
+  role: "VENDOR"
+  world: "world"
+  x: 18.5
+  y: 64.0
+  z: 6.5
+  yaw: -90.0
+  pitch: 0.0
+  dialog:
+    - "Frische Ware aus allen Regionen!"
+    - "Suchst du etwas Bestimmtes?"
+  questLink: "q008"
+  shopId: "general_goods"
+  dialogueNodes:
+    - id: "start"
+      text: "Willkommen bei meinen Ständen."
+      options:
+        - text: "Zeig mir deine Waren."
+          nextId: "shop"
+        - text: "Brauchst du Hilfe?"
+          nextId: "quest"
+          grantQuestId: "q008"
+    - id: "shop"
+      text: "Greif zu, solange der Vorrat reicht."
+      options:
+        - text: "Danke."
+          nextId: "end"
+    - id: "quest"
+      text: "Begleite die nächste Karawane sicher."
+      options:
+        - text: "Ich mache mich bereit."
+          nextId: "end"
+NPC_Buergermeister:
+  name: "Bürgermeisterin Elara"
+  role: "QUESTGIVER"
+  world: "world"
+  x: -2.0
+  y: 64.0
+  z: 10.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Unsere Stadt braucht tapfere Helfer."
+    - "Sprich mit mir, wenn du etwas suchst."
+  questLink: "q020"
+  factionId: "council"
+  dialogueNodes:
+    - id: "start"
+      text: "Die Lage in den Außenposten ist angespannt."
+      options:
+        - text: "Wie kann ich helfen?"
+          nextId: "quest"
+          grantQuestId: "q020"
+        - text: "Ich schaue später vorbei."
+          nextId: "end"
+    - id: "quest"
+      text: "Sichere die Routen und bringe Bericht."
+      options:
+        - text: "Verstanden."
+          nextId: "end"
+NPC_Gelehrter:
+  name: "Gelehrter Milo"
+  role: "TRAINER"
+  world: "world"
+  x: -15.0
+  y: 64.0
+  z: 3.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Wissen ist die schärfste Waffe."
+    - "Ich kann dir mehr über die Ruinen erzählen."
+  questLink: "q012"
+  dialogueNodes:
+    - id: "start"
+      text: "Die alten Ruinen bergen viele Geheimnisse."
+      options:
+        - text: "Erzähl mir mehr."
+          nextId: "lore"
+        - text: "Gibt es eine Aufgabe?"
+          nextId: "quest"
+          grantQuestId: "q012"
+    - id: "lore"
+      text: "Sei vorsichtig, manche Wege sind verflucht."
+      options:
+        - text: "Danke für die Warnung."
+          nextId: "end"
+    - id: "quest"
+      text: "Bringe mir alte Relikte aus den Ruinen."
+      options:
+        - text: "Ich mache mich auf den Weg."
+          nextId: "end"
+NPC_Alchemist:
+  name: "Alchemist Serap"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -18.0
+  yaw: 20.0
+  pitch: 0.0
+  dialog:
+    - "Ein Tropfen hiervon, und du fühlst dich wie neu."
+    - "Suchst du seltene Zutaten?"
+  questLink: "q014"
+  shopId: "alchemy_shop"
+  dialogueNodes:
+    - id: "start"
+      text: "Mein Labor duftet nach Magie."
+      options:
+        - text: "Zeig mir deine Tränke."
+          nextId: "shop"
+        - text: "Brauchst du Hilfe?"
+          nextId: "quest"
+          grantQuestId: "q014"
+    - id: "shop"
+      text: "Hier findest du stärkende Elixiere."
+      options:
+        - text: "Ich nehme welche."
+          nextId: "end"
+    - id: "quest"
+      text: "Bring mir seltene Kräuter aus dem Sumpf."
+      options:
+        - text: "Ich gehe sofort los."
+          nextId: "end"
+NPC_008:
+  name: "Bewohner 008"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -8.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 008."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q009"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 008?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_009:
+  name: "Bewohner 009"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -9.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 009."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q010"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 009?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_010:
+  name: "Bewohner 010"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -10.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 010."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q011"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 010?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_011:
+  name: "Bewohner 011"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -11.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 011."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q012"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 011?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_012:
+  name: "Bewohner 012"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -12.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 012."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q013"
+  shopId: "shop_012"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 012?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_013:
+  name: "Bewohner 013"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -13.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 013."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q014"
+  shopId: "shop_013"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 013?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_014:
+  name: "Bewohner 014"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -14.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 014."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q015"
+  shopId: "shop_014"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 014?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_015:
+  name: "Bewohner 015"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -15.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 015."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q016"
+  shopId: "shop_015"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 015?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_016:
+  name: "Bewohner 016"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -16.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 016."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q017"
+  shopId: "shop_016"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 016?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_017:
+  name: "Bewohner 017"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -17.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 017."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q018"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 017?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_018:
+  name: "Bewohner 018"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: 0.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 018."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q019"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 018?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_019:
+  name: "Bewohner 019"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -1.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 019."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q020"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 019?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_020:
+  name: "Bewohner 020"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -2.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 020."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q021"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 020?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_021:
+  name: "Bewohner 021"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -3.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 021."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q022"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 021?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_022:
+  name: "Bewohner 022"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -4.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 022."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q023"
+  shopId: "shop_022"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 022?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_023:
+  name: "Bewohner 023"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -5.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 023."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q024"
+  shopId: "shop_023"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 023?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_024:
+  name: "Bewohner 024"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -6.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 024."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q025"
+  shopId: "shop_024"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 024?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_025:
+  name: "Bewohner 025"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -7.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 025."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q026"
+  shopId: "shop_025"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 025?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_026:
+  name: "Bewohner 026"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -8.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 026."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q027"
+  shopId: "shop_026"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 026?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_027:
+  name: "Bewohner 027"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -9.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 027."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q028"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 027?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_028:
+  name: "Bewohner 028"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -10.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 028."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q029"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 028?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_029:
+  name: "Bewohner 029"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -11.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 029."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q030"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 029?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_030:
+  name: "Bewohner 030"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -12.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 030."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q031"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 030?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_031:
+  name: "Bewohner 031"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -13.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 031."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q032"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 031?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_032:
+  name: "Bewohner 032"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -14.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 032."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q033"
+  shopId: "shop_032"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 032?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_033:
+  name: "Bewohner 033"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -15.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 033."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q034"
+  shopId: "shop_033"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 033?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_034:
+  name: "Bewohner 034"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -16.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 034."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q035"
+  shopId: "shop_034"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 034?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_035:
+  name: "Bewohner 035"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -17.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 035."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q036"
+  shopId: "shop_035"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 035?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_036:
+  name: "Bewohner 036"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: 0.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 036."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q037"
+  shopId: "shop_036"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 036?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_037:
+  name: "Bewohner 037"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -1.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 037."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q038"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 037?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_038:
+  name: "Bewohner 038"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -2.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 038."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q039"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 038?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_039:
+  name: "Bewohner 039"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -3.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 039."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q040"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 039?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_040:
+  name: "Bewohner 040"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -4.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 040."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q041"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 040?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_041:
+  name: "Bewohner 041"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -5.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 041."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q042"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 041?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_042:
+  name: "Bewohner 042"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -6.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 042."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q043"
+  shopId: "shop_042"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 042?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_043:
+  name: "Bewohner 043"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -7.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 043."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q044"
+  shopId: "shop_043"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 043?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_044:
+  name: "Bewohner 044"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -8.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 044."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q045"
+  shopId: "shop_044"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 044?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_045:
+  name: "Bewohner 045"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -9.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 045."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q046"
+  shopId: "shop_045"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 045?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_046:
+  name: "Bewohner 046"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -10.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 046."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q047"
+  shopId: "shop_046"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 046?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_047:
+  name: "Bewohner 047"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -11.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 047."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q048"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 047?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_048:
+  name: "Bewohner 048"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -12.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 048."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q049"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 048?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_049:
+  name: "Bewohner 049"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -13.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 049."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q050"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 049?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_050:
+  name: "Bewohner 050"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -14.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 050."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q051"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 050?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_051:
+  name: "Bewohner 051"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -15.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 051."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q052"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 051?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_052:
+  name: "Bewohner 052"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -16.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 052."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q053"
+  shopId: "shop_052"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 052?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_053:
+  name: "Bewohner 053"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -17.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 053."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q054"
+  shopId: "shop_053"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 053?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_054:
+  name: "Bewohner 054"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: 0.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 054."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q055"
+  shopId: "shop_054"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 054?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_055:
+  name: "Bewohner 055"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -1.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 055."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q056"
+  shopId: "shop_055"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 055?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_056:
+  name: "Bewohner 056"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -2.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 056."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q057"
+  shopId: "shop_056"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 056?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_057:
+  name: "Bewohner 057"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -3.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 057."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q058"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 057?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_058:
+  name: "Bewohner 058"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -4.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 058."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q059"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 058?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_059:
+  name: "Bewohner 059"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -5.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 059."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q060"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 059?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_060:
+  name: "Bewohner 060"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -6.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 060."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q061"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 060?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_061:
+  name: "Bewohner 061"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -7.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 061."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q062"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 061?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_062:
+  name: "Bewohner 062"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -8.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 062."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q063"
+  shopId: "shop_062"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 062?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_063:
+  name: "Bewohner 063"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -9.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 063."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q064"
+  shopId: "shop_063"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 063?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_064:
+  name: "Bewohner 064"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -10.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 064."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q065"
+  shopId: "shop_064"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 064?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_065:
+  name: "Bewohner 065"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -11.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 065."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q066"
+  shopId: "shop_065"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 065?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_066:
+  name: "Bewohner 066"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -12.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 066."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q067"
+  shopId: "shop_066"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 066?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_067:
+  name: "Bewohner 067"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -13.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 067."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q068"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 067?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_068:
+  name: "Bewohner 068"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -14.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 068."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q069"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 068?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_069:
+  name: "Bewohner 069"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -15.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 069."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q070"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 069?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_070:
+  name: "Bewohner 070"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -16.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 070."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q071"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 070?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_071:
+  name: "Bewohner 071"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -17.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 071."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q072"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 071?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_072:
+  name: "Bewohner 072"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 072."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q073"
+  shopId: "shop_072"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 072?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_073:
+  name: "Bewohner 073"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -1.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 073."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q074"
+  shopId: "shop_073"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 073?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_074:
+  name: "Bewohner 074"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -2.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 074."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q075"
+  shopId: "shop_074"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 074?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_075:
+  name: "Bewohner 075"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -3.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 075."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q076"
+  shopId: "shop_075"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 075?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_076:
+  name: "Bewohner 076"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -4.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 076."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q077"
+  shopId: "shop_076"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 076?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_077:
+  name: "Bewohner 077"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -5.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 077."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q078"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 077?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_078:
+  name: "Bewohner 078"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -6.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 078."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q079"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 078?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_079:
+  name: "Bewohner 079"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -7.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 079."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q080"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 079?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_080:
+  name: "Bewohner 080"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -8.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 080."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q081"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 080?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_081:
+  name: "Bewohner 081"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -9.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 081."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q082"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 081?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_082:
+  name: "Bewohner 082"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -10.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 082."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q083"
+  shopId: "shop_082"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 082?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_083:
+  name: "Bewohner 083"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -11.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 083."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q084"
+  shopId: "shop_083"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 083?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_084:
+  name: "Bewohner 084"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -12.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 084."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q085"
+  shopId: "shop_084"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 084?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_085:
+  name: "Bewohner 085"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -13.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 085."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q086"
+  shopId: "shop_085"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 085?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_086:
+  name: "Bewohner 086"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -14.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 086."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q087"
+  shopId: "shop_086"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 086?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_087:
+  name: "Bewohner 087"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -15.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 087."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q088"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 087?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_088:
+  name: "Bewohner 088"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -16.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 088."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q089"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 088?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_089:
+  name: "Bewohner 089"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -17.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 089."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q090"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 089?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_090:
+  name: "Bewohner 090"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: 0.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 090."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q091"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 090?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_091:
+  name: "Bewohner 091"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -1.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 091."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q092"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 091?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_092:
+  name: "Bewohner 092"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -2.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 092."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q093"
+  shopId: "shop_092"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 092?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_093:
+  name: "Bewohner 093"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -3.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 093."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q094"
+  shopId: "shop_093"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 093?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_094:
+  name: "Bewohner 094"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -4.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 094."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q095"
+  shopId: "shop_094"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 094?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_095:
+  name: "Bewohner 095"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -5.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 095."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q096"
+  shopId: "shop_095"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 095?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_096:
+  name: "Bewohner 096"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -6.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 096."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q097"
+  shopId: "shop_096"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 096?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_097:
+  name: "Bewohner 097"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -7.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 097."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q098"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 097?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_098:
+  name: "Bewohner 098"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -8.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 098."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q099"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 098?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_099:
+  name: "Bewohner 099"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -9.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 099."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q100"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 099?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_100:
+  name: "Bewohner 100"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -10.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 100."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q101"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 100?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_101:
+  name: "Bewohner 101"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -11.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 101."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q102"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 101?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_102:
+  name: "Bewohner 102"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -12.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 102."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q103"
+  shopId: "shop_102"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 102?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_103:
+  name: "Bewohner 103"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -13.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 103."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q104"
+  shopId: "shop_103"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 103?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_104:
+  name: "Bewohner 104"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -14.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 104."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q105"
+  shopId: "shop_104"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 104?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_105:
+  name: "Bewohner 105"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -15.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 105."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q106"
+  shopId: "shop_105"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 105?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_106:
+  name: "Bewohner 106"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -16.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 106."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q107"
+  shopId: "shop_106"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 106?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_107:
+  name: "Bewohner 107"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -17.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 107."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q108"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 107?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_108:
+  name: "Bewohner 108"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: 0.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 108."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q109"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 108?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_109:
+  name: "Bewohner 109"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -1.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 109."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q110"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 109?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_110:
+  name: "Bewohner 110"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -2.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 110."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q111"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 110?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_111:
+  name: "Bewohner 111"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -3.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 111."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q112"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 111?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_112:
+  name: "Bewohner 112"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -4.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 112."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q113"
+  shopId: "shop_112"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 112?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_113:
+  name: "Bewohner 113"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -5.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 113."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q114"
+  shopId: "shop_113"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 113?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_114:
+  name: "Bewohner 114"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -6.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 114."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q115"
+  shopId: "shop_114"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 114?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_115:
+  name: "Bewohner 115"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -7.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 115."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q116"
+  shopId: "shop_115"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 115?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_116:
+  name: "Bewohner 116"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -8.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 116."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q117"
+  shopId: "shop_116"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 116?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_117:
+  name: "Bewohner 117"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -9.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 117."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q118"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 117?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_118:
+  name: "Bewohner 118"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -10.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 118."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q119"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 118?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_119:
+  name: "Bewohner 119"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -11.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 119."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q120"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 119?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_120:
+  name: "Bewohner 120"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -12.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 120."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q121"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 120?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_121:
+  name: "Bewohner 121"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -13.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 121."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q122"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 121?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_122:
+  name: "Bewohner 122"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -14.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 122."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q123"
+  shopId: "shop_122"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 122?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_123:
+  name: "Bewohner 123"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -15.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 123."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q124"
+  shopId: "shop_123"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 123?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_124:
+  name: "Bewohner 124"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -16.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 124."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q125"
+  shopId: "shop_124"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 124?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_125:
+  name: "Bewohner 125"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -17.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 125."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q126"
+  shopId: "shop_125"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 125?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_126:
+  name: "Bewohner 126"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: 0.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 126."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q127"
+  shopId: "shop_126"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 126?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_127:
+  name: "Bewohner 127"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -1.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 127."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q128"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 127?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_128:
+  name: "Bewohner 128"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -2.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 128."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q129"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 128?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_129:
+  name: "Bewohner 129"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -3.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 129."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q130"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 129?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_130:
+  name: "Bewohner 130"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -4.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 130."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q131"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 130?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_131:
+  name: "Bewohner 131"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -5.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 131."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q132"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 131?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_132:
+  name: "Bewohner 132"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -6.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 132."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q133"
+  shopId: "shop_132"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 132?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_133:
+  name: "Bewohner 133"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -7.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 133."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q134"
+  shopId: "shop_133"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 133?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_134:
+  name: "Bewohner 134"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -8.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 134."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q135"
+  shopId: "shop_134"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 134?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_135:
+  name: "Bewohner 135"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -9.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 135."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q136"
+  shopId: "shop_135"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 135?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_136:
+  name: "Bewohner 136"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -10.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 136."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q137"
+  shopId: "shop_136"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 136?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_137:
+  name: "Bewohner 137"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -11.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 137."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q138"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 137?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_138:
+  name: "Bewohner 138"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -12.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 138."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q139"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 138?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_139:
+  name: "Bewohner 139"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -13.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 139."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q140"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 139?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_140:
+  name: "Bewohner 140"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -14.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 140."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q141"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 140?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_141:
+  name: "Bewohner 141"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -15.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 141."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q142"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 141?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_142:
+  name: "Bewohner 142"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -16.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 142."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q143"
+  shopId: "shop_142"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 142?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_143:
+  name: "Bewohner 143"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -17.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 143."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q144"
+  shopId: "shop_143"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 143?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_144:
+  name: "Bewohner 144"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 144."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q145"
+  shopId: "shop_144"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 144?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_145:
+  name: "Bewohner 145"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -1.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 145."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q146"
+  shopId: "shop_145"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 145?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_146:
+  name: "Bewohner 146"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -2.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 146."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q147"
+  shopId: "shop_146"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 146?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_147:
+  name: "Bewohner 147"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -3.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 147."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q148"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 147?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_148:
+  name: "Bewohner 148"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -4.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 148."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q149"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 148?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_149:
+  name: "Bewohner 149"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -5.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 149."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q150"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 149?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_150:
+  name: "Bewohner 150"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -6.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 150."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q151"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 150?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_151:
+  name: "Bewohner 151"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -7.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 151."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q152"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 151?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_152:
+  name: "Bewohner 152"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -8.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 152."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q153"
+  shopId: "shop_152"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 152?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_153:
+  name: "Bewohner 153"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -9.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 153."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q154"
+  shopId: "shop_153"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 153?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_154:
+  name: "Bewohner 154"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -10.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 154."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q155"
+  shopId: "shop_154"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 154?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_155:
+  name: "Bewohner 155"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -11.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 155."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q156"
+  shopId: "shop_155"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 155?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_156:
+  name: "Bewohner 156"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -12.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 156."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q157"
+  shopId: "shop_156"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 156?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_157:
+  name: "Bewohner 157"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -13.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 157."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q158"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 157?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_158:
+  name: "Bewohner 158"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -14.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 158."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q159"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 158?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_159:
+  name: "Bewohner 159"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -15.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 159."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q160"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 159?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_160:
+  name: "Bewohner 160"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -16.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 160."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q161"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 160?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_161:
+  name: "Bewohner 161"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -17.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 161."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q162"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 161?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_162:
+  name: "Bewohner 162"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: 0.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 162."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q163"
+  shopId: "shop_162"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 162?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_163:
+  name: "Bewohner 163"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -1.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 163."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q164"
+  shopId: "shop_163"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 163?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_164:
+  name: "Bewohner 164"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -2.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 164."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q165"
+  shopId: "shop_164"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 164?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_165:
+  name: "Bewohner 165"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -3.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 165."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q166"
+  shopId: "shop_165"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 165?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_166:
+  name: "Bewohner 166"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -4.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 166."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q167"
+  shopId: "shop_166"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 166?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_167:
+  name: "Bewohner 167"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -5.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 167."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q168"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 167?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_168:
+  name: "Bewohner 168"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -6.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 168."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q169"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 168?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_169:
+  name: "Bewohner 169"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -7.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 169."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q170"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 169?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_170:
+  name: "Bewohner 170"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -8.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 170."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q171"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 170?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_171:
+  name: "Bewohner 171"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -9.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 171."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q172"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 171?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_172:
+  name: "Bewohner 172"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -10.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 172."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q173"
+  shopId: "shop_172"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 172?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_173:
+  name: "Bewohner 173"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -11.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 173."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q174"
+  shopId: "shop_173"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 173?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_174:
+  name: "Bewohner 174"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -12.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 174."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q175"
+  shopId: "shop_174"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 174?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_175:
+  name: "Bewohner 175"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -13.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 175."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q176"
+  shopId: "shop_175"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 175?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_176:
+  name: "Bewohner 176"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -14.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 176."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q177"
+  shopId: "shop_176"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 176?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_177:
+  name: "Bewohner 177"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -15.0
+  yaw: 135.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 177."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q178"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 177?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_178:
+  name: "Bewohner 178"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: -16.0
+  yaw: 150.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 178."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q179"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 178?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_179:
+  name: "Bewohner 179"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -17.0
+  yaw: 165.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 179."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q180"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 179?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_180:
+  name: "Bewohner 180"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 180.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 180."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q181"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 180?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_181:
+  name: "Bewohner 181"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 1.0
+  y: 64.0
+  z: -1.0
+  yaw: 195.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 181."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q182"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 181?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_182:
+  name: "Bewohner 182"
+  role: "VENDOR"
+  world: "world"
+  x: 2.0
+  y: 64.0
+  z: -2.0
+  yaw: 210.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 182."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q183"
+  shopId: "shop_182"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 182?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_183:
+  name: "Bewohner 183"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 3.0
+  y: 64.0
+  z: -3.0
+  yaw: 225.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 183."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q184"
+  shopId: "shop_183"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 183?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_184:
+  name: "Bewohner 184"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 4.0
+  y: 64.0
+  z: -4.0
+  yaw: 240.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 184."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q185"
+  shopId: "shop_184"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 184?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_185:
+  name: "Bewohner 185"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 5.0
+  y: 64.0
+  z: -5.0
+  yaw: 255.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 185."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q186"
+  shopId: "shop_185"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 185?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_186:
+  name: "Bewohner 186"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 6.0
+  y: 64.0
+  z: -6.0
+  yaw: 270.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 186."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q187"
+  shopId: "shop_186"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 186?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_187:
+  name: "Bewohner 187"
+  role: "TRAINER"
+  world: "world"
+  x: 7.0
+  y: 64.0
+  z: -7.0
+  yaw: 285.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 187."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q188"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 187?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_188:
+  name: "Bewohner 188"
+  role: "TELEPORTER"
+  world: "world"
+  x: 8.0
+  y: 64.0
+  z: -8.0
+  yaw: 300.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 188."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q189"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 188?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_189:
+  name: "Bewohner 189"
+  role: "BANKER"
+  world: "world"
+  x: 9.0
+  y: 64.0
+  z: -9.0
+  yaw: 315.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 189."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q190"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 189?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_190:
+  name: "Bewohner 190"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 10.0
+  y: 64.0
+  z: -10.0
+  yaw: 330.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 190."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q191"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 190?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_191:
+  name: "Bewohner 191"
+  role: "QUESTGIVER"
+  world: "world"
+  x: 11.0
+  y: 64.0
+  z: -11.0
+  yaw: 345.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 191."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q192"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 191?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_192:
+  name: "Bewohner 192"
+  role: "VENDOR"
+  world: "world"
+  x: 12.0
+  y: 64.0
+  z: -12.0
+  yaw: 0.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 192."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q193"
+  shopId: "shop_192"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 192?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_193:
+  name: "Bewohner 193"
+  role: "WEAPON_VENDOR"
+  world: "world"
+  x: 13.0
+  y: 64.0
+  z: -13.0
+  yaw: 15.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 193."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q194"
+  shopId: "shop_193"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 193?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_194:
+  name: "Bewohner 194"
+  role: "ARMOR_VENDOR"
+  world: "world"
+  x: 14.0
+  y: 64.0
+  z: -14.0
+  yaw: 30.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 194."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q195"
+  shopId: "shop_194"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 194?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_195:
+  name: "Bewohner 195"
+  role: "ITEM_VENDOR"
+  world: "world"
+  x: 15.0
+  y: 64.0
+  z: -15.0
+  yaw: 45.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 195."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q196"
+  shopId: "shop_195"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 195?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_196:
+  name: "Bewohner 196"
+  role: "RESOURCE_VENDOR"
+  world: "world"
+  x: 16.0
+  y: 64.0
+  z: -16.0
+  yaw: 60.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 196."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q197"
+  shopId: "shop_196"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 196?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_197:
+  name: "Bewohner 197"
+  role: "TRAINER"
+  world: "world"
+  x: 17.0
+  y: 64.0
+  z: -17.0
+  yaw: 75.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 197."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q198"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 197?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_198:
+  name: "Bewohner 198"
+  role: "TELEPORTER"
+  world: "world"
+  x: 18.0
+  y: 64.0
+  z: 0.0
+  yaw: 90.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 198."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q199"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 198?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_199:
+  name: "Bewohner 199"
+  role: "BANKER"
+  world: "world"
+  x: 19.0
+  y: 64.0
+  z: -1.0
+  yaw: 105.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 199."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q200"
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 199?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"
+NPC_200:
+  name: "Bewohner 200"
+  role: "FACTION_AGENT"
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: -2.0
+  yaw: 120.0
+  pitch: 0.0
+  dialog:
+    - "Hallo Reisender 200."
+    - "Die Stadt wächst mit jedem Tag."
+  questLink: "q001"
+  factionId: "faction_1"
+
+  dialogueNodes:
+    - id: "start"
+      text: "Kannst du mir helfen, 200?"
+      options:
+        - text: "Vielleicht."
+          nextId: "end"

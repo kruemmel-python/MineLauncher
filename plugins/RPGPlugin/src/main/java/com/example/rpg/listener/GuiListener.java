@@ -57,7 +57,8 @@ public class GuiListener implements Listener {
             event.setCancelled(true);
             switch (event.getSlot()) {
                 case 12 -> plugin.guiManager().openSkillList(player);
-                case 14 -> plugin.guiManager().openQuestList(player);
+                case 14 -> plugin.guiManager().openQuestLog(player);
+                case 15 -> plugin.guiManager().openQuestList(player);
                 default -> {
                 }
             }
@@ -82,9 +83,18 @@ public class GuiListener implements Listener {
             }
             return;
         }
-        if (holder instanceof GuiHolders.ZoneEditorHolder) {
+        if (holder instanceof GuiHolders.ZoneEditorHolder zoneHolder) {
             event.setCancelled(true);
+            int page = zoneHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openZoneEditor(player, page - 1);
+                return;
+            }
             if (event.getSlot() == 53) {
+                plugin.guiManager().openZoneEditor(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Zone erstellen: <id>"), input -> {
                     String id = input.trim();
                     if (id.isBlank()) {
@@ -109,7 +119,7 @@ public class GuiListener implements Listener {
                     plugin.zoneManager().saveZone(zone);
                     plugin.auditLog().log(player, "Zone erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Zone erstellt: " + id));
-                    plugin.guiManager().openZoneEditor(player);
+                    plugin.guiManager().openZoneEditor(player, page);
                 });
                 return;
             }
@@ -122,7 +132,7 @@ public class GuiListener implements Listener {
                     plugin.zoneManager().saveAll();
                     plugin.auditLog().log(player, "Zone gelöscht (GUI): " + zoneId);
                     player.sendMessage(Text.mm("<red>Zone gelöscht: " + zoneId));
-                    plugin.guiManager().openZoneEditor(player);
+                    plugin.guiManager().openZoneEditor(player, page);
                 }
                 return;
             }
@@ -203,18 +213,27 @@ public class GuiListener implements Listener {
                 plugin.zoneManager().saveZone(zone);
                 plugin.auditLog().log(player, "Zone aktualisiert (GUI): " + zone.id());
                 player.sendMessage(Text.mm("<green>Zone aktualisiert."));
-                plugin.guiManager().openZoneEditor(player);
+                plugin.guiManager().openZoneEditor(player, page);
             });
             return;
         }
-        if (holder instanceof GuiHolders.NpcEditorHolder) {
+        if (holder instanceof GuiHolders.NpcEditorHolder npcHolder) {
             event.setCancelled(true);
+            int page = npcHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openNpcEditor(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openNpcEditor(player, page + 1);
+                return;
+            }
             NpcRole templateRole = resolveNpcTemplate(current);
             if (templateRole != null) {
                 handleNpcTemplateClick(player, templateRole);
                 return;
             }
-            if (event.getSlot() == 53) {
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>NPC erstellen: <id> <role> [shopId]"), input -> {
                     String[] parts = input.trim().split("\\s+");
                     runSync(() -> {
@@ -245,7 +264,7 @@ public class GuiListener implements Listener {
                         plugin.npcManager().saveNpc(npc);
                         plugin.auditLog().log(player, "NPC erstellt (GUI): " + id);
                         player.sendMessage(Text.mm("<green>NPC erstellt: " + id));
-                        plugin.guiManager().openNpcEditor(player);
+                        plugin.guiManager().openNpcEditor(player, page);
                     });
                 });
                 return;
@@ -263,7 +282,7 @@ public class GuiListener implements Listener {
                         plugin.npcManager().saveAll();
                         plugin.auditLog().log(player, "NPC gelöscht (GUI): " + npcId);
                         player.sendMessage(Text.mm("<red>NPC gelöscht: " + npcId));
-                        plugin.guiManager().openNpcEditor(player);
+                        plugin.guiManager().openNpcEditor(player, page);
                     });
                 }
                 return;
@@ -379,14 +398,30 @@ public class GuiListener implements Listener {
                     plugin.npcManager().saveNpc(npc);
                     plugin.auditLog().log(player, "NPC aktualisiert (GUI): " + npc.id());
                     player.sendMessage(Text.mm("<green>NPC aktualisiert."));
-                    plugin.guiManager().openNpcEditor(player);
+                    plugin.guiManager().openNpcEditor(player, page);
                 });
             });
             return;
         }
         if (holder instanceof GuiHolders.QuestEditorHolder) {
             event.setCancelled(true);
+            GuiHolders.QuestEditorHolder questHolder = (GuiHolders.QuestEditorHolder) holder;
+            int page = questHolder.page();
+            int questCount = plugin.questManager().quests().size();
+            int maxPage = questCount == 0 ? 0 : (questCount - 1) / 45;
+            if (event.getSlot() == 45) {
+                if (page > 0) {
+                    plugin.guiManager().openQuestEditor(player, page - 1);
+                }
+                return;
+            }
             if (event.getSlot() == 53) {
+                if (page < maxPage) {
+                    plugin.guiManager().openQuestEditor(player, page + 1);
+                }
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Quest erstellen: <id> <name>"), input -> {
                     String[] parts = input.trim().split("\\s+", 2);
                     if (parts.length < 2) {
@@ -408,7 +443,7 @@ public class GuiListener implements Listener {
                     plugin.questManager().saveQuest(quest);
                     plugin.auditLog().log(player, "Quest erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Quest erstellt: " + id));
-                    plugin.guiManager().openQuestEditor(player);
+                    plugin.guiManager().openQuestEditor(player, page);
                 });
                 return;
             }
@@ -421,7 +456,7 @@ public class GuiListener implements Listener {
                     plugin.questManager().saveAll();
                     plugin.auditLog().log(player, "Quest gelöscht (GUI): " + questId);
                     player.sendMessage(Text.mm("<red>Quest gelöscht: " + questId));
-                    plugin.guiManager().openQuestEditor(player);
+                    plugin.guiManager().openQuestEditor(player, page);
                 }
                 return;
             }
@@ -509,13 +544,22 @@ public class GuiListener implements Listener {
                 plugin.questManager().saveQuest(quest);
                 plugin.auditLog().log(player, "Quest aktualisiert (GUI): " + quest.id());
                 player.sendMessage(Text.mm("<green>Quest aktualisiert."));
-                plugin.guiManager().openQuestEditor(player);
+                plugin.guiManager().openQuestEditor(player, page);
             });
             return;
         }
-        if (holder instanceof GuiHolders.LootEditorHolder) {
+        if (holder instanceof GuiHolders.LootEditorHolder lootHolder) {
             event.setCancelled(true);
+            int page = lootHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openLootEditor(player, page - 1);
+                return;
+            }
             if (event.getSlot() == 53) {
+                plugin.guiManager().openLootEditor(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Loot-Tabelle erstellen: <id> <appliesTo>"), input -> {
                     String[] parts = input.trim().split("\\s+", 2);
                     if (parts.length < 2) {
@@ -533,7 +577,7 @@ public class GuiListener implements Listener {
                     plugin.lootManager().saveTable(table);
                     plugin.auditLog().log(player, "Loot-Tabelle erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Loot-Tabelle erstellt."));
-                    plugin.guiManager().openLootEditor(player);
+                    plugin.guiManager().openLootEditor(player, page);
                 });
                 return;
             }
@@ -546,7 +590,7 @@ public class GuiListener implements Listener {
                     plugin.lootManager().saveAll();
                     plugin.auditLog().log(player, "Loot-Tabelle gelöscht (GUI): " + tableId);
                     player.sendMessage(Text.mm("<red>Loot-Tabelle gelöscht: " + tableId));
-                    plugin.guiManager().openLootEditor(player);
+                    plugin.guiManager().openLootEditor(player, page);
                 }
                 return;
             }
@@ -602,17 +646,26 @@ public class GuiListener implements Listener {
                 plugin.lootManager().saveTable(table);
                 plugin.auditLog().log(player, "Loot-Tabelle aktualisiert (GUI): " + table.id());
                 player.sendMessage(Text.mm("<green>Loot-Tabelle aktualisiert."));
-                plugin.guiManager().openLootEditor(player);
+                plugin.guiManager().openLootEditor(player, page);
             });
             return;
         }
-        if (holder instanceof GuiHolders.SkillAdminHolder) {
+        if (holder instanceof GuiHolders.SkillAdminHolder skillAdminHolder) {
             event.setCancelled(true);
-            if (event.getSlot() == 51) {
-                plugin.guiManager().openClassAdmin(player);
+            int page = skillAdminHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openSkillAdmin(player, page - 1);
                 return;
             }
             if (event.getSlot() == 53) {
+                plugin.guiManager().openSkillAdmin(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 48) {
+                plugin.guiManager().openClassAdmin(player, 0);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Skill erstellen: <id>"), input -> {
                     String id = input.trim().toLowerCase(Locale.ROOT);
                     if (id.isBlank()) {
@@ -634,7 +687,7 @@ public class GuiListener implements Listener {
                     plugin.skillManager().saveSkill(skill);
                     plugin.auditLog().log(player, "Skill erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Skill erstellt: " + id));
-                    plugin.guiManager().openSkillAdmin(player);
+                    plugin.guiManager().openSkillAdmin(player, page);
                 });
                 return;
             }
@@ -648,7 +701,7 @@ public class GuiListener implements Listener {
                     removeSkillFromClasses(skill.id());
                     plugin.auditLog().log(player, "Skill gelöscht (GUI): " + skill.id());
                     player.sendMessage(Text.mm("<red>Skill gelöscht: " + skill.id()));
-                    plugin.guiManager().openSkillAdmin(player);
+                    plugin.guiManager().openSkillAdmin(player, page);
                 }
                 return;
             }
@@ -757,13 +810,22 @@ public class GuiListener implements Listener {
                 plugin.skillManager().saveSkill(skill);
                 plugin.auditLog().log(player, "Skill aktualisiert (GUI): " + skill.id());
                 player.sendMessage(Text.mm("<green>Skill aktualisiert."));
-                plugin.guiManager().openSkillAdmin(player);
+                plugin.guiManager().openSkillAdmin(player, page);
             });
             return;
         }
-        if (holder instanceof GuiHolders.ClassAdminHolder) {
+        if (holder instanceof GuiHolders.ClassAdminHolder classAdminHolder) {
             event.setCancelled(true);
+            int page = classAdminHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openClassAdmin(player, page - 1);
+                return;
+            }
             if (event.getSlot() == 53) {
+                plugin.guiManager().openClassAdmin(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Klasse erstellen: <id> <name>"), input -> {
                     String[] parts = input.trim().split("\\s+", 2);
                     if (parts.length < 2) {
@@ -782,7 +844,7 @@ public class GuiListener implements Listener {
                     plugin.classManager().saveClass(definition);
                     plugin.auditLog().log(player, "Klasse erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Klasse erstellt: " + id));
-                    plugin.guiManager().openClassAdmin(player);
+                    plugin.guiManager().openClassAdmin(player, page);
                 });
                 return;
             }
@@ -795,7 +857,7 @@ public class GuiListener implements Listener {
                     plugin.classManager().saveAll();
                     plugin.auditLog().log(player, "Klasse gelöscht (GUI): " + classId);
                     player.sendMessage(Text.mm("<red>Klasse gelöscht: " + classId));
-                    plugin.guiManager().openClassAdmin(player);
+                    plugin.guiManager().openClassAdmin(player, page);
                 }
                 return;
             }
@@ -851,7 +913,7 @@ public class GuiListener implements Listener {
                 plugin.classManager().saveClass(definition);
                 plugin.auditLog().log(player, "Klasse aktualisiert (GUI): " + definition.id());
                 player.sendMessage(Text.mm("<green>Klasse aktualisiert."));
-                plugin.guiManager().openClassAdmin(player);
+                plugin.guiManager().openClassAdmin(player, page);
             });
             return;
         }
@@ -871,8 +933,19 @@ public class GuiListener implements Listener {
             plugin.guiManager().openBuildingList(player, com.example.rpg.model.BuildingCategory.fromString(category));
             return;
         }
-        if (holder instanceof GuiHolders.BuildingListHolder) {
+        if (holder instanceof GuiHolders.BuildingListHolder buildingListHolder) {
             event.setCancelled(true);
+            int page = buildingListHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openBuildingList(player,
+                    com.example.rpg.model.BuildingCategory.fromString(buildingListHolder.category()), page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openBuildingList(player,
+                    com.example.rpg.model.BuildingCategory.fromString(buildingListHolder.category()), page + 1);
+                return;
+            }
             String buildingId = resolveBuilding(current);
             if (buildingId == null) {
                 return;
@@ -881,10 +954,65 @@ public class GuiListener implements Listener {
             player.closeInventory();
             return;
         }
-        if (holder instanceof GuiHolders.QuestListHolder) {
+        if (holder instanceof GuiHolders.QuestListHolder questListHolder) {
             event.setCancelled(true);
+            int page = questListHolder.page();
+            if (event.getSlot() == 18) {
+                plugin.guiManager().openQuestList(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 26) {
+                plugin.guiManager().openQuestList(player, page + 1);
+                return;
+            }
             Quest quest = resolveQuest(current);
             if (quest == null) {
+                return;
+            }
+            plugin.guiManager().openQuestDetails(player, quest.id(), false, page);
+            return;
+        }
+        if (holder instanceof GuiHolders.QuestLogHolder questLogHolder) {
+            event.setCancelled(true);
+            int page = questLogHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openQuestLog(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openQuestLog(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
+                plugin.guiManager().openQuestList(player, 0);
+                return;
+            }
+            Quest quest = resolveQuest(current);
+            if (quest == null) {
+                return;
+            }
+            plugin.guiManager().openQuestDetails(player, quest.id(), true, page);
+            return;
+        }
+        if (holder instanceof GuiHolders.QuestDetailHolder questDetailHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 26) {
+                if (questDetailHolder.active()) {
+                    plugin.guiManager().openQuestLog(player, questDetailHolder.page());
+                } else {
+                    plugin.guiManager().openQuestList(player, questDetailHolder.page());
+                }
+                return;
+            }
+            if (event.getSlot() != 22) {
+                return;
+            }
+            if (questDetailHolder.active()) {
+                return;
+            }
+            Quest quest = plugin.questManager().getQuest(questDetailHolder.questId());
+            if (quest == null) {
+                player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
                 return;
             }
             if (quest.requiredEvent() != null && !plugin.worldEventManager().isCompleted(quest.requiredEvent())) {
@@ -906,10 +1034,20 @@ public class GuiListener implements Listener {
             }
             profile.activeQuests().put(quest.id(), new QuestProgress(quest.id()));
             player.sendMessage(Text.mm("<green>Quest angenommen: " + quest.name()));
+            plugin.guiManager().openQuestLog(player, 0);
             return;
         }
-        if (holder instanceof GuiHolders.SkillListHolder) {
+        if (holder instanceof GuiHolders.SkillListHolder skillListHolder) {
             event.setCancelled(true);
+            int page = skillListHolder.page();
+            if (event.getSlot() == 18) {
+                plugin.guiManager().openSkillList(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 26) {
+                plugin.guiManager().openSkillList(player, page + 1);
+                return;
+            }
             Skill skill = resolveSkill(current);
             if (skill == null) {
                 return;
@@ -926,7 +1064,7 @@ public class GuiListener implements Listener {
             profile.learnedSkills().put(skill.id(), profile.learnedSkills().getOrDefault(skill.id(), 0) + 1);
             profile.setSkillPoints(profile.skillPoints() - 1);
             player.sendMessage(Text.mm("<green>Skill gelernt: " + skill.name()));
-            plugin.guiManager().openSkillList(player);
+            plugin.guiManager().openSkillList(player, page);
             return;
         }
         if (holder instanceof GuiHolders.SkillTreeHolder) {
@@ -1089,13 +1227,22 @@ public class GuiListener implements Listener {
             plugin.guiManager().openRoleNodes(player, roleNodesHolder.roleKey(), roleNodesHolder.page());
             return;
         }
-        if (holder instanceof GuiHolders.PlayerListHolder) {
+        if (holder instanceof GuiHolders.PlayerListHolder playerListHolder) {
             event.setCancelled(true);
+            int page = playerListHolder.page();
             if (event.getSlot() == 45) {
-                plugin.guiManager().openPermissionsMain(player);
+                plugin.guiManager().openPlayerList(player, page - 1);
                 return;
             }
             if (event.getSlot() == 53) {
+                plugin.guiManager().openPlayerList(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 47) {
+                plugin.guiManager().openPermissionsMain(player);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Spielername eingeben:"), input -> {
                     var target = plugin.getServer().getOfflinePlayer(input);
                     if (target == null) {
@@ -1140,16 +1287,34 @@ public class GuiListener implements Listener {
             }
             return;
         }
-        if (holder instanceof GuiHolders.PermissionAuditHolder) {
+        if (holder instanceof GuiHolders.PermissionAuditHolder auditHolder) {
             event.setCancelled(true);
+            int page = auditHolder.page();
             if (event.getSlot() == 45) {
+                plugin.guiManager().openAuditLog(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openAuditLog(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.guiManager().openPermissionsMain(player);
             }
             return;
         }
         if (holder instanceof GuiHolders.EnchantingHolder enchantingHolder) {
             event.setCancelled(true);
+            int page = enchantingHolder.page();
+            if (event.getSlot() == 18) {
+                plugin.guiManager().openEnchanting(player, enchantingHolder.recipeId(), page - 1);
+                return;
+            }
             if (event.getSlot() == 26) {
+                plugin.guiManager().openEnchanting(player, enchantingHolder.recipeId(), page + 1);
+                return;
+            }
+            if (event.getSlot() == 25) {
                 player.closeInventory();
                 return;
             }
@@ -1160,12 +1325,12 @@ public class GuiListener implements Listener {
                     return;
                 }
                 plugin.enchantManager().applyRecipe(player, recipeId);
-                plugin.guiManager().openEnchanting(player, recipeId);
+                plugin.guiManager().openEnchanting(player, recipeId, page);
                 return;
             }
             String recipeId = resolveEnchantRecipeId(current);
             if (recipeId != null) {
-                plugin.guiManager().openEnchanting(player, recipeId);
+                plugin.guiManager().openEnchanting(player, recipeId, page);
             }
         }
     }

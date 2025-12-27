@@ -1,0 +1,44 @@
+lvl07_behavior_037:
+  name: "&cGegner Lvl 7"
+  type: SPIDER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_037
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.23
+      - type: cast_skill
+        skill: execute
+      - type: heal_self
+        amount: 6.4
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 5
+        child:
+          type: cast_skill
+          skill: divine_blessing
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.18
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

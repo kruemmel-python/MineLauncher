@@ -2641,3 +2641,7203 @@ mob_200:
   xp: 60
   lootTable: "loot_000"
   boss: true
+
+lvl01_behavior_001:
+  name: "&cGegner Lvl 1"
+  type: ZOMBIE
+  health: 24
+  damage: 3
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_001
+  boss: false
+
+lvl01_behavior_031:
+  name: "&cGegner Lvl 1"
+  type: WITHER_SKELETON
+  health: 24
+  damage: 3
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_031
+  boss: false
+
+lvl01_behavior_061:
+  name: "&cGegner Lvl 1"
+  type: WITCH
+  health: 24
+  damage: 3
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_061
+  boss: false
+
+lvl01_behavior_091:
+  name: "&cGegner Lvl 1"
+  type: STRAY
+  health: 24
+  damage: 3
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_091
+  boss: false
+
+lvl01_behavior_121:
+  name: "&cGegner Lvl 1"
+  type: SKELETON
+  health: 24
+  damage: 3
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_121
+  boss: false
+
+lvl01_behavior_151:
+  name: "&cGegner Lvl 1"
+  type: BLAZE
+  health: 24
+  damage: 3
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_151
+  boss: false
+
+lvl01_behavior_181:
+  name: "&cGegner Lvl 1"
+  type: PILLAGER
+  health: 24
+  damage: 3
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_181
+  boss: false
+
+lvl02_behavior_002:
+  name: "&cGegner Lvl 2"
+  type: SKELETON
+  health: 28
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_002
+  boss: false
+
+lvl02_behavior_032:
+  name: "&cGegner Lvl 2"
+  type: BLAZE
+  health: 28
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_032
+  boss: false
+
+lvl02_behavior_062:
+  name: "&cGegner Lvl 2"
+  type: PILLAGER
+  health: 28
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_062
+  boss: false
+
+lvl02_behavior_092:
+  name: "&cGegner Lvl 2"
+  type: DROWNED
+  health: 28
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_092
+  boss: false
+
+lvl02_behavior_122:
+  name: "&cGegner Lvl 2"
+  type: SPIDER
+  health: 28
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_122
+  boss: false
+
+lvl02_behavior_152:
+  name: "&cGegner Lvl 2"
+  type: MAGMA_CUBE
+  health: 28
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_152
+  boss: false
+
+lvl02_behavior_182:
+  name: "&cGegner Lvl 2"
+  type: VINDICATOR
+  health: 28
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_182
+  boss: false
+
+lvl03_behavior_003:
+  name: "&cGegner Lvl 3"
+  type: SPIDER
+  health: 32
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_003
+  boss: false
+
+lvl03_behavior_033:
+  name: "&cGegner Lvl 3"
+  type: MAGMA_CUBE
+  health: 32
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_033
+  boss: false
+
+lvl03_behavior_063:
+  name: "&cGegner Lvl 3"
+  type: VINDICATOR
+  health: 32
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_063
+  boss: false
+
+lvl03_behavior_093:
+  name: "&cGegner Lvl 3"
+  type: ENDERMAN
+  health: 32
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_093
+  boss: false
+
+lvl03_behavior_123:
+  name: "&cGegner Lvl 3"
+  type: CREEPER
+  health: 32
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_123
+  boss: false
+
+lvl03_behavior_153:
+  name: "&cGegner Lvl 3"
+  type: SILVERFISH
+  health: 32
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_153
+  boss: false
+
+lvl03_behavior_183:
+  name: "&cGegner Lvl 3"
+  type: EVOKER
+  health: 32
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_183
+  boss: false
+
+lvl04_behavior_004:
+  name: "&cGegner Lvl 4"
+  type: CREEPER
+  health: 36
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_004
+  boss: false
+
+lvl04_behavior_034:
+  name: "&cGegner Lvl 4"
+  type: SILVERFISH
+  health: 36
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_034
+  boss: false
+
+lvl04_behavior_064:
+  name: "&cGegner Lvl 4"
+  type: EVOKER
+  health: 36
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_064
+  boss: false
+
+lvl04_behavior_094:
+  name: "&cGegner Lvl 4"
+  type: SLIME
+  health: 36
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_094
+  boss: false
+
+lvl04_behavior_124:
+  name: "&cGegner Lvl 4"
+  type: HUSK
+  health: 36
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_124
+  boss: false
+
+lvl04_behavior_154:
+  name: "&cGegner Lvl 4"
+  type: ZOMBIE
+  health: 36
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_154
+  boss: false
+
+lvl04_behavior_184:
+  name: "&cGegner Lvl 4"
+  type: WITHER_SKELETON
+  health: 36
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_184
+  boss: false
+
+lvl05_behavior_005:
+  name: "&cGegner Lvl 5"
+  type: HUSK
+  health: 40
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_005
+  boss: false
+
+lvl05_behavior_035:
+  name: "&cGegner Lvl 5"
+  type: ZOMBIE
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_035
+  boss: false
+
+lvl05_behavior_065:
+  name: "&cGegner Lvl 5"
+  type: WITHER_SKELETON
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_065
+  boss: false
+
+lvl05_behavior_095:
+  name: "&cGegner Lvl 5"
+  type: WITCH
+  health: 40
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_095
+  boss: false
+
+lvl05_behavior_125:
+  name: "&cGegner Lvl 5"
+  type: STRAY
+  health: 40
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_125
+  boss: false
+
+lvl05_behavior_155:
+  name: "&cGegner Lvl 5"
+  type: SKELETON
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_155
+  boss: false
+
+lvl05_behavior_185:
+  name: "&cGegner Lvl 5"
+  type: BLAZE
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_185
+  boss: false
+
+lvl06_behavior_006:
+  name: "&cGegner Lvl 6"
+  type: STRAY
+  health: 44
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_006
+  boss: false
+
+lvl06_behavior_036:
+  name: "&cGegner Lvl 6"
+  type: SKELETON
+  health: 44
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_036
+  boss: false
+
+lvl06_behavior_066:
+  name: "&cGegner Lvl 6"
+  type: BLAZE
+  health: 44
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_066
+  boss: false
+
+lvl06_behavior_096:
+  name: "&cGegner Lvl 6"
+  type: PILLAGER
+  health: 44
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_096
+  boss: false
+
+lvl06_behavior_126:
+  name: "&cGegner Lvl 6"
+  type: DROWNED
+  health: 44
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_126
+  boss: false
+
+lvl06_behavior_156:
+  name: "&cGegner Lvl 6"
+  type: SPIDER
+  health: 44
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_156
+  boss: false
+
+lvl06_behavior_186:
+  name: "&cGegner Lvl 6"
+  type: MAGMA_CUBE
+  health: 44
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_186
+  boss: false
+
+lvl07_behavior_007:
+  name: "&cGegner Lvl 7"
+  type: DROWNED
+  health: 48
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_007
+  boss: false
+
+lvl07_behavior_037:
+  name: "&cGegner Lvl 7"
+  type: SPIDER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_037
+  boss: false
+
+lvl07_behavior_067:
+  name: "&cGegner Lvl 7"
+  type: MAGMA_CUBE
+  health: 48
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_067
+  boss: false
+
+lvl07_behavior_097:
+  name: "&cGegner Lvl 7"
+  type: VINDICATOR
+  health: 48
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_097
+  boss: false
+
+lvl07_behavior_127:
+  name: "&cGegner Lvl 7"
+  type: ENDERMAN
+  health: 48
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_127
+  boss: false
+
+lvl07_behavior_157:
+  name: "&cGegner Lvl 7"
+  type: CREEPER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_157
+  boss: false
+
+lvl07_behavior_187:
+  name: "&cGegner Lvl 7"
+  type: SILVERFISH
+  health: 48
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_187
+  boss: false
+
+lvl08_behavior_008:
+  name: "&cGegner Lvl 8"
+  type: ENDERMAN
+  health: 52
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_008
+  boss: false
+
+lvl08_behavior_038:
+  name: "&cGegner Lvl 8"
+  type: CREEPER
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_038
+  boss: false
+
+lvl08_behavior_068:
+  name: "&cGegner Lvl 8"
+  type: SILVERFISH
+  health: 52
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_068
+  boss: false
+
+lvl08_behavior_098:
+  name: "&cGegner Lvl 8"
+  type: EVOKER
+  health: 52
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_098
+  boss: false
+
+lvl08_behavior_128:
+  name: "&cGegner Lvl 8"
+  type: SLIME
+  health: 52
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_128
+  boss: false
+
+lvl08_behavior_158:
+  name: "&cGegner Lvl 8"
+  type: HUSK
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_158
+  boss: false
+
+lvl08_behavior_188:
+  name: "&cGegner Lvl 8"
+  type: ZOMBIE
+  health: 52
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_188
+  boss: false
+
+lvl09_behavior_009:
+  name: "&cGegner Lvl 9"
+  type: SLIME
+  health: 56
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_009
+  boss: false
+
+lvl09_behavior_039:
+  name: "&cGegner Lvl 9"
+  type: HUSK
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_039
+  boss: false
+
+lvl09_behavior_069:
+  name: "&cGegner Lvl 9"
+  type: ZOMBIE
+  health: 56
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_069
+  boss: false
+
+lvl09_behavior_099:
+  name: "&cGegner Lvl 9"
+  type: WITHER_SKELETON
+  health: 56
+  damage: 7
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_099
+  boss: false
+
+lvl09_behavior_129:
+  name: "&cGegner Lvl 9"
+  type: WITCH
+  health: 56
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_129
+  boss: false
+
+lvl09_behavior_159:
+  name: "&cGegner Lvl 9"
+  type: STRAY
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_159
+  boss: false
+
+lvl09_behavior_189:
+  name: "&cGegner Lvl 9"
+  type: SKELETON
+  health: 56
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_189
+  boss: false
+
+lvl10_behavior_010:
+  name: "&cGegner Lvl 10"
+  type: WITCH
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_010
+  boss: false
+
+lvl10_behavior_040:
+  name: "&cGegner Lvl 10"
+  type: STRAY
+  health: 60
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_040
+  boss: false
+
+lvl10_behavior_070:
+  name: "&cGegner Lvl 10"
+  type: SKELETON
+  health: 60
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_070
+  boss: false
+
+lvl10_behavior_100:
+  name: "&cGegner Lvl 10"
+  type: BLAZE
+  health: 60
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_100
+  boss: false
+
+lvl10_behavior_130:
+  name: "&cGegner Lvl 10"
+  type: PILLAGER
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_130
+  boss: false
+
+lvl10_behavior_160:
+  name: "&cGegner Lvl 10"
+  type: DROWNED
+  health: 60
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_160
+  boss: false
+
+lvl10_behavior_190:
+  name: "&cGegner Lvl 10"
+  type: SPIDER
+  health: 60
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_190
+  boss: false
+
+lvl11_behavior_011:
+  name: "&cGegner Lvl 11"
+  type: PILLAGER
+  health: 64
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_011
+  boss: false
+
+lvl11_behavior_041:
+  name: "&cGegner Lvl 11"
+  type: DROWNED
+  health: 64
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_041
+  boss: false
+
+lvl11_behavior_071:
+  name: "&cGegner Lvl 11"
+  type: SPIDER
+  health: 64
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_071
+  boss: false
+
+lvl11_behavior_101:
+  name: "&cGegner Lvl 11"
+  type: MAGMA_CUBE
+  health: 64
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_101
+  boss: false
+
+lvl11_behavior_131:
+  name: "&cGegner Lvl 11"
+  type: VINDICATOR
+  health: 64
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_131
+  boss: false
+
+lvl11_behavior_161:
+  name: "&cGegner Lvl 11"
+  type: ENDERMAN
+  health: 64
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_161
+  boss: false
+
+lvl11_behavior_191:
+  name: "&cGegner Lvl 11"
+  type: CREEPER
+  health: 64
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_191
+  boss: false
+
+lvl12_behavior_012:
+  name: "&cGegner Lvl 12"
+  type: VINDICATOR
+  health: 68
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_012
+  boss: false
+
+lvl12_behavior_042:
+  name: "&cGegner Lvl 12"
+  type: ENDERMAN
+  health: 68
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_042
+  boss: false
+
+lvl12_behavior_072:
+  name: "&cGegner Lvl 12"
+  type: CREEPER
+  health: 68
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_072
+  boss: false
+
+lvl12_behavior_102:
+  name: "&cGegner Lvl 12"
+  type: SILVERFISH
+  health: 68
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_102
+  boss: false
+
+lvl12_behavior_132:
+  name: "&cGegner Lvl 12"
+  type: EVOKER
+  health: 68
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_132
+  boss: false
+
+lvl12_behavior_162:
+  name: "&cGegner Lvl 12"
+  type: SLIME
+  health: 68
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_162
+  boss: false
+
+lvl12_behavior_192:
+  name: "&cGegner Lvl 12"
+  type: HUSK
+  health: 68
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_192
+  boss: false
+
+lvl13_behavior_013:
+  name: "&cGegner Lvl 13"
+  type: EVOKER
+  health: 72
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_013
+  boss: false
+
+lvl13_behavior_043:
+  name: "&cGegner Lvl 13"
+  type: SLIME
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_043
+  boss: false
+
+lvl13_behavior_073:
+  name: "&cGegner Lvl 13"
+  type: HUSK
+  health: 72
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_073
+  boss: false
+
+lvl13_behavior_103:
+  name: "&cGegner Lvl 13"
+  type: ZOMBIE
+  health: 72
+  damage: 9
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_103
+  boss: false
+
+lvl13_behavior_133:
+  name: "&cGegner Lvl 13"
+  type: WITHER_SKELETON
+  health: 72
+  damage: 9
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_133
+  boss: false
+
+lvl13_behavior_163:
+  name: "&cGegner Lvl 13"
+  type: WITCH
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_163
+  boss: false
+
+lvl13_behavior_193:
+  name: "&cGegner Lvl 13"
+  type: STRAY
+  health: 72
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_193
+  boss: false
+
+lvl14_behavior_014:
+  name: "&cGegner Lvl 14"
+  type: WITHER_SKELETON
+  health: 76
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_014
+  boss: false
+
+lvl14_behavior_044:
+  name: "&cGegner Lvl 14"
+  type: WITCH
+  health: 76
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_044
+  boss: false
+
+lvl14_behavior_074:
+  name: "&cGegner Lvl 14"
+  type: STRAY
+  health: 76
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_074
+  boss: false
+
+lvl14_behavior_104:
+  name: "&cGegner Lvl 14"
+  type: SKELETON
+  health: 76
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_104
+  boss: false
+
+lvl14_behavior_134:
+  name: "&cGegner Lvl 14"
+  type: BLAZE
+  health: 76
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_134
+  boss: false
+
+lvl14_behavior_164:
+  name: "&cGegner Lvl 14"
+  type: PILLAGER
+  health: 76
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_164
+  boss: false
+
+lvl14_behavior_194:
+  name: "&cGegner Lvl 14"
+  type: DROWNED
+  health: 76
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_194
+  boss: false
+
+lvl15_behavior_015:
+  name: "&cGegner Lvl 15"
+  type: BLAZE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_015
+  boss: false
+
+lvl15_behavior_045:
+  name: "&cGegner Lvl 15"
+  type: PILLAGER
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_045
+  boss: false
+
+lvl15_behavior_075:
+  name: "&cGegner Lvl 15"
+  type: DROWNED
+  health: 80
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_075
+  boss: false
+
+lvl15_behavior_105:
+  name: "&cGegner Lvl 15"
+  type: SPIDER
+  health: 80
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_105
+  boss: false
+
+lvl15_behavior_135:
+  name: "&cGegner Lvl 15"
+  type: MAGMA_CUBE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_135
+  boss: false
+
+lvl15_behavior_165:
+  name: "&cGegner Lvl 15"
+  type: VINDICATOR
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_165
+  boss: false
+
+lvl15_behavior_195:
+  name: "&cGegner Lvl 15"
+  type: ENDERMAN
+  health: 80
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_195
+  boss: false
+
+lvl16_behavior_016:
+  name: "&cGegner Lvl 16"
+  type: MAGMA_CUBE
+  health: 84
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_016
+  boss: false
+
+lvl16_behavior_046:
+  name: "&cGegner Lvl 16"
+  type: VINDICATOR
+  health: 84
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_046
+  boss: false
+
+lvl16_behavior_076:
+  name: "&cGegner Lvl 16"
+  type: ENDERMAN
+  health: 84
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_076
+  boss: false
+
+lvl16_behavior_106:
+  name: "&cGegner Lvl 16"
+  type: CREEPER
+  health: 84
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_106
+  boss: false
+
+lvl16_behavior_136:
+  name: "&cGegner Lvl 16"
+  type: SILVERFISH
+  health: 84
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_136
+  boss: false
+
+lvl16_behavior_166:
+  name: "&cGegner Lvl 16"
+  type: EVOKER
+  health: 84
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_166
+  boss: false
+
+lvl16_behavior_196:
+  name: "&cGegner Lvl 16"
+  type: SLIME
+  health: 84
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_196
+  boss: false
+
+lvl17_behavior_017:
+  name: "&cGegner Lvl 17"
+  type: SILVERFISH
+  health: 88
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_017
+  boss: false
+
+lvl17_behavior_047:
+  name: "&cGegner Lvl 17"
+  type: EVOKER
+  health: 88
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_047
+  boss: false
+
+lvl17_behavior_077:
+  name: "&cGegner Lvl 17"
+  type: SLIME
+  health: 88
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_077
+  boss: false
+
+lvl17_behavior_107:
+  name: "&cGegner Lvl 17"
+  type: HUSK
+  health: 88
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_107
+  boss: false
+
+lvl17_behavior_137:
+  name: "&cGegner Lvl 17"
+  type: ZOMBIE
+  health: 88
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_137
+  boss: false
+
+lvl17_behavior_167:
+  name: "&cGegner Lvl 17"
+  type: WITHER_SKELETON
+  health: 88
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_167
+  boss: false
+
+lvl17_behavior_197:
+  name: "&cGegner Lvl 17"
+  type: WITCH
+  health: 88
+  damage: 11
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_197
+  boss: false
+
+lvl18_behavior_018:
+  name: "&cGegner Lvl 18"
+  type: ZOMBIE
+  health: 92
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_018
+  boss: false
+
+lvl18_behavior_048:
+  name: "&cGegner Lvl 18"
+  type: WITHER_SKELETON
+  health: 92
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_048
+  boss: false
+
+lvl18_behavior_078:
+  name: "&cGegner Lvl 18"
+  type: WITCH
+  health: 92
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_078
+  boss: false
+
+lvl18_behavior_108:
+  name: "&cGegner Lvl 18"
+  type: STRAY
+  health: 92
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_108
+  boss: false
+
+lvl18_behavior_138:
+  name: "&cGegner Lvl 18"
+  type: SKELETON
+  health: 92
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_138
+  boss: false
+
+lvl18_behavior_168:
+  name: "&cGegner Lvl 18"
+  type: BLAZE
+  health: 92
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_168
+  boss: false
+
+lvl18_behavior_198:
+  name: "&cGegner Lvl 18"
+  type: PILLAGER
+  health: 92
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_198
+  boss: false
+
+lvl19_behavior_019:
+  name: "&cGegner Lvl 19"
+  type: SKELETON
+  health: 96
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_019
+  boss: false
+
+lvl19_behavior_049:
+  name: "&cGegner Lvl 19"
+  type: BLAZE
+  health: 96
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_049
+  boss: false
+
+lvl19_behavior_079:
+  name: "&cGegner Lvl 19"
+  type: PILLAGER
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_079
+  boss: false
+
+lvl19_behavior_109:
+  name: "&cGegner Lvl 19"
+  type: DROWNED
+  health: 96
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_109
+  boss: false
+
+lvl19_behavior_139:
+  name: "&cGegner Lvl 19"
+  type: SPIDER
+  health: 96
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_139
+  boss: false
+
+lvl19_behavior_169:
+  name: "&cGegner Lvl 19"
+  type: MAGMA_CUBE
+  health: 96
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_169
+  boss: false
+
+lvl19_behavior_199:
+  name: "&cGegner Lvl 19"
+  type: VINDICATOR
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_199
+  boss: false
+
+lvl20_behavior_020:
+  name: "&cGegner Lvl 20"
+  type: SPIDER
+  health: 100
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_020
+  boss: false
+
+lvl20_behavior_050:
+  name: "&cGegner Lvl 20"
+  type: MAGMA_CUBE
+  health: 100
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_050
+  boss: false
+
+lvl20_behavior_080:
+  name: "&cGegner Lvl 20"
+  type: VINDICATOR
+  health: 100
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_080
+  boss: false
+
+lvl20_behavior_110:
+  name: "&cGegner Lvl 20"
+  type: ENDERMAN
+  health: 100
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_110
+  boss: false
+
+lvl20_behavior_140:
+  name: "&cGegner Lvl 20"
+  type: CREEPER
+  health: 100
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_140
+  boss: false
+
+lvl20_behavior_170:
+  name: "&cGegner Lvl 20"
+  type: SILVERFISH
+  health: 100
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_170
+  boss: false
+
+lvl20_behavior_200:
+  name: "&cGegner Lvl 20"
+  type: EVOKER
+  health: 100
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_200
+  boss: false
+
+lvl21_behavior_021:
+  name: "&cGegner Lvl 21"
+  type: CREEPER
+  health: 104
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_021
+  boss: false
+
+lvl21_behavior_051:
+  name: "&cGegner Lvl 21"
+  type: SILVERFISH
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_051
+  boss: false
+
+lvl21_behavior_081:
+  name: "&cGegner Lvl 21"
+  type: EVOKER
+  health: 104
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_081
+  boss: false
+
+lvl21_behavior_111:
+  name: "&cGegner Lvl 21"
+  type: SLIME
+  health: 104
+  damage: 13
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_111
+  boss: false
+
+lvl21_behavior_141:
+  name: "&cGegner Lvl 21"
+  type: HUSK
+  health: 104
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_141
+  boss: false
+
+lvl21_behavior_171:
+  name: "&cGegner Lvl 21"
+  type: ZOMBIE
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_171
+  boss: false
+
+lvl22_behavior_022:
+  name: "&cGegner Lvl 22"
+  type: HUSK
+  health: 108
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_022
+  boss: false
+
+lvl22_behavior_052:
+  name: "&cGegner Lvl 22"
+  type: ZOMBIE
+  health: 108
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_052
+  boss: false
+
+lvl22_behavior_082:
+  name: "&cGegner Lvl 22"
+  type: WITHER_SKELETON
+  health: 108
+  damage: 14
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_082
+  boss: false
+
+lvl22_behavior_112:
+  name: "&cGegner Lvl 22"
+  type: WITCH
+  health: 108
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_112
+  boss: false
+
+lvl22_behavior_142:
+  name: "&cGegner Lvl 22"
+  type: STRAY
+  health: 108
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_142
+  boss: false
+
+lvl22_behavior_172:
+  name: "&cGegner Lvl 22"
+  type: SKELETON
+  health: 108
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_172
+  boss: false
+
+lvl23_behavior_023:
+  name: "&cGegner Lvl 23"
+  type: STRAY
+  health: 112
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_023
+  boss: false
+
+lvl23_behavior_053:
+  name: "&cGegner Lvl 23"
+  type: SKELETON
+  health: 112
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_053
+  boss: false
+
+lvl23_behavior_083:
+  name: "&cGegner Lvl 23"
+  type: BLAZE
+  health: 112
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_083
+  boss: false
+
+lvl23_behavior_113:
+  name: "&cGegner Lvl 23"
+  type: PILLAGER
+  health: 112
+  damage: 14
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_113
+  boss: false
+
+lvl23_behavior_143:
+  name: "&cGegner Lvl 23"
+  type: DROWNED
+  health: 112
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_143
+  boss: false
+
+lvl23_behavior_173:
+  name: "&cGegner Lvl 23"
+  type: SPIDER
+  health: 112
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_173
+  boss: false
+
+lvl24_behavior_024:
+  name: "&cGegner Lvl 24"
+  type: DROWNED
+  health: 116
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_024
+  boss: false
+
+lvl24_behavior_054:
+  name: "&cGegner Lvl 24"
+  type: SPIDER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_054
+  boss: false
+
+lvl24_behavior_084:
+  name: "&cGegner Lvl 24"
+  type: MAGMA_CUBE
+  health: 116
+  damage: 15
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_084
+  boss: false
+
+lvl24_behavior_114:
+  name: "&cGegner Lvl 24"
+  type: VINDICATOR
+  health: 116
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_114
+  boss: false
+
+lvl24_behavior_144:
+  name: "&cGegner Lvl 24"
+  type: ENDERMAN
+  health: 116
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_144
+  boss: false
+
+lvl24_behavior_174:
+  name: "&cGegner Lvl 24"
+  type: CREEPER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_174
+  boss: false
+
+lvl25_behavior_025:
+  name: "&cGegner Lvl 25"
+  type: ENDERMAN
+  health: 120
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_025
+  boss: false
+
+lvl25_behavior_055:
+  name: "&cGegner Lvl 25"
+  type: CREEPER
+  health: 120
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_055
+  boss: false
+
+lvl25_behavior_085:
+  name: "&cGegner Lvl 25"
+  type: SILVERFISH
+  health: 120
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_085
+  boss: false
+
+lvl25_behavior_115:
+  name: "&cGegner Lvl 25"
+  type: EVOKER
+  health: 120
+  damage: 15
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_115
+  boss: false
+
+lvl25_behavior_145:
+  name: "&cGegner Lvl 25"
+  type: SLIME
+  health: 120
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_145
+  boss: false
+
+lvl25_behavior_175:
+  name: "&cGegner Lvl 25"
+  type: HUSK
+  health: 120
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_175
+  boss: false
+
+lvl26_behavior_026:
+  name: "&cGegner Lvl 26"
+  type: SLIME
+  health: 124
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_026
+  boss: false
+
+lvl26_behavior_056:
+  name: "&cGegner Lvl 26"
+  type: HUSK
+  health: 124
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_056
+  boss: false
+
+lvl26_behavior_086:
+  name: "&cGegner Lvl 26"
+  type: ZOMBIE
+  health: 124
+  damage: 16
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_086
+  boss: false
+
+lvl26_behavior_116:
+  name: "&cGegner Lvl 26"
+  type: WITHER_SKELETON
+  health: 124
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_116
+  boss: false
+
+lvl26_behavior_146:
+  name: "&cGegner Lvl 26"
+  type: WITCH
+  health: 124
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_146
+  boss: false
+
+lvl26_behavior_176:
+  name: "&cGegner Lvl 26"
+  type: STRAY
+  health: 124
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_176
+  boss: false
+
+lvl27_behavior_027:
+  name: "&cGegner Lvl 27"
+  type: WITCH
+  health: 128
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_027
+  boss: false
+
+lvl27_behavior_057:
+  name: "&cGegner Lvl 27"
+  type: STRAY
+  health: 128
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_057
+  boss: false
+
+lvl27_behavior_087:
+  name: "&cGegner Lvl 27"
+  type: SKELETON
+  health: 128
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_087
+  boss: false
+
+lvl27_behavior_117:
+  name: "&cGegner Lvl 27"
+  type: BLAZE
+  health: 128
+  damage: 16
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_117
+  boss: false
+
+lvl27_behavior_147:
+  name: "&cGegner Lvl 27"
+  type: PILLAGER
+  health: 128
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_147
+  boss: false
+
+lvl27_behavior_177:
+  name: "&cGegner Lvl 27"
+  type: DROWNED
+  health: 128
+  damage: 16
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_177
+  boss: false
+
+lvl28_behavior_028:
+  name: "&cGegner Lvl 28"
+  type: PILLAGER
+  health: 132
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_028
+  boss: false
+
+lvl28_behavior_058:
+  name: "&cGegner Lvl 28"
+  type: DROWNED
+  health: 132
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_058
+  boss: false
+
+lvl28_behavior_088:
+  name: "&cGegner Lvl 28"
+  type: SPIDER
+  health: 132
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_088
+  boss: false
+
+lvl28_behavior_118:
+  name: "&cGegner Lvl 28"
+  type: MAGMA_CUBE
+  health: 132
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_118
+  boss: false
+
+lvl28_behavior_148:
+  name: "&cGegner Lvl 28"
+  type: VINDICATOR
+  health: 132
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_148
+  boss: false
+
+lvl28_behavior_178:
+  name: "&cGegner Lvl 28"
+  type: ENDERMAN
+  health: 132
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_178
+  boss: false
+
+lvl29_behavior_029:
+  name: "&cGegner Lvl 29"
+  type: VINDICATOR
+  health: 136
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_029
+  boss: false
+
+lvl29_behavior_059:
+  name: "&cGegner Lvl 29"
+  type: ENDERMAN
+  health: 136
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_059
+  boss: false
+
+lvl29_behavior_089:
+  name: "&cGegner Lvl 29"
+  type: CREEPER
+  health: 136
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_089
+  boss: false
+
+lvl29_behavior_119:
+  name: "&cGegner Lvl 29"
+  type: SILVERFISH
+  health: 136
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_119
+  boss: false
+
+lvl29_behavior_149:
+  name: "&cGegner Lvl 29"
+  type: EVOKER
+  health: 136
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_149
+  boss: false
+
+lvl29_behavior_179:
+  name: "&cGegner Lvl 29"
+  type: SLIME
+  health: 136
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_179
+  boss: false
+
+lvl30_behavior_030:
+  name: "&cGegner Lvl 30"
+  type: EVOKER
+  health: 140
+  damage: 18
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_030
+  boss: false
+
+lvl30_behavior_060:
+  name: "&cGegner Lvl 30"
+  type: SLIME
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_060
+  boss: false
+
+lvl30_behavior_090:
+  name: "&cGegner Lvl 30"
+  type: HUSK
+  health: 140
+  damage: 18
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_090
+  boss: false
+
+lvl30_behavior_120:
+  name: "&cGegner Lvl 30"
+  type: ZOMBIE
+  health: 140
+  damage: 18
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_120
+  boss: false
+
+lvl30_behavior_150:
+  name: "&cGegner Lvl 30"
+  type: WITHER_SKELETON
+  health: 140
+  damage: 18
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_150
+  boss: false
+
+lvl30_behavior_180:
+  name: "&cGegner Lvl 30"
+  type: WITCH
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_180
+  boss: false
+boss_lvl05_001:
+  name: "&4Boss Lvl 5 #001"
+  type: "WITHER_SKELETON"
+  health: 240
+  damage: 13
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 600
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_001"
+  boss: true
+
+boss_lvl06_002:
+  name: "&4Boss Lvl 6 #002"
+  type: "WITHER_SKELETON"
+  health: 248
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 620
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_002"
+  boss: true
+
+boss_lvl07_003:
+  name: "&4Boss Lvl 7 #003"
+  type: "WITHER_SKELETON"
+  health: 256
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 640
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_003"
+  boss: true
+
+boss_lvl08_004:
+  name: "&4Boss Lvl 8 #004"
+  type: "WITHER_SKELETON"
+  health: 264
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 660
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_004"
+  boss: true
+
+boss_lvl09_005:
+  name: "&4Boss Lvl 9 #005"
+  type: "WITHER_SKELETON"
+  health: 272
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 680
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_005"
+  boss: true
+
+boss_lvl10_006:
+  name: "&4Boss Lvl 10 #006"
+  type: "WITHER_SKELETON"
+  health: 280
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 700
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_006"
+  boss: true
+
+boss_lvl11_007:
+  name: "&4Boss Lvl 11 #007"
+  type: "WITHER_SKELETON"
+  health: 288
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 720
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_007"
+  boss: true
+
+boss_lvl12_008:
+  name: "&4Boss Lvl 12 #008"
+  type: "WITHER_SKELETON"
+  health: 296
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 740
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_008"
+  boss: true
+
+boss_lvl13_009:
+  name: "&4Boss Lvl 13 #009"
+  type: "WITHER_SKELETON"
+  health: 304
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 760
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_009"
+  boss: true
+
+boss_lvl14_010:
+  name: "&4Boss Lvl 14 #010"
+  type: "WITHER_SKELETON"
+  health: 312
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 780
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_010"
+  boss: true
+
+boss_lvl15_011:
+  name: "&4Boss Lvl 15 #011"
+  type: "WITHER_SKELETON"
+  health: 320
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 800
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_011"
+  boss: true
+
+boss_lvl16_012:
+  name: "&4Boss Lvl 16 #012"
+  type: "WITHER_SKELETON"
+  health: 328
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 820
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_012"
+  boss: true
+
+boss_lvl17_013:
+  name: "&4Boss Lvl 17 #013"
+  type: "WITHER_SKELETON"
+  health: 336
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 840
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_013"
+  boss: true
+
+boss_lvl18_014:
+  name: "&4Boss Lvl 18 #014"
+  type: "WITHER_SKELETON"
+  health: 344
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 860
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_014"
+  boss: true
+
+boss_lvl19_015:
+  name: "&4Boss Lvl 19 #015"
+  type: "WITHER_SKELETON"
+  health: 352
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 880
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_015"
+  boss: true
+
+boss_lvl20_016:
+  name: "&4Boss Lvl 20 #016"
+  type: "WITHER_SKELETON"
+  health: 360
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 900
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_016"
+  boss: true
+
+boss_lvl21_017:
+  name: "&4Boss Lvl 21 #017"
+  type: "WITHER_SKELETON"
+  health: 368
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 920
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_017"
+  boss: true
+
+boss_lvl22_018:
+  name: "&4Boss Lvl 22 #018"
+  type: "WITHER_SKELETON"
+  health: 376
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 940
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_018"
+  boss: true
+
+boss_lvl23_019:
+  name: "&4Boss Lvl 23 #019"
+  type: "WITHER_SKELETON"
+  health: 384
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 960
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_019"
+  boss: true
+
+boss_lvl24_020:
+  name: "&4Boss Lvl 24 #020"
+  type: "WITHER_SKELETON"
+  health: 392
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 980
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_020"
+  boss: true
+
+boss_lvl25_021:
+  name: "&4Boss Lvl 25 #021"
+  type: "WITHER_SKELETON"
+  health: 400
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1000
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_021"
+  boss: true
+
+boss_lvl26_022:
+  name: "&4Boss Lvl 26 #022"
+  type: "WITHER_SKELETON"
+  health: 408
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1020
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_022"
+  boss: true
+
+boss_lvl27_023:
+  name: "&4Boss Lvl 27 #023"
+  type: "WITHER_SKELETON"
+  health: 416
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1040
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_023"
+  boss: true
+
+boss_lvl28_024:
+  name: "&4Boss Lvl 28 #024"
+  type: "WITHER_SKELETON"
+  health: 424
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1060
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_024"
+  boss: true
+
+boss_lvl29_025:
+  name: "&4Boss Lvl 29 #025"
+  type: "WITHER_SKELETON"
+  health: 432
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1080
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_025"
+  boss: true
+
+boss_lvl30_026:
+  name: "&4Boss Lvl 30 #026"
+  type: "WITHER_SKELETON"
+  health: 440
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1100
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_026"
+  boss: true
+
+boss_lvl31_027:
+  name: "&4Boss Lvl 31 #027"
+  type: "WITHER_SKELETON"
+  health: 448
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1120
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_027"
+  boss: true
+
+boss_lvl32_028:
+  name: "&4Boss Lvl 32 #028"
+  type: "WITHER_SKELETON"
+  health: 456
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1140
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_028"
+  boss: true
+
+boss_lvl33_029:
+  name: "&4Boss Lvl 33 #029"
+  type: "WITHER_SKELETON"
+  health: 464
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1160
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_029"
+  boss: true
+
+boss_lvl34_030:
+  name: "&4Boss Lvl 34 #030"
+  type: "WITHER_SKELETON"
+  health: 472
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1180
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_030"
+  boss: true
+
+boss_lvl35_031:
+  name: "&4Boss Lvl 35 #031"
+  type: "WITHER_SKELETON"
+  health: 480
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1200
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_031"
+  boss: true
+
+boss_lvl36_032:
+  name: "&4Boss Lvl 36 #032"
+  type: "WITHER_SKELETON"
+  health: 488
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1220
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_032"
+  boss: true
+
+boss_lvl37_033:
+  name: "&4Boss Lvl 37 #033"
+  type: "WITHER_SKELETON"
+  health: 496
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1240
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_033"
+  boss: true
+
+boss_lvl38_034:
+  name: "&4Boss Lvl 38 #034"
+  type: "WITHER_SKELETON"
+  health: 504
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1260
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_034"
+  boss: true
+
+boss_lvl39_035:
+  name: "&4Boss Lvl 39 #035"
+  type: "WITHER_SKELETON"
+  health: 512
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1280
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_035"
+  boss: true
+
+boss_lvl40_036:
+  name: "&4Boss Lvl 40 #036"
+  type: "WITHER_SKELETON"
+  health: 520
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1300
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_036"
+  boss: true
+
+boss_lvl41_037:
+  name: "&4Boss Lvl 41 #037"
+  type: "WITHER_SKELETON"
+  health: 528
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1320
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_037"
+  boss: true
+
+boss_lvl42_038:
+  name: "&4Boss Lvl 42 #038"
+  type: "WITHER_SKELETON"
+  health: 536
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1340
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_038"
+  boss: true
+
+boss_lvl43_039:
+  name: "&4Boss Lvl 43 #039"
+  type: "WITHER_SKELETON"
+  health: 544
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1360
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_039"
+  boss: true
+
+boss_lvl44_040:
+  name: "&4Boss Lvl 44 #040"
+  type: "WITHER_SKELETON"
+  health: 552
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1380
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_040"
+  boss: true
+
+boss_lvl45_041:
+  name: "&4Boss Lvl 45 #041"
+  type: "WITHER_SKELETON"
+  health: 560
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1400
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_041"
+  boss: true
+
+boss_lvl46_042:
+  name: "&4Boss Lvl 46 #042"
+  type: "WITHER_SKELETON"
+  health: 568
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1420
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_042"
+  boss: true
+
+boss_lvl47_043:
+  name: "&4Boss Lvl 47 #043"
+  type: "WITHER_SKELETON"
+  health: 576
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1440
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_043"
+  boss: true
+
+boss_lvl48_044:
+  name: "&4Boss Lvl 48 #044"
+  type: "WITHER_SKELETON"
+  health: 584
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1460
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_044"
+  boss: true
+
+boss_lvl49_045:
+  name: "&4Boss Lvl 49 #045"
+  type: "WITHER_SKELETON"
+  health: 592
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1480
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_045"
+  boss: true
+
+boss_lvl50_046:
+  name: "&4Boss Lvl 50 #046"
+  type: "WITHER_SKELETON"
+  health: 600
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1500
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_046"
+  boss: true
+
+boss_lvl51_047:
+  name: "&4Boss Lvl 51 #047"
+  type: "WITHER_SKELETON"
+  health: 608
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1520
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_047"
+  boss: true
+
+boss_lvl52_048:
+  name: "&4Boss Lvl 52 #048"
+  type: "WITHER_SKELETON"
+  health: 616
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1540
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_048"
+  boss: true
+
+boss_lvl53_049:
+  name: "&4Boss Lvl 53 #049"
+  type: "WITHER_SKELETON"
+  health: 624
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1560
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_049"
+  boss: true
+
+boss_lvl54_050:
+  name: "&4Boss Lvl 54 #050"
+  type: "WITHER_SKELETON"
+  health: 632
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1580
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_050"
+  boss: true
+
+boss_lvl55_051:
+  name: "&4Boss Lvl 55 #051"
+  type: "WITHER_SKELETON"
+  health: 640
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1600
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_051"
+  boss: true
+
+boss_lvl56_052:
+  name: "&4Boss Lvl 56 #052"
+  type: "WITHER_SKELETON"
+  health: 648
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1620
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_052"
+  boss: true
+
+boss_lvl57_053:
+  name: "&4Boss Lvl 57 #053"
+  type: "WITHER_SKELETON"
+  health: 656
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1640
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_053"
+  boss: true
+
+boss_lvl58_054:
+  name: "&4Boss Lvl 58 #054"
+  type: "WITHER_SKELETON"
+  health: 664
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1660
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_054"
+  boss: true
+
+boss_lvl59_055:
+  name: "&4Boss Lvl 59 #055"
+  type: "WITHER_SKELETON"
+  health: 672
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1680
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_055"
+  boss: true
+
+boss_lvl60_056:
+  name: "&4Boss Lvl 60 #056"
+  type: "WITHER_SKELETON"
+  health: 680
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1700
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_056"
+  boss: true
+
+boss_lvl61_057:
+  name: "&4Boss Lvl 61 #057"
+  type: "WITHER_SKELETON"
+  health: 688
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1720
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_057"
+  boss: true
+
+boss_lvl62_058:
+  name: "&4Boss Lvl 62 #058"
+  type: "WITHER_SKELETON"
+  health: 696
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1740
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_058"
+  boss: true
+
+boss_lvl63_059:
+  name: "&4Boss Lvl 63 #059"
+  type: "WITHER_SKELETON"
+  health: 704
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1760
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_059"
+  boss: true
+
+boss_lvl64_060:
+  name: "&4Boss Lvl 64 #060"
+  type: "WITHER_SKELETON"
+  health: 712
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1780
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_060"
+  boss: true
+
+boss_lvl65_061:
+  name: "&4Boss Lvl 65 #061"
+  type: "WITHER_SKELETON"
+  health: 720
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1800
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_061"
+  boss: true
+
+boss_lvl66_062:
+  name: "&4Boss Lvl 66 #062"
+  type: "WITHER_SKELETON"
+  health: 728
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1820
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_062"
+  boss: true
+
+boss_lvl67_063:
+  name: "&4Boss Lvl 67 #063"
+  type: "WITHER_SKELETON"
+  health: 736
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1840
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_063"
+  boss: true
+
+boss_lvl68_064:
+  name: "&4Boss Lvl 68 #064"
+  type: "WITHER_SKELETON"
+  health: 744
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1860
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_064"
+  boss: true
+
+boss_lvl69_065:
+  name: "&4Boss Lvl 69 #065"
+  type: "WITHER_SKELETON"
+  health: 752
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1880
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_065"
+  boss: true
+
+boss_lvl70_066:
+  name: "&4Boss Lvl 70 #066"
+  type: "WITHER_SKELETON"
+  health: 760
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1900
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_066"
+  boss: true
+
+boss_lvl71_067:
+  name: "&4Boss Lvl 71 #067"
+  type: "WITHER_SKELETON"
+  health: 768
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1920
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_067"
+  boss: true
+
+boss_lvl72_068:
+  name: "&4Boss Lvl 72 #068"
+  type: "WITHER_SKELETON"
+  health: 776
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1940
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_068"
+  boss: true
+
+boss_lvl73_069:
+  name: "&4Boss Lvl 73 #069"
+  type: "WITHER_SKELETON"
+  health: 784
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1960
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_069"
+  boss: true
+
+boss_lvl74_070:
+  name: "&4Boss Lvl 74 #070"
+  type: "WITHER_SKELETON"
+  health: 792
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1980
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_070"
+  boss: true
+
+boss_lvl75_071:
+  name: "&4Boss Lvl 75 #071"
+  type: "WITHER_SKELETON"
+  health: 800
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2000
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_071"
+  boss: true
+
+boss_lvl76_072:
+  name: "&4Boss Lvl 76 #072"
+  type: "WITHER_SKELETON"
+  health: 808
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2020
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_072"
+  boss: true
+
+boss_lvl77_073:
+  name: "&4Boss Lvl 77 #073"
+  type: "WITHER_SKELETON"
+  health: 816
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2040
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_073"
+  boss: true
+
+boss_lvl78_074:
+  name: "&4Boss Lvl 78 #074"
+  type: "WITHER_SKELETON"
+  health: 824
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2060
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_074"
+  boss: true
+
+boss_lvl79_075:
+  name: "&4Boss Lvl 79 #075"
+  type: "WITHER_SKELETON"
+  health: 832
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2080
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_075"
+  boss: true
+
+boss_lvl80_076:
+  name: "&4Boss Lvl 80 #076"
+  type: "WITHER_SKELETON"
+  health: 840
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2100
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_076"
+  boss: true
+
+boss_lvl81_077:
+  name: "&4Boss Lvl 81 #077"
+  type: "WITHER_SKELETON"
+  health: 848
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2120
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_077"
+  boss: true
+
+boss_lvl82_078:
+  name: "&4Boss Lvl 82 #078"
+  type: "WITHER_SKELETON"
+  health: 856
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2140
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_078"
+  boss: true
+
+boss_lvl83_079:
+  name: "&4Boss Lvl 83 #079"
+  type: "WITHER_SKELETON"
+  health: 864
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2160
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_079"
+  boss: true
+
+boss_lvl84_080:
+  name: "&4Boss Lvl 84 #080"
+  type: "WITHER_SKELETON"
+  health: 872
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2180
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_080"
+  boss: true
+
+boss_lvl85_081:
+  name: "&4Boss Lvl 85 #081"
+  type: "WITHER_SKELETON"
+  health: 880
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2200
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_081"
+  boss: true
+
+boss_lvl86_082:
+  name: "&4Boss Lvl 86 #082"
+  type: "WITHER_SKELETON"
+  health: 888
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2220
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_082"
+  boss: true
+
+boss_lvl87_083:
+  name: "&4Boss Lvl 87 #083"
+  type: "WITHER_SKELETON"
+  health: 896
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2240
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_083"
+  boss: true
+
+boss_lvl88_084:
+  name: "&4Boss Lvl 88 #084"
+  type: "WITHER_SKELETON"
+  health: 904
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2260
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_084"
+  boss: true
+
+boss_lvl89_085:
+  name: "&4Boss Lvl 89 #085"
+  type: "WITHER_SKELETON"
+  health: 912
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2280
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_085"
+  boss: true
+
+boss_lvl90_086:
+  name: "&4Boss Lvl 90 #086"
+  type: "WITHER_SKELETON"
+  health: 920
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2300
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_086"
+  boss: true
+
+boss_lvl91_087:
+  name: "&4Boss Lvl 91 #087"
+  type: "WITHER_SKELETON"
+  health: 928
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2320
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_087"
+  boss: true
+
+boss_lvl92_088:
+  name: "&4Boss Lvl 92 #088"
+  type: "WITHER_SKELETON"
+  health: 936
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2340
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_088"
+  boss: true
+
+boss_lvl93_089:
+  name: "&4Boss Lvl 93 #089"
+  type: "WITHER_SKELETON"
+  health: 944
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2360
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_089"
+  boss: true
+
+boss_lvl94_090:
+  name: "&4Boss Lvl 94 #090"
+  type: "WITHER_SKELETON"
+  health: 952
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2380
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_090"
+  boss: true
+
+boss_lvl95_091:
+  name: "&4Boss Lvl 95 #091"
+  type: "WITHER_SKELETON"
+  health: 960
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2400
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_091"
+  boss: true
+
+boss_lvl96_092:
+  name: "&4Boss Lvl 96 #092"
+  type: "WITHER_SKELETON"
+  health: 968
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2420
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_092"
+  boss: true
+
+boss_lvl97_093:
+  name: "&4Boss Lvl 97 #093"
+  type: "WITHER_SKELETON"
+  health: 976
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2440
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_093"
+  boss: true
+
+boss_lvl98_094:
+  name: "&4Boss Lvl 98 #094"
+  type: "WITHER_SKELETON"
+  health: 984
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2460
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_094"
+  boss: true
+
+boss_lvl99_095:
+  name: "&4Boss Lvl 99 #095"
+  type: "WITHER_SKELETON"
+  health: 992
+  damage: 45
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2480
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_095"
+  boss: true
+
+boss_lvl100_096:
+  name: "&4Boss Lvl 100 #096"
+  type: "WITHER_SKELETON"
+  health: 1000
+  damage: 45
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2500
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_096"
+  boss: true
+
+boss_lvl05_097:
+  name: "&4Boss Lvl 5 #097"
+  type: "WITHER_SKELETON"
+  health: 240
+  damage: 13
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 600
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_097"
+  boss: true
+
+boss_lvl06_098:
+  name: "&4Boss Lvl 6 #098"
+  type: "WITHER_SKELETON"
+  health: 248
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 620
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_098"
+  boss: true
+
+boss_lvl07_099:
+  name: "&4Boss Lvl 7 #099"
+  type: "WITHER_SKELETON"
+  health: 256
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 640
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_099"
+  boss: true
+
+boss_lvl08_100:
+  name: "&4Boss Lvl 8 #100"
+  type: "WITHER_SKELETON"
+  health: 264
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 660
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_100"
+  boss: true
+
+boss_lvl09_101:
+  name: "&4Boss Lvl 9 #101"
+  type: "WITHER_SKELETON"
+  health: 272
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 680
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_101"
+  boss: true
+
+boss_lvl10_102:
+  name: "&4Boss Lvl 10 #102"
+  type: "WITHER_SKELETON"
+  health: 280
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 700
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_102"
+  boss: true
+
+boss_lvl11_103:
+  name: "&4Boss Lvl 11 #103"
+  type: "WITHER_SKELETON"
+  health: 288
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 720
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_103"
+  boss: true
+
+boss_lvl12_104:
+  name: "&4Boss Lvl 12 #104"
+  type: "WITHER_SKELETON"
+  health: 296
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 740
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_104"
+  boss: true
+
+boss_lvl13_105:
+  name: "&4Boss Lvl 13 #105"
+  type: "WITHER_SKELETON"
+  health: 304
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 760
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_105"
+  boss: true
+
+boss_lvl14_106:
+  name: "&4Boss Lvl 14 #106"
+  type: "WITHER_SKELETON"
+  health: 312
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 780
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_106"
+  boss: true
+
+boss_lvl15_107:
+  name: "&4Boss Lvl 15 #107"
+  type: "WITHER_SKELETON"
+  health: 320
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 800
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_107"
+  boss: true
+
+boss_lvl16_108:
+  name: "&4Boss Lvl 16 #108"
+  type: "WITHER_SKELETON"
+  health: 328
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 820
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_108"
+  boss: true
+
+boss_lvl17_109:
+  name: "&4Boss Lvl 17 #109"
+  type: "WITHER_SKELETON"
+  health: 336
+  damage: 17
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 840
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_109"
+  boss: true
+
+boss_lvl18_110:
+  name: "&4Boss Lvl 18 #110"
+  type: "WITHER_SKELETON"
+  health: 344
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 860
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_110"
+  boss: true
+
+boss_lvl19_111:
+  name: "&4Boss Lvl 19 #111"
+  type: "WITHER_SKELETON"
+  health: 352
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 880
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_111"
+  boss: true
+
+boss_lvl20_112:
+  name: "&4Boss Lvl 20 #112"
+  type: "WITHER_SKELETON"
+  health: 360
+  damage: 18
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 900
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_112"
+  boss: true
+
+boss_lvl21_113:
+  name: "&4Boss Lvl 21 #113"
+  type: "WITHER_SKELETON"
+  health: 368
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 920
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_113"
+  boss: true
+
+boss_lvl22_114:
+  name: "&4Boss Lvl 22 #114"
+  type: "WITHER_SKELETON"
+  health: 376
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 940
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_114"
+  boss: true
+
+boss_lvl23_115:
+  name: "&4Boss Lvl 23 #115"
+  type: "WITHER_SKELETON"
+  health: 384
+  damage: 19
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 960
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_115"
+  boss: true
+
+boss_lvl24_116:
+  name: "&4Boss Lvl 24 #116"
+  type: "WITHER_SKELETON"
+  health: 392
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 980
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_116"
+  boss: true
+
+boss_lvl25_117:
+  name: "&4Boss Lvl 25 #117"
+  type: "WITHER_SKELETON"
+  health: 400
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1000
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_117"
+  boss: true
+
+boss_lvl26_118:
+  name: "&4Boss Lvl 26 #118"
+  type: "WITHER_SKELETON"
+  health: 408
+  damage: 20
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1020
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_118"
+  boss: true
+
+boss_lvl27_119:
+  name: "&4Boss Lvl 27 #119"
+  type: "WITHER_SKELETON"
+  health: 416
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1040
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_119"
+  boss: true
+
+boss_lvl28_120:
+  name: "&4Boss Lvl 28 #120"
+  type: "WITHER_SKELETON"
+  health: 424
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1060
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_120"
+  boss: true
+
+boss_lvl29_121:
+  name: "&4Boss Lvl 29 #121"
+  type: "WITHER_SKELETON"
+  health: 432
+  damage: 21
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1080
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_121"
+  boss: true
+
+boss_lvl30_122:
+  name: "&4Boss Lvl 30 #122"
+  type: "WITHER_SKELETON"
+  health: 440
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1100
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_122"
+  boss: true
+
+boss_lvl31_123:
+  name: "&4Boss Lvl 31 #123"
+  type: "WITHER_SKELETON"
+  health: 448
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1120
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_123"
+  boss: true
+
+boss_lvl32_124:
+  name: "&4Boss Lvl 32 #124"
+  type: "WITHER_SKELETON"
+  health: 456
+  damage: 22
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1140
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_124"
+  boss: true
+
+boss_lvl33_125:
+  name: "&4Boss Lvl 33 #125"
+  type: "WITHER_SKELETON"
+  health: 464
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1160
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_125"
+  boss: true
+
+boss_lvl34_126:
+  name: "&4Boss Lvl 34 #126"
+  type: "WITHER_SKELETON"
+  health: 472
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1180
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_126"
+  boss: true
+
+boss_lvl35_127:
+  name: "&4Boss Lvl 35 #127"
+  type: "WITHER_SKELETON"
+  health: 480
+  damage: 23
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1200
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_127"
+  boss: true
+
+boss_lvl36_128:
+  name: "&4Boss Lvl 36 #128"
+  type: "WITHER_SKELETON"
+  health: 488
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1220
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_128"
+  boss: true
+
+boss_lvl37_129:
+  name: "&4Boss Lvl 37 #129"
+  type: "WITHER_SKELETON"
+  health: 496
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1240
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_129"
+  boss: true
+
+boss_lvl38_130:
+  name: "&4Boss Lvl 38 #130"
+  type: "WITHER_SKELETON"
+  health: 504
+  damage: 24
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1260
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_130"
+  boss: true
+
+boss_lvl39_131:
+  name: "&4Boss Lvl 39 #131"
+  type: "WITHER_SKELETON"
+  health: 512
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1280
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_131"
+  boss: true
+
+boss_lvl40_132:
+  name: "&4Boss Lvl 40 #132"
+  type: "WITHER_SKELETON"
+  health: 520
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1300
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_132"
+  boss: true
+
+boss_lvl41_133:
+  name: "&4Boss Lvl 41 #133"
+  type: "WITHER_SKELETON"
+  health: 528
+  damage: 25
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1320
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_133"
+  boss: true
+
+boss_lvl42_134:
+  name: "&4Boss Lvl 42 #134"
+  type: "WITHER_SKELETON"
+  health: 536
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1340
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_134"
+  boss: true
+
+boss_lvl43_135:
+  name: "&4Boss Lvl 43 #135"
+  type: "WITHER_SKELETON"
+  health: 544
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1360
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_135"
+  boss: true
+
+boss_lvl44_136:
+  name: "&4Boss Lvl 44 #136"
+  type: "WITHER_SKELETON"
+  health: 552
+  damage: 26
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1380
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_136"
+  boss: true
+
+boss_lvl45_137:
+  name: "&4Boss Lvl 45 #137"
+  type: "WITHER_SKELETON"
+  health: 560
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1400
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_137"
+  boss: true
+
+boss_lvl46_138:
+  name: "&4Boss Lvl 46 #138"
+  type: "WITHER_SKELETON"
+  health: 568
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1420
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_138"
+  boss: true
+
+boss_lvl47_139:
+  name: "&4Boss Lvl 47 #139"
+  type: "WITHER_SKELETON"
+  health: 576
+  damage: 27
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1440
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_139"
+  boss: true
+
+boss_lvl48_140:
+  name: "&4Boss Lvl 48 #140"
+  type: "WITHER_SKELETON"
+  health: 584
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1460
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_140"
+  boss: true
+
+boss_lvl49_141:
+  name: "&4Boss Lvl 49 #141"
+  type: "WITHER_SKELETON"
+  health: 592
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1480
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_141"
+  boss: true
+
+boss_lvl50_142:
+  name: "&4Boss Lvl 50 #142"
+  type: "WITHER_SKELETON"
+  health: 600
+  damage: 28
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1500
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_142"
+  boss: true
+
+boss_lvl51_143:
+  name: "&4Boss Lvl 51 #143"
+  type: "WITHER_SKELETON"
+  health: 608
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1520
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_143"
+  boss: true
+
+boss_lvl52_144:
+  name: "&4Boss Lvl 52 #144"
+  type: "WITHER_SKELETON"
+  health: 616
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1540
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_144"
+  boss: true
+
+boss_lvl53_145:
+  name: "&4Boss Lvl 53 #145"
+  type: "WITHER_SKELETON"
+  health: 624
+  damage: 29
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1560
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_145"
+  boss: true
+
+boss_lvl54_146:
+  name: "&4Boss Lvl 54 #146"
+  type: "WITHER_SKELETON"
+  health: 632
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1580
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_146"
+  boss: true
+
+boss_lvl55_147:
+  name: "&4Boss Lvl 55 #147"
+  type: "WITHER_SKELETON"
+  health: 640
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1600
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_147"
+  boss: true
+
+boss_lvl56_148:
+  name: "&4Boss Lvl 56 #148"
+  type: "WITHER_SKELETON"
+  health: 648
+  damage: 30
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1620
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_148"
+  boss: true
+
+boss_lvl57_149:
+  name: "&4Boss Lvl 57 #149"
+  type: "WITHER_SKELETON"
+  health: 656
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1640
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_149"
+  boss: true
+
+boss_lvl58_150:
+  name: "&4Boss Lvl 58 #150"
+  type: "WITHER_SKELETON"
+  health: 664
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1660
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_150"
+  boss: true
+
+boss_lvl59_151:
+  name: "&4Boss Lvl 59 #151"
+  type: "WITHER_SKELETON"
+  health: 672
+  damage: 31
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1680
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_151"
+  boss: true
+
+boss_lvl60_152:
+  name: "&4Boss Lvl 60 #152"
+  type: "WITHER_SKELETON"
+  health: 680
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1700
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_152"
+  boss: true
+
+boss_lvl61_153:
+  name: "&4Boss Lvl 61 #153"
+  type: "WITHER_SKELETON"
+  health: 688
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1720
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_153"
+  boss: true
+
+boss_lvl62_154:
+  name: "&4Boss Lvl 62 #154"
+  type: "WITHER_SKELETON"
+  health: 696
+  damage: 32
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1740
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_154"
+  boss: true
+
+boss_lvl63_155:
+  name: "&4Boss Lvl 63 #155"
+  type: "WITHER_SKELETON"
+  health: 704
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1760
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_155"
+  boss: true
+
+boss_lvl64_156:
+  name: "&4Boss Lvl 64 #156"
+  type: "WITHER_SKELETON"
+  health: 712
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1780
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_156"
+  boss: true
+
+boss_lvl65_157:
+  name: "&4Boss Lvl 65 #157"
+  type: "WITHER_SKELETON"
+  health: 720
+  damage: 33
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1800
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_157"
+  boss: true
+
+boss_lvl66_158:
+  name: "&4Boss Lvl 66 #158"
+  type: "WITHER_SKELETON"
+  health: 728
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1820
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_158"
+  boss: true
+
+boss_lvl67_159:
+  name: "&4Boss Lvl 67 #159"
+  type: "WITHER_SKELETON"
+  health: 736
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1840
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_159"
+  boss: true
+
+boss_lvl68_160:
+  name: "&4Boss Lvl 68 #160"
+  type: "WITHER_SKELETON"
+  health: 744
+  damage: 34
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1860
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_160"
+  boss: true
+
+boss_lvl69_161:
+  name: "&4Boss Lvl 69 #161"
+  type: "WITHER_SKELETON"
+  health: 752
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1880
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_161"
+  boss: true
+
+boss_lvl70_162:
+  name: "&4Boss Lvl 70 #162"
+  type: "WITHER_SKELETON"
+  health: 760
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 1900
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_162"
+  boss: true
+
+boss_lvl71_163:
+  name: "&4Boss Lvl 71 #163"
+  type: "WITHER_SKELETON"
+  health: 768
+  damage: 35
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 1920
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_163"
+  boss: true
+
+boss_lvl72_164:
+  name: "&4Boss Lvl 72 #164"
+  type: "WITHER_SKELETON"
+  health: 776
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 1940
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_164"
+  boss: true
+
+boss_lvl73_165:
+  name: "&4Boss Lvl 73 #165"
+  type: "WITHER_SKELETON"
+  health: 784
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 1960
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_165"
+  boss: true
+
+boss_lvl74_166:
+  name: "&4Boss Lvl 74 #166"
+  type: "WITHER_SKELETON"
+  health: 792
+  damage: 36
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 1980
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_166"
+  boss: true
+
+boss_lvl75_167:
+  name: "&4Boss Lvl 75 #167"
+  type: "WITHER_SKELETON"
+  health: 800
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2000
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_167"
+  boss: true
+
+boss_lvl76_168:
+  name: "&4Boss Lvl 76 #168"
+  type: "WITHER_SKELETON"
+  health: 808
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2020
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_168"
+  boss: true
+
+boss_lvl77_169:
+  name: "&4Boss Lvl 77 #169"
+  type: "WITHER_SKELETON"
+  health: 816
+  damage: 37
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2040
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_169"
+  boss: true
+
+boss_lvl78_170:
+  name: "&4Boss Lvl 78 #170"
+  type: "WITHER_SKELETON"
+  health: 824
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2060
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_170"
+  boss: true
+
+boss_lvl79_171:
+  name: "&4Boss Lvl 79 #171"
+  type: "WITHER_SKELETON"
+  health: 832
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2080
+  lootTable: "boss_loot"
+  behaviorTree: "lvl21_behavior_171"
+  boss: true
+
+boss_lvl80_172:
+  name: "&4Boss Lvl 80 #172"
+  type: "WITHER_SKELETON"
+  health: 840
+  damage: 38
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2100
+  lootTable: "boss_loot"
+  behaviorTree: "lvl22_behavior_172"
+  boss: true
+
+boss_lvl81_173:
+  name: "&4Boss Lvl 81 #173"
+  type: "WITHER_SKELETON"
+  health: 848
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2120
+  lootTable: "boss_loot"
+  behaviorTree: "lvl23_behavior_173"
+  boss: true
+
+boss_lvl82_174:
+  name: "&4Boss Lvl 82 #174"
+  type: "WITHER_SKELETON"
+  health: 856
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2140
+  lootTable: "boss_loot"
+  behaviorTree: "lvl24_behavior_174"
+  boss: true
+
+boss_lvl83_175:
+  name: "&4Boss Lvl 83 #175"
+  type: "WITHER_SKELETON"
+  health: 864
+  damage: 39
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2160
+  lootTable: "boss_loot"
+  behaviorTree: "lvl25_behavior_175"
+  boss: true
+
+boss_lvl84_176:
+  name: "&4Boss Lvl 84 #176"
+  type: "WITHER_SKELETON"
+  health: 872
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2180
+  lootTable: "boss_loot"
+  behaviorTree: "lvl26_behavior_176"
+  boss: true
+
+boss_lvl85_177:
+  name: "&4Boss Lvl 85 #177"
+  type: "WITHER_SKELETON"
+  health: 880
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2200
+  lootTable: "boss_loot"
+  behaviorTree: "lvl27_behavior_177"
+  boss: true
+
+boss_lvl86_178:
+  name: "&4Boss Lvl 86 #178"
+  type: "WITHER_SKELETON"
+  health: 888
+  damage: 40
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2220
+  lootTable: "boss_loot"
+  behaviorTree: "lvl28_behavior_178"
+  boss: true
+
+boss_lvl87_179:
+  name: "&4Boss Lvl 87 #179"
+  type: "WITHER_SKELETON"
+  health: 896
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2240
+  lootTable: "boss_loot"
+  behaviorTree: "lvl29_behavior_179"
+  boss: true
+
+boss_lvl88_180:
+  name: "&4Boss Lvl 88 #180"
+  type: "WITHER_SKELETON"
+  health: 904
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2260
+  lootTable: "boss_loot"
+  behaviorTree: "lvl30_behavior_180"
+  boss: true
+
+boss_lvl89_181:
+  name: "&4Boss Lvl 89 #181"
+  type: "WITHER_SKELETON"
+  health: 912
+  damage: 41
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2280
+  lootTable: "boss_loot"
+  behaviorTree: "lvl01_behavior_181"
+  boss: true
+
+boss_lvl90_182:
+  name: "&4Boss Lvl 90 #182"
+  type: "WITHER_SKELETON"
+  health: 920
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2300
+  lootTable: "boss_loot"
+  behaviorTree: "lvl02_behavior_182"
+  boss: true
+
+boss_lvl91_183:
+  name: "&4Boss Lvl 91 #183"
+  type: "WITHER_SKELETON"
+  health: 928
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2320
+  lootTable: "boss_loot"
+  behaviorTree: "lvl03_behavior_183"
+  boss: true
+
+boss_lvl92_184:
+  name: "&4Boss Lvl 92 #184"
+  type: "WITHER_SKELETON"
+  health: 936
+  damage: 42
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2340
+  lootTable: "boss_loot"
+  behaviorTree: "lvl04_behavior_184"
+  boss: true
+
+boss_lvl93_185:
+  name: "&4Boss Lvl 93 #185"
+  type: "WITHER_SKELETON"
+  health: 944
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2360
+  lootTable: "boss_loot"
+  behaviorTree: "lvl05_behavior_185"
+  boss: true
+
+boss_lvl94_186:
+  name: "&4Boss Lvl 94 #186"
+  type: "WITHER_SKELETON"
+  health: 952
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2380
+  lootTable: "boss_loot"
+  behaviorTree: "lvl06_behavior_186"
+  boss: true
+
+boss_lvl95_187:
+  name: "&4Boss Lvl 95 #187"
+  type: "WITHER_SKELETON"
+  health: 960
+  damage: 43
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2400
+  lootTable: "boss_loot"
+  behaviorTree: "lvl07_behavior_187"
+  boss: true
+
+boss_lvl96_188:
+  name: "&4Boss Lvl 96 #188"
+  type: "WITHER_SKELETON"
+  health: 968
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 2420
+  lootTable: "boss_loot"
+  behaviorTree: "lvl08_behavior_188"
+  boss: true
+
+boss_lvl97_189:
+  name: "&4Boss Lvl 97 #189"
+  type: "WITHER_SKELETON"
+  health: 976
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 2440
+  lootTable: "boss_loot"
+  behaviorTree: "lvl09_behavior_189"
+  boss: true
+
+boss_lvl98_190:
+  name: "&4Boss Lvl 98 #190"
+  type: "WITHER_SKELETON"
+  health: 984
+  damage: 44
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 2460
+  lootTable: "boss_loot"
+  behaviorTree: "lvl10_behavior_190"
+  boss: true
+
+boss_lvl99_191:
+  name: "&4Boss Lvl 99 #191"
+  type: "WITHER_SKELETON"
+  health: 992
+  damage: 45
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 2480
+  lootTable: "boss_loot"
+  behaviorTree: "lvl11_behavior_191"
+  boss: true
+
+boss_lvl100_192:
+  name: "&4Boss Lvl 100 #192"
+  type: "WITHER_SKELETON"
+  health: 1000
+  damage: 45
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 2500
+  lootTable: "boss_loot"
+  behaviorTree: "lvl12_behavior_192"
+  boss: true
+
+boss_lvl05_193:
+  name: "&4Boss Lvl 5 #193"
+  type: "WITHER_SKELETON"
+  health: 240
+  damage: 13
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 600
+  lootTable: "boss_loot"
+  behaviorTree: "lvl13_behavior_193"
+  boss: true
+
+boss_lvl06_194:
+  name: "&4Boss Lvl 6 #194"
+  type: "WITHER_SKELETON"
+  health: 248
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 620
+  lootTable: "boss_loot"
+  behaviorTree: "lvl14_behavior_194"
+  boss: true
+
+boss_lvl07_195:
+  name: "&4Boss Lvl 7 #195"
+  type: "WITHER_SKELETON"
+  health: 256
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 640
+  lootTable: "boss_loot"
+  behaviorTree: "lvl15_behavior_195"
+  boss: true
+
+boss_lvl08_196:
+  name: "&4Boss Lvl 8 #196"
+  type: "WITHER_SKELETON"
+  health: 264
+  damage: 14
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 7
+  xp: 660
+  lootTable: "boss_loot"
+  behaviorTree: "lvl16_behavior_196"
+  boss: true
+
+boss_lvl09_197:
+  name: "&4Boss Lvl 9 #197"
+  type: "WITHER_SKELETON"
+  health: 272
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 680
+  lootTable: "boss_loot"
+  behaviorTree: "lvl17_behavior_197"
+  boss: true
+
+boss_lvl10_198:
+  name: "&4Boss Lvl 10 #198"
+  type: "WITHER_SKELETON"
+  health: 280
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 9
+  xp: 700
+  lootTable: "boss_loot"
+  behaviorTree: "lvl18_behavior_198"
+  boss: true
+
+boss_lvl11_199:
+  name: "&4Boss Lvl 11 #199"
+  type: "WITHER_SKELETON"
+  health: 288
+  damage: 15
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 10
+  xp: 720
+  lootTable: "boss_loot"
+  behaviorTree: "lvl19_behavior_199"
+  boss: true
+
+boss_lvl12_200:
+  name: "&4Boss Lvl 12 #200"
+  type: "WITHER_SKELETON"
+  health: 296
+  damage: 16
+  mainHand: "DIAMOND_SWORD"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - shield_wall
+  skillIntervalSeconds: 6
+  xp: 740
+  lootTable: "boss_loot"
+  behaviorTree: "lvl20_behavior_200"
+  boss: true
+
+world_boss_lvl120_001:
+  name: "&5Welt-Boss Lvl 120 #001"
+  type: "WITHER"
+  health: 2000
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5600
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl01_behavior_001"
+  boss: true
+
+world_boss_lvl121_002:
+  name: "&5Welt-Boss Lvl 121 #002"
+  type: "WITHER"
+  health: 2010
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5630
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl02_behavior_002"
+  boss: true
+
+world_boss_lvl122_003:
+  name: "&5Welt-Boss Lvl 122 #003"
+  type: "WITHER"
+  health: 2020
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5660
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl03_behavior_003"
+  boss: true
+
+world_boss_lvl123_004:
+  name: "&5Welt-Boss Lvl 123 #004"
+  type: "WITHER"
+  health: 2030
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5690
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl04_behavior_004"
+  boss: true
+
+world_boss_lvl124_005:
+  name: "&5Welt-Boss Lvl 124 #005"
+  type: "WITHER"
+  health: 2040
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5720
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl05_behavior_005"
+  boss: true
+
+world_boss_lvl125_006:
+  name: "&5Welt-Boss Lvl 125 #006"
+  type: "WITHER"
+  health: 2050
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5750
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl06_behavior_006"
+  boss: true
+
+world_boss_lvl126_007:
+  name: "&5Welt-Boss Lvl 126 #007"
+  type: "WITHER"
+  health: 2060
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5780
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl07_behavior_007"
+  boss: true
+
+world_boss_lvl127_008:
+  name: "&5Welt-Boss Lvl 127 #008"
+  type: "WITHER"
+  health: 2070
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5810
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl08_behavior_008"
+  boss: true
+
+world_boss_lvl128_009:
+  name: "&5Welt-Boss Lvl 128 #009"
+  type: "WITHER"
+  health: 2080
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5840
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl09_behavior_009"
+  boss: true
+
+world_boss_lvl129_010:
+  name: "&5Welt-Boss Lvl 129 #010"
+  type: "WITHER"
+  health: 2090
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5870
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl10_behavior_010"
+  boss: true
+
+world_boss_lvl130_011:
+  name: "&5Welt-Boss Lvl 130 #011"
+  type: "WITHER"
+  health: 2100
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5900
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl11_behavior_011"
+  boss: true
+
+world_boss_lvl131_012:
+  name: "&5Welt-Boss Lvl 131 #012"
+  type: "WITHER"
+  health: 2110
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5930
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl12_behavior_012"
+  boss: true
+
+world_boss_lvl132_013:
+  name: "&5Welt-Boss Lvl 132 #013"
+  type: "WITHER"
+  health: 2120
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5960
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl13_behavior_013"
+  boss: true
+
+world_boss_lvl133_014:
+  name: "&5Welt-Boss Lvl 133 #014"
+  type: "WITHER"
+  health: 2130
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5990
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl14_behavior_014"
+  boss: true
+
+world_boss_lvl134_015:
+  name: "&5Welt-Boss Lvl 134 #015"
+  type: "WITHER"
+  health: 2140
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6020
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl15_behavior_015"
+  boss: true
+
+world_boss_lvl135_016:
+  name: "&5Welt-Boss Lvl 135 #016"
+  type: "WITHER"
+  health: 2150
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6050
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl16_behavior_016"
+  boss: true
+
+world_boss_lvl136_017:
+  name: "&5Welt-Boss Lvl 136 #017"
+  type: "WITHER"
+  health: 2160
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6080
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl17_behavior_017"
+  boss: true
+
+world_boss_lvl137_018:
+  name: "&5Welt-Boss Lvl 137 #018"
+  type: "WITHER"
+  health: 2170
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6110
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl18_behavior_018"
+  boss: true
+
+world_boss_lvl138_019:
+  name: "&5Welt-Boss Lvl 138 #019"
+  type: "WITHER"
+  health: 2180
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6140
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl19_behavior_019"
+  boss: true
+
+world_boss_lvl139_020:
+  name: "&5Welt-Boss Lvl 139 #020"
+  type: "WITHER"
+  health: 2190
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6170
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl20_behavior_020"
+  boss: true
+
+world_boss_lvl140_021:
+  name: "&5Welt-Boss Lvl 140 #021"
+  type: "WITHER"
+  health: 2200
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6200
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl21_behavior_021"
+  boss: true
+
+world_boss_lvl141_022:
+  name: "&5Welt-Boss Lvl 141 #022"
+  type: "WITHER"
+  health: 2210
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6230
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl22_behavior_022"
+  boss: true
+
+world_boss_lvl142_023:
+  name: "&5Welt-Boss Lvl 142 #023"
+  type: "WITHER"
+  health: 2220
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6260
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl23_behavior_023"
+  boss: true
+
+world_boss_lvl143_024:
+  name: "&5Welt-Boss Lvl 143 #024"
+  type: "WITHER"
+  health: 2230
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6290
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl24_behavior_024"
+  boss: true
+
+world_boss_lvl144_025:
+  name: "&5Welt-Boss Lvl 144 #025"
+  type: "WITHER"
+  health: 2240
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6320
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl25_behavior_025"
+  boss: true
+
+world_boss_lvl145_026:
+  name: "&5Welt-Boss Lvl 145 #026"
+  type: "WITHER"
+  health: 2250
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6350
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl26_behavior_026"
+  boss: true
+
+world_boss_lvl146_027:
+  name: "&5Welt-Boss Lvl 146 #027"
+  type: "WITHER"
+  health: 2260
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6380
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl27_behavior_027"
+  boss: true
+
+world_boss_lvl147_028:
+  name: "&5Welt-Boss Lvl 147 #028"
+  type: "WITHER"
+  health: 2270
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6410
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl28_behavior_028"
+  boss: true
+
+world_boss_lvl148_029:
+  name: "&5Welt-Boss Lvl 148 #029"
+  type: "WITHER"
+  health: 2280
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6440
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl29_behavior_029"
+  boss: true
+
+world_boss_lvl149_030:
+  name: "&5Welt-Boss Lvl 149 #030"
+  type: "WITHER"
+  health: 2290
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6470
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl30_behavior_030"
+  boss: true
+
+world_boss_lvl150_031:
+  name: "&5Welt-Boss Lvl 150 #031"
+  type: "WITHER"
+  health: 2300
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6500
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl01_behavior_031"
+  boss: true
+
+world_boss_lvl151_032:
+  name: "&5Welt-Boss Lvl 151 #032"
+  type: "WITHER"
+  health: 2310
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6530
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl02_behavior_032"
+  boss: true
+
+world_boss_lvl152_033:
+  name: "&5Welt-Boss Lvl 152 #033"
+  type: "WITHER"
+  health: 2320
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6560
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl03_behavior_033"
+  boss: true
+
+world_boss_lvl153_034:
+  name: "&5Welt-Boss Lvl 153 #034"
+  type: "WITHER"
+  health: 2330
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6590
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl04_behavior_034"
+  boss: true
+
+world_boss_lvl154_035:
+  name: "&5Welt-Boss Lvl 154 #035"
+  type: "WITHER"
+  health: 2340
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6620
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl05_behavior_035"
+  boss: true
+
+world_boss_lvl155_036:
+  name: "&5Welt-Boss Lvl 155 #036"
+  type: "WITHER"
+  health: 2350
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6650
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl06_behavior_036"
+  boss: true
+
+world_boss_lvl156_037:
+  name: "&5Welt-Boss Lvl 156 #037"
+  type: "WITHER"
+  health: 2360
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6680
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl07_behavior_037"
+  boss: true
+
+world_boss_lvl157_038:
+  name: "&5Welt-Boss Lvl 157 #038"
+  type: "WITHER"
+  health: 2370
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6710
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl08_behavior_038"
+  boss: true
+
+world_boss_lvl158_039:
+  name: "&5Welt-Boss Lvl 158 #039"
+  type: "WITHER"
+  health: 2380
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6740
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl09_behavior_039"
+  boss: true
+
+world_boss_lvl159_040:
+  name: "&5Welt-Boss Lvl 159 #040"
+  type: "WITHER"
+  health: 2390
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6770
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl10_behavior_040"
+  boss: true
+
+world_boss_lvl160_041:
+  name: "&5Welt-Boss Lvl 160 #041"
+  type: "WITHER"
+  health: 2400
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6800
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl11_behavior_041"
+  boss: true
+
+world_boss_lvl161_042:
+  name: "&5Welt-Boss Lvl 161 #042"
+  type: "WITHER"
+  health: 2410
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6830
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl12_behavior_042"
+  boss: true
+
+world_boss_lvl162_043:
+  name: "&5Welt-Boss Lvl 162 #043"
+  type: "WITHER"
+  health: 2420
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6860
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl13_behavior_043"
+  boss: true
+
+world_boss_lvl163_044:
+  name: "&5Welt-Boss Lvl 163 #044"
+  type: "WITHER"
+  health: 2430
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6890
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl14_behavior_044"
+  boss: true
+
+world_boss_lvl164_045:
+  name: "&5Welt-Boss Lvl 164 #045"
+  type: "WITHER"
+  health: 2440
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6920
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl15_behavior_045"
+  boss: true
+
+world_boss_lvl165_046:
+  name: "&5Welt-Boss Lvl 165 #046"
+  type: "WITHER"
+  health: 2450
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6950
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl16_behavior_046"
+  boss: true
+
+world_boss_lvl166_047:
+  name: "&5Welt-Boss Lvl 166 #047"
+  type: "WITHER"
+  health: 2460
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6980
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl17_behavior_047"
+  boss: true
+
+world_boss_lvl167_048:
+  name: "&5Welt-Boss Lvl 167 #048"
+  type: "WITHER"
+  health: 2470
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 7010
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl18_behavior_048"
+  boss: true
+
+world_boss_lvl168_049:
+  name: "&5Welt-Boss Lvl 168 #049"
+  type: "WITHER"
+  health: 2480
+  damage: 62
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 7040
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl19_behavior_049"
+  boss: true
+
+world_boss_lvl169_050:
+  name: "&5Welt-Boss Lvl 169 #050"
+  type: "WITHER"
+  health: 2490
+  damage: 62
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 7070
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl20_behavior_050"
+  boss: true
+

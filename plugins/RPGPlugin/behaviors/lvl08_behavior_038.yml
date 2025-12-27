@@ -1,0 +1,44 @@
+lvl08_behavior_038:
+  name: "&cGegner Lvl 8"
+  type: CREEPER
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_038
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.24
+      - type: cast_skill
+        skill: fortify
+      - type: heal_self
+        amount: 6.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 6
+        child:
+          type: cast_skill
+          skill: frost_bolt
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.19
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

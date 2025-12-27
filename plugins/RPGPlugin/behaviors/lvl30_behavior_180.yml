@@ -1,0 +1,44 @@
+lvl30_behavior_180:
+  name: "&cGegner Lvl 30"
+  type: WITCH
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_180
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.5
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 14.5
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 16
+      - type: cooldown
+        cooldownSeconds: 4
+        child:
+          type: cast_skill
+          skill: heal_pulse
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.45
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

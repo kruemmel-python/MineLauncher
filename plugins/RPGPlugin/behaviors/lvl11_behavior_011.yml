@@ -1,0 +1,44 @@
+lvl11_behavior_011:
+  name: "&cGegner Lvl 11"
+  type: PILLAGER
+  health: 64
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_011
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.28
+      - type: cast_skill
+        skill: fortify
+      - type: heal_self
+        amount: 7.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 14
+      - type: cooldown
+        cooldownSeconds: 9
+        child:
+          type: cast_skill
+          skill: fortify
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.23
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

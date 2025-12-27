@@ -1,0 +1,44 @@
+lvl21_behavior_171:
+  name: "&cGegner Lvl 21"
+  type: ZOMBIE
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_171
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.39
+      - type: cast_skill
+        skill: heal_pulse
+      - type: heal_self
+        amount: 11.3
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.34
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

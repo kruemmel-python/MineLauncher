@@ -1,0 +1,44 @@
+lvl25_behavior_085:
+  name: "&cGegner Lvl 25"
+  type: SILVERFISH
+  health: 120
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_085
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.44
+      - type: cast_skill
+        skill: divine_blessing
+      - type: heal_self
+        amount: 12.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 8
+      - type: cooldown
+        cooldownSeconds: 5
+        child:
+          type: cast_skill
+          skill: divine_blessing
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.39
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

@@ -1,0 +1,44 @@
+lvl05_behavior_065:
+  name: "&cGegner Lvl 5"
+  type: WITHER_SKELETON
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_065
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.21
+      - type: cast_skill
+        skill: fortify
+      - type: heal_self
+        amount: 5.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 9
+        child:
+          type: cast_skill
+          skill: fortify
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.16
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

@@ -109,49 +109,25 @@ public class NpcListener implements Listener {
         ShopDefinition shop = new ShopDefinition("npc_" + npc.id());
         shop.setTitle(title);
         Map<Integer, ShopItem> items = new java.util.HashMap<>();
-        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
-        int level = Math.max(1, profile.level());
         List<Material> materials = switch (npc.role()) {
-            case WEAPON_VENDOR -> List.of(
-                Material.WOODEN_SWORD, Material.STONE_SWORD, Material.IRON_SWORD,
-                Material.GOLDEN_SWORD, Material.DIAMOND_SWORD, Material.BOW
-            );
-            case ARMOR_VENDOR -> List.of(
-                Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
-                Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
-                Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS
-            );
-            case ITEM_VENDOR -> List.of(
-                Material.BREAD, Material.COOKED_BEEF, Material.COOKED_CHICKEN, Material.GOLDEN_APPLE,
-                Material.POTION, Material.ARROW
-            );
-            case RESOURCE_VENDOR -> List.of(
-                Material.IRON_NUGGET, Material.GOLD_NUGGET, Material.IRON_INGOT,
-                Material.GOLD_INGOT, Material.DIAMOND, Material.EMERALD
-            );
+            case WEAPON_VENDOR -> weaponMaterials();
+            case ARMOR_VENDOR -> armorMaterials();
+            case ITEM_VENDOR -> itemMaterials();
+            case RESOURCE_VENDOR -> resourceMaterials();
             default -> List.of(Material.BREAD);
         };
         int slot = 0;
-        for (int i = 0; i < Math.min(materials.size(), 9); i++) {
-            Material material = materials.get(random.nextInt(materials.size()));
+        for (Material material : materials) {
+            if (slot >= 54) {
+                break;
+            }
             ShopItem item = new ShopItem();
             item.setSlot(slot++);
             item.setMaterial(material.name());
-            if (npc.role() == NpcRole.RESOURCE_VENDOR) {
-                item.setBuyPrice(40 + random.nextInt(60));
-                item.setSellPrice(10 + random.nextInt(20));
-                item.setRpgItem(false);
-            } else {
-                Rarity rarity = rollRarity();
-                int base = 60 + (level * 15);
-                int buyPrice = (int) Math.max(20, base * (1 + rarity.weight()));
-                int sellPrice = Math.max(10, buyPrice / 4);
-                item.setBuyPrice(buyPrice);
-                item.setSellPrice(sellPrice);
-                item.setRpgItem(true);
-                item.setRarity(rarity.name());
-                item.setMinLevel(level);
-            }
+            int buyPrice = priceForMaterial(material, npc.role());
+            item.setBuyPrice(buyPrice);
+            item.setSellPrice(Math.max(1, buyPrice / 3));
+            item.setRpgItem(false);
             items.put(item.slot(), item);
         }
         shop.setItems(items);
@@ -203,6 +179,80 @@ public class NpcListener implements Listener {
         shop.setItems(items);
         plugin.shopManager().registerShop(shop);
         return shop;
+    }
+
+    private List<Material> weaponMaterials() {
+        return List.of(
+            Material.WOODEN_SWORD, Material.STONE_SWORD, Material.IRON_SWORD, Material.GOLDEN_SWORD,
+            Material.DIAMOND_SWORD, Material.NETHERITE_SWORD,
+            Material.WOODEN_AXE, Material.STONE_AXE, Material.IRON_AXE, Material.GOLDEN_AXE,
+            Material.DIAMOND_AXE, Material.NETHERITE_AXE,
+            Material.BOW, Material.CROSSBOW, Material.TRIDENT
+        );
+    }
+
+    private List<Material> armorMaterials() {
+        return List.of(
+            Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
+            Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
+            Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
+            Material.GOLDEN_HELMET, Material.GOLDEN_CHESTPLATE, Material.GOLDEN_LEGGINGS, Material.GOLDEN_BOOTS,
+            Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS,
+            Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
+            Material.TURTLE_HELMET
+        );
+    }
+
+    private List<Material> itemMaterials() {
+        return List.of(
+            Material.BREAD, Material.COOKED_BEEF, Material.COOKED_CHICKEN, Material.COOKED_PORKCHOP,
+            Material.COOKED_MUTTON, Material.COOKED_RABBIT, Material.GOLDEN_APPLE,
+            Material.POTION, Material.ARROW, Material.TORCH, Material.LANTERN,
+            Material.SHIELD, Material.BUCKET, Material.WATER_BUCKET, Material.MILK_BUCKET
+        );
+    }
+
+    private List<Material> resourceMaterials() {
+        return List.of(
+            Material.COAL, Material.CHARCOAL, Material.IRON_NUGGET, Material.GOLD_NUGGET,
+            Material.IRON_INGOT, Material.GOLD_INGOT, Material.COPPER_INGOT,
+            Material.REDSTONE, Material.LAPIS_LAZULI, Material.DIAMOND, Material.EMERALD,
+            Material.QUARTZ, Material.NETHERITE_SCRAP, Material.AMETHYST_SHARD
+        );
+    }
+
+    private int priceForMaterial(Material material, NpcRole role) {
+        String name = material.name();
+        int base = switch (role) {
+            case RESOURCE_VENDOR -> 25;
+            case ITEM_VENDOR -> 40;
+            default -> 80;
+        };
+        if (name.contains("NETHERITE")) {
+            return base + 900;
+        }
+        if (name.contains("DIAMOND")) {
+            return base + 600;
+        }
+        if (name.contains("GOLD")) {
+            return base + 350;
+        }
+        if (name.contains("IRON") || name.contains("CHAINMAIL")) {
+            return base + 200;
+        }
+        if (name.contains("STONE")) {
+            return base + 80;
+        }
+        if (name.contains("WOOD") || name.contains("LEATHER")) {
+            return base + 40;
+        }
+        if (name.contains("EMERALD")) {
+            return base + 500;
+        }
+        if (name.contains("COAL") || name.contains("COPPER")) {
+            return base + 60;
+        }
+        return base + 120;
     }
 
     private Rarity rollRarity() {

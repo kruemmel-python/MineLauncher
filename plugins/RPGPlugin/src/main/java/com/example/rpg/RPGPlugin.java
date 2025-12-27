@@ -137,6 +137,7 @@ public class RPGPlugin extends JavaPlugin {
     private NamespacedKey buildingCategoryKey;
     private NamespacedKey zoneKey;
     private NamespacedKey npcGuiKey;
+    private NamespacedKey npcTemplateKey;
     private NamespacedKey lootKey;
     private NamespacedKey classKey;
     private NamespacedKey permRoleKey;
@@ -188,6 +189,7 @@ public class RPGPlugin extends JavaPlugin {
         buildingCategoryKey = new NamespacedKey(this, "building_category");
         zoneKey = new NamespacedKey(this, "zone_id");
         npcGuiKey = new NamespacedKey(this, "npc_gui_id");
+        npcTemplateKey = new NamespacedKey(this, "npc_template");
         lootKey = new NamespacedKey(this, "loot_id");
         classKey = new NamespacedKey(this, "class_id");
         permRoleKey = new NamespacedKey(this, "perm_role");
@@ -220,7 +222,7 @@ public class RPGPlugin extends JavaPlugin {
             getConfig().getLong("permissions.cacheTtlSeconds", 30));
         guiManager = new GuiManager(playerDataManager, questManager, worldEventManager, skillManager, classManager, factionManager,
             buildingManager, permissionService, enchantManager, itemGenerator, questKey, skillKey, buildingKey, buildingCategoryKey,
-            zoneKey, npcGuiKey, lootKey, classKey, permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
+            zoneKey, npcGuiKey, npcTemplateKey, lootKey, classKey, permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getPluginManager().registerEvents(new CombatListener(this), this);
@@ -500,6 +502,10 @@ public class RPGPlugin extends JavaPlugin {
 
     public NamespacedKey npcGuiKey() {
         return npcGuiKey;
+    }
+
+    public NamespacedKey npcTemplateKey() {
+        return npcTemplateKey;
     }
 
     public NamespacedKey lootKey() {

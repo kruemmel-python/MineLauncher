@@ -209,6 +209,11 @@ public class GuiListener implements Listener {
         }
         if (holder instanceof GuiHolders.NpcEditorHolder) {
             event.setCancelled(true);
+            NpcRole templateRole = resolveNpcTemplate(current);
+            if (templateRole != null) {
+                handleNpcTemplateClick(player, templateRole);
+                return;
+            }
             if (event.getSlot() == 53) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>NPC erstellen: <id> <role> [shopId]"), input -> {
                     String[] parts = input.trim().split("\\s+");
@@ -1229,6 +1234,18 @@ public class GuiListener implements Listener {
         return meta.getPersistentDataContainer().get(plugin.npcGuiKey(), PersistentDataType.STRING);
     }
 
+    private NpcRole resolveNpcTemplate(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        String value = meta.getPersistentDataContainer().get(plugin.npcTemplateKey(), PersistentDataType.STRING);
+        if (value == null) {
+            return null;
+        }
+        return parseEnum(NpcRole.class, value).orElse(null);
+    }
+
     private String resolveQuestId(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
@@ -1340,6 +1357,57 @@ public class GuiListener implements Listener {
         }
     }
 
+    private void handleNpcTemplateClick(Player player, NpcRole templateRole) {
+        if (templateRole == NpcRole.VENDOR) {
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Shop-NPC: <id> <shopId>"), input -> {
+                String[] parts = input.trim().split("\\s+");
+                runSync(() -> {
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <shopId>"));
+                        return;
+                    }
+                    if (plugin.shopManager().getShop(parts[1]) == null) {
+                        player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+                        return;
+                    }
+                    createNpcFromTemplate(player, parts[0], templateRole, parts[1]);
+                });
+            });
+            return;
+        }
+        plugin.promptManager().prompt(player, Text.mm("<yellow>NPC erstellen: <id>"), input -> {
+            String id = input.trim();
+            runSync(() -> {
+                if (id.isBlank()) {
+                    player.sendMessage(Text.mm("<red>ID darf nicht leer sein."));
+                    return;
+                }
+                createNpcFromTemplate(player, id, templateRole, null);
+            });
+        });
+    }
+
+    private void createNpcFromTemplate(Player player, String id, NpcRole role, String shopId) {
+        if (plugin.npcManager().getNpc(id) != null) {
+            player.sendMessage(Text.mm("<red>NPC existiert bereits."));
+            return;
+        }
+        Npc npc = new Npc(id);
+        npc.setName(id);
+        npc.setRole(role);
+        npc.setLocation(player.getLocation());
+        npc.setDialog(java.util.List.of("Hallo!", "Ich habe eine Aufgabe für dich."));
+        if (shopId != null && !shopId.isBlank()) {
+            npc.setShopId(shopId);
+        }
+        plugin.npcManager().npcs().put(id, npc);
+        plugin.npcManager().spawnNpc(npc);
+        plugin.npcManager().saveNpc(npc);
+        plugin.auditLog().log(player, "NPC erstellt (GUI): " + id);
+        player.sendMessage(Text.mm("<green>NPC erstellt: " + id));
+        plugin.guiManager().openNpcEditor(player);
+    }
+
     private static Integer parseInt(String raw) {
         try {
             return Integer.parseInt(raw);
@@ -1410,20 +1478,18 @@ public class GuiListener implements Listener {
                 player.sendMessage(Text.mm("<red>Dieses Item kann nicht verkauft werden."));
                 return;
             }
-            if (shopItem.rpgItem()) {
-                ItemStack[] contents = player.getInventory().getContents();
-                if (!containsRpgItem(contents, material)) {
-                    player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
-                    return;
-                }
-                removeOneRpgItem(contents, material);
+            boolean removed = false;
+            ItemStack[] contents = player.getInventory().getContents();
+            if (removeOneRpgItem(contents, material)) {
                 player.getInventory().setContents(contents);
-            } else {
-                if (!player.getInventory().contains(material)) {
-                    player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
-                    return;
-                }
-                removeOne(player.getInventory(), material);
+                removed = true;
+            }
+            if (!removed && removeOne(player.getInventory(), material)) {
+                removed = true;
+            }
+            if (!removed) {
+                player.sendMessage(Text.mm("<red>Du hast dieses Item nicht."));
+                return;
             }
             profile.setGold(profile.gold() + sellPrice);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1.2f);
@@ -1453,23 +1519,7 @@ public class GuiListener implements Listener {
         plugin.playerDataManager().saveProfile(profile);
     }
 
-    private boolean containsRpgItem(ItemStack[] contents, Material material) {
-        for (ItemStack item : contents) {
-            if (item == null || item.getType() != material) {
-                continue;
-            }
-            ItemMeta meta = item.getItemMeta();
-            if (meta == null) {
-                continue;
-            }
-            if (meta.getPersistentDataContainer().has(plugin.itemGenerator().itemKey(), PersistentDataType.INTEGER)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void removeOneRpgItem(ItemStack[] contents, Material material) {
+    private boolean removeOneRpgItem(ItemStack[] contents, Material material) {
         for (int i = 0; i < contents.length; i++) {
             ItemStack item = contents[i];
             if (item == null || item.getType() != material) {
@@ -1488,8 +1538,9 @@ public class GuiListener implements Listener {
             } else {
                 item.setAmount(amount - 1);
             }
-            return;
+            return true;
         }
+        return false;
     }
 
     private com.example.rpg.model.Rarity parseRarity(String raw) {
@@ -1503,7 +1554,7 @@ public class GuiListener implements Listener {
         }
     }
 
-    private void removeOne(Inventory inventory, Material material) {
+    private boolean removeOne(Inventory inventory, Material material) {
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack stack = inventory.getItem(i);
             if (stack == null || stack.getType() != material) {
@@ -1514,7 +1565,8 @@ public class GuiListener implements Listener {
             } else {
                 inventory.setItem(i, null);
             }
-            return;
+            return true;
         }
+        return false;
     }
 }

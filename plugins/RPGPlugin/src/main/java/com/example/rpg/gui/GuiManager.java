@@ -47,6 +47,7 @@ public class GuiManager {
     private final NamespacedKey buildingCategoryKey;
     private final NamespacedKey zoneKey;
     private final NamespacedKey npcKey;
+    private final NamespacedKey npcTemplateKey;
     private final NamespacedKey lootKey;
     private final NamespacedKey classKey;
     private final NamespacedKey permRoleKey;
@@ -60,7 +61,7 @@ public class GuiManager {
                       BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
                       com.example.rpg.manager.EnchantManager enchantManager, ItemGenerator itemGenerator,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
-                      NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey lootKey, NamespacedKey classKey,
+                      NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey npcTemplateKey, NamespacedKey lootKey, NamespacedKey classKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
         this.playerDataManager = playerDataManager;
@@ -79,6 +80,7 @@ public class GuiManager {
         this.buildingCategoryKey = buildingCategoryKey;
         this.zoneKey = zoneKey;
         this.npcKey = npcKey;
+        this.npcTemplateKey = npcTemplateKey;
         this.lootKey = lootKey;
         this.classKey = classKey;
         this.permRoleKey = permRoleKey;
@@ -210,11 +212,35 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
+        inv.setItem(45, buildNpcTemplate(Material.WRITABLE_BOOK, "<gold>Questgiver",
+            com.example.rpg.model.NpcRole.QUESTGIVER, "<gray>Quest-NPC erstellen"));
+        inv.setItem(46, buildNpcTemplate(Material.CHEST, "<yellow>Shop (shops.yml)",
+            com.example.rpg.model.NpcRole.VENDOR, "<gray>Shop-ID wird abgefragt"));
+        inv.setItem(47, buildNpcTemplate(Material.IRON_SWORD, "<red>Waffenhändler",
+            com.example.rpg.model.NpcRole.WEAPON_VENDOR, "<gray>Alle Waffen kaufen/verkaufen"));
+        inv.setItem(48, buildNpcTemplate(Material.DIAMOND_CHESTPLATE, "<blue>Rüstungshändler",
+            com.example.rpg.model.NpcRole.ARMOR_VENDOR, "<gray>Alle Rüstungen kaufen/verkaufen"));
+        inv.setItem(49, buildNpcTemplate(Material.APPLE, "<green>Gegenstandshändler",
+            com.example.rpg.model.NpcRole.ITEM_VENDOR, "<gray>Items & Verbrauchsgüter"));
+        inv.setItem(50, buildNpcTemplate(Material.EMERALD, "<aqua>Rohstoffhändler",
+            com.example.rpg.model.NpcRole.RESOURCE_VENDOR, "<gray>Erze & Rohstoffe"));
         inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>NPC erstellen"))
             .loreLine(Text.mm("<gray>Erstellt an deiner Position"))
             .build());
         player.openInventory(inv);
+    }
+
+    private ItemStack buildNpcTemplate(Material material, String name, com.example.rpg.model.NpcRole role, String lore) {
+        ItemStack item = new ItemBuilder(material)
+            .name(Text.mm(name))
+            .loreLine(Text.mm(lore))
+            .loreLine(Text.mm("<yellow>Klick: Vorlage nutzen"))
+            .build();
+        ItemMeta meta = item.getItemMeta();
+        meta.getPersistentDataContainer().set(npcTemplateKey, PersistentDataType.STRING, role.name());
+        item.setItemMeta(meta);
+        return item;
     }
 
     public void openQuestEditor(Player player) {
@@ -665,7 +691,9 @@ public class GuiManager {
     }
 
     public void openShop(Player player, ShopDefinition shop) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), 27, Component.text(shop.title()));
+        int maxSlot = shop.items().values().stream().mapToInt(ShopItem::slot).max().orElse(0);
+        int size = maxSlot >= 27 ? 54 : 27;
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), size, Component.text(shop.title()));
         for (ShopItem item : shop.items().values()) {
             Material material = Material.matchMaterial(item.material());
             if (material == null) {

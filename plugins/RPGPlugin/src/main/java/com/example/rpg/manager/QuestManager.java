@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -67,6 +68,15 @@ public class QuestManager {
             saveQuest(quest);
         }
         save();
+    }
+
+    public void reload() {
+        try {
+            config.load(file);
+        } catch (IOException | InvalidConfigurationException e) {
+            plugin.getLogger().warning("Failed to reload quests.yml: " + e.getMessage());
+        }
+        load();
     }
 
     private void load() {

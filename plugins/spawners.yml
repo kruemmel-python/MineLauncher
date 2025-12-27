@@ -1,0 +1,40 @@
+forest_spawner:
+  zoneId: "startzone"
+  maxMobs: 6
+  spawnInterval: 200
+  mobs:
+    forest_scout: 0.5
+    forest_bandit: 0.35
+    boss_zombie: 0.15
+swamp_spawner:
+  zoneId: "sumpfpfad"
+  maxMobs: 5
+  spawnInterval: 220
+  mobs:
+    swamp_witch: 0.45
+    cave_spider: 0.35
+    boss_zombie: 0.2
+ruins_spawner:
+  zoneId: "ruinenplatz"
+  maxMobs: 4
+  spawnInterval: 240
+  mobs:
+    skeleton_king: 0.1
+    cave_spider: 0.45
+    forest_scout: 0.45
+coast_spawner:
+  zoneId: "kuestenpfad"
+  maxMobs: 6
+  spawnInterval: 200
+  mobs:
+    drowned_pirate: 0.6
+    forest_bandit: 0.3
+    phantom_lord: 0.1
+mountain_spawner:
+  zoneId: "bergpass"
+  maxMobs: 5
+  spawnInterval: 220
+  mobs:
+    frost_wolf: 0.6
+    skeleton_king: 0.2
+    phantom_lord: 0.2

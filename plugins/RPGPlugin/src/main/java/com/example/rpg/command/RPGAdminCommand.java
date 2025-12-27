@@ -660,14 +660,20 @@ public class RPGAdminCommand implements CommandExecutor {
 
     private void handleQuest(Player player, String[] args) {
         if (args.length < 2) {
-            player.sendMessage(Text.mm("<gray>/rpgadmin quest <create|addstep>"));
+            player.sendMessage(Text.mm("<gray>/rpgadmin quest <create|addstep|reload>"));
             return;
         }
         switch (args[1].toLowerCase()) {
             case "create" -> createQuest(player, args);
             case "addstep" -> addQuestStep(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin quest <create|addstep>"));
+            case "reload" -> reloadQuests(player);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin quest <create|addstep|reload>"));
         }
+    }
+
+    private void reloadQuests(Player player) {
+        plugin.questManager().reload();
+        player.sendMessage(Text.mm("<green>Quests neu geladen.</green>"));
     }
 
     private void createQuest(Player player, String[] args) {

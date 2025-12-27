@@ -38,7 +38,7 @@ public class PlayerListener implements Listener {
                     return;
                 }
                 PlayerProfile resolved = profile != null ? profile : plugin.playerDataManager().getProfile(player);
-                resolved.applyAttributes(player);
+                resolved.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
                 unfreeze(player);
             });
         });
@@ -49,6 +49,11 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         if (plugin.promptManager().handle(player, event.getMessage())) {
             event.setCancelled(true);
+            return;
+        }
+        var profile = plugin.playerDataManager().getProfile(player);
+        if (profile.title() != null && !profile.title().isBlank()) {
+            event.setFormat("[" + profile.title() + "] " + player.getName() + ": " + event.getMessage());
         }
     }
 
@@ -58,6 +63,7 @@ public class PlayerListener implements Listener {
         event.getDrops().clear();
         event.setKeepLevel(true);
         event.setDroppedExp(0);
+        plugin.dungeonManager().markDeath(event.getEntity());
     }
 
     @EventHandler
@@ -95,6 +101,20 @@ public class PlayerListener implements Listener {
                 serializeLocation(event.getClickedBlock().getLocation())
             );
         }
+    }
+
+    @EventHandler
+    public void onUseItem(PlayerInteractEvent event) {
+        if (event.getItem() == null || event.getItem().getType().isAir()) {
+            return;
+        }
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+            return;
+        }
+        String zoneId = plugin.zoneManager().getZoneAt(event.getPlayer().getLocation()) != null
+            ? plugin.zoneManager().getZoneAt(event.getPlayer().getLocation()).id()
+            : null;
+        plugin.worldEventManager().handleUseItem(event.getPlayer(), event.getItem().getType().name(), zoneId);
     }
 
     private String serializeLocation(org.bukkit.Location location) {

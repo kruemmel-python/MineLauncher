@@ -118,6 +118,35 @@ public class ItemStatManager {
         }
     }
 
+    public Map<RPGStat, Integer> collectStatBonuses(Player player) {
+        Map<RPGStat, Integer> totals = new EnumMap<>(RPGStat.class);
+        for (RPGStat stat : RPGStat.values()) {
+            totals.put(stat, 0);
+        }
+        List<ItemStack> equipment = new java.util.ArrayList<>();
+        equipment.add(player.getInventory().getItemInMainHand());
+        equipment.add(player.getInventory().getItemInOffHand());
+        for (ItemStack item : player.getInventory().getArmorContents()) {
+            equipment.add(item);
+        }
+        for (ItemStack item : equipment) {
+            if (item == null || item.getItemMeta() == null) {
+                continue;
+            }
+            PersistentDataContainer data = item.getItemMeta().getPersistentDataContainer();
+            addStat(totals, RPGStat.STRENGTH, data.getOrDefault(strengthKey, PersistentDataType.INTEGER, 0));
+            addStat(totals, RPGStat.CONSTITUTION, data.getOrDefault(healthKey, PersistentDataType.INTEGER, 0));
+            for (RPGStat stat : RPGStat.values()) {
+                NamespacedKey key = enchantStatKeys.get(stat);
+                if (key == null) {
+                    continue;
+                }
+                addStat(totals, stat, data.getOrDefault(key, PersistentDataType.INTEGER, 0));
+            }
+        }
+        return totals;
+    }
+
     public NamespacedKey strengthKey() {
         return strengthKey;
     }
@@ -140,6 +169,13 @@ public class ItemStatManager {
 
     public NamespacedKey enchantAffixKey() {
         return enchantAffixKey;
+    }
+
+    private void addStat(Map<RPGStat, Integer> totals, RPGStat stat, int amount) {
+        if (amount == 0) {
+            return;
+        }
+        totals.put(stat, totals.getOrDefault(stat, 0) + amount);
     }
 
     private String randomFrom(List<String> values) {

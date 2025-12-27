@@ -14,6 +14,7 @@ import java.util.UUID;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.Location;
 
 public class GuildManager {
     private final RPGPlugin plugin;
@@ -37,6 +38,17 @@ public class GuildManager {
     public Optional<Guild> guildFor(UUID member) {
         String id = guildByMember.get(member);
         return id == null ? Optional.empty() : guildById(id);
+    }
+
+    public Location hallLocation(Guild guild) {
+        if (guild.hallWorld() == null) {
+            return null;
+        }
+        var world = plugin.getServer().getWorld(guild.hallWorld());
+        if (world == null) {
+            return null;
+        }
+        return new Location(world, guild.hallX(), guild.hallY(), guild.hallZ());
     }
 
     public boolean isMember(UUID member) {
@@ -147,6 +159,14 @@ public class GuildManager {
                 guild.setLeader(UUID.fromString(leader));
             }
             guild.setBankGold(section.getInt("bankGold", 0));
+            guild.setHall(section.getString("hall.world", null),
+                section.getDouble("hall.x"), section.getDouble("hall.y"), section.getDouble("hall.z"));
+            ConfigurationSection upgrades = section.getConfigurationSection("hall.upgrades");
+            if (upgrades != null) {
+                for (String key : upgrades.getKeys(false)) {
+                    guild.hallUpgrades().put(key, upgrades.getInt(key, 0));
+                }
+            }
             ConfigurationSection members = section.getConfigurationSection("members");
             if (members != null) {
                 for (String uuid : members.getKeys(false)) {
@@ -184,6 +204,14 @@ public class GuildManager {
         section.set("name", guild.name());
         section.set("leader", guild.leader() != null ? guild.leader().toString() : null);
         section.set("bankGold", guild.bankGold());
+        section.set("hall.world", guild.hallWorld());
+        section.set("hall.x", guild.hallX());
+        section.set("hall.y", guild.hallY());
+        section.set("hall.z", guild.hallZ());
+        ConfigurationSection upgrades = section.createSection("hall.upgrades");
+        for (Map.Entry<String, Integer> entry : guild.hallUpgrades().entrySet()) {
+            upgrades.set(entry.getKey(), entry.getValue());
+        }
         ConfigurationSection members = section.createSection("members");
         for (Map.Entry<UUID, GuildMemberRole> entry : guild.members().entrySet()) {
             members.set(entry.getKey().toString(), entry.getValue().name());

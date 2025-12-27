@@ -4,6 +4,7 @@ import com.example.rpg.manager.ClassManager;
 import com.example.rpg.manager.FactionManager;
 import com.example.rpg.manager.PlayerDataManager;
 import com.example.rpg.manager.QuestManager;
+import com.example.rpg.manager.WorldEventManager;
 import com.example.rpg.manager.BuildingManager;
 import com.example.rpg.manager.SkillManager;
 import com.example.rpg.model.PlayerProfile;
@@ -19,6 +20,7 @@ import com.example.rpg.util.Text;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Bukkit;
@@ -32,44 +34,59 @@ import org.bukkit.persistence.PersistentDataType;
 public class GuiManager {
     private final PlayerDataManager playerDataManager;
     private final QuestManager questManager;
+    private final WorldEventManager worldEventManager;
     private final SkillManager skillManager;
     private final ClassManager classManager;
     private final FactionManager factionManager;
     private final BuildingManager buildingManager;
     private final com.example.rpg.permissions.PermissionService permissionService;
     private final com.example.rpg.manager.EnchantManager enchantManager;
+    private final com.example.rpg.manager.ItemStatManager itemStatManager;
     private final ItemGenerator itemGenerator;
     private final NamespacedKey questKey;
     private final NamespacedKey skillKey;
     private final NamespacedKey buildingKey;
     private final NamespacedKey buildingCategoryKey;
+    private final NamespacedKey zoneKey;
+    private final NamespacedKey npcKey;
+    private final NamespacedKey npcTemplateKey;
+    private final NamespacedKey lootKey;
+    private final NamespacedKey classKey;
     private final NamespacedKey permRoleKey;
     private final NamespacedKey permPlayerKey;
     private final NamespacedKey permNodeKey;
     private final NamespacedKey permActionKey;
     private final NamespacedKey enchantRecipeKey;
 
-    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, SkillManager skillManager,
-                      ClassManager classManager, FactionManager factionManager, BuildingManager buildingManager,
-                      com.example.rpg.permissions.PermissionService permissionService,
-                      com.example.rpg.manager.EnchantManager enchantManager,
+    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
+                      SkillManager skillManager, ClassManager classManager, FactionManager factionManager,
+                      BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
+                      com.example.rpg.manager.EnchantManager enchantManager, com.example.rpg.manager.ItemStatManager itemStatManager,
                       ItemGenerator itemGenerator,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
+                      NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey npcTemplateKey, NamespacedKey lootKey, NamespacedKey classKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
         this.playerDataManager = playerDataManager;
         this.questManager = questManager;
+        this.worldEventManager = worldEventManager;
         this.skillManager = skillManager;
         this.classManager = classManager;
         this.factionManager = factionManager;
         this.buildingManager = buildingManager;
         this.permissionService = permissionService;
         this.enchantManager = enchantManager;
+        this.itemStatManager = itemStatManager;
         this.itemGenerator = itemGenerator;
         this.questKey = questKey;
         this.skillKey = skillKey;
         this.buildingKey = buildingKey;
         this.buildingCategoryKey = buildingCategoryKey;
+        this.zoneKey = zoneKey;
+        this.npcKey = npcKey;
+        this.npcTemplateKey = npcTemplateKey;
+        this.lootKey = lootKey;
+        this.classKey = classKey;
         this.permRoleKey = permRoleKey;
         this.permPlayerKey = permPlayerKey;
         this.permNodeKey = permNodeKey;
@@ -81,11 +98,18 @@ public class GuiManager {
         Inventory inv = Bukkit.createInventory(new GuiHolders.PlayerMenuHolder(), 27, Component.text("RPG Menü"));
         PlayerProfile profile = playerDataManager.getProfile(player);
 
+        Map<com.example.rpg.model.RPGStat, Integer> totalStats = profile.totalStats(player, itemStatManager, classManager);
         inv.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
             .name(Text.mm("<gold>Charakter"))
             .loreLine(Text.mm("<gray>Level: <white>" + profile.level()))
             .loreLine(Text.mm("<gray>XP: <white>" + profile.xp() + "/" + profile.xpNeeded()))
             .loreLine(Text.mm("<gray>Klasse: <white>" + resolveClassName(profile.classId())))
+            .loreLine(Text.mm("<gray>Gelernte Skills: <white>" + profile.learnedSkills().size()))
+            .loreLine(Text.mm("<gray>Skillpunkte: <white>" + profile.skillPoints()))
+            .loreLine(Text.mm("<gray>Stärke: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.STRENGTH, 0)))
+            .loreLine(Text.mm("<gray>Geschick: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.DEXTERITY, 0)))
+            .loreLine(Text.mm("<gray>Konstitution: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.CONSTITUTION, 0)))
+            .loreLine(Text.mm("<gray>Intelligenz: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.INTELLIGENCE, 0)))
             .build());
 
         inv.setItem(12, new ItemBuilder(Material.NETHER_STAR)
@@ -144,6 +168,194 @@ public class GuiManager {
         player.openInventory(inv);
     }
 
+    public void openZoneEditor(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ZoneEditorHolder(), 54, Component.text("Zonen-Editor"));
+        int slot = 0;
+        for (var zone : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).zoneManager().zones().values()) {
+            if (slot >= 45) {
+                break;
+            }
+            ItemStack item = new ItemBuilder(Material.MAP)
+                .name(Text.mm("<gold>" + zone.name()))
+                .loreLine(Text.mm("<gray>ID: <white>" + zone.id()))
+                .loreLine(Text.mm("<gray>World: <white>" + zone.world()))
+                .loreLine(Text.mm("<gray>Level: <white>" + zone.minLevel() + "-" + zone.maxLevel()))
+                .loreLine(Text.mm("<gray>Mod: <white>" + zone.slowMultiplier() + " / " + zone.damageMultiplier()))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(zoneKey, PersistentDataType.STRING, zone.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Zone erstellen"))
+            .loreLine(Text.mm("<gray>Nutze die Wand (Pos1/Pos2)"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openNpcEditor(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.NpcEditorHolder(), 54, Component.text("NPC-Editor"));
+        int slot = 0;
+        for (var npc : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).npcManager().npcs().values()) {
+            if (slot >= 45) {
+                break;
+            }
+            ItemStack item = new ItemBuilder(Material.VILLAGER_SPAWN_EGG)
+                .name(Text.mm("<green>" + npc.name()))
+                .loreLine(Text.mm("<gray>ID: <white>" + npc.id()))
+                .loreLine(Text.mm("<gray>Rolle: <white>" + npc.role()))
+                .loreLine(Text.mm("<gray>Quest: <white>" + (npc.questLink() != null ? npc.questLink() : "-")))
+                .loreLine(Text.mm("<gray>Shop: <white>" + (npc.shopId() != null ? npc.shopId() : "-")))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(npcKey, PersistentDataType.STRING, npc.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(45, buildNpcTemplate(Material.WRITABLE_BOOK, "<gold>Questgiver",
+            com.example.rpg.model.NpcRole.QUESTGIVER, "<gray>Quest-NPC erstellen"));
+        inv.setItem(46, buildNpcTemplate(Material.CHEST, "<yellow>Shop (shops.yml)",
+            com.example.rpg.model.NpcRole.VENDOR, "<gray>Shop-ID wird abgefragt"));
+        inv.setItem(47, buildNpcTemplate(Material.IRON_SWORD, "<red>Waffenhändler",
+            com.example.rpg.model.NpcRole.WEAPON_VENDOR, "<gray>Alle Waffen kaufen/verkaufen"));
+        inv.setItem(48, buildNpcTemplate(Material.DIAMOND_CHESTPLATE, "<blue>Rüstungshändler",
+            com.example.rpg.model.NpcRole.ARMOR_VENDOR, "<gray>Alle Rüstungen kaufen/verkaufen"));
+        inv.setItem(49, buildNpcTemplate(Material.APPLE, "<green>Gegenstandshändler",
+            com.example.rpg.model.NpcRole.ITEM_VENDOR, "<gray>Items & Verbrauchsgüter"));
+        inv.setItem(50, buildNpcTemplate(Material.EMERALD, "<aqua>Rohstoffhändler",
+            com.example.rpg.model.NpcRole.RESOURCE_VENDOR, "<gray>Erze & Rohstoffe"));
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>NPC erstellen"))
+            .loreLine(Text.mm("<gray>Erstellt an deiner Position"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    private ItemStack buildNpcTemplate(Material material, String name, com.example.rpg.model.NpcRole role, String lore) {
+        ItemStack item = new ItemBuilder(material)
+            .name(Text.mm(name))
+            .loreLine(Text.mm(lore))
+            .loreLine(Text.mm("<yellow>Klick: Vorlage nutzen"))
+            .build();
+        ItemMeta meta = item.getItemMeta();
+        meta.getPersistentDataContainer().set(npcTemplateKey, PersistentDataType.STRING, role.name());
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public void openQuestEditor(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestEditorHolder(), 54, Component.text("Quest-Editor"));
+        int slot = 0;
+        for (Quest quest : questManager.quests().values()) {
+            if (slot >= 45) {
+                break;
+            }
+            ItemStack item = new ItemBuilder(Material.BOOK)
+                .name(Text.mm("<aqua>" + quest.name()))
+                .loreLine(Text.mm("<gray>ID: <white>" + quest.id()))
+                .loreLine(Text.mm("<gray>Level: <white>" + quest.minLevel()))
+                .loreLine(Text.mm("<gray>Repeatable: <white>" + quest.repeatable()))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(questKey, PersistentDataType.STRING, quest.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Quest erstellen"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openLootEditor(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.LootEditorHolder(), 54, Component.text("Loot-Tabellen"));
+        int slot = 0;
+        for (var table : com.example.rpg.RPGPlugin.getPlugin(com.example.rpg.RPGPlugin.class).lootManager().tables().values()) {
+            if (slot >= 45) {
+                break;
+            }
+            ItemStack item = new ItemBuilder(Material.CHEST)
+                .name(Text.mm("<yellow>" + table.id()))
+                .loreLine(Text.mm("<gray>Applies: <white>" + table.appliesTo()))
+                .loreLine(Text.mm("<gray>Entries: <white>" + table.entries().size()))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(lootKey, PersistentDataType.STRING, table.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Loot-Tabelle erstellen"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openSkillAdmin(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.SkillAdminHolder(), 54, Component.text("Skills verwalten"));
+        int slot = 0;
+        for (var entry : skillManager.skills().entrySet()) {
+            if (slot >= 45) {
+                break;
+            }
+            var skill = entry.getValue();
+            ItemStack item = new ItemBuilder(Material.ENCHANTED_BOOK)
+                .name(Text.mm("<light_purple>" + skill.name()))
+                .loreLine(Text.mm("<gray>ID: <white>" + skill.id()))
+                .loreLine(Text.mm("<gray>Typ: <white>" + skill.type()))
+                .loreLine(Text.mm("<gray>Kategorie: <white>" + skill.category()))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(skillKey, PersistentDataType.STRING, skill.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(51, new ItemBuilder(Material.WRITABLE_BOOK)
+            .name(Text.mm("<aqua>Klassen verwalten"))
+            .loreLine(Text.mm("<yellow>Klick: öffnen"))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Skill erstellen"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openClassAdmin(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ClassAdminHolder(), 54, Component.text("Klassen verwalten"));
+        int slot = 0;
+        for (var entry : classManager.classes().entrySet()) {
+            if (slot >= 45) {
+                break;
+            }
+            var definition = entry.getValue();
+            ItemStack item = new ItemBuilder(Material.BOOKSHELF)
+                .name(Text.mm("<gold>" + definition.name()))
+                .loreLine(Text.mm("<gray>ID: <white>" + definition.id()))
+                .loreLine(Text.mm("<gray>Startskills: <white>" + String.join(", ", definition.startSkills())))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"))
+                .build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(classKey, PersistentDataType.STRING, definition.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Klasse erstellen"))
+            .build());
+        player.openInventory(inv);
+    }
+
     public void openBuildingCategories(Player player) {
         Inventory inv = Bukkit.createInventory(new GuiHolders.BuildingCategoryHolder(), 27, Component.text("Gebäude Kategorien"));
         int slot = 10;
@@ -195,6 +407,9 @@ public class GuiManager {
         for (Quest quest : questManager.quests().values()) {
             if (slot >= inv.getSize()) {
                 break;
+            }
+            if (quest.requiredEvent() != null && !worldEventManager.isCompleted(quest.requiredEvent())) {
+                continue;
             }
             ItemStack item = new ItemBuilder(Material.BOOK)
                 .name(Text.mm("<green>" + quest.name()))
@@ -481,7 +696,9 @@ public class GuiManager {
     }
 
     public void openShop(Player player, ShopDefinition shop) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), 27, Component.text(shop.title()));
+        int maxSlot = shop.items().values().stream().mapToInt(ShopItem::slot).max().orElse(0);
+        int size = maxSlot >= 27 ? 54 : 27;
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ShopHolder(shop.id()), size, Component.text(shop.title()));
         for (ShopItem item : shop.items().values()) {
             Material material = Material.matchMaterial(item.material());
             if (material == null) {

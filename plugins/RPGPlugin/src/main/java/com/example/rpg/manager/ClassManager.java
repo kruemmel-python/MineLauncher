@@ -49,6 +49,30 @@ public class ClassManager {
         save();
     }
 
+    public Map<com.example.rpg.model.RPGStat, Integer> classBonuses(String classId) {
+        Map<com.example.rpg.model.RPGStat, Integer> bonuses = new HashMap<>();
+        if (classId == null) {
+            return bonuses;
+        }
+        switch (classId.toLowerCase()) {
+            case "warrior" -> {
+                bonuses.put(com.example.rpg.model.RPGStat.STRENGTH, 3);
+                bonuses.put(com.example.rpg.model.RPGStat.CONSTITUTION, 2);
+            }
+            case "ranger" -> {
+                bonuses.put(com.example.rpg.model.RPGStat.DEXTERITY, 3);
+                bonuses.put(com.example.rpg.model.RPGStat.LUCK, 1);
+            }
+            case "mage" -> {
+                bonuses.put(com.example.rpg.model.RPGStat.INTELLIGENCE, 3);
+                bonuses.put(com.example.rpg.model.RPGStat.CONSTITUTION, 1);
+            }
+            default -> {
+            }
+        }
+        return bonuses;
+    }
+
     private void load() {
         classes.clear();
         for (String id : config.getKeys(false)) {

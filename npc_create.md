@@ -47,9 +47,45 @@ Du kannst NPCs eine Dialogzeile geben:
 ```
 Danach eine Zeile im Chat senden (wird gespeichert).
 
+### 4.1 Branching‑Dialoge (dialogueNodes)
+Für verzweigte Dialoge (inkl. Quest‑Gating/Fraktionsruf) bearbeitest du `npcs.yml`:
+
+```yaml
+guide:
+  dialogueNodes:
+    - id: start
+      text: "Willkommen!"
+      options:
+        - text: "Ich suche Arbeit."
+          nextId: quest_offer
+        - text: "Wer bist du?"
+          nextId: about
+    - id: quest_offer
+      text: "Hilf uns gegen die Invasion."
+      options:
+        - text: "Quest annehmen"
+          grantQuestId: invasion_intro
+          nextId: end
+```
+
 ---
 
-## 5) Quest‑NPC
+## 5) NPC‑Fraktion & Rang‑Gate
+
+NPCs können Shops/Interaktionen per Ruf‑Rang sperren:
+```
+/rpgadmin npc faction <npcId> <factionId>
+/rpgadmin npc rank <npcId> <rankId>
+```
+Beispiel:
+```
+/rpgadmin npc faction wache adventurers
+/rpgadmin npc rank wache revered
+```
+
+---
+
+## 6) Quest‑NPC
 
 Wenn du einen Quest‑NPC möchtest:
 ```
@@ -59,7 +95,7 @@ Wenn du einen Quest‑NPC möchtest:
 
 ---
 
-## 6) Statischer Shop‑NPC (bestehendes System)
+## 7) Statischer Shop‑NPC (bestehendes System)
 
 Diese NPCs nutzen `shops.yml`.
 
@@ -70,31 +106,31 @@ Diese NPCs nutzen `shops.yml`.
 
 ---
 
-## 7) Neue Händler‑NPCs (RPG‑Items)
+## 8) Neue Händler‑NPCs (RPG‑Items)
 
 Diese Händler generieren **dynamische RPG‑Items**, wenn sie angeklickt werden.
 Die Items enthalten RPG‑Werte, Affixe und können im **EnchantSystem** genutzt werden.
 
-### 7.1 Waffenhändler
+### 8.1 Waffenhändler
 ```
 /rpgadmin npc create weaponnpc WEAPON_VENDOR
 ```
 - Verkauf: Schwerter, Bögen (RPG‑Items)
 - Preise skalieren mit Spielerlevel & Rarity
 
-### 7.2 Rüstungshändler
+### 8.2 Rüstungshändler
 ```
 /rpgadmin npc create armornpc ARMOR_VENDOR
 ```
 - Verkauf: Leder-, Ketten-, Eisenrüstungen (RPG‑Items)
 
-### 7.3 Gegenstandshändler
+### 8.3 Gegenstandshändler
 ```
 /rpgadmin npc create itemnpc ITEM_VENDOR
 ```
 - Verkauf: Lebensmittel, Tränke, Pfeile (RPG‑Items)
 
-### 7.4 Rohstoffhändler
+### 8.4 Rohstoffhändler
 ```
 /rpgadmin npc create resourcenpc RESOURCE_VENDOR
 ```
@@ -102,7 +138,7 @@ Die Items enthalten RPG‑Werte, Affixe und können im **EnchantSystem** genutzt
 
 ---
 
-## 8) Wie funktioniert der RPG‑Shop?
+## 9) Wie funktioniert der RPG‑Shop?
 
 - Beim **Anklicken** generiert der NPC einen Shop‑Inventar.
 - Items werden **live erzeugt**, basierend auf dem Spielerlevel.
@@ -111,7 +147,7 @@ Die Items enthalten RPG‑Werte, Affixe und können im **EnchantSystem** genutzt
 
 ---
 
-## 9) FAQ / Troubleshooting
+## 10) FAQ / Troubleshooting
 
 **NPC reagiert nicht?**
 - Prüfe, ob der NPC korrekt erstellt wurde.
@@ -125,7 +161,7 @@ Die Items enthalten RPG‑Werte, Affixe und können im **EnchantSystem** genutzt
 
 ---
 
-## 10) Kurz‑Workflow (Beispiel)
+## 11) Kurz‑Workflow (Beispiel)
 
 1. `/rpgadmin npc create weaponnpc WEAPON_VENDOR`
 2. Spieler klickt NPC → Shop öffnet sich.

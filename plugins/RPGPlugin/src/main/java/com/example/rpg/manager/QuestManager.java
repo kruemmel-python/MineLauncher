@@ -44,6 +44,7 @@ public class QuestManager {
         section.set("description", quest.description());
         section.set("repeatable", quest.repeatable());
         section.set("minLevel", quest.minLevel());
+        section.set("requiredEvent", quest.requiredEvent());
         List<Map<String, Object>> steps = new ArrayList<>();
         for (QuestStep step : quest.steps()) {
             Map<String, Object> map = new HashMap<>();
@@ -80,6 +81,7 @@ public class QuestManager {
             quest.setDescription(section.getString("description", ""));
             quest.setRepeatable(section.getBoolean("repeatable", false));
             quest.setMinLevel(section.getInt("minLevel", 1));
+            quest.setRequiredEvent(section.getString("requiredEvent", null));
             List<QuestStep> steps = new ArrayList<>();
             for (Map<?, ?> raw : section.getMapList("steps")) {
                 Object typeValue = raw.containsKey("type") ? raw.get("type") : "KILL";

@@ -37,7 +37,7 @@ public class GuildCommand implements CommandExecutor {
             return true;
         }
         if (args.length == 0) {
-            player.sendMessage(Text.mm("<gray>/guild <create|invite|accept|leave|disband|info|chat|bank|quest>"));
+            player.sendMessage(Text.mm("<gray>/guild <create|invite|accept|leave|disband|info|chat|bank|quest|hall>"));
             return true;
         }
         switch (args[0].toLowerCase()) {
@@ -50,7 +50,8 @@ public class GuildCommand implements CommandExecutor {
             case "chat" -> guildChat(player, args);
             case "bank" -> bankCommand(player, args);
             case "quest" -> questCommand(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/guild <create|invite|accept|leave|disband|info|chat|bank|quest>"));
+            case "hall" -> hallCommand(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/guild <create|invite|accept|leave|disband|info|chat|bank|quest|hall>"));
         }
         return true;
     }
@@ -343,6 +344,77 @@ public class GuildCommand implements CommandExecutor {
         quest.setCompleted(true);
         plugin.guildManager().saveAll();
         player.sendMessage(Text.mm("<green>Quest abgeschlossen."));
+    }
+
+    private void hallCommand(Player player, String[] args) {
+        Optional<Guild> guildOpt = plugin.guildManager().guildFor(player.getUniqueId());
+        if (guildOpt.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Du bist in keiner Gilde."));
+            return;
+        }
+        Guild guild = guildOpt.get();
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/guild hall <set|go|upgrade>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "set" -> {
+                if (!guild.leader().equals(player.getUniqueId())) {
+                    player.sendMessage(Text.mm("<red>Nur der Leader kann die Halle setzen."));
+                    return;
+                }
+                var loc = player.getLocation();
+                guild.setHall(loc.getWorld().getName(), loc.getX(), loc.getY(), loc.getZ());
+                plugin.guildManager().saveAll();
+                player.sendMessage(Text.mm("<green>Gildenhalle gesetzt."));
+            }
+            case "go" -> {
+                var hall = plugin.guildManager().hallLocation(guild);
+                if (hall == null) {
+                    player.sendMessage(Text.mm("<red>Keine Gildenhalle gesetzt."));
+                    return;
+                }
+                if (guild.hallUpgrades().getOrDefault("teleport", 0) < 1) {
+                    player.sendMessage(Text.mm("<red>Teleport-Upgrade erforderlich."));
+                    return;
+                }
+                player.teleport(hall);
+                player.sendMessage(Text.mm("<green>Zur Gildenhalle teleportiert."));
+            }
+            case "upgrade" -> upgradeHall(player, guild, args);
+            default -> player.sendMessage(Text.mm("<gray>/guild hall <set|go|upgrade>"));
+        }
+    }
+
+    private void upgradeHall(Player player, Guild guild, String[] args) {
+        if (!isOfficerOrLeader(guild, player.getUniqueId())) {
+            player.sendMessage(Text.mm("<red>Keine Rechte für Upgrades."));
+            return;
+        }
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/guild hall upgrade <craft|teleport|buff>"));
+            return;
+        }
+        String type = args[2].toLowerCase();
+        int current = guild.hallUpgrades().getOrDefault(type, 0);
+        int cost = switch (type) {
+            case "craft" -> 500 + (current * 300);
+            case "teleport" -> 800 + (current * 400);
+            case "buff" -> 1000 + (current * 500);
+            default -> -1;
+        };
+        if (cost < 0) {
+            player.sendMessage(Text.mm("<red>Unbekanntes Upgrade."));
+            return;
+        }
+        if (guild.bankGold() < cost) {
+            player.sendMessage(Text.mm("<red>Nicht genug Gold in der Gildenbank. Benötigt: " + cost));
+            return;
+        }
+        guild.setBankGold(guild.bankGold() - cost);
+        guild.hallUpgrades().put(type, current + 1);
+        plugin.guildManager().saveAll();
+        player.sendMessage(Text.mm("<green>Upgrade verbessert: " + type + " (Stufe " + (current + 1) + ")"));
     }
 
     private boolean isOfficerOrLeader(Guild guild, UUID member) {

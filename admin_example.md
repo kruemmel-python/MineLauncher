@@ -189,6 +189,21 @@ forest_zombie:
 
 ---
 
+## 🌐 Teil 4.5: Welt‑Events & Meta‑Quests
+
+1. **Event erstellen (Zone‑basiert):**
+   * `/rpgadmin event create invasion wald_zone "Wald‑Invasion"`
+   * `/rpgadmin event addstep invasion KILL ZOMBIE 50`
+   * `/rpgadmin event reward invasion 250 200`
+2. **Quest erst nach Event freischalten:**
+   * `/rpgadmin event unlock invasion heldenpfad`
+   * Danach in `quests.yml` wird `requiredEvent: invasion` gesetzt.
+3. **Event starten/stoppen:**
+   * `/rpgadmin event start invasion`
+   * `/rpgadmin event stop invasion`
+
+---
+
 ## 🏘️ Teil 5: Gebäude & Schemata (Neu)
 
 ### 1. Schematic-Ordner
@@ -238,16 +253,42 @@ buildings:
 
 ---
 
+## ⛏️ Teil 5.5: Ressourcen‑Nodes & Berufe
+
+Erstelle respawnende Sammelknoten mit Beruf‑XP:
+
+```
+/rpgadmin node create mining IRON_ORE 60 8
+```
+
+Spieler können so **Mining‑XP** gezielt farmen (respawnt nach 60s).
+
+---
+
+## 📦 Teil 5.6: Crafting‑Aufträge (Spielerwirtschaft)
+
+Spieler können Aufträge erstellen und andere erfüllen:
+
+```
+/rpg order create IRON_SWORD 2 250
+/rpg order list
+/rpg order fulfill order_1
+```
+
+---
+
 ## 🤝 Teil 6: Social & End-Game
 
 ### 1. Dungeons (Instanziert)
 Erstellt eine temporäre Welt für eine Gruppe.
 *   **Befehl:** `/dungeon generate wfc` (Wave Function Collapse) oder `/dungeon generate gruft` (Standard).
 *   **Logik:** Generiert Welt → Teleportiert Party → Spawnt Boss → Löscht Welt nach Abschluss/Timeout.
+*   **Matchmaking:** `/dungeon queue wfc`, Rolle setzen: `/dungeon role <tank|heal|dps>`
 
 ### 2. Gilden & Party
 *   **Party:** `/party invite <Name>` (Teilt XP im Umkreis).
 *   **Gilde:** `/guild create <ID> <Name>` (Gilden mit Bank und Quests).
+*   **Gildenhalle:** `/guild hall set` (Leader), `/guild hall upgrade <craft|teleport|buff>`
 
 ### 3. Auktionshaus
 *   Item in die Hand nehmen → `/auction sell <Preis>`.
@@ -255,6 +296,19 @@ Erstellt eine temporäre Welt für eine Gruppe.
 ### 4. PvP & Elo
 *   Arenen müssen in `arenas.yml` konfiguriert werden.
 *   Spieler nutzen `/pvp join`, um in die Warteschlange für Elo-Matches zu kommen.
+*   **Saison:** `/pvp season` (Anzeige), `/rpgadmin pvp seasonstart <id> <name> <days>`
+
+---
+
+## 🏳️ Teil 6.5: Fraktionen & NPC‑Gating
+
+1. **Fraktion definieren:** `factions.yml` mit Rängen (Neutral/Freundlich/Ehrfürchtig).
+2. **NPC an Fraktion binden:**
+   * `/rpgadmin npc faction wache adventurers`
+   * `/rpgadmin npc rank wache revered`
+3. **Effekte:**
+   * Shop‑Rabatte je Rang.
+   * Dungeon‑Zugang über Rang‑Flag.
 
 ---
 

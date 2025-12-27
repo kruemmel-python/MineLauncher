@@ -19,11 +19,16 @@ public class ItemStatListener implements Listener {
         if (!(event.getWhoClicked() instanceof Player player)) {
             return;
         }
-        plugin.getServer().getScheduler().runTask(plugin, () -> plugin.itemStatManager().updateSetBonus(player));
+        plugin.getServer().getScheduler().runTask(plugin, () -> {
+            plugin.itemStatManager().updateSetBonus(player);
+            plugin.playerDataManager().getProfile(player).applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
+        });
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        plugin.itemStatManager().updateSetBonus(event.getPlayer());
+        Player player = event.getPlayer();
+        plugin.itemStatManager().updateSetBonus(player);
+        plugin.playerDataManager().getProfile(player).applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
     }
 }

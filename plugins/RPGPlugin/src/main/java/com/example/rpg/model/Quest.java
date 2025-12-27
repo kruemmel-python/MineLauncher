@@ -9,6 +9,7 @@ public class Quest {
     private String description;
     private boolean repeatable;
     private int minLevel;
+    private String requiredEvent;
     private List<QuestStep> steps = new ArrayList<>();
     private QuestReward reward = new QuestReward();
 
@@ -50,6 +51,14 @@ public class Quest {
 
     public void setMinLevel(int minLevel) {
         this.minLevel = minLevel;
+    }
+
+    public String requiredEvent() {
+        return requiredEvent;
+    }
+
+    public void setRequiredEvent(String requiredEvent) {
+        this.requiredEvent = requiredEvent;
     }
 
     public List<QuestStep> steps() {

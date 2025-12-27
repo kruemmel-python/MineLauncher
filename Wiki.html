@@ -261,6 +261,15 @@ dotnet run --project C_launcher -- play Alex
             <tr><td><code>/rpg profession list</code></td><td>Berufe anzeigen</td><td><code>/rpg profession list</code></td></tr>
             <tr><td><code>/rpg profession set &lt;name&gt; &lt;level&gt;</code></td><td>Beruf setzen</td><td><code>/rpg profession set mining 5</code></td></tr>
             <tr><td><code>/rpg skilltree</code></td><td>Skillbaum öffnen</td><td><code>/rpg skilltree</code></td></tr>
+            <tr><td><code>/rpg event list</code></td><td>Welt-Events anzeigen</td><td><code>/rpg event list</code></td></tr>
+            <tr><td><code>/rpg event status &lt;id&gt;</code></td><td>Event-Fortschritt</td><td><code>/rpg event status invasion</code></td></tr>
+            <tr><td><code>/rpg order list</code></td><td>Crafting-Aufträge</td><td><code>/rpg order list</code></td></tr>
+            <tr><td><code>/rpg order create &lt;material&gt; &lt;amount&gt; &lt;reward&gt;</code></td><td>Auftrag erstellen</td><td><code>/rpg order create IRON_SWORD 2 250</code></td></tr>
+            <tr><td><code>/rpg order fulfill &lt;id&gt;</code></td><td>Auftrag erfüllen</td><td><code>/rpg order fulfill order_1</code></td></tr>
+            <tr><td><code>/rpg home set</code></td><td>Home setzen</td><td><code>/rpg home set</code></td></tr>
+            <tr><td><code>/rpg home go</code></td><td>Home-Teleport</td><td><code>/rpg home go</code></td></tr>
+            <tr><td><code>/rpg home upgrade &lt;craft|teleport|buff&gt;</code></td><td>Housing-Upgrades</td><td><code>/rpg home upgrade buff</code></td></tr>
+            <tr><td><code>/rpg faction</code></td><td>Fraktionsruf</td><td><code>/rpg faction</code></td></tr>
           </tbody>
         </table>
       </section>
@@ -302,6 +311,9 @@ dotnet run --project C_launcher -- play Alex
             <tr><td><code>/guild quest create &lt;id&gt; &lt;goal&gt; &lt;name&gt;</code></td><td>Quest erstellen</td><td><code>/guild quest create wolfhunt 25 "Wolfjagd"</code></td></tr>
             <tr><td><code>/guild quest progress &lt;id&gt; &lt;amount&gt;</code></td><td>Fortschritt</td><td><code>/guild quest progress wolfhunt 5</code></td></tr>
             <tr><td><code>/guild quest complete &lt;id&gt;</code></td><td>Abschließen</td><td><code>/guild quest complete wolfhunt</code></td></tr>
+            <tr><td><code>/guild hall set</code></td><td>Gildenhalle setzen</td><td><code>/guild hall set</code></td></tr>
+            <tr><td><code>/guild hall go</code></td><td>Zur Gildenhalle</td><td><code>/guild hall go</code></td></tr>
+            <tr><td><code>/guild hall upgrade &lt;craft|teleport|buff&gt;</code></td><td>Hallen-Upgrade</td><td><code>/guild hall upgrade buff</code></td></tr>
           </tbody>
         </table>
       </section>
@@ -336,8 +348,12 @@ dotnet run --project C_launcher -- play Alex
             <tr><td><code>/dungeon enter</code></td><td>Dungeon betreten</td><td><code>/dungeon enter</code></td></tr>
             <tr><td><code>/dungeon leave</code></td><td>Dungeon verlassen</td><td><code>/dungeon leave</code></td></tr>
             <tr><td><code>/dungeon generate &lt;theme&gt;</code></td><td>Dungeon generieren</td><td><code>/dungeon generate wfc</code></td></tr>
+            <tr><td><code>/dungeon queue &lt;theme&gt;</code></td><td>Matchmaking-Queue</td><td><code>/dungeon queue wfc</code></td></tr>
+            <tr><td><code>/dungeon leavequeue</code></td><td>Queue verlassen</td><td><code>/dungeon leavequeue</code></td></tr>
+            <tr><td><code>/dungeon role &lt;tank|heal|dps&gt;</code></td><td>Rolle setzen</td><td><code>/dungeon role tank</code></td></tr>
             <tr><td><code>/pvp join</code></td><td>PvP-Queue</td><td><code>/pvp join</code></td></tr>
             <tr><td><code>/pvp top</code></td><td>Rangliste</td><td><code>/pvp top</code></td></tr>
+            <tr><td><code>/pvp season</code></td><td>Aktive Saison</td><td><code>/pvp season</code></td></tr>
             <tr><td><code>/voicechat party</code></td><td>Party-Voice</td><td><code>/voicechat party</code></td></tr>
             <tr><td><code>/voicechat guild</code></td><td>Gilden-Voice</td><td><code>/voicechat guild</code></td></tr>
             <tr><td><code>/voicechat leave</code></td><td>Voice verlassen</td><td><code>/voicechat leave</code></td></tr>
@@ -362,6 +378,8 @@ dotnet run --project C_launcher -- play Alex
             <tr><td><code>/rpgadmin npc dialog &lt;id&gt;</code></td><td>Dialog setzen</td><td><code>/rpgadmin npc dialog guide</code></td></tr>
             <tr><td><code>/rpgadmin npc linkquest &lt;npcId&gt; &lt;questId&gt;</code></td><td>Quest verlinken</td><td><code>/rpgadmin npc linkquest guide starter</code></td></tr>
             <tr><td><code>/rpgadmin npc linkshop &lt;npcId&gt; &lt;shopId&gt;</code></td><td>Shop verlinken</td><td><code>/rpgadmin npc linkshop guide village_merchant</code></td></tr>
+            <tr><td><code>/rpgadmin npc faction &lt;npcId&gt; &lt;factionId&gt;</code></td><td>NPC-Fraktion</td><td><code>/rpgadmin npc faction guide adventurers</code></td></tr>
+            <tr><td><code>/rpgadmin npc rank &lt;npcId&gt; &lt;rankId&gt;</code></td><td>Rang-Gate</td><td><code>/rpgadmin npc rank guide revered</code></td></tr>
             <tr><td><code>/rpgadmin quest create &lt;id&gt; &lt;name&gt;</code></td><td>Quest erstellen</td><td><code>/rpgadmin quest create starter "Start"</code></td></tr>
             <tr><td><code>/rpgadmin quest addstep &lt;id&gt; &lt;type&gt; &lt;target&gt; &lt;amount&gt;</code></td><td>Quest-Step</td><td><code>/rpgadmin quest addstep starter KILL ZOMBIE 3</code></td></tr>
             <tr><td><code>/rpgadmin loot create &lt;id&gt; &lt;appliesTo&gt;</code></td><td>Loot-Tabelle</td><td><code>/rpgadmin loot create forest ZOMBIE</code></td></tr>
@@ -373,6 +391,15 @@ dotnet run --project C_launcher -- play Alex
             <tr><td><code>/rpgadmin spawner create &lt;id&gt; &lt;zoneId&gt;</code></td><td>Spawner erstellen</td><td><code>/rpgadmin spawner create forest_spawn startzone</code></td></tr>
             <tr><td><code>/rpgadmin spawner addmob &lt;id&gt; &lt;mobId&gt; &lt;chance&gt;</code></td><td>Mob hinzufügen</td><td><code>/rpgadmin spawner addmob forest_spawn forest_zombie 1.0</code></td></tr>
             <tr><td><code>/rpgadmin spawner setlimit &lt;id&gt; &lt;amount&gt;</code></td><td>Spawn-Limit</td><td><code>/rpgadmin spawner setlimit forest_spawn 8</code></td></tr>
+            <tr><td><code>/rpgadmin event create &lt;id&gt; &lt;zoneId&gt; &lt;name&gt;</code></td><td>Welt-Event</td><td><code>/rpgadmin event create invasion startzone "Invasion"</code></td></tr>
+            <tr><td><code>/rpgadmin event addstep &lt;id&gt; &lt;type&gt; &lt;target&gt; &lt;amount&gt;</code></td><td>Event-Step</td><td><code>/rpgadmin event addstep invasion KILL ZOMBIE 50</code></td></tr>
+            <tr><td><code>/rpgadmin event reward &lt;id&gt; &lt;xp&gt; &lt;gold&gt;</code></td><td>Event-Belohnung</td><td><code>/rpgadmin event reward invasion 250 200</code></td></tr>
+            <tr><td><code>/rpgadmin event unlock &lt;id&gt; &lt;questId&gt;</code></td><td>Quest freischalten</td><td><code>/rpgadmin event unlock invasion hero_path</code></td></tr>
+            <tr><td><code>/rpgadmin event start &lt;id&gt;</code></td><td>Event starten</td><td><code>/rpgadmin event start invasion</code></td></tr>
+            <tr><td><code>/rpgadmin event stop &lt;id&gt;</code></td><td>Event stoppen</td><td><code>/rpgadmin event stop invasion</code></td></tr>
+            <tr><td><code>/rpgadmin pvp seasonstart &lt;id&gt; &lt;name&gt; &lt;days&gt;</code></td><td>Saison starten</td><td><code>/rpgadmin pvp seasonstart s1 "Season 1" 30</code></td></tr>
+            <tr><td><code>/rpgadmin pvp seasonend</code></td><td>Saison beenden</td><td><code>/rpgadmin pvp seasonend</code></td></tr>
+            <tr><td><code>/rpgadmin node create &lt;profession&gt; &lt;material&gt; &lt;respawnSeconds&gt; &lt;xp&gt;</code></td><td>Ressourcen-Node</td><td><code>/rpgadmin node create mining IRON_ORE 60 8</code></td></tr>
             <tr><td><code>/rpgadmin build</code> / <code>build gui</code></td><td>Bau-Manager GUI</td><td><code>/rpgadmin build gui</code></td></tr>
             <tr><td><code>/rpgadmin build &lt;id&gt;</code></td><td>Gebäude platzieren</td><td><code>/rpgadmin build cottage</code></td></tr>
             <tr><td><code>/rpgadmin build undo</code></td><td>Letzte Platzierung rückgängig</td><td><code>/rpgadmin build undo</code></td></tr>

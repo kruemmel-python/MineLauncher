@@ -75,6 +75,15 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpg profession list` | Listet Berufe | `/rpg profession list` |
 | `/rpg profession set <name> <level>` | Setzt Berufslevel | `/rpg profession set mining 5` |
 | `/rpg skilltree` | Öffnet den Skillbaum | `/rpg skilltree` |
+| `/rpg event list` | Zeigt aktive Welt‑Events | `/rpg event list` |
+| `/rpg event status <id>` | Event‑Fortschritt anzeigen | `/rpg event status invasion` |
+| `/rpg order list` | Crafting‑Aufträge anzeigen | `/rpg order list` |
+| `/rpg order create <material> <amount> <reward>` | Auftrag erstellen | `/rpg order create IRON_SWORD 2 250` |
+| `/rpg order fulfill <id>` | Auftrag erfüllen | `/rpg order fulfill order_1` |
+| `/rpg home set` | Home setzen | `/rpg home set` |
+| `/rpg home go` | Zum Home teleportieren | `/rpg home go` |
+| `/rpg home upgrade <craft|teleport|buff>` | Housing‑Upgrade | `/rpg home upgrade craft` |
+| `/rpg faction` | Fraktionsruf anzeigen | `/rpg faction` |
 
 ### Party & Chat
 
@@ -105,6 +114,9 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/guild quest create <id> <goal> <name>` | Quest erstellen | `/guild quest create wolfhunt 25 "Wolfjagd"` |
 | `/guild quest progress <id> <amount>` | Fortschritt setzen | `/guild quest progress wolfhunt 5` |
 | `/guild quest complete <id>` | Quest abschließen | `/guild quest complete wolfhunt` |
+| `/guild hall set` | Gildenhalle setzen (Leader) | `/guild hall set` |
+| `/guild hall go` | Zur Gildenhalle | `/guild hall go` |
+| `/guild hall upgrade <craft|teleport|buff>` | Hallen‑Upgrade | `/guild hall upgrade buff` |
 | `/g <message>` | Shortcut für Gilden‑Chat | `/g Hallo` |
 
 ### Handel & Wirtschaft
@@ -128,8 +140,12 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/dungeon enter` | Dungeon betreten | `/dungeon enter` |
 | `/dungeon leave` | Dungeon verlassen | `/dungeon leave` |
 | `/dungeon generate <theme>` | Instanz erzeugen | `/dungeon generate wfc` |
+| `/dungeon queue <theme>` | Matchmaking‑Queue | `/dungeon queue wfc` |
+| `/dungeon leavequeue` | Queue verlassen | `/dungeon leavequeue` |
+| `/dungeon role <tank|heal|dps>` | Rolle setzen | `/dungeon role tank` |
 | `/pvp join` | PvP‑Queue | `/pvp join` |
 | `/pvp top` | Top‑Liste | `/pvp top` |
+| `/pvp season` | Aktive Saison | `/pvp season` |
 | `/voicechat party` | Party‑Sprachkanal | `/voicechat party` |
 | `/voicechat guild` | Gilden‑Sprachkanal | `/voicechat guild` |
 | `/voicechat leave` | Sprachkanal verlassen | `/voicechat leave` |
@@ -148,6 +164,8 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpgadmin npc dialog <id>` | Dialog setzen | `/rpgadmin npc dialog guide` |
 | `/rpgadmin npc linkquest <npcId> <questId>` | Quest verlinken | `/rpgadmin npc linkquest guide starter` |
 | `/rpgadmin npc linkshop <npcId> <shopId>` | Shop verlinken | `/rpgadmin npc linkshop guide village_merchant` |
+| `/rpgadmin npc faction <npcId> <factionId>` | NPC‑Fraktion setzen | `/rpgadmin npc faction guide adventurers` |
+| `/rpgadmin npc rank <npcId> <rankId>` | Ruf‑Rank‑Gate | `/rpgadmin npc rank guide revered` |
 | `/rpgadmin quest create <id> <name>` | Quest erstellen | `/rpgadmin quest create starter "Start"` |
 | `/rpgadmin quest addstep <id> <type> <target> <amount>` | Quest‑Step | `/rpgadmin quest addstep starter KILL ZOMBIE 3` |
 | `/rpgadmin loot create <id> <appliesTo>` | Loot‑Table | `/rpgadmin loot create forest ZOMBIE` |
@@ -159,6 +177,15 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpgadmin spawner create <id> <zoneId>` | Spawner erstellen | `/rpgadmin spawner create forest_spawn startzone` |
 | `/rpgadmin spawner addmob <id> <mobId> <chance>` | Mob hinzufügen | `/rpgadmin spawner addmob forest_spawn forest_zombie 1.0` |
 | `/rpgadmin spawner setlimit <id> <amount>` | Spawn‑Limit | `/rpgadmin spawner setlimit forest_spawn 8` |
+| `/rpgadmin event create <id> <zoneId> <name>` | Welt‑Event erstellen | `/rpgadmin event create invasion startzone "Invasion"` |
+| `/rpgadmin event addstep <id> <type> <target> <amount>` | Event‑Step | `/rpgadmin event addstep invasion KILL ZOMBIE 50` |
+| `/rpgadmin event reward <id> <xp> <gold>` | Event‑Belohnung | `/rpgadmin event reward invasion 250 200` |
+| `/rpgadmin event unlock <id> <questId>` | Quest freischalten | `/rpgadmin event unlock invasion hero_path` |
+| `/rpgadmin event start <id>` | Event starten | `/rpgadmin event start invasion` |
+| `/rpgadmin event stop <id>` | Event stoppen | `/rpgadmin event stop invasion` |
+| `/rpgadmin pvp seasonstart <id> <name> <days>` | Saison starten | `/rpgadmin pvp seasonstart s1 "Season 1" 30` |
+| `/rpgadmin pvp seasonend` | Saison beenden | `/rpgadmin pvp seasonend` |
+| `/rpgadmin node create <profession> <material> <respawnSeconds> <xp>` | Ressourcen‑Node | `/rpgadmin node create mining IRON_ORE 60 8` |
 | `/rpgadmin build` / `/rpgadmin build gui` | Bau‑Manager GUI | `/rpgadmin build gui` |
 | `/rpgadmin build <id>` | Gebäude platzieren | `/rpgadmin build cottage` |
 | `/rpgadmin build undo` | Letzte Platzierung rückgängig | `/rpgadmin build undo` |
@@ -188,3 +215,11 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 - **Voice‑Chat‑Kanäle**: Party/Gilden‑Channels per `/voicechat`.
 - **Auktionshaus**: Item‑Listings per `/auction`.
 - **Gilden‑Bank & Quests**: Verwaltung per `/guild`.
+- **Welt‑Events**: Serverweite Fortschritte & Belohnungen.
+- **Fraktions‑Ränge**: Shop‑Rabatte und Dungeon‑Zugänge.
+- **Dungeon‑Matchmaking**: Rollen‑Queue, Skalierung, No‑Death‑Bonus.
+- **Crafting‑Aufträge**: Spieler‑Aufträge mit Goldbelohnung.
+- **Ressourcen‑Nodes**: Respawnende Sammelknoten mit Beruf‑XP.
+- **Housing & Gildenhallen**: Homes, Teleport‑/Craft‑/Buff‑Upgrades.
+- **Skill‑Synergien**: Kombos über Party/Gilde.
+- **PvP‑Saisons**: Saison‑Titel und Cosmetics.

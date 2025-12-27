@@ -23,6 +23,33 @@ public class ProfessionListener implements Listener {
             return;
         }
         Material material = event.getBlock().getType();
+        var node = plugin.resourceNodeManager().nodeAt(event.getBlock().getLocation());
+        if (node != null) {
+            long now = System.currentTimeMillis();
+            if (node.nextAvailableAt() > now) {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage(Text.mm("<red>Dieser Knoten regeneriert gerade."));
+                return;
+            }
+            Material nodeMaterial = Material.matchMaterial(node.material());
+            if (nodeMaterial != null && nodeMaterial != material) {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage(Text.mm("<red>Falscher Knoten-Typ."));
+                return;
+            }
+            node.setNextAvailableAt(now + (node.respawnSeconds() * 1000L));
+            plugin.resourceNodeManager().saveNode(node);
+            event.setDropItems(false);
+            event.getBlock().setType(Material.AIR);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(material));
+            PlayerProfile profile = plugin.playerDataManager().getProfile(event.getPlayer());
+            plugin.professionManager().addXp(profile, node.profession(), node.xp(), event.getPlayer());
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                if (event.getBlock().getType() == Material.AIR) {
+                    event.getBlock().setType(material);
+                }
+            }, node.respawnSeconds() * 20L);
+        }
         String materialKey = material.name();
         PlayerProfile profile = plugin.playerDataManager().getProfile(event.getPlayer());
         int miningXp = plugin.professionManager().xpForMaterial("mining", materialKey);
@@ -56,5 +83,17 @@ public class ProfessionListener implements Listener {
         if (xp > 0) {
             plugin.professionManager().addXp(profile, "blacksmithing", xp, player);
         }
+        plugin.guildManager().guildFor(player.getUniqueId()).ifPresent(guild -> {
+            var hall = plugin.guildManager().hallLocation(guild);
+            if (hall != null && hall.getWorld().equals(player.getWorld())
+                && player.getLocation().distanceSquared(hall) <= 20 * 20) {
+                int bonusLevel = guild.hallUpgrades().getOrDefault("craft", 0);
+                if (bonusLevel > 0) {
+                    int bonusXp = bonusLevel * 2;
+                    plugin.professionManager().addXp(profile, "blacksmithing", bonusXp, player);
+                    player.sendMessage(Text.mm("<gold>Gildenhalle-Bonus: +" + bonusXp + " XP"));
+                }
+            }
+        });
     }
 }

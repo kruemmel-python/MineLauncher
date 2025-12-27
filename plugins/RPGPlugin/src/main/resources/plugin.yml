@@ -24,16 +24,16 @@ commands:
     usage: /trade <request|accept|offer|requestgold|ready|cancel>
   dungeon:
     description: Dungeon management
-    usage: /dungeon <enter|leave|generate>
+    usage: /dungeon <enter|leave|generate|queue|role|leavequeue>
   guild:
     description: Guild management
-    usage: /guild <create|invite|accept|leave|disband|info|chat|bank|quest>
+    usage: /guild <create|invite|accept|leave|disband|info|chat|bank|quest|hall>
   g:
     description: Guild chat shortcut
     usage: /g <message>
   pvp:
     description: PvP arenas
-    usage: /pvp <join|top>
+    usage: /pvp <join|top|season>
   behavior:
     description: Behavior tree editor
     usage: /behavior edit <tree>

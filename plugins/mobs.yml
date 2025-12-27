@@ -9041,3 +9041,803 @@ boss_lvl12_200:
   behaviorTree: "lvl20_behavior_200"
   boss: true
 
+world_boss_lvl120_001:
+  name: "&5Welt-Boss Lvl 120 #001"
+  type: "WITHER"
+  health: 2000
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5600
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl01_behavior_001"
+  boss: true
+
+world_boss_lvl121_002:
+  name: "&5Welt-Boss Lvl 121 #002"
+  type: "WITHER"
+  health: 2010
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5630
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl02_behavior_002"
+  boss: true
+
+world_boss_lvl122_003:
+  name: "&5Welt-Boss Lvl 122 #003"
+  type: "WITHER"
+  health: 2020
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5660
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl03_behavior_003"
+  boss: true
+
+world_boss_lvl123_004:
+  name: "&5Welt-Boss Lvl 123 #004"
+  type: "WITHER"
+  health: 2030
+  damage: 50
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5690
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl04_behavior_004"
+  boss: true
+
+world_boss_lvl124_005:
+  name: "&5Welt-Boss Lvl 124 #005"
+  type: "WITHER"
+  health: 2040
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5720
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl05_behavior_005"
+  boss: true
+
+world_boss_lvl125_006:
+  name: "&5Welt-Boss Lvl 125 #006"
+  type: "WITHER"
+  health: 2050
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5750
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl06_behavior_006"
+  boss: true
+
+world_boss_lvl126_007:
+  name: "&5Welt-Boss Lvl 126 #007"
+  type: "WITHER"
+  health: 2060
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5780
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl07_behavior_007"
+  boss: true
+
+world_boss_lvl127_008:
+  name: "&5Welt-Boss Lvl 127 #008"
+  type: "WITHER"
+  health: 2070
+  damage: 51
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5810
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl08_behavior_008"
+  boss: true
+
+world_boss_lvl128_009:
+  name: "&5Welt-Boss Lvl 128 #009"
+  type: "WITHER"
+  health: 2080
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5840
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl09_behavior_009"
+  boss: true
+
+world_boss_lvl129_010:
+  name: "&5Welt-Boss Lvl 129 #010"
+  type: "WITHER"
+  health: 2090
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5870
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl10_behavior_010"
+  boss: true
+
+world_boss_lvl130_011:
+  name: "&5Welt-Boss Lvl 130 #011"
+  type: "WITHER"
+  health: 2100
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 5900
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl11_behavior_011"
+  boss: true
+
+world_boss_lvl131_012:
+  name: "&5Welt-Boss Lvl 131 #012"
+  type: "WITHER"
+  health: 2110
+  damage: 52
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 5930
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl12_behavior_012"
+  boss: true
+
+world_boss_lvl132_013:
+  name: "&5Welt-Boss Lvl 132 #013"
+  type: "WITHER"
+  health: 2120
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 5960
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl13_behavior_013"
+  boss: true
+
+world_boss_lvl133_014:
+  name: "&5Welt-Boss Lvl 133 #014"
+  type: "WITHER"
+  health: 2130
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 5990
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl14_behavior_014"
+  boss: true
+
+world_boss_lvl134_015:
+  name: "&5Welt-Boss Lvl 134 #015"
+  type: "WITHER"
+  health: 2140
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6020
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl15_behavior_015"
+  boss: true
+
+world_boss_lvl135_016:
+  name: "&5Welt-Boss Lvl 135 #016"
+  type: "WITHER"
+  health: 2150
+  damage: 53
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6050
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl16_behavior_016"
+  boss: true
+
+world_boss_lvl136_017:
+  name: "&5Welt-Boss Lvl 136 #017"
+  type: "WITHER"
+  health: 2160
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6080
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl17_behavior_017"
+  boss: true
+
+world_boss_lvl137_018:
+  name: "&5Welt-Boss Lvl 137 #018"
+  type: "WITHER"
+  health: 2170
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6110
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl18_behavior_018"
+  boss: true
+
+world_boss_lvl138_019:
+  name: "&5Welt-Boss Lvl 138 #019"
+  type: "WITHER"
+  health: 2180
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6140
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl19_behavior_019"
+  boss: true
+
+world_boss_lvl139_020:
+  name: "&5Welt-Boss Lvl 139 #020"
+  type: "WITHER"
+  health: 2190
+  damage: 54
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6170
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl20_behavior_020"
+  boss: true
+
+world_boss_lvl140_021:
+  name: "&5Welt-Boss Lvl 140 #021"
+  type: "WITHER"
+  health: 2200
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6200
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl21_behavior_021"
+  boss: true
+
+world_boss_lvl141_022:
+  name: "&5Welt-Boss Lvl 141 #022"
+  type: "WITHER"
+  health: 2210
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6230
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl22_behavior_022"
+  boss: true
+
+world_boss_lvl142_023:
+  name: "&5Welt-Boss Lvl 142 #023"
+  type: "WITHER"
+  health: 2220
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6260
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl23_behavior_023"
+  boss: true
+
+world_boss_lvl143_024:
+  name: "&5Welt-Boss Lvl 143 #024"
+  type: "WITHER"
+  health: 2230
+  damage: 55
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6290
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl24_behavior_024"
+  boss: true
+
+world_boss_lvl144_025:
+  name: "&5Welt-Boss Lvl 144 #025"
+  type: "WITHER"
+  health: 2240
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6320
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl25_behavior_025"
+  boss: true
+
+world_boss_lvl145_026:
+  name: "&5Welt-Boss Lvl 145 #026"
+  type: "WITHER"
+  health: 2250
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6350
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl26_behavior_026"
+  boss: true
+
+world_boss_lvl146_027:
+  name: "&5Welt-Boss Lvl 146 #027"
+  type: "WITHER"
+  health: 2260
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6380
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl27_behavior_027"
+  boss: true
+
+world_boss_lvl147_028:
+  name: "&5Welt-Boss Lvl 147 #028"
+  type: "WITHER"
+  health: 2270
+  damage: 56
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6410
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl28_behavior_028"
+  boss: true
+
+world_boss_lvl148_029:
+  name: "&5Welt-Boss Lvl 148 #029"
+  type: "WITHER"
+  health: 2280
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6440
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl29_behavior_029"
+  boss: true
+
+world_boss_lvl149_030:
+  name: "&5Welt-Boss Lvl 149 #030"
+  type: "WITHER"
+  health: 2290
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6470
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl30_behavior_030"
+  boss: true
+
+world_boss_lvl150_031:
+  name: "&5Welt-Boss Lvl 150 #031"
+  type: "WITHER"
+  health: 2300
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6500
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl01_behavior_031"
+  boss: true
+
+world_boss_lvl151_032:
+  name: "&5Welt-Boss Lvl 151 #032"
+  type: "WITHER"
+  health: 2310
+  damage: 57
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6530
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl02_behavior_032"
+  boss: true
+
+world_boss_lvl152_033:
+  name: "&5Welt-Boss Lvl 152 #033"
+  type: "WITHER"
+  health: 2320
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6560
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl03_behavior_033"
+  boss: true
+
+world_boss_lvl153_034:
+  name: "&5Welt-Boss Lvl 153 #034"
+  type: "WITHER"
+  health: 2330
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6590
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl04_behavior_034"
+  boss: true
+
+world_boss_lvl154_035:
+  name: "&5Welt-Boss Lvl 154 #035"
+  type: "WITHER"
+  health: 2340
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6620
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl05_behavior_035"
+  boss: true
+
+world_boss_lvl155_036:
+  name: "&5Welt-Boss Lvl 155 #036"
+  type: "WITHER"
+  health: 2350
+  damage: 58
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6650
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl06_behavior_036"
+  boss: true
+
+world_boss_lvl156_037:
+  name: "&5Welt-Boss Lvl 156 #037"
+  type: "WITHER"
+  health: 2360
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6680
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl07_behavior_037"
+  boss: true
+
+world_boss_lvl157_038:
+  name: "&5Welt-Boss Lvl 157 #038"
+  type: "WITHER"
+  health: 2370
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6710
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl08_behavior_038"
+  boss: true
+
+world_boss_lvl158_039:
+  name: "&5Welt-Boss Lvl 158 #039"
+  type: "WITHER"
+  health: 2380
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6740
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl09_behavior_039"
+  boss: true
+
+world_boss_lvl159_040:
+  name: "&5Welt-Boss Lvl 159 #040"
+  type: "WITHER"
+  health: 2390
+  damage: 59
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6770
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl10_behavior_040"
+  boss: true
+
+world_boss_lvl160_041:
+  name: "&5Welt-Boss Lvl 160 #041"
+  type: "WITHER"
+  health: 2400
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6800
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl11_behavior_041"
+  boss: true
+
+world_boss_lvl161_042:
+  name: "&5Welt-Boss Lvl 161 #042"
+  type: "WITHER"
+  health: 2410
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6830
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl12_behavior_042"
+  boss: true
+
+world_boss_lvl162_043:
+  name: "&5Welt-Boss Lvl 162 #043"
+  type: "WITHER"
+  health: 2420
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6860
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl13_behavior_043"
+  boss: true
+
+world_boss_lvl163_044:
+  name: "&5Welt-Boss Lvl 163 #044"
+  type: "WITHER"
+  health: 2430
+  damage: 60
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 6890
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl14_behavior_044"
+  boss: true
+
+world_boss_lvl164_045:
+  name: "&5Welt-Boss Lvl 164 #045"
+  type: "WITHER"
+  health: 2440
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 6920
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl15_behavior_045"
+  boss: true
+
+world_boss_lvl165_046:
+  name: "&5Welt-Boss Lvl 165 #046"
+  type: "WITHER"
+  health: 2450
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 6950
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl16_behavior_046"
+  boss: true
+
+world_boss_lvl166_047:
+  name: "&5Welt-Boss Lvl 166 #047"
+  type: "WITHER"
+  health: 2460
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 11
+  xp: 6980
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl17_behavior_047"
+  boss: true
+
+world_boss_lvl167_048:
+  name: "&5Welt-Boss Lvl 167 #048"
+  type: "WITHER"
+  health: 2470
+  damage: 61
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 8
+  xp: 7010
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl18_behavior_048"
+  boss: true
+
+world_boss_lvl168_049:
+  name: "&5Welt-Boss Lvl 168 #049"
+  type: "WITHER"
+  health: 2480
+  damage: 62
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 9
+  xp: 7040
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl19_behavior_049"
+  boss: true
+
+world_boss_lvl169_050:
+  name: "&5Welt-Boss Lvl 169 #050"
+  type: "WITHER"
+  health: 2490
+  damage: 62
+  mainHand: "NETHERITE_AXE"
+  helmet: "NETHERITE_HELMET"
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 7070
+  lootTable: "world_boss_loot"
+  behaviorTree: "lvl20_behavior_050"
+  boss: true
+

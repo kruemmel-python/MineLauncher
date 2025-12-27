@@ -212,34 +212,36 @@ public class GuiListener implements Listener {
             if (event.getSlot() == 53) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>NPC erstellen: <id> <role> [shopId]"), input -> {
                     String[] parts = input.trim().split("\\s+");
-                    if (parts.length < 2) {
-                        player.sendMessage(Text.mm("<red>Format: <id> <role> [shopId]"));
-                        return;
-                    }
-                    String id = parts[0];
-                    if (plugin.npcManager().getNpc(id) != null) {
-                        player.sendMessage(Text.mm("<red>NPC existiert bereits."));
-                        return;
-                    }
-                    Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
-                    if (roleOpt.isEmpty()) {
-                        player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
-                        return;
-                    }
-                    Npc npc = new Npc(id);
-                    npc.setName(id);
-                    npc.setRole(roleOpt.get());
-                    npc.setLocation(player.getLocation());
-                    npc.setDialog(java.util.List.of("Hallo!", "Ich habe eine Aufgabe für dich."));
-                    if (npc.role() == NpcRole.VENDOR && parts.length >= 3) {
-                        npc.setShopId(parts[2]);
-                    }
-                    plugin.npcManager().npcs().put(id, npc);
-                    plugin.npcManager().spawnNpc(npc);
-                    plugin.npcManager().saveNpc(npc);
-                    plugin.auditLog().log(player, "NPC erstellt (GUI): " + id);
-                    player.sendMessage(Text.mm("<green>NPC erstellt: " + id));
-                    plugin.guiManager().openNpcEditor(player);
+                    runSync(() -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: <id> <role> [shopId]"));
+                            return;
+                        }
+                        String id = parts[0];
+                        if (plugin.npcManager().getNpc(id) != null) {
+                            player.sendMessage(Text.mm("<red>NPC existiert bereits."));
+                            return;
+                        }
+                        Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
+                        if (roleOpt.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
+                            return;
+                        }
+                        Npc npc = new Npc(id);
+                        npc.setName(id);
+                        npc.setRole(roleOpt.get());
+                        npc.setLocation(player.getLocation());
+                        npc.setDialog(java.util.List.of("Hallo!", "Ich habe eine Aufgabe für dich."));
+                        if (npc.role() == NpcRole.VENDOR && parts.length >= 3) {
+                            npc.setShopId(parts[2]);
+                        }
+                        plugin.npcManager().npcs().put(id, npc);
+                        plugin.npcManager().spawnNpc(npc);
+                        plugin.npcManager().saveNpc(npc);
+                        plugin.auditLog().log(player, "NPC erstellt (GUI): " + id);
+                        player.sendMessage(Text.mm("<green>NPC erstellt: " + id));
+                        plugin.guiManager().openNpcEditor(player);
+                    });
                 });
                 return;
             }
@@ -250,12 +252,14 @@ public class GuiListener implements Listener {
             if (event.isRightClick()) {
                 Npc npc = plugin.npcManager().getNpc(npcId);
                 if (npc != null) {
-                    removeNpcEntity(npc);
-                    plugin.npcManager().npcs().remove(npcId);
-                    plugin.npcManager().saveAll();
-                    plugin.auditLog().log(player, "NPC gelöscht (GUI): " + npcId);
-                    player.sendMessage(Text.mm("<red>NPC gelöscht: " + npcId));
-                    plugin.guiManager().openNpcEditor(player);
+                    runSync(() -> {
+                        removeNpcEntity(npc);
+                        plugin.npcManager().npcs().remove(npcId);
+                        plugin.npcManager().saveAll();
+                        plugin.auditLog().log(player, "NPC gelöscht (GUI): " + npcId);
+                        player.sendMessage(Text.mm("<red>NPC gelöscht: " + npcId));
+                        plugin.guiManager().openNpcEditor(player);
+                    });
                 }
                 return;
             }
@@ -265,111 +269,113 @@ public class GuiListener implements Listener {
             }
             plugin.promptManager().prompt(player, Text.mm("<yellow>NPC bearbeiten: <name|role|dialog|quest|shop|faction|rank|move> ..."), input -> {
                 String[] parts = input.trim().split("\\s+");
-                if (parts.length == 0 || parts[0].isBlank()) {
-                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
-                    return;
-                }
-                String action = parts[0].toLowerCase(Locale.ROOT);
-                boolean needsRespawn = false;
-                switch (action) {
-                    case "name" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
-                            return;
-                        }
-                        String name = input.substring(input.indexOf(' ') + 1).trim();
-                        if (name.isBlank()) {
-                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
-                            return;
-                        }
-                        npc.setName(name);
-                        needsRespawn = true;
-                    }
-                    case "role" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: role <rolle>"));
-                            return;
-                        }
-                        Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
-                        if (roleOpt.isEmpty()) {
-                            player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
-                            return;
-                        }
-                        npc.setRole(roleOpt.get());
-                        needsRespawn = true;
-                    }
-                    case "dialog" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: dialog <text>"));
-                            return;
-                        }
-                        String dialog = input.substring(input.indexOf(' ') + 1).trim();
-                        if (dialog.isBlank()) {
-                            player.sendMessage(Text.mm("<red>Dialog darf nicht leer sein."));
-                            return;
-                        }
-                        npc.setDialog(java.util.List.of(dialog));
-                    }
-                    case "quest" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: quest <questId|none>"));
-                            return;
-                        }
-                        String questId = parts[1];
-                        if (!questId.equalsIgnoreCase("none") && plugin.questManager().getQuest(questId) == null) {
-                            player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
-                            return;
-                        }
-                        npc.setQuestLink(questId.equalsIgnoreCase("none") ? null : questId);
-                    }
-                    case "shop" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: shop <shopId|none>"));
-                            return;
-                        }
-                        String shopId = parts[1];
-                        if (!shopId.equalsIgnoreCase("none") && plugin.shopManager().getShop(shopId) == null) {
-                            player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
-                            return;
-                        }
-                        npc.setShopId(shopId.equalsIgnoreCase("none") ? null : shopId);
-                    }
-                    case "faction" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: faction <factionId|none>"));
-                            return;
-                        }
-                        String factionId = parts[1];
-                        if (!factionId.equalsIgnoreCase("none") && plugin.factionManager().getFaction(factionId) == null) {
-                            player.sendMessage(Text.mm("<red>Fraktion nicht gefunden."));
-                            return;
-                        }
-                        npc.setFactionId(factionId.equalsIgnoreCase("none") ? null : factionId);
-                    }
-                    case "rank" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: rank <rankId|none>"));
-                            return;
-                        }
-                        String rankId = parts[1];
-                        npc.setRequiredRankId(rankId.equalsIgnoreCase("none") ? null : rankId);
-                    }
-                    case "move" -> {
-                        npc.setLocation(player.getLocation());
-                        needsRespawn = true;
-                    }
-                    default -> {
-                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                runSync(() -> {
+                    if (parts.length == 0 || parts[0].isBlank()) {
+                        player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
                         return;
                     }
-                }
-                if (needsRespawn) {
-                    respawnNpc(npc);
-                }
-                plugin.npcManager().saveNpc(npc);
-                plugin.auditLog().log(player, "NPC aktualisiert (GUI): " + npc.id());
-                player.sendMessage(Text.mm("<green>NPC aktualisiert."));
-                plugin.guiManager().openNpcEditor(player);
+                    String action = parts[0].toLowerCase(Locale.ROOT);
+                    boolean needsRespawn = false;
+                    switch (action) {
+                        case "name" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                                return;
+                            }
+                            String name = input.substring(input.indexOf(' ') + 1).trim();
+                            if (name.isBlank()) {
+                                player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                                return;
+                            }
+                            npc.setName(name);
+                            needsRespawn = true;
+                        }
+                        case "role" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: role <rolle>"));
+                                return;
+                            }
+                            Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
+                            if (roleOpt.isEmpty()) {
+                                player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
+                                return;
+                            }
+                            npc.setRole(roleOpt.get());
+                            needsRespawn = true;
+                        }
+                        case "dialog" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: dialog <text>"));
+                                return;
+                            }
+                            String dialog = input.substring(input.indexOf(' ') + 1).trim();
+                            if (dialog.isBlank()) {
+                                player.sendMessage(Text.mm("<red>Dialog darf nicht leer sein."));
+                                return;
+                            }
+                            npc.setDialog(java.util.List.of(dialog));
+                        }
+                        case "quest" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: quest <questId|none>"));
+                                return;
+                            }
+                            String questId = parts[1];
+                            if (!questId.equalsIgnoreCase("none") && plugin.questManager().getQuest(questId) == null) {
+                                player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
+                                return;
+                            }
+                            npc.setQuestLink(questId.equalsIgnoreCase("none") ? null : questId);
+                        }
+                        case "shop" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: shop <shopId|none>"));
+                                return;
+                            }
+                            String shopId = parts[1];
+                            if (!shopId.equalsIgnoreCase("none") && plugin.shopManager().getShop(shopId) == null) {
+                                player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+                                return;
+                            }
+                            npc.setShopId(shopId.equalsIgnoreCase("none") ? null : shopId);
+                        }
+                        case "faction" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: faction <factionId|none>"));
+                                return;
+                            }
+                            String factionId = parts[1];
+                            if (!factionId.equalsIgnoreCase("none") && plugin.factionManager().getFaction(factionId) == null) {
+                                player.sendMessage(Text.mm("<red>Fraktion nicht gefunden."));
+                                return;
+                            }
+                            npc.setFactionId(factionId.equalsIgnoreCase("none") ? null : factionId);
+                        }
+                        case "rank" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: rank <rankId|none>"));
+                                return;
+                            }
+                            String rankId = parts[1];
+                            npc.setRequiredRankId(rankId.equalsIgnoreCase("none") ? null : rankId);
+                        }
+                        case "move" -> {
+                            npc.setLocation(player.getLocation());
+                            needsRespawn = true;
+                        }
+                        default -> {
+                            player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                            return;
+                        }
+                    }
+                    if (needsRespawn) {
+                        respawnNpc(npc);
+                    }
+                    plugin.npcManager().saveNpc(npc);
+                    plugin.auditLog().log(player, "NPC aktualisiert (GUI): " + npc.id());
+                    player.sendMessage(Text.mm("<green>NPC aktualisiert."));
+                    plugin.guiManager().openNpcEditor(player);
+                });
             });
             return;
         }
@@ -1302,20 +1308,24 @@ public class GuiListener implements Listener {
     }
 
     private void respawnNpc(Npc npc) {
-        removeNpcEntity(npc);
-        plugin.npcManager().spawnNpc(npc);
-        plugin.npcManager().saveNpc(npc);
+        runSync(() -> {
+            removeNpcEntity(npc);
+            plugin.npcManager().spawnNpc(npc);
+            plugin.npcManager().saveNpc(npc);
+        });
     }
 
     private void removeNpcEntity(Npc npc) {
-        if (npc.uuid() == null) {
-            return;
-        }
-        Entity entity = plugin.getServer().getEntity(npc.uuid());
-        if (entity != null) {
-            entity.remove();
-        }
-        npc.setUuid(null);
+        runSync(() -> {
+            if (npc.uuid() == null) {
+                return;
+            }
+            Entity entity = plugin.getServer().getEntity(npc.uuid());
+            if (entity != null) {
+                entity.remove();
+            }
+            npc.setUuid(null);
+        });
     }
 
     private void removeSkillFromClasses(String skillId) {
@@ -1366,6 +1376,14 @@ public class GuiListener implements Listener {
             return Integer.parseInt(raw);
         } catch (NumberFormatException e) {
             return raw;
+        }
+    }
+
+    private void runSync(Runnable action) {
+        if (org.bukkit.Bukkit.isPrimaryThread()) {
+            action.run();
+        } else {
+            plugin.getServer().getScheduler().runTask(plugin, action);
         }
     }
 

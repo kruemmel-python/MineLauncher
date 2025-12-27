@@ -135,6 +135,10 @@ public class RPGPlugin extends JavaPlugin {
     private NamespacedKey wandKey;
     private NamespacedKey buildingKey;
     private NamespacedKey buildingCategoryKey;
+    private NamespacedKey zoneKey;
+    private NamespacedKey npcGuiKey;
+    private NamespacedKey lootKey;
+    private NamespacedKey classKey;
     private NamespacedKey permRoleKey;
     private NamespacedKey permPlayerKey;
     private NamespacedKey permNodeKey;
@@ -182,6 +186,10 @@ public class RPGPlugin extends JavaPlugin {
         wandKey = new NamespacedKey(this, "editor_wand");
         buildingKey = new NamespacedKey(this, "building_id");
         buildingCategoryKey = new NamespacedKey(this, "building_category");
+        zoneKey = new NamespacedKey(this, "zone_id");
+        npcGuiKey = new NamespacedKey(this, "npc_gui_id");
+        lootKey = new NamespacedKey(this, "loot_id");
+        classKey = new NamespacedKey(this, "class_id");
         permRoleKey = new NamespacedKey(this, "perm_role");
         permPlayerKey = new NamespacedKey(this, "perm_player");
         permNodeKey = new NamespacedKey(this, "perm_node");
@@ -212,7 +220,7 @@ public class RPGPlugin extends JavaPlugin {
             getConfig().getLong("permissions.cacheTtlSeconds", 30));
         guiManager = new GuiManager(playerDataManager, questManager, worldEventManager, skillManager, classManager, factionManager,
             buildingManager, permissionService, enchantManager, itemGenerator, questKey, skillKey, buildingKey, buildingCategoryKey,
-            permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
+            zoneKey, npcGuiKey, lootKey, classKey, permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getPluginManager().registerEvents(new CombatListener(this), this);
@@ -484,6 +492,22 @@ public class RPGPlugin extends JavaPlugin {
 
     public NamespacedKey buildingCategoryKey() {
         return buildingCategoryKey;
+    }
+
+    public NamespacedKey zoneKey() {
+        return zoneKey;
+    }
+
+    public NamespacedKey npcGuiKey() {
+        return npcGuiKey;
+    }
+
+    public NamespacedKey lootKey() {
+        return lootKey;
+    }
+
+    public NamespacedKey classKey() {
+        return classKey;
     }
 
     public NamespacedKey permRoleKey() {

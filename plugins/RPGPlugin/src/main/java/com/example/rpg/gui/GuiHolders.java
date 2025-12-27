@@ -26,6 +26,48 @@ public final class GuiHolders {
         }
     }
 
+    public static final class ZoneEditorHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class NpcEditorHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class QuestEditorHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class LootEditorHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class SkillAdminHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public static final class ClassAdminHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     public static final class QuestListHolder implements InventoryHolder {
         @Override
         public @NotNull Inventory getInventory() {

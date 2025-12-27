@@ -2,12 +2,29 @@ package com.example.rpg.listener;
 
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.gui.GuiHolders;
+import com.example.rpg.model.ClassDefinition;
+import com.example.rpg.model.LootEntry;
+import com.example.rpg.model.LootTable;
+import com.example.rpg.model.Npc;
+import com.example.rpg.model.NpcRole;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Quest;
 import com.example.rpg.model.QuestProgress;
+import com.example.rpg.model.QuestStep;
+import com.example.rpg.model.QuestStepType;
+import com.example.rpg.model.Rarity;
 import com.example.rpg.model.Skill;
+import com.example.rpg.model.SkillCategory;
+import com.example.rpg.model.SkillType;
+import com.example.rpg.skill.SkillEffectConfig;
+import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.util.Text;
+import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
+import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,14 +65,783 @@ public class GuiListener implements Listener {
         }
         if (holder instanceof GuiHolders.AdminMenuHolder) {
             event.setCancelled(true);
-            if (event.getSlot() == 15) {
-                boolean enabled = plugin.toggleDebug(player.getUniqueId());
-                player.sendMessage(Text.mm(enabled ? "<green>Debug aktiviert." : "<red>Debug deaktiviert."));
-            } else if (event.getSlot() == 16) {
-                plugin.guiManager().openBuildingCategories(player);
-            } else if (event.getSlot() == 17) {
-                plugin.guiManager().openPermissionsMain(player);
+            switch (event.getSlot()) {
+                case 10 -> plugin.guiManager().openZoneEditor(player);
+                case 11 -> plugin.guiManager().openNpcEditor(player);
+                case 12 -> plugin.guiManager().openQuestEditor(player);
+                case 13 -> plugin.guiManager().openLootEditor(player);
+                case 14 -> plugin.guiManager().openSkillAdmin(player);
+                case 15 -> {
+                    boolean enabled = plugin.toggleDebug(player.getUniqueId());
+                    player.sendMessage(Text.mm(enabled ? "<green>Debug aktiviert." : "<red>Debug deaktiviert."));
+                }
+                case 16 -> plugin.guiManager().openBuildingCategories(player);
+                case 17 -> plugin.guiManager().openPermissionsMain(player);
+                default -> {
+                }
             }
+            return;
+        }
+        if (holder instanceof GuiHolders.ZoneEditorHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Zone erstellen: <id>"), input -> {
+                    String id = input.trim();
+                    if (id.isBlank()) {
+                        player.sendMessage(Text.mm("<red>ID darf nicht leer sein."));
+                        return;
+                    }
+                    if (plugin.zoneManager().getZone(id) != null) {
+                        player.sendMessage(Text.mm("<red>Zone existiert bereits."));
+                        return;
+                    }
+                    Location pos1 = readPosition(player, "pos1");
+                    Location pos2 = readPosition(player, "pos2");
+                    if (pos1 == null || pos2 == null) {
+                        player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+                        return;
+                    }
+                    com.example.rpg.model.Zone zone = new com.example.rpg.model.Zone(id);
+                    zone.setName(id);
+                    zone.setWorld(pos1.getWorld().getName());
+                    zone.setBounds(pos1, pos2);
+                    plugin.zoneManager().zones().put(id, zone);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Zone erstellt: " + id));
+                    plugin.guiManager().openZoneEditor(player);
+                });
+                return;
+            }
+            String zoneId = resolveZoneId(current);
+            if (zoneId == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.zoneManager().zones().remove(zoneId) != null) {
+                    plugin.zoneManager().saveAll();
+                    plugin.auditLog().log(player, "Zone gelöscht (GUI): " + zoneId);
+                    player.sendMessage(Text.mm("<red>Zone gelöscht: " + zoneId));
+                    plugin.guiManager().openZoneEditor(player);
+                }
+                return;
+            }
+            var zone = plugin.zoneManager().getZone(zoneId);
+            if (zone == null) {
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Zone bearbeiten: <name|level|mod|bounds|world> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                switch (action) {
+                    case "name" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                            return;
+                        }
+                        String name = input.substring(input.indexOf(' ') + 1).trim();
+                        if (name.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                            return;
+                        }
+                        zone.setName(name);
+                    }
+                    case "level" -> {
+                        if (parts.length < 3) {
+                            player.sendMessage(Text.mm("<red>Format: level <min> <max>"));
+                            return;
+                        }
+                        Integer min = parseInt(parts[1]);
+                        Integer max = parseInt(parts[2]);
+                        if (min == null || max == null || min < 1 || max < min) {
+                            player.sendMessage(Text.mm("<red>Ungültiger Levelbereich."));
+                            return;
+                        }
+                        zone.setMinLevel(min);
+                        zone.setMaxLevel(max);
+                    }
+                    case "mod" -> {
+                        if (parts.length < 3) {
+                            player.sendMessage(Text.mm("<red>Format: mod <slow> <damage>"));
+                            return;
+                        }
+                        Double slow = parseDouble(parts[1]);
+                        Double dmg = parseDouble(parts[2]);
+                        if (slow == null || dmg == null || slow <= 0.0 || dmg <= 0.0) {
+                            player.sendMessage(Text.mm("<red>Ungültige Mod-Werte."));
+                            return;
+                        }
+                        zone.setSlowMultiplier(slow);
+                        zone.setDamageMultiplier(dmg);
+                    }
+                    case "bounds" -> {
+                        Location pos1 = readPosition(player, "pos1");
+                        Location pos2 = readPosition(player, "pos2");
+                        if (pos1 == null || pos2 == null) {
+                            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+                            return;
+                        }
+                        zone.setWorld(pos1.getWorld().getName());
+                        zone.setBounds(pos1, pos2);
+                    }
+                    case "world" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: world <name>"));
+                            return;
+                        }
+                        zone.setWorld(parts[1]);
+                    }
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                plugin.zoneManager().saveZone(zone);
+                plugin.auditLog().log(player, "Zone aktualisiert (GUI): " + zone.id());
+                player.sendMessage(Text.mm("<green>Zone aktualisiert."));
+                plugin.guiManager().openZoneEditor(player);
+            });
+            return;
+        }
+        if (holder instanceof GuiHolders.NpcEditorHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>NPC erstellen: <id> <role> [shopId]"), input -> {
+                    String[] parts = input.trim().split("\\s+");
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <role> [shopId]"));
+                        return;
+                    }
+                    String id = parts[0];
+                    if (plugin.npcManager().getNpc(id) != null) {
+                        player.sendMessage(Text.mm("<red>NPC existiert bereits."));
+                        return;
+                    }
+                    Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
+                    if (roleOpt.isEmpty()) {
+                        player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
+                        return;
+                    }
+                    Npc npc = new Npc(id);
+                    npc.setName(id);
+                    npc.setRole(roleOpt.get());
+                    npc.setLocation(player.getLocation());
+                    npc.setDialog(java.util.List.of("Hallo!", "Ich habe eine Aufgabe für dich."));
+                    if (npc.role() == NpcRole.VENDOR && parts.length >= 3) {
+                        npc.setShopId(parts[2]);
+                    }
+                    plugin.npcManager().npcs().put(id, npc);
+                    plugin.npcManager().spawnNpc(npc);
+                    plugin.npcManager().saveNpc(npc);
+                    plugin.auditLog().log(player, "NPC erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>NPC erstellt: " + id));
+                    plugin.guiManager().openNpcEditor(player);
+                });
+                return;
+            }
+            String npcId = resolveNpcId(current);
+            if (npcId == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                Npc npc = plugin.npcManager().getNpc(npcId);
+                if (npc != null) {
+                    removeNpcEntity(npc);
+                    plugin.npcManager().npcs().remove(npcId);
+                    plugin.npcManager().saveAll();
+                    plugin.auditLog().log(player, "NPC gelöscht (GUI): " + npcId);
+                    player.sendMessage(Text.mm("<red>NPC gelöscht: " + npcId));
+                    plugin.guiManager().openNpcEditor(player);
+                }
+                return;
+            }
+            Npc npc = plugin.npcManager().getNpc(npcId);
+            if (npc == null) {
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>NPC bearbeiten: <name|role|dialog|quest|shop|faction|rank|move> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                boolean needsRespawn = false;
+                switch (action) {
+                    case "name" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                            return;
+                        }
+                        String name = input.substring(input.indexOf(' ') + 1).trim();
+                        if (name.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                            return;
+                        }
+                        npc.setName(name);
+                        needsRespawn = true;
+                    }
+                    case "role" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: role <rolle>"));
+                            return;
+                        }
+                        Optional<NpcRole> roleOpt = parseEnum(NpcRole.class, parts[1]);
+                        if (roleOpt.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannte Rolle."));
+                            return;
+                        }
+                        npc.setRole(roleOpt.get());
+                        needsRespawn = true;
+                    }
+                    case "dialog" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: dialog <text>"));
+                            return;
+                        }
+                        String dialog = input.substring(input.indexOf(' ') + 1).trim();
+                        if (dialog.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Dialog darf nicht leer sein."));
+                            return;
+                        }
+                        npc.setDialog(java.util.List.of(dialog));
+                    }
+                    case "quest" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: quest <questId|none>"));
+                            return;
+                        }
+                        String questId = parts[1];
+                        if (!questId.equalsIgnoreCase("none") && plugin.questManager().getQuest(questId) == null) {
+                            player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
+                            return;
+                        }
+                        npc.setQuestLink(questId.equalsIgnoreCase("none") ? null : questId);
+                    }
+                    case "shop" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: shop <shopId|none>"));
+                            return;
+                        }
+                        String shopId = parts[1];
+                        if (!shopId.equalsIgnoreCase("none") && plugin.shopManager().getShop(shopId) == null) {
+                            player.sendMessage(Text.mm("<red>Shop nicht gefunden."));
+                            return;
+                        }
+                        npc.setShopId(shopId.equalsIgnoreCase("none") ? null : shopId);
+                    }
+                    case "faction" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: faction <factionId|none>"));
+                            return;
+                        }
+                        String factionId = parts[1];
+                        if (!factionId.equalsIgnoreCase("none") && plugin.factionManager().getFaction(factionId) == null) {
+                            player.sendMessage(Text.mm("<red>Fraktion nicht gefunden."));
+                            return;
+                        }
+                        npc.setFactionId(factionId.equalsIgnoreCase("none") ? null : factionId);
+                    }
+                    case "rank" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: rank <rankId|none>"));
+                            return;
+                        }
+                        String rankId = parts[1];
+                        npc.setRequiredRankId(rankId.equalsIgnoreCase("none") ? null : rankId);
+                    }
+                    case "move" -> {
+                        npc.setLocation(player.getLocation());
+                        needsRespawn = true;
+                    }
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                if (needsRespawn) {
+                    respawnNpc(npc);
+                }
+                plugin.npcManager().saveNpc(npc);
+                plugin.auditLog().log(player, "NPC aktualisiert (GUI): " + npc.id());
+                player.sendMessage(Text.mm("<green>NPC aktualisiert."));
+                plugin.guiManager().openNpcEditor(player);
+            });
+            return;
+        }
+        if (holder instanceof GuiHolders.QuestEditorHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Quest erstellen: <id> <name>"), input -> {
+                    String[] parts = input.trim().split("\\s+", 2);
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <name>"));
+                        return;
+                    }
+                    String id = parts[0];
+                    if (plugin.questManager().getQuest(id) != null) {
+                        player.sendMessage(Text.mm("<red>Quest existiert bereits."));
+                        return;
+                    }
+                    Quest quest = new Quest(id);
+                    quest.setName(parts[1]);
+                    quest.setDescription("Neue Quest");
+                    quest.setRepeatable(false);
+                    quest.setMinLevel(1);
+                    quest.setSteps(new java.util.ArrayList<>());
+                    plugin.questManager().quests().put(id, quest);
+                    plugin.questManager().saveQuest(quest);
+                    plugin.auditLog().log(player, "Quest erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Quest erstellt: " + id));
+                    plugin.guiManager().openQuestEditor(player);
+                });
+                return;
+            }
+            String questId = resolveQuestId(current);
+            if (questId == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.questManager().quests().remove(questId) != null) {
+                    plugin.questManager().saveAll();
+                    plugin.auditLog().log(player, "Quest gelöscht (GUI): " + questId);
+                    player.sendMessage(Text.mm("<red>Quest gelöscht: " + questId));
+                    plugin.guiManager().openQuestEditor(player);
+                }
+                return;
+            }
+            Quest quest = plugin.questManager().getQuest(questId);
+            if (quest == null) {
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Quest bearbeiten: <name|desc|minlevel|repeatable|event|addstep> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                switch (action) {
+                    case "name" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                            return;
+                        }
+                        String name = input.substring(input.indexOf(' ') + 1).trim();
+                        if (name.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                            return;
+                        }
+                        quest.setName(name);
+                    }
+                    case "desc" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: desc <text>"));
+                            return;
+                        }
+                        String desc = input.substring(input.indexOf(' ') + 1).trim();
+                        quest.setDescription(desc);
+                    }
+                    case "minlevel" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: minlevel <level>"));
+                            return;
+                        }
+                        Integer level = parseInt(parts[1]);
+                        if (level == null || level < 1) {
+                            player.sendMessage(Text.mm("<red>Level ungültig."));
+                            return;
+                        }
+                        quest.setMinLevel(level);
+                    }
+                    case "repeatable" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: repeatable <true|false>"));
+                            return;
+                        }
+                        quest.setRepeatable(Boolean.parseBoolean(parts[1]));
+                    }
+                    case "event" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: event <eventId|none>"));
+                            return;
+                        }
+                        String eventId = parts[1];
+                        quest.setRequiredEvent(eventId.equalsIgnoreCase("none") ? null : eventId);
+                    }
+                    case "addstep" -> {
+                        if (parts.length < 4) {
+                            player.sendMessage(Text.mm("<red>Format: addstep <type> <target> <amount>"));
+                            return;
+                        }
+                        Optional<QuestStepType> typeOpt = parseEnum(QuestStepType.class, parts[1]);
+                        if (typeOpt.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannter Step-Typ."));
+                            return;
+                        }
+                        Integer amount = parseInt(parts[3]);
+                        if (amount == null || amount < 1) {
+                            player.sendMessage(Text.mm("<red>Amount muss >= 1 sein."));
+                            return;
+                        }
+                        quest.steps().add(new QuestStep(typeOpt.get(), parts[2], amount));
+                    }
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                plugin.questManager().saveQuest(quest);
+                plugin.auditLog().log(player, "Quest aktualisiert (GUI): " + quest.id());
+                player.sendMessage(Text.mm("<green>Quest aktualisiert."));
+                plugin.guiManager().openQuestEditor(player);
+            });
+            return;
+        }
+        if (holder instanceof GuiHolders.LootEditorHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Loot-Tabelle erstellen: <id> <appliesTo>"), input -> {
+                    String[] parts = input.trim().split("\\s+", 2);
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <appliesTo>"));
+                        return;
+                    }
+                    String id = parts[0];
+                    if (plugin.lootManager().getTable(id) != null) {
+                        player.sendMessage(Text.mm("<red>Loot-Tabelle existiert bereits."));
+                        return;
+                    }
+                    LootTable table = new LootTable(id);
+                    table.setAppliesTo(parts[1]);
+                    plugin.lootManager().tables().put(id, table);
+                    plugin.lootManager().saveTable(table);
+                    plugin.auditLog().log(player, "Loot-Tabelle erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Loot-Tabelle erstellt."));
+                    plugin.guiManager().openLootEditor(player);
+                });
+                return;
+            }
+            String tableId = resolveLootId(current);
+            if (tableId == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.lootManager().tables().remove(tableId) != null) {
+                    plugin.lootManager().saveAll();
+                    plugin.auditLog().log(player, "Loot-Tabelle gelöscht (GUI): " + tableId);
+                    player.sendMessage(Text.mm("<red>Loot-Tabelle gelöscht: " + tableId));
+                    plugin.guiManager().openLootEditor(player);
+                }
+                return;
+            }
+            LootTable table = plugin.lootManager().getTable(tableId);
+            if (table == null) {
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Loot bearbeiten: <applies|addentry|clear> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                switch (action) {
+                    case "applies" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: applies <target>"));
+                            return;
+                        }
+                        table.setAppliesTo(parts[1]);
+                    }
+                    case "addentry" -> {
+                        if (parts.length < 6) {
+                            player.sendMessage(Text.mm("<red>Format: addentry <material> <chance> <min> <max> <rarity>"));
+                            return;
+                        }
+                        Material mat = Material.matchMaterial(parts[1].toUpperCase(Locale.ROOT));
+                        if (mat == null) {
+                            player.sendMessage(Text.mm("<red>Material ungültig."));
+                            return;
+                        }
+                        Double chance = parseDouble(parts[2]);
+                        Integer min = parseInt(parts[3]);
+                        Integer max = parseInt(parts[4]);
+                        Optional<Rarity> rarityOpt = parseEnum(Rarity.class, parts[5]);
+                        if (chance == null || min == null || max == null || rarityOpt.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Parameter ungültig."));
+                            return;
+                        }
+                        if (chance < 0.0 || chance > 1.0 || min < 1 || max < min) {
+                            player.sendMessage(Text.mm("<red>Chance 0..1 und min/max prüfen."));
+                            return;
+                        }
+                        table.entries().add(new LootEntry(mat.name(), chance, min, max, rarityOpt.get()));
+                    }
+                    case "clear" -> table.entries().clear();
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                plugin.lootManager().saveTable(table);
+                plugin.auditLog().log(player, "Loot-Tabelle aktualisiert (GUI): " + table.id());
+                player.sendMessage(Text.mm("<green>Loot-Tabelle aktualisiert."));
+                plugin.guiManager().openLootEditor(player);
+            });
+            return;
+        }
+        if (holder instanceof GuiHolders.SkillAdminHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 51) {
+                plugin.guiManager().openClassAdmin(player);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Skill erstellen: <id>"), input -> {
+                    String id = input.trim().toLowerCase(Locale.ROOT);
+                    if (id.isBlank()) {
+                        player.sendMessage(Text.mm("<red>ID darf nicht leer sein."));
+                        return;
+                    }
+                    if (plugin.skillManager().getSkill(id) != null) {
+                        player.sendMessage(Text.mm("<red>Skill existiert bereits."));
+                        return;
+                    }
+                    Skill skill = new Skill(id);
+                    skill.setName(id);
+                    skill.setType(SkillType.ACTIVE);
+                    skill.setCategory(SkillCategory.ATTACK);
+                    skill.setCooldown(10);
+                    skill.setManaCost(10);
+                    skill.setEffects(new java.util.ArrayList<>());
+                    plugin.skillManager().skills().put(id, skill);
+                    plugin.skillManager().saveSkill(skill);
+                    plugin.auditLog().log(player, "Skill erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Skill erstellt: " + id));
+                    plugin.guiManager().openSkillAdmin(player);
+                });
+                return;
+            }
+            Skill skill = resolveSkill(current);
+            if (skill == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.skillManager().skills().remove(skill.id()) != null) {
+                    plugin.skillManager().saveAll();
+                    removeSkillFromClasses(skill.id());
+                    plugin.auditLog().log(player, "Skill gelöscht (GUI): " + skill.id());
+                    player.sendMessage(Text.mm("<red>Skill gelöscht: " + skill.id()));
+                    plugin.guiManager().openSkillAdmin(player);
+                }
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Skill bearbeiten: <name|cooldown|mana|category|type|requires|addeffect|cleareffects> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                switch (action) {
+                    case "name" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                            return;
+                        }
+                        String name = input.substring(input.indexOf(' ') + 1).trim();
+                        if (name.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                            return;
+                        }
+                        skill.setName(name);
+                    }
+                    case "cooldown" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: cooldown <wert>"));
+                            return;
+                        }
+                        Integer value = parseInt(parts[1]);
+                        if (value == null || value < 0) {
+                            player.sendMessage(Text.mm("<red>Cooldown ungültig."));
+                            return;
+                        }
+                        skill.setCooldown(value);
+                    }
+                    case "mana" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: mana <wert>"));
+                            return;
+                        }
+                        Integer value = parseInt(parts[1]);
+                        if (value == null || value < 0) {
+                            player.sendMessage(Text.mm("<red>Mana ungültig."));
+                            return;
+                        }
+                        skill.setManaCost(value);
+                    }
+                    case "category" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: category <kategorie>"));
+                            return;
+                        }
+                        Optional<SkillCategory> category = parseEnum(SkillCategory.class, parts[1]);
+                        if (category.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannte Kategorie."));
+                            return;
+                        }
+                        skill.setCategory(category.get());
+                    }
+                    case "type" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: type <typ>"));
+                            return;
+                        }
+                        Optional<SkillType> type = parseEnum(SkillType.class, parts[1]);
+                        if (type.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannter Typ."));
+                            return;
+                        }
+                        skill.setType(type.get());
+                    }
+                    case "requires" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: requires <skillId|none>"));
+                            return;
+                        }
+                        skill.setRequiredSkill(parts[1].equalsIgnoreCase("none") ? null : parts[1]);
+                    }
+                    case "addeffect" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: addeffect <effectType> <param:value>..."));
+                            return;
+                        }
+                        Optional<SkillEffectType> typeOpt = parseEnum(SkillEffectType.class, parts[1]);
+                        if (typeOpt.isEmpty()) {
+                            player.sendMessage(Text.mm("<red>Unbekannter Effekt-Typ."));
+                            return;
+                        }
+                        java.util.Map<String, Object> params = new java.util.HashMap<>();
+                        for (int i = 2; i < parts.length; i++) {
+                            String token = parts[i];
+                            if (!token.contains(":")) {
+                                continue;
+                            }
+                            String[] pair = token.split(":", 2);
+                            params.put(pair[0], parseParamValue(pair[1]));
+                        }
+                        skill.effects().add(new SkillEffectConfig(typeOpt.get(), params));
+                    }
+                    case "cleareffects" -> skill.effects().clear();
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                plugin.skillManager().saveSkill(skill);
+                plugin.auditLog().log(player, "Skill aktualisiert (GUI): " + skill.id());
+                player.sendMessage(Text.mm("<green>Skill aktualisiert."));
+                plugin.guiManager().openSkillAdmin(player);
+            });
+            return;
+        }
+        if (holder instanceof GuiHolders.ClassAdminHolder) {
+            event.setCancelled(true);
+            if (event.getSlot() == 53) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Klasse erstellen: <id> <name>"), input -> {
+                    String[] parts = input.trim().split("\\s+", 2);
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <name>"));
+                        return;
+                    }
+                    String id = parts[0];
+                    if (plugin.classManager().getClass(id) != null) {
+                        player.sendMessage(Text.mm("<red>Klasse existiert bereits."));
+                        return;
+                    }
+                    ClassDefinition definition = new ClassDefinition(id);
+                    definition.setName(parts[1]);
+                    definition.setStartSkills(new java.util.ArrayList<>());
+                    plugin.classManager().classes().put(id, definition);
+                    plugin.classManager().saveClass(definition);
+                    plugin.auditLog().log(player, "Klasse erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Klasse erstellt: " + id));
+                    plugin.guiManager().openClassAdmin(player);
+                });
+                return;
+            }
+            String classId = resolveClassId(current);
+            if (classId == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.classManager().classes().remove(classId) != null) {
+                    plugin.classManager().saveAll();
+                    plugin.auditLog().log(player, "Klasse gelöscht (GUI): " + classId);
+                    player.sendMessage(Text.mm("<red>Klasse gelöscht: " + classId));
+                    plugin.guiManager().openClassAdmin(player);
+                }
+                return;
+            }
+            ClassDefinition definition = plugin.classManager().getClass(classId);
+            if (definition == null) {
+                return;
+            }
+            plugin.promptManager().prompt(player, Text.mm("<yellow>Klasse bearbeiten: <name|addskill|removeskill> ..."), input -> {
+                String[] parts = input.trim().split("\\s+");
+                if (parts.length == 0 || parts[0].isBlank()) {
+                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                    return;
+                }
+                String action = parts[0].toLowerCase(Locale.ROOT);
+                switch (action) {
+                    case "name" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
+                            return;
+                        }
+                        String name = input.substring(input.indexOf(' ') + 1).trim();
+                        if (name.isBlank()) {
+                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
+                            return;
+                        }
+                        definition.setName(name);
+                    }
+                    case "addskill" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: addskill <skillId>"));
+                            return;
+                        }
+                        if (plugin.skillManager().getSkill(parts[1]) == null) {
+                            player.sendMessage(Text.mm("<red>Skill nicht gefunden."));
+                            return;
+                        }
+                        if (!definition.startSkills().contains(parts[1])) {
+                            definition.startSkills().add(parts[1]);
+                        }
+                    }
+                    case "removeskill" -> {
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: removeskill <skillId>"));
+                            return;
+                        }
+                        definition.startSkills().remove(parts[1]);
+                    }
+                    default -> {
+                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                        return;
+                    }
+                }
+                plugin.classManager().saveClass(definition);
+                plugin.auditLog().log(player, "Klasse aktualisiert (GUI): " + definition.id());
+                player.sendMessage(Text.mm("<green>Klasse aktualisiert."));
+                plugin.guiManager().openClassAdmin(player);
+            });
             return;
         }
         if (holder instanceof GuiHolders.BuildingCategoryHolder) {
@@ -421,6 +1207,46 @@ public class GuiListener implements Listener {
         return meta.getPersistentDataContainer().get(plugin.permRoleKey(), PersistentDataType.STRING);
     }
 
+    private String resolveZoneId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.zoneKey(), PersistentDataType.STRING);
+    }
+
+    private String resolveNpcId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.npcGuiKey(), PersistentDataType.STRING);
+    }
+
+    private String resolveQuestId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.questKey(), PersistentDataType.STRING);
+    }
+
+    private String resolveLootId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.lootKey(), PersistentDataType.STRING);
+    }
+
+    private String resolveClassId(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return null;
+        }
+        return meta.getPersistentDataContainer().get(plugin.classKey(), PersistentDataType.STRING);
+    }
+
     private String resolveNodeKey(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
@@ -455,6 +1281,92 @@ public class GuiListener implements Listener {
             case "deny" -> com.example.rpg.permissions.PermissionDecision.DENY;
             default -> com.example.rpg.permissions.PermissionDecision.INHERIT;
         };
+    }
+
+    private Location readPosition(Player player, String key) {
+        NamespacedKey namespacedKey = new NamespacedKey(plugin, key);
+        String value = player.getPersistentDataContainer().get(namespacedKey, PersistentDataType.STRING);
+        if (value == null) {
+            return null;
+        }
+        String[] parts = value.split(",");
+        if (parts.length < 4) {
+            return null;
+        }
+        org.bukkit.World world = plugin.getServer().getWorld(parts[0]);
+        if (world == null) {
+            return null;
+        }
+        return new Location(world,
+            Double.parseDouble(parts[1]), Double.parseDouble(parts[2]), Double.parseDouble(parts[3]));
+    }
+
+    private void respawnNpc(Npc npc) {
+        removeNpcEntity(npc);
+        plugin.npcManager().spawnNpc(npc);
+        plugin.npcManager().saveNpc(npc);
+    }
+
+    private void removeNpcEntity(Npc npc) {
+        if (npc.uuid() == null) {
+            return;
+        }
+        Entity entity = plugin.getServer().getEntity(npc.uuid());
+        if (entity != null) {
+            entity.remove();
+        }
+        npc.setUuid(null);
+    }
+
+    private void removeSkillFromClasses(String skillId) {
+        boolean updated = false;
+        for (ClassDefinition definition : plugin.classManager().classes().values()) {
+            if (definition.startSkills().remove(skillId)) {
+                updated = true;
+            }
+        }
+        if (updated) {
+            plugin.classManager().saveAll();
+        }
+    }
+
+    private static Integer parseInt(String raw) {
+        try {
+            return Integer.parseInt(raw);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private static Double parseDouble(String raw) {
+        try {
+            return Double.parseDouble(raw);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    private static <E extends Enum<E>> Optional<E> parseEnum(Class<E> type, String raw) {
+        if (raw == null) {
+            return Optional.empty();
+        }
+        String key = raw.trim().toUpperCase(Locale.ROOT);
+        try {
+            return Optional.of(Enum.valueOf(type, key));
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
+        }
+    }
+
+    private static Object parseParamValue(String raw) {
+        try {
+            if (raw.contains(".")) {
+                return Double.parseDouble(raw);
+            }
+            return Integer.parseInt(raw);
+        } catch (NumberFormatException e) {
+            return raw;
+        }
     }
 
     private void handleShopClick(Player player, Inventory inventory, int slot, ItemStack clicked,

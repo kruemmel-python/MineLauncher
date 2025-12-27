@@ -5,6 +5,9 @@ import com.example.rpg.model.MobDefinition;
 import com.example.rpg.model.Spawner;
 import com.example.rpg.dungeon.wfc.Pattern;
 import com.example.rpg.dungeon.wfc.WfcGenerator;
+import com.example.rpg.dungeon.jigsaw.RoomStructureLoader;
+import com.example.rpg.dungeon.jigsaw.RoomTemplate;
+import com.example.rpg.dungeon.jigsaw.SchematicRoomStructureLoader;
 import com.example.rpg.dungeon.layout.DungeonBuilder;
 import com.example.rpg.dungeon.layout.DungeonPlan;
 import com.example.rpg.dungeon.layout.DungeonPlanner;
@@ -30,10 +33,12 @@ public class DungeonGenerator {
     private final RPGPlugin plugin;
     private final Random random = new Random();
     private final WfcGenerator wfcGenerator;
+    private final RoomStructureLoader structureLoader;
 
     public DungeonGenerator(RPGPlugin plugin) {
         this.plugin = plugin;
         this.wfcGenerator = new WfcGenerator(plugin);
+        this.structureLoader = new SchematicRoomStructureLoader();
     }
 
     public DungeonInstance generate(String theme, List<Player> party, java.util.Set<java.util.UUID> participants, double scale) {
@@ -48,9 +53,9 @@ public class DungeonGenerator {
         int depth = grid * maxSize;
         BoundingBox bounds = new BoundingBox(0, baseY, 0, width, baseY + 6, depth);
         createGlassBoundary(world, bounds, wallHeight);
-        DungeonPlan plan = planDungeon(bounds, settings);
+        DungeonPlan plan = planDungeon(bounds, settings, theme);
         if (plan != null) {
-            new DungeonBuilder(plugin, random).build(world, plan, settings);
+            new DungeonBuilder(plugin, random).build(world, plan, settings, theme);
             Location start = plan.startRoom().center(world);
             Location bossRoom = plan.bossRoom().center(world);
             spawnSigns(start, bossRoom, theme);
@@ -85,9 +90,9 @@ public class DungeonGenerator {
                     BoundingBox area = new BoundingBox(0, originY, 0, maxX, maxY, maxZ);
                     createGlassBoundary(world, area, wallHeight);
                     DungeonSettings settings = loadSettings();
-                    DungeonPlan plan = planDungeon(area, settings);
+                    DungeonPlan plan = planDungeon(area, settings, theme);
                     if (plan != null) {
-                        new DungeonBuilder(plugin, random).build(world, plan, settings);
+                        new DungeonBuilder(plugin, random).build(world, plan, settings, theme);
                         start = plan.startRoom().center(world);
                         bossRoom = plan.bossRoom().center(world);
                         spawnSigns(start, bossRoom, theme);
@@ -271,7 +276,10 @@ public class DungeonGenerator {
                 ? lootPerRoom.get(1)
                 : 3,
             config.getString("dungeon.loot.table", "wcf_dungeon_default"),
-            config.getBoolean("dungeon.debug.enabled", false)
+            config.getBoolean("dungeon.debug.enabled", false),
+            config.getBoolean("dungeon.jigsaw.enabled", false),
+            config.getBoolean("dungeon.jigsaw.wfcFill", false),
+            config.getString("dungeon.jigsaw.wfcTheme", "")
         );
     }
 
@@ -280,11 +288,14 @@ public class DungeonGenerator {
         return material != null ? material : fallback;
     }
 
-    private DungeonPlan planDungeon(BoundingBox bounds, DungeonSettings settings) {
+    private DungeonPlan planDungeon(BoundingBox bounds, DungeonSettings settings, String theme) {
         long seed = plugin.getConfig().getLong("dungeon.seed", System.currentTimeMillis());
+        List<RoomTemplate> templates = settings.jigsawEnabled()
+            ? structureLoader.loadRooms(plugin, theme)
+            : List.of();
         for (int attempt = 0; attempt < 5; attempt++) {
             DungeonPlanner planner = new DungeonPlanner(new Random(seed + attempt));
-            DungeonPlan plan = planner.plan(seed + attempt, bounds, settings);
+            DungeonPlan plan = planner.plan(seed + attempt, bounds, settings, templates);
             if (plan != null) {
                 return plan;
             }

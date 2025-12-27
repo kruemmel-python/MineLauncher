@@ -26,6 +26,13 @@ public final class GuiHolders {
         }
     }
 
+    public static final class DungeonAdminHolder implements InventoryHolder {
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     public static final class ZoneEditorHolder implements InventoryHolder {
         private final int page;
 

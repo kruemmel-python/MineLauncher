@@ -27,6 +27,9 @@ public class DungeonSettings {
     private final int lootMax;
     private final String lootTable;
     private final boolean debugEnabled;
+    private final boolean jigsawEnabled;
+    private final boolean wfcRoomFillEnabled;
+    private final String wfcRoomTheme;
 
     public DungeonSettings(int roomCount,
                            List<Integer> roomMinSize,
@@ -48,7 +51,10 @@ public class DungeonSettings {
                            int lootMin,
                            int lootMax,
                            String lootTable,
-                           boolean debugEnabled) {
+                           boolean debugEnabled,
+                           boolean jigsawEnabled,
+                           boolean wfcRoomFillEnabled,
+                           String wfcRoomTheme) {
         this.roomCount = roomCount;
         this.roomMinSizeX = roomMinSize.get(0);
         this.roomMinSizeZ = roomMinSize.get(1);
@@ -72,6 +78,9 @@ public class DungeonSettings {
         this.lootMax = lootMax;
         this.lootTable = lootTable;
         this.debugEnabled = debugEnabled;
+        this.jigsawEnabled = jigsawEnabled;
+        this.wfcRoomFillEnabled = wfcRoomFillEnabled;
+        this.wfcRoomTheme = wfcRoomTheme;
     }
 
     public int roomCount() {
@@ -164,5 +173,17 @@ public class DungeonSettings {
 
     public boolean debugEnabled() {
         return debugEnabled;
+    }
+
+    public boolean jigsawEnabled() {
+        return jigsawEnabled;
+    }
+
+    public boolean wfcRoomFillEnabled() {
+        return wfcRoomFillEnabled;
+    }
+
+    public String wfcRoomTheme() {
+        return wfcRoomTheme;
     }
 }

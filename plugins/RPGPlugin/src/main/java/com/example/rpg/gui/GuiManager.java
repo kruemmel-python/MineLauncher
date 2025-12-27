@@ -1,5 +1,6 @@
 package com.example.rpg.gui;
 
+import com.example.rpg.RPGPlugin;
 import com.example.rpg.manager.ClassManager;
 import com.example.rpg.manager.FactionManager;
 import com.example.rpg.manager.PlayerDataManager;
@@ -38,6 +39,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class GuiManager {
+    private final RPGPlugin plugin;
     private final PlayerDataManager playerDataManager;
     private final QuestManager questManager;
     private final WorldEventManager worldEventManager;
@@ -64,7 +66,7 @@ public class GuiManager {
     private final NamespacedKey permActionKey;
     private final NamespacedKey enchantRecipeKey;
 
-    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
+    public GuiManager(RPGPlugin plugin, PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
                       SkillManager skillManager, ClassManager classManager, FactionManager factionManager,
                       BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
                       com.example.rpg.manager.EnchantManager enchantManager, com.example.rpg.manager.ItemStatManager itemStatManager,
@@ -73,6 +75,7 @@ public class GuiManager {
                       NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey npcTemplateKey, NamespacedKey lootKey, NamespacedKey classKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
+        this.plugin = plugin;
         this.playerDataManager = playerDataManager;
         this.questManager = questManager;
         this.worldEventManager = worldEventManager;
@@ -176,6 +179,51 @@ public class GuiManager {
         inv.setItem(17, new ItemBuilder(Material.NAME_TAG)
             .name(Text.mm("<aqua>Permissions"))
             .loreLine(Text.mm("<gray>Rollen & Rechte verwalten"))
+            .build());
+        inv.setItem(18, new ItemBuilder(Material.DEEPSLATE_BRICKS)
+            .name(Text.mm("<gold>Dungeons"))
+            .loreLine(Text.mm("<gray>Dungeon-Generator"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openDungeonAdmin(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.DungeonAdminHolder(), 27, Component.text("Dungeon Admin"));
+        boolean jigsawEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.enabled", false);
+        boolean wfcFillEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.wfcFill", false);
+        inv.setItem(7, new ItemBuilder(Material.WRITABLE_BOOK)
+            .name(Text.mm("<gold>Schematic speichern"))
+            .loreLine(Text.mm("<gray>Wand-Auswahl sichern"))
+            .loreLine(Text.mm("<yellow>Klick: Pfad eingeben"))
+            .build());
+        inv.setItem(9, new ItemBuilder(Material.STRUCTURE_BLOCK)
+            .name(Text.mm("<gold>Schematic platzieren"))
+            .loreLine(Text.mm("<gray>Einzelnes .schem setzen"))
+            .loreLine(Text.mm("<yellow>Klick: Dateiname eingeben"))
+            .build());
+        inv.setItem(11, new ItemBuilder(Material.JIGSAW)
+            .name(Text.mm("<gold>Jigsaw Modus"))
+            .loreLine(Text.mm("<gray>Status: <white>" + (jigsawEnabled ? "Aktiv" : "Inaktiv") + "</white>"))
+            .loreLine(Text.mm("<yellow>Klick: umschalten"))
+            .build());
+        inv.setItem(13, new ItemBuilder(Material.MOSSY_COBBLESTONE)
+            .name(Text.mm("<green>WFC Raum-Füllung"))
+            .loreLine(Text.mm("<gray>Status: <white>" + (wfcFillEnabled ? "Aktiv" : "Inaktiv") + "</white>"))
+            .loreLine(Text.mm("<yellow>Klick: umschalten"))
+            .build());
+        inv.setItem(15, new ItemBuilder(Material.NETHER_STAR)
+            .name(Text.mm("<aqua>Dungeon generieren"))
+            .loreLine(Text.mm("<gray>Erstellt eine neue Instanz"))
+            .loreLine(Text.mm("<yellow>Klick: Theme angeben"))
+            .build());
+        inv.setItem(17, new ItemBuilder(Material.BOOK)
+            .name(Text.mm("<yellow>Setup-Info"))
+            .loreLine(Text.mm("<gray>Ordner & Socket-Hilfe"))
+            .loreLine(Text.mm("<yellow>Klick: Chat-Info"))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Zurück"))
+            .loreLine(Text.mm("<gray>Admin-Menü"))
             .build());
         player.openInventory(inv);
     }

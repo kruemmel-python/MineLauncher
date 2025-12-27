@@ -1,5 +1,7 @@
 package com.example.rpg.dungeon.layout;
 
+import com.example.rpg.dungeon.jigsaw.JigsawRoomPlacer;
+import com.example.rpg.dungeon.jigsaw.RoomTemplate;
 import com.example.rpg.dungeon.layout.CorridorRouter.RoomEdge;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,20 +16,27 @@ public class DungeonPlanner {
     private final RoomPlacer roomPlacer;
     private final CorridorRouter corridorRouter;
     private final DungeonValidator validator;
+    private final JigsawRoomPlacer jigsawRoomPlacer;
 
     public DungeonPlanner(Random random) {
         this.random = random;
         this.roomPlacer = new RoomPlacer(random);
         this.corridorRouter = new CorridorRouter(random);
         this.validator = new DungeonValidator();
+        this.jigsawRoomPlacer = new JigsawRoomPlacer(random);
     }
 
-    public DungeonPlan plan(long seed, BoundingBox bounds, DungeonSettings settings) {
-        List<Room> rooms = roomPlacer.placeRooms(bounds, settings);
+    public DungeonPlan plan(long seed, BoundingBox bounds, DungeonSettings settings, List<RoomTemplate> templates) {
+        boolean useJigsaw = settings.jigsawEnabled() && templates != null && !templates.isEmpty();
+        List<Room> rooms = useJigsaw
+            ? jigsawRoomPlacer.placeRooms(bounds, settings, templates)
+            : roomPlacer.placeRooms(bounds, settings);
         if (rooms.size() < 3) {
             return null;
         }
-        assignRoomTypes(rooms, settings);
+        if (!useJigsaw) {
+            assignRoomTypes(rooms, settings);
+        }
         List<RoomEdge> edges = buildEdges(rooms);
         List<Corridor> corridors = corridorRouter.routeCorridors(bounds, rooms, edges);
         DungeonGraph graph = new DungeonGraph();

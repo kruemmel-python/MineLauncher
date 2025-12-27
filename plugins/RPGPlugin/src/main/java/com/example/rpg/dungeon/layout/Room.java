@@ -1,5 +1,6 @@
 package com.example.rpg.dungeon.layout;
 
+import com.example.rpg.dungeon.jigsaw.RoomTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Location;
@@ -7,10 +8,12 @@ import org.bukkit.util.BoundingBox;
 
 public class Room {
     private final int id;
-    private final BoundingBox bounds;
+    private BoundingBox bounds;
     private RoomType type;
     private final List<Location> doorPoints = new ArrayList<>();
     private final List<Location> spawnPoints = new ArrayList<>();
+    private final List<RoomSocket> sockets = new ArrayList<>();
+    private RoomTemplate template;
 
     public Room(int id, BoundingBox bounds, RoomType type) {
         this.id = id;
@@ -24,6 +27,10 @@ public class Room {
 
     public BoundingBox bounds() {
         return bounds;
+    }
+
+    public void setBounds(BoundingBox bounds) {
+        this.bounds = bounds;
     }
 
     public RoomType type() {
@@ -40,6 +47,18 @@ public class Room {
 
     public List<Location> spawnPoints() {
         return spawnPoints;
+    }
+
+    public List<RoomSocket> sockets() {
+        return sockets;
+    }
+
+    public RoomTemplate template() {
+        return template;
+    }
+
+    public void setTemplate(RoomTemplate template) {
+        this.template = template;
     }
 
     public Location center(org.bukkit.World world) {

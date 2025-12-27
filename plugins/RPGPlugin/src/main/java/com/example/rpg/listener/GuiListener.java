@@ -16,9 +16,11 @@ import com.example.rpg.model.Rarity;
 import com.example.rpg.model.Skill;
 import com.example.rpg.model.SkillCategory;
 import com.example.rpg.model.SkillType;
+import com.example.rpg.schematic.Transform;
 import com.example.rpg.skill.SkillEffectConfig;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.util.Text;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,12 +31,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.Sound;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 
 public class GuiListener implements Listener {
     private final RPGPlugin plugin;
@@ -78,6 +80,22 @@ public class GuiListener implements Listener {
                 }
                 case 16 -> plugin.guiManager().openBuildingCategories(player);
                 case 17 -> plugin.guiManager().openPermissionsMain(player);
+                case 18 -> plugin.guiManager().openDungeonAdmin(player);
+                default -> {
+                }
+            }
+            return;
+        }
+        if (holder instanceof GuiHolders.DungeonAdminHolder) {
+            event.setCancelled(true);
+            switch (event.getSlot()) {
+                case 7 -> promptSchematicSave(player);
+                case 9 -> promptSchematicPlacement(player);
+                case 11 -> toggleDungeonSetting(player, "dungeon.jigsaw.enabled");
+                case 13 -> toggleDungeonSetting(player, "dungeon.jigsaw.wfcFill");
+                case 15 -> promptDungeonTheme(player);
+                case 17 -> sendDungeonSetupInfo(player);
+                case 22 -> plugin.guiManager().openAdminMenu(player);
                 default -> {
                 }
             }
@@ -1333,6 +1351,70 @@ public class GuiListener implements Listener {
                 plugin.guiManager().openEnchanting(player, recipeId, page);
             }
         }
+    }
+
+    private void toggleDungeonSetting(Player player, String path) {
+        boolean current = plugin.getConfig().getBoolean(path, false);
+        plugin.getConfig().set(path, !current);
+        plugin.saveConfig();
+        player.sendMessage(Text.mm("<green>" + path + " => " + (!current)));
+        plugin.guiManager().openDungeonAdmin(player);
+    }
+
+    private void promptDungeonTheme(Player player) {
+        plugin.promptManager().prompt(player, Text.mm("<yellow>Dungeon-Theme eingeben (z.B. wfc):"), input -> {
+            String theme = input.trim();
+            if (theme.isBlank()) {
+                player.sendMessage(Text.mm("<red>Theme darf nicht leer sein."));
+                return;
+            }
+            plugin.dungeonManager().generateDungeon(player, theme, List.of(player));
+            player.sendMessage(Text.mm("<green>Dungeon-Generierung gestartet: " + theme));
+            plugin.guiManager().openDungeonAdmin(player);
+        });
+    }
+
+    private void promptSchematicPlacement(Player player) {
+        plugin.promptManager().prompt(player, Text.mm("<yellow>Schematic-Dateiname (z.B. start_room.schem):"), input -> {
+            String name = input.trim();
+            if (name.isBlank()) {
+                player.sendMessage(Text.mm("<red>Dateiname darf nicht leer sein."));
+                return;
+            }
+            plugin.buildingManager().beginSingleSchematicPlacement(player, name, Transform.Rotation.NONE);
+            player.sendMessage(Text.mm("<green>Platzierungsmodus aktiv für: " + name));
+            player.sendMessage(Text.mm("<gray>Rechtsklick auf einen Block zum Platzieren."));
+        });
+    }
+
+    private void promptSchematicSave(Player player) {
+        Location pos1 = readPosition(player, "pos1");
+        Location pos2 = readPosition(player, "pos2");
+        if (pos1 == null || pos2 == null) {
+            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+            return;
+        }
+        plugin.promptManager().prompt(player,
+            Text.mm("<yellow>Zielpfad (z.B. dungeon_rooms/crypt/start_room.schem):"),
+            input -> {
+                String path = input.trim();
+                if (path.isBlank()) {
+                    player.sendMessage(Text.mm("<red>Dateiname darf nicht leer sein."));
+                    return;
+                }
+                plugin.buildingManager().saveSelectionAsSchematic(player, path, pos1, pos2);
+                plugin.guiManager().openDungeonAdmin(player);
+            });
+    }
+
+    private void sendDungeonSetupInfo(Player player) {
+        player.sendMessage(Text.mm("<gold>Dungeon Setup (Kurzinfo)</gold>"));
+        player.sendMessage(Text.mm("<gray>Wand: <white>/rpgadmin wand</white> -> Pos1/Pos2 setzen"));
+        player.sendMessage(Text.mm("<gray>Speichern: <white>Dungeons → Schematic speichern</white>"));
+        player.sendMessage(Text.mm("<gray>Schematics: <white>plugins/RPGPlugin/dungeon_rooms/<theme>/</white>"));
+        player.sendMessage(Text.mm("<gray>Beispiele: <white>start_room.schem, boss_room.schem</white>"));
+        player.sendMessage(Text.mm("<gray>Jigsaw-Socket: <white>name = corridor_ns</white>"));
+        player.sendMessage(Text.mm("<gray>WFC-Patterns: <white>plugins/RPGPlugin/wfc/<theme>/</white>"));
     }
 
     private Quest resolveQuest(ItemStack item) {

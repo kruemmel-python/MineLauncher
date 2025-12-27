@@ -1,0 +1,29 @@
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.32
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 9.2
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 8
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.27
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

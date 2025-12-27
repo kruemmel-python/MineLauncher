@@ -1,0 +1,29 @@
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.42
+      - type: cast_skill
+        skill: fortify
+      - type: heal_self
+        amount: 12.0
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 9
+        child:
+          type: cast_skill
+          skill: fortify
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.37
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

@@ -1,0 +1,29 @@
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.21
+      - type: cast_skill
+        skill: frost_bolt
+      - type: heal_self
+        amount: 5.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 8
+      - type: cooldown
+        cooldownSeconds: 9
+        child:
+          type: cast_skill
+          skill: fortify
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.16
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

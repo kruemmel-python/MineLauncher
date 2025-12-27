@@ -104,6 +104,36 @@ Diese Anleitung beschreibt **alle Admin-GUI-Funktionen** im RPG-Plugin und erkl�
    ```
 4. Der NPC wird **sofort an deiner aktuellen Position gespawnt** (ein Villager erscheint direkt vor Ort).
 
+### NPC-Shop Vorlagen nutzen
+Im NPC-Editor findest du fertige **Shop-Vorlagen** in der unteren Reihe. So nutzt du sie:
+
+1. **Klicke** auf eine Vorlage (z. B. **Waffenhändler**, **Rüstungshändler**, **Gegenstandshändler**, **Rohstoffhändler**, **Questgiver**, **Shop (shops.yml)**).
+2. Danach wirst du nach einer Eingabe gefragt:
+   - **Für Waffen-/Rüstungs-/Gegenstand-/Rohstoffhändler**:
+     ```
+     <id>
+     ```
+     Beispiel:
+     ```
+     waffi
+     ```
+   - **Für Shop (shops.yml)**:
+     ```
+     <id> <shopId>
+     ```
+     Beispiel:
+     ```
+     vendor1 blacksmith_shop
+     ```
+3. Der NPC wird **sofort an deiner aktuellen Position gespawnt**.
+
+**Hinweis zu den Vorlagen:**
+- **Waffenhändler** verkauft/kauft alle Waffen aus dem Spiel.
+- **Rüstungshändler** verkauft/kauft alle Rüstungen aus dem Spiel.
+- **Gegenstandshändler** verkauft/kauft diverse Items & Verbrauchsgüter.
+- **Rohstoffhändler** verkauft/kauft Ressourcen & Erze.
+- Alle Händler können **zusätzlich RPG-Items** (Item-Generator) ankaufen/verkaufen, wenn sie vom Material her passen.
+
 ### NPC bearbeiten
 1. **Linksklick** auf einen NPC.
 2. Eingabeformat:

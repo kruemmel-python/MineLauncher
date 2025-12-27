@@ -1,3 +1,18 @@
+lvl05_behavior_035:
+  name: "&cGegner Lvl 5"
+  type: ZOMBIE
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_035
+
 type: selector
 children:
   - type: sequence

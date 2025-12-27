@@ -1,3 +1,18 @@
+lvl25_behavior_145:
+  name: "&cGegner Lvl 25"
+  type: SLIME
+  health: 120
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_145
+
 type: selector
 children:
   - type: sequence

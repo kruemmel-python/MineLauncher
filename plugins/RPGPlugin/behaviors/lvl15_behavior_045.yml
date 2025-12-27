@@ -1,3 +1,18 @@
+lvl15_behavior_045:
+  name: "&cGegner Lvl 15"
+  type: PILLAGER
+  health: 80
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_045
+
 type: selector
 children:
   - type: sequence

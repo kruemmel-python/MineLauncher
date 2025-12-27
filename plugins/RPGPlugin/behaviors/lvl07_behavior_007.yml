@@ -1,3 +1,18 @@
+lvl07_behavior_007:
+  name: "&cGegner Lvl 7"
+  type: DROWNED
+  health: 48
+  damage: 6
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_007
+
 type: selector
 children:
   - type: sequence

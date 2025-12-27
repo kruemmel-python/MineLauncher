@@ -1,3 +1,18 @@
+lvl10_behavior_040:
+  name: "&cGegner Lvl 10"
+  type: STRAY
+  health: 60
+  damage: 8
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_040
+
 type: selector
 children:
   - type: sequence

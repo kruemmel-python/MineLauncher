@@ -1,3 +1,18 @@
+lvl21_behavior_051:
+  name: "&cGegner Lvl 21"
+  type: SILVERFISH
+  health: 104
+  damage: 13
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_051
+
 type: selector
 children:
   - type: sequence

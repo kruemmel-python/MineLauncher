@@ -1,3 +1,18 @@
+lvl26_behavior_116:
+  name: "&cGegner Lvl 26"
+  type: WITHER_SKELETON
+  health: 124
+  damage: 16
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 176
+  lootTable: elite_mobs
+  behaviorTree: lvl26_behavior_116
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl06_behavior_156:
+  name: "&cGegner Lvl 6"
+  type: SPIDER
+  health: 44
+  damage: 6
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_156
+
 type: selector
 children:
   - type: sequence

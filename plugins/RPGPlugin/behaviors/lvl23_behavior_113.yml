@@ -1,3 +1,18 @@
+lvl23_behavior_113:
+  name: "&cGegner Lvl 23"
+  type: PILLAGER
+  health: 112
+  damage: 14
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_113
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl05_behavior_095:
+  name: "&cGegner Lvl 5"
+  type: WITCH
+  health: 40
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_095
+
 type: selector
 children:
   - type: sequence

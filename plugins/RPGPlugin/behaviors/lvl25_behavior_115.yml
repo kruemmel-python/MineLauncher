@@ -1,3 +1,18 @@
+lvl25_behavior_115:
+  name: "&cGegner Lvl 25"
+  type: EVOKER
+  health: 120
+  damage: 15
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 170
+  lootTable: elite_mobs
+  behaviorTree: lvl25_behavior_115
+
 type: selector
 children:
   - type: sequence

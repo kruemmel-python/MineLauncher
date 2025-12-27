@@ -1,3 +1,18 @@
+lvl06_behavior_186:
+  name: "&cGegner Lvl 6"
+  type: MAGMA_CUBE
+  health: 44
+  damage: 6
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 56
+  lootTable: forest_mobs
+  behaviorTree: lvl06_behavior_186
+
 type: selector
 children:
   - type: sequence

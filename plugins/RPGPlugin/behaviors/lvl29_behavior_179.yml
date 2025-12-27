@@ -1,3 +1,18 @@
+lvl29_behavior_179:
+  name: "&cGegner Lvl 29"
+  type: SLIME
+  health: 136
+  damage: 17
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_179
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl24_behavior_114:
+  name: "&cGegner Lvl 24"
+  type: VINDICATOR
+  health: 116
+  damage: 15
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_114
+
 type: selector
 children:
   - type: sequence

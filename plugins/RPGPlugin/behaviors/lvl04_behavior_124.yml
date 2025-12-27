@@ -1,3 +1,18 @@
+lvl04_behavior_124:
+  name: "&cGegner Lvl 4"
+  type: HUSK
+  health: 36
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_124
+
 type: selector
 children:
   - type: sequence

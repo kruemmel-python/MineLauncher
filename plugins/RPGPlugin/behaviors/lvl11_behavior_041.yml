@@ -1,3 +1,18 @@
+lvl11_behavior_041:
+  name: "&cGegner Lvl 11"
+  type: DROWNED
+  health: 64
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_041
+
 type: selector
 children:
   - type: sequence

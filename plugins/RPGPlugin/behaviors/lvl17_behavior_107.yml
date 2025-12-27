@@ -1,3 +1,18 @@
+lvl17_behavior_107:
+  name: "&cGegner Lvl 17"
+  type: HUSK
+  health: 88
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_107
+
 type: selector
 children:
   - type: sequence

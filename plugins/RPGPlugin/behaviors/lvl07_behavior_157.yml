@@ -1,3 +1,18 @@
+lvl07_behavior_157:
+  name: "&cGegner Lvl 7"
+  type: CREEPER
+  health: 48
+  damage: 6
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 62
+  lootTable: forest_mobs
+  behaviorTree: lvl07_behavior_157
+
 type: selector
 children:
   - type: sequence

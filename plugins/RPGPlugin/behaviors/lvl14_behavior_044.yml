@@ -1,3 +1,18 @@
+lvl14_behavior_044:
+  name: "&cGegner Lvl 14"
+  type: WITCH
+  health: 76
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_044
+
 type: selector
 children:
   - type: sequence

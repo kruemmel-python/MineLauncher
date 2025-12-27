@@ -1,3 +1,18 @@
+lvl30_behavior_060:
+  name: "&cGegner Lvl 30"
+  type: SLIME
+  health: 140
+  damage: 18
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_060
+
 type: selector
 children:
   - type: sequence

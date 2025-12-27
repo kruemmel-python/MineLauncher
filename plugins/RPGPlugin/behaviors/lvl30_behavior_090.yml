@@ -1,3 +1,18 @@
+lvl30_behavior_090:
+  name: "&cGegner Lvl 30"
+  type: HUSK
+  health: 140
+  damage: 18
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 200
+  lootTable: elite_mobs
+  behaviorTree: lvl30_behavior_090
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl03_behavior_003:
+  name: "&cGegner Lvl 3"
+  type: SPIDER
+  health: 32
+  damage: 4
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_003
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl28_behavior_088:
+  name: "&cGegner Lvl 28"
+  type: SPIDER
+  health: 132
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_088
+
 type: selector
 children:
   - type: sequence

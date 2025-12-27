@@ -1,3 +1,18 @@
+lvl03_behavior_093:
+  name: "&cGegner Lvl 3"
+  type: ENDERMAN
+  health: 32
+  damage: 4
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_093
+
 type: selector
 children:
   - type: sequence

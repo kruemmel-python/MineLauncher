@@ -1,3 +1,18 @@
+lvl09_behavior_159:
+  name: "&cGegner Lvl 9"
+  type: STRAY
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_159
+
 type: selector
 children:
   - type: sequence

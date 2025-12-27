@@ -1,3 +1,18 @@
+lvl09_behavior_189:
+  name: "&cGegner Lvl 9"
+  type: SKELETON
+  health: 56
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_189
+
 type: selector
 children:
   - type: sequence

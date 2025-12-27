@@ -1,3 +1,18 @@
+lvl20_behavior_110:
+  name: "&cGegner Lvl 20"
+  type: ENDERMAN
+  health: 100
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_110
+
 type: selector
 children:
   - type: sequence

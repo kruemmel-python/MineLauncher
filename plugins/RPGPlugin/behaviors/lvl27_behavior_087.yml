@@ -1,3 +1,18 @@
+lvl27_behavior_087:
+  name: "&cGegner Lvl 27"
+  type: SKELETON
+  health: 128
+  damage: 16
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_087
+
 type: selector
 children:
   - type: sequence

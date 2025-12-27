@@ -1,3 +1,18 @@
+lvl19_behavior_169:
+  name: "&cGegner Lvl 19"
+  type: MAGMA_CUBE
+  health: 96
+  damage: 12
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_169
+
 type: selector
 children:
   - type: sequence

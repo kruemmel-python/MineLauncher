@@ -1,3 +1,18 @@
+lvl16_behavior_106:
+  name: "&cGegner Lvl 16"
+  type: CREEPER
+  health: 84
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_106
+
 type: selector
 children:
   - type: sequence

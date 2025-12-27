@@ -1,3 +1,18 @@
+lvl19_behavior_139:
+  name: "&cGegner Lvl 19"
+  type: SPIDER
+  health: 96
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_139
+
 type: selector
 children:
   - type: sequence

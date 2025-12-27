@@ -1,3 +1,18 @@
+lvl08_behavior_038:
+  name: "&cGegner Lvl 8"
+  type: CREEPER
+  health: 52
+  damage: 7
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 68
+  lootTable: forest_mobs
+  behaviorTree: lvl08_behavior_038
+
 type: selector
 children:
   - type: sequence

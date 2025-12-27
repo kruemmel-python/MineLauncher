@@ -1,3 +1,18 @@
+lvl05_behavior_185:
+  name: "&cGegner Lvl 5"
+  type: BLAZE
+  health: 40
+  damage: 5
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_185
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl12_behavior_132:
+  name: "&cGegner Lvl 12"
+  type: EVOKER
+  health: 68
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_132
+
 type: selector
 children:
   - type: sequence

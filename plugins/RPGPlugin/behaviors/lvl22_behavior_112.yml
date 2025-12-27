@@ -1,3 +1,18 @@
+lvl22_behavior_112:
+  name: "&cGegner Lvl 22"
+  type: WITCH
+  health: 108
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_112
+
 type: selector
 children:
   - type: sequence

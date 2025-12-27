@@ -1,3 +1,18 @@
+lvl27_behavior_117:
+  name: "&cGegner Lvl 27"
+  type: BLAZE
+  health: 128
+  damage: 16
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 182
+  lootTable: elite_mobs
+  behaviorTree: lvl27_behavior_117
+
 type: selector
 children:
   - type: sequence

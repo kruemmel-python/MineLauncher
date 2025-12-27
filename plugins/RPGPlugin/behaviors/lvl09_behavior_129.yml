@@ -1,3 +1,18 @@
+lvl09_behavior_129:
+  name: "&cGegner Lvl 9"
+  type: WITCH
+  health: 56
+  damage: 7
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_129
+
 type: selector
 children:
   - type: sequence

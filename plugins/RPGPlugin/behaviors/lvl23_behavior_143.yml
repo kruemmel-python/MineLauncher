@@ -1,3 +1,18 @@
+lvl23_behavior_143:
+  name: "&cGegner Lvl 23"
+  type: DROWNED
+  health: 112
+  damage: 14
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_143
+
 type: selector
 children:
   - type: sequence

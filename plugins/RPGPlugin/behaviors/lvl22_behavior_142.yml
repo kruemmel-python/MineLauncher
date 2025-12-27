@@ -1,3 +1,18 @@
+lvl22_behavior_142:
+  name: "&cGegner Lvl 22"
+  type: STRAY
+  health: 108
+  damage: 14
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_142
+
 type: selector
 children:
   - type: sequence

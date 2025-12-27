@@ -1,3 +1,18 @@
+lvl13_behavior_073:
+  name: "&cGegner Lvl 13"
+  type: HUSK
+  health: 72
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_073
+
 type: selector
 children:
   - type: sequence

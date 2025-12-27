@@ -1,3 +1,18 @@
+lvl24_behavior_024:
+  name: "&cGegner Lvl 24"
+  type: DROWNED
+  health: 116
+  damage: 15
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_024
+
 type: selector
 children:
   - type: sequence

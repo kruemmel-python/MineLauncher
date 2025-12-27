@@ -1,3 +1,18 @@
+lvl29_behavior_119:
+  name: "&cGegner Lvl 29"
+  type: SILVERFISH
+  health: 136
+  damage: 17
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_119
+
 type: selector
 children:
   - type: sequence

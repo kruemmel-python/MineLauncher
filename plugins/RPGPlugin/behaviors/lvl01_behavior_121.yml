@@ -1,3 +1,18 @@
+lvl01_behavior_121:
+  name: "&cGegner Lvl 1"
+  type: SKELETON
+  health: 24
+  damage: 3
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_121
+
 type: selector
 children:
   - type: sequence

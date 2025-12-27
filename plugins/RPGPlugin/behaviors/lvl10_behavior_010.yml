@@ -1,3 +1,18 @@
+lvl10_behavior_010:
+  name: "&cGegner Lvl 10"
+  type: WITCH
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_010
+
 type: selector
 children:
   - type: sequence

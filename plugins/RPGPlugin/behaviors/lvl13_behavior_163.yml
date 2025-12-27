@@ -1,3 +1,18 @@
+lvl13_behavior_163:
+  name: "&cGegner Lvl 13"
+  type: WITCH
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_163
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl16_behavior_076:
+  name: "&cGegner Lvl 16"
+  type: ENDERMAN
+  health: 84
+  damage: 11
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_076
+
 type: selector
 children:
   - type: sequence

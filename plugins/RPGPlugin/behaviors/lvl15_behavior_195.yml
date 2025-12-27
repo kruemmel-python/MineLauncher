@@ -1,3 +1,18 @@
+lvl15_behavior_195:
+  name: "&cGegner Lvl 15"
+  type: ENDERMAN
+  health: 80
+  damage: 10
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_195
+
 type: selector
 children:
   - type: sequence

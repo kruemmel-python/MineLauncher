@@ -1,3 +1,18 @@
+lvl23_behavior_083:
+  name: "&cGegner Lvl 23"
+  type: BLAZE
+  health: 112
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 158
+  lootTable: elite_mobs
+  behaviorTree: lvl23_behavior_083
+
 type: selector
 children:
   - type: sequence

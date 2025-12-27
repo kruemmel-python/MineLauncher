@@ -1,3 +1,18 @@
+lvl10_behavior_070:
+  name: "&cGegner Lvl 10"
+  type: SKELETON
+  health: 60
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_070
+
 type: selector
 children:
   - type: sequence

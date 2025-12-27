@@ -1,3 +1,18 @@
+lvl21_behavior_021:
+  name: "&cGegner Lvl 21"
+  type: CREEPER
+  health: 104
+  damage: 13
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 146
+  lootTable: elite_mobs
+  behaviorTree: lvl21_behavior_021
+
 type: selector
 children:
   - type: sequence

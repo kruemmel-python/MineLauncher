@@ -1,3 +1,18 @@
+lvl01_behavior_151:
+  name: "&cGegner Lvl 1"
+  type: BLAZE
+  health: 24
+  damage: 3
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 26
+  lootTable: forest_mobs
+  behaviorTree: lvl01_behavior_151
+
 type: selector
 children:
   - type: sequence

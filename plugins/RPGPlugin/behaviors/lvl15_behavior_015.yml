@@ -1,3 +1,18 @@
+lvl15_behavior_015:
+  name: "&cGegner Lvl 15"
+  type: BLAZE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_015
+
 type: selector
 children:
   - type: sequence

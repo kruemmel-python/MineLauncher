@@ -1,3 +1,18 @@
+lvl02_behavior_032:
+  name: "&cGegner Lvl 2"
+  type: BLAZE
+  health: 28
+  damage: 4
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 32
+  lootTable: forest_mobs
+  behaviorTree: lvl02_behavior_032
+
 type: selector
 children:
   - type: sequence

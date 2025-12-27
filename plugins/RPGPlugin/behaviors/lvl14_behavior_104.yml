@@ -1,3 +1,18 @@
+lvl14_behavior_104:
+  name: "&cGegner Lvl 14"
+  type: SKELETON
+  health: 76
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_104
+
 type: selector
 children:
   - type: sequence

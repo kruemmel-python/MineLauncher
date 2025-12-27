@@ -1,3 +1,18 @@
+lvl29_behavior_029:
+  name: "&cGegner Lvl 29"
+  type: VINDICATOR
+  health: 136
+  damage: 17
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 194
+  lootTable: elite_mobs
+  behaviorTree: lvl29_behavior_029
+
 type: selector
 children:
   - type: sequence

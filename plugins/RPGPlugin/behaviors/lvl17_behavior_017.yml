@@ -1,3 +1,18 @@
+lvl17_behavior_017:
+  name: "&cGegner Lvl 17"
+  type: SILVERFISH
+  health: 88
+  damage: 11
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - fortify
+    - execute
+  skillIntervalSeconds: 11
+  xp: 122
+  lootTable: dungeon_mobs
+  behaviorTree: lvl17_behavior_017
+
 type: selector
 children:
   - type: sequence

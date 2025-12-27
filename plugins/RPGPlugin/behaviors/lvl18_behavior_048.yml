@@ -1,3 +1,18 @@
+lvl18_behavior_048:
+  name: "&cGegner Lvl 18"
+  type: WITHER_SKELETON
+  health: 92
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_048
+
 type: selector
 children:
   - type: sequence

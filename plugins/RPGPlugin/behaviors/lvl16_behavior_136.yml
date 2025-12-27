@@ -1,3 +1,18 @@
+lvl16_behavior_136:
+  name: "&cGegner Lvl 16"
+  type: SILVERFISH
+  health: 84
+  damage: 11
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 116
+  lootTable: dungeon_mobs
+  behaviorTree: lvl16_behavior_136
+
 type: selector
 children:
   - type: sequence

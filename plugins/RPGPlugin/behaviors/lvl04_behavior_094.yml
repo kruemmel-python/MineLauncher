@@ -1,3 +1,18 @@
+lvl04_behavior_094:
+  name: "&cGegner Lvl 4"
+  type: SLIME
+  health: 36
+  damage: 5
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_094
+
 type: selector
 children:
   - type: sequence

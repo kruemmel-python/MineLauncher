@@ -1,3 +1,18 @@
+lvl24_behavior_174:
+  name: "&cGegner Lvl 24"
+  type: CREEPER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_174
+
 type: selector
 children:
   - type: sequence

@@ -1,3 +1,18 @@
+lvl05_behavior_155:
+  name: "&cGegner Lvl 5"
+  type: SKELETON
+  health: 40
+  damage: 5
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 50
+  lootTable: forest_mobs
+  behaviorTree: lvl05_behavior_155
+
 type: selector
 children:
   - type: sequence

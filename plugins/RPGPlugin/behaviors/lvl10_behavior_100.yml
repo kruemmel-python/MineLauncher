@@ -1,3 +1,18 @@
+lvl10_behavior_100:
+  name: "&cGegner Lvl 10"
+  type: BLAZE
+  health: 60
+  damage: 8
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_100
+
 type: selector
 children:
   - type: sequence

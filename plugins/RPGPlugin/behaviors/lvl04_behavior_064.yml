@@ -1,3 +1,18 @@
+lvl04_behavior_064:
+  name: "&cGegner Lvl 4"
+  type: EVOKER
+  health: 36
+  damage: 5
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 44
+  lootTable: forest_mobs
+  behaviorTree: lvl04_behavior_064
+
 type: selector
 children:
   - type: sequence

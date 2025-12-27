@@ -1,3 +1,18 @@
+lvl11_behavior_101:
+  name: "&cGegner Lvl 11"
+  type: MAGMA_CUBE
+  health: 64
+  damage: 8
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - frost_bolt
+    - divine_blessing
+  skillIntervalSeconds: 11
+  xp: 86
+  lootTable: dungeon_mobs
+  behaviorTree: lvl11_behavior_101
+
 type: selector
 children:
   - type: sequence

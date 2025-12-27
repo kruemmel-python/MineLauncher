@@ -1,3 +1,18 @@
+lvl19_behavior_199:
+  name: "&cGegner Lvl 19"
+  type: VINDICATOR
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_199
+
 type: selector
 children:
   - type: sequence

@@ -1,0 +1,44 @@
+lvl18_behavior_198:
+  name: "&cGegner Lvl 18"
+  type: PILLAGER
+  health: 92
+  damage: 12
+  mainHand: WOODEN_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - heal_pulse
+    - heal_pulse
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_198
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.36
+      - type: cast_skill
+        skill: heal_pulse
+      - type: heal_self
+        amount: 10.3
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 4
+        child:
+          type: cast_skill
+          skill: heal_pulse
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.31
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

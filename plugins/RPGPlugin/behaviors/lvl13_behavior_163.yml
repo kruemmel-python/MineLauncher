@@ -1,0 +1,44 @@
+lvl13_behavior_163:
+  name: "&cGegner Lvl 13"
+  type: WITCH
+  health: 72
+  damage: 9
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - execute
+    - fortify
+  skillIntervalSeconds: 7
+  xp: 98
+  lootTable: dungeon_mobs
+  behaviorTree: lvl13_behavior_163
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.3
+      - type: cast_skill
+        skill: execute
+      - type: heal_self
+        amount: 8.6
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 5
+        child:
+          type: cast_skill
+          skill: divine_blessing
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.25
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

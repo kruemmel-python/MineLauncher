@@ -1,0 +1,44 @@
+lvl10_behavior_130:
+  name: "&cGegner Lvl 10"
+  type: PILLAGER
+  health: 60
+  damage: 8
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - execute
+    - frost_bolt
+  skillIntervalSeconds: 10
+  xp: 80
+  lootTable: forest_mobs
+  behaviorTree: lvl10_behavior_130
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.27
+      - type: cast_skill
+        skill: execute
+      - type: heal_self
+        amount: 7.5
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 14
+      - type: cooldown
+        cooldownSeconds: 8
+        child:
+          type: cast_skill
+          skill: execute
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.22
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

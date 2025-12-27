@@ -1,0 +1,44 @@
+lvl03_behavior_033:
+  name: "&cGegner Lvl 3"
+  type: MAGMA_CUBE
+  health: 32
+  damage: 4
+  mainHand: DIAMOND_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 38
+  lootTable: forest_mobs
+  behaviorTree: lvl03_behavior_033
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.18
+      - type: cast_skill
+        skill: heal_pulse
+      - type: heal_self
+        amount: 5.0
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 16
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.13
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

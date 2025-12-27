@@ -1,0 +1,44 @@
+lvl15_behavior_105:
+  name: "&cGegner Lvl 15"
+  type: SPIDER
+  health: 80
+  damage: 10
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_105
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.32
+      - type: cast_skill
+        skill: heal_pulse
+      - type: heal_self
+        amount: 9.2
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 6
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.27
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

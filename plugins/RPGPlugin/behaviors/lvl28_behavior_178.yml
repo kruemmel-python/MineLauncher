@@ -1,0 +1,44 @@
+lvl28_behavior_178:
+  name: "&cGegner Lvl 28"
+  type: ENDERMAN
+  health: 132
+  damage: 17
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 188
+  lootTable: elite_mobs
+  behaviorTree: lvl28_behavior_178
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.48
+      - type: cast_skill
+        skill: divine_blessing
+      - type: heal_self
+        amount: 13.8
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 8
+        child:
+          type: cast_skill
+          skill: execute
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.43
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

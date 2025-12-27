@@ -1,0 +1,44 @@
+lvl22_behavior_172:
+  name: "&cGegner Lvl 22"
+  type: SKELETON
+  health: 108
+  damage: 14
+  mainHand: IRON_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - divine_blessing
+    - fortify
+  skillIntervalSeconds: 10
+  xp: 152
+  lootTable: elite_mobs
+  behaviorTree: lvl22_behavior_172
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.41
+      - type: cast_skill
+        skill: divine_blessing
+      - type: heal_self
+        amount: 11.7
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 14
+      - type: cooldown
+        cooldownSeconds: 8
+        child:
+          type: cast_skill
+          skill: execute
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.36
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

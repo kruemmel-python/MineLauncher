@@ -1,0 +1,44 @@
+lvl20_behavior_170:
+  name: "&cGegner Lvl 20"
+  type: SILVERFISH
+  health: 100
+  damage: 13
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - fortify
+    - divine_blessing
+  skillIntervalSeconds: 8
+  xp: 140
+  lootTable: dungeon_mobs
+  behaviorTree: lvl20_behavior_170
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.38
+      - type: cast_skill
+        skill: fortify
+      - type: heal_self
+        amount: 11.0
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 6
+        child:
+          type: cast_skill
+          skill: frost_bolt
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.33
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

@@ -1,0 +1,44 @@
+lvl12_behavior_042:
+  name: "&cGegner Lvl 12"
+  type: ENDERMAN
+  health: 68
+  damage: 9
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 92
+  lootTable: dungeon_mobs
+  behaviorTree: lvl12_behavior_042
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.29
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 8.2
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 6
+      - type: cooldown
+        cooldownSeconds: 4
+        child:
+          type: cast_skill
+          skill: heal_pulse
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.24
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

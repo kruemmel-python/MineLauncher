@@ -1,0 +1,44 @@
+lvl24_behavior_054:
+  name: "&cGegner Lvl 24"
+  type: SPIDER
+  health: 116
+  damage: 15
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 164
+  lootTable: elite_mobs
+  behaviorTree: lvl24_behavior_054
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.43
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 12.4
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 16
+      - type: cooldown
+        cooldownSeconds: 4
+        child:
+          type: cast_skill
+          skill: heal_pulse
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.38
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

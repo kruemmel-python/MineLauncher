@@ -1,0 +1,44 @@
+lvl09_behavior_159:
+  name: "&cGegner Lvl 9"
+  type: STRAY
+  health: 56
+  damage: 7
+  mainHand: WOODEN_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - heal_pulse
+    - power_strike
+  skillIntervalSeconds: 9
+  xp: 74
+  lootTable: forest_mobs
+  behaviorTree: lvl09_behavior_159
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.26
+      - type: cast_skill
+        skill: heal_pulse
+      - type: heal_self
+        amount: 7.2
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 16
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.21
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

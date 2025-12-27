@@ -1,0 +1,44 @@
+lvl19_behavior_199:
+  name: "&cGegner Lvl 19"
+  type: VINDICATOR
+  health: 96
+  damage: 12
+  mainHand: IRON_SWORD
+  helmet: GOLDEN_HELMET
+  skills:
+    - divine_blessing
+    - frost_bolt
+  skillIntervalSeconds: 7
+  xp: 134
+  lootTable: dungeon_mobs
+  behaviorTree: lvl19_behavior_199
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.37
+      - type: cast_skill
+        skill: divine_blessing
+      - type: heal_self
+        amount: 10.6
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 5
+        child:
+          type: cast_skill
+          skill: divine_blessing
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.32
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

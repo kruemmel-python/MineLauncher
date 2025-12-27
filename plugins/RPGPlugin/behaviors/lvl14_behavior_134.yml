@@ -1,0 +1,44 @@
+lvl14_behavior_134:
+  name: "&cGegner Lvl 14"
+  type: BLAZE
+  health: 76
+  damage: 10
+  mainHand: DIAMOND_SWORD
+  helmet: LEATHER_HELMET
+  skills:
+    - frost_bolt
+    - execute
+  skillIntervalSeconds: 8
+  xp: 104
+  lootTable: dungeon_mobs
+  behaviorTree: lvl14_behavior_134
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.31
+      - type: cast_skill
+        skill: frost_bolt
+      - type: heal_self
+        amount: 8.9
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 8
+      - type: cooldown
+        cooldownSeconds: 6
+        child:
+          type: cast_skill
+          skill: frost_bolt
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.26
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

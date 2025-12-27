@@ -1,0 +1,44 @@
+lvl15_behavior_135:
+  name: "&cGegner Lvl 15"
+  type: MAGMA_CUBE
+  health: 80
+  damage: 10
+  mainHand: GOLDEN_AXE
+  helmet: GOLDEN_HELMET
+  skills:
+    - power_strike
+    - heal_pulse
+  skillIntervalSeconds: 9
+  xp: 110
+  lootTable: dungeon_mobs
+  behaviorTree: lvl15_behavior_135
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.32
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 9.2
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 10
+      - type: cooldown
+        cooldownSeconds: 7
+        child:
+          type: cast_skill
+          skill: power_strike
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.27
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

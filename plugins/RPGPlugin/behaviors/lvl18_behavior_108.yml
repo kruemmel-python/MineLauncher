@@ -1,0 +1,44 @@
+lvl18_behavior_108:
+  name: "&cGegner Lvl 18"
+  type: STRAY
+  health: 92
+  damage: 12
+  mainHand: GOLDEN_AXE
+  helmet: LEATHER_HELMET
+  skills:
+    - power_strike
+    - power_strike
+  skillIntervalSeconds: 6
+  xp: 128
+  lootTable: dungeon_mobs
+  behaviorTree: lvl18_behavior_108
+
+type: selector
+children:
+  - type: sequence
+    children:
+      - type: health_below
+        threshold: 0.36
+      - type: cast_skill
+        skill: power_strike
+      - type: heal_self
+        amount: 10.3
+      - type: flee
+  - type: sequence
+    children:
+      - type: target_distance_above
+        distance: 12
+      - type: cooldown
+        cooldownSeconds: 4
+        child:
+          type: cast_skill
+          skill: heal_pulse
+  - type: sequence
+    children:
+      - type: inverter
+        child:
+          type: health_below
+          threshold: 0.31
+      - type: walk_to_target
+      - type: melee_attack
+  - type: melee_attack

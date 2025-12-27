@@ -102,6 +102,7 @@ Diese Anleitung beschreibt **alle Admin-GUI-Funktionen** im RPG-Plugin und erkl√
    ```
    smith VENDOR blacksmith_shop
    ```
+4. Der NPC wird **sofort an deiner aktuellen Position gespawnt** (ein Villager erscheint direkt vor Ort).
 
 ### NPC bearbeiten
 1. **Linksklick** auf einen NPC.

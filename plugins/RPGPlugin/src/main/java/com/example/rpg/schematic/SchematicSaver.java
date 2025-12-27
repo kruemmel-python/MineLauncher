@@ -15,9 +15,10 @@ import java.util.Map;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
-import org.bukkit.block.Jigsaw;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.Jigsaw;
 import org.bukkit.block.data.BlockData;
 
 public class SchematicSaver {
@@ -90,8 +91,23 @@ public class SchematicSaver {
         NbtCompound tag = new NbtCompound();
         tag.put("id", new NbtString("minecraft:jigsaw"));
         tag.put("Pos", new NbtIntArray(new int[] {x, y, z}));
-        tag.put("name", new NbtString(jigsaw.getName()));
+        tag.put("name", new NbtString(readJigsawName(jigsaw)));
         return tag;
+    }
+
+    private String readJigsawName(Jigsaw jigsaw) {
+        try {
+            var method = jigsaw.getClass().getMethod("getName");
+            Object value = method.invoke(jigsaw);
+            if (value instanceof NamespacedKey key) {
+                return key.getKey();
+            }
+            if (value != null) {
+                return value.toString();
+            }
+        } catch (ReflectiveOperationException ignored) {
+        }
+        return "socket";
     }
 
     private byte[] encodeVarInts(int[] values) {

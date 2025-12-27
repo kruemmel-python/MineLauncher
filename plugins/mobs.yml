@@ -35,7 +35,7 @@ forest_bandit:
   mainHand: "CROSSBOW"
   helmet: "LEATHER_HELMET"
   skills:
-    - quick_shot
+    - power_strike
   skillIntervalSeconds: 12
   xp: 70
   lootTable: "bandit_mobs"
@@ -118,4 +118,2526 @@ phantom_lord:
   skillIntervalSeconds: 10
   xp: 110
   lootTable: "sky_mobs"
+  boss: true
+mob_010:
+  name: "§fWesen 010"
+  type: "PHANTOM"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_010"
+  boss: false
+mob_011:
+  name: "§fWesen 011"
+  type: "WOLF"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_011"
+  boss: false
+mob_012:
+  name: "§fWesen 012"
+  type: "ZOMBIE"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_012"
+  boss: false
+mob_013:
+  name: "§fWesen 013"
+  type: "SKELETON"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_013"
+  boss: false
+mob_014:
+  name: "§fWesen 014"
+  type: "PILLAGER"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "forest_mobs"
+  boss: false
+mob_015:
+  name: "§fWesen 015"
+  type: "SPIDER"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_015"
+  boss: false
+mob_016:
+  name: "§fWesen 016"
+  type: "CREEPER"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_016"
+  boss: false
+mob_017:
+  name: "§fWesen 017"
+  type: "WITCH"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_017"
+  boss: false
+mob_018:
+  name: "§fWesen 018"
+  type: "DROWNED"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_018"
+  boss: false
+mob_019:
+  name: "§fWesen 019"
+  type: "HUSK"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_019"
+  boss: false
+mob_020:
+  name: "§fWesen 020"
+  type: "STRAY"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_020"
+  boss: false
+mob_021:
+  name: "§fWesen 021"
+  type: "PHANTOM"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "forest_mobs"
+  boss: false
+mob_022:
+  name: "§fWesen 022"
+  type: "WOLF"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "loot_022"
+  boss: false
+mob_023:
+  name: "§fWesen 023"
+  type: "ZOMBIE"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_023"
+  boss: false
+mob_024:
+  name: "§fWesen 024"
+  type: "SKELETON"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "loot_024"
+  boss: false
+mob_025:
+  name: "§fWesen 025"
+  type: "PILLAGER"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "loot_025"
+  boss: true
+mob_026:
+  name: "§fWesen 026"
+  type: "SPIDER"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "loot_026"
+  boss: false
+mob_027:
+  name: "§fWesen 027"
+  type: "CREEPER"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "loot_027"
+  boss: false
+mob_028:
+  name: "§fWesen 028"
+  type: "WITCH"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "forest_mobs"
+  boss: false
+mob_029:
+  name: "§fWesen 029"
+  type: "DROWNED"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "loot_029"
+  boss: false
+mob_030:
+  name: "§fWesen 030"
+  type: "HUSK"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_030"
+  boss: false
+mob_031:
+  name: "§fWesen 031"
+  type: "STRAY"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "loot_031"
+  boss: false
+mob_032:
+  name: "§fWesen 032"
+  type: "PHANTOM"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "loot_032"
+  boss: false
+mob_033:
+  name: "§fWesen 033"
+  type: "WOLF"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "loot_033"
+  boss: false
+mob_034:
+  name: "§fWesen 034"
+  type: "ZOMBIE"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "loot_034"
+  boss: false
+mob_035:
+  name: "§fWesen 035"
+  type: "SKELETON"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "forest_mobs"
+  boss: false
+mob_036:
+  name: "§fWesen 036"
+  type: "PILLAGER"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "loot_036"
+  boss: false
+mob_037:
+  name: "§fWesen 037"
+  type: "SPIDER"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_037"
+  boss: false
+mob_038:
+  name: "§fWesen 038"
+  type: "CREEPER"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "loot_038"
+  boss: false
+mob_039:
+  name: "§fWesen 039"
+  type: "WITCH"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "loot_039"
+  boss: false
+mob_040:
+  name: "§fWesen 040"
+  type: "DROWNED"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_040"
+  boss: false
+mob_041:
+  name: "§fWesen 041"
+  type: "HUSK"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_041"
+  boss: false
+mob_042:
+  name: "§fWesen 042"
+  type: "STRAY"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "forest_mobs"
+  boss: false
+mob_043:
+  name: "§fWesen 043"
+  type: "PHANTOM"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_043"
+  boss: false
+mob_044:
+  name: "§fWesen 044"
+  type: "WOLF"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_044"
+  boss: false
+mob_045:
+  name: "§fWesen 045"
+  type: "ZOMBIE"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_045"
+  boss: false
+mob_046:
+  name: "§fWesen 046"
+  type: "SKELETON"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_046"
+  boss: false
+mob_047:
+  name: "§fWesen 047"
+  type: "PILLAGER"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_047"
+  boss: false
+mob_048:
+  name: "§fWesen 048"
+  type: "SPIDER"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_048"
+  boss: false
+mob_049:
+  name: "§fWesen 049"
+  type: "CREEPER"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "forest_mobs"
+  boss: false
+mob_050:
+  name: "§fWesen 050"
+  type: "WITCH"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_050"
+  boss: true
+mob_051:
+  name: "§fWesen 051"
+  type: "DROWNED"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "loot_051"
+  boss: false
+mob_052:
+  name: "§fWesen 052"
+  type: "HUSK"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "loot_052"
+  boss: false
+mob_053:
+  name: "§fWesen 053"
+  type: "STRAY"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_053"
+  boss: false
+mob_054:
+  name: "§fWesen 054"
+  type: "PHANTOM"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "loot_054"
+  boss: false
+mob_055:
+  name: "§fWesen 055"
+  type: "WOLF"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "loot_055"
+  boss: false
+mob_056:
+  name: "§fWesen 056"
+  type: "ZOMBIE"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "forest_mobs"
+  boss: false
+mob_057:
+  name: "§fWesen 057"
+  type: "SKELETON"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "loot_057"
+  boss: false
+mob_058:
+  name: "§fWesen 058"
+  type: "PILLAGER"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "loot_058"
+  boss: false
+mob_059:
+  name: "§fWesen 059"
+  type: "SPIDER"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "loot_059"
+  boss: false
+mob_060:
+  name: "§fWesen 060"
+  type: "CREEPER"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_060"
+  boss: false
+mob_061:
+  name: "§fWesen 061"
+  type: "WITCH"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "loot_061"
+  boss: false
+mob_062:
+  name: "§fWesen 062"
+  type: "DROWNED"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "loot_062"
+  boss: false
+mob_063:
+  name: "§fWesen 063"
+  type: "HUSK"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "forest_mobs"
+  boss: false
+mob_064:
+  name: "§fWesen 064"
+  type: "STRAY"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "loot_064"
+  boss: false
+mob_065:
+  name: "§fWesen 065"
+  type: "PHANTOM"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "loot_065"
+  boss: false
+mob_066:
+  name: "§fWesen 066"
+  type: "WOLF"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "loot_066"
+  boss: false
+mob_067:
+  name: "§fWesen 067"
+  type: "ZOMBIE"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_067"
+  boss: false
+mob_068:
+  name: "§fWesen 068"
+  type: "SKELETON"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "loot_068"
+  boss: false
+mob_069:
+  name: "§fWesen 069"
+  type: "PILLAGER"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "loot_069"
+  boss: false
+mob_070:
+  name: "§fWesen 070"
+  type: "SPIDER"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "forest_mobs"
+  boss: false
+mob_071:
+  name: "§fWesen 071"
+  type: "CREEPER"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_071"
+  boss: false
+mob_072:
+  name: "§fWesen 072"
+  type: "WITCH"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_072"
+  boss: false
+mob_073:
+  name: "§fWesen 073"
+  type: "DROWNED"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_073"
+  boss: false
+mob_074:
+  name: "§fWesen 074"
+  type: "HUSK"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_074"
+  boss: false
+mob_075:
+  name: "§fWesen 075"
+  type: "STRAY"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_075"
+  boss: true
+mob_076:
+  name: "§fWesen 076"
+  type: "PHANTOM"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_076"
+  boss: false
+mob_077:
+  name: "§fWesen 077"
+  type: "WOLF"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "forest_mobs"
+  boss: false
+mob_078:
+  name: "§fWesen 078"
+  type: "ZOMBIE"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_078"
+  boss: false
+mob_079:
+  name: "§fWesen 079"
+  type: "SKELETON"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_079"
+  boss: false
+mob_080:
+  name: "§fWesen 080"
+  type: "PILLAGER"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_080"
+  boss: false
+mob_081:
+  name: "§fWesen 081"
+  type: "SPIDER"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "loot_081"
+  boss: false
+mob_082:
+  name: "§fWesen 082"
+  type: "CREEPER"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "loot_082"
+  boss: false
+mob_083:
+  name: "§fWesen 083"
+  type: "WITCH"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_083"
+  boss: false
+mob_084:
+  name: "§fWesen 084"
+  type: "DROWNED"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "forest_mobs"
+  boss: false
+mob_085:
+  name: "§fWesen 085"
+  type: "HUSK"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "loot_085"
+  boss: false
+mob_086:
+  name: "§fWesen 086"
+  type: "STRAY"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "loot_086"
+  boss: false
+mob_087:
+  name: "§fWesen 087"
+  type: "PHANTOM"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "loot_087"
+  boss: false
+mob_088:
+  name: "§fWesen 088"
+  type: "WOLF"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "loot_088"
+  boss: false
+mob_089:
+  name: "§fWesen 089"
+  type: "ZOMBIE"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "loot_089"
+  boss: false
+mob_090:
+  name: "§fWesen 090"
+  type: "SKELETON"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_090"
+  boss: false
+mob_091:
+  name: "§fWesen 091"
+  type: "PILLAGER"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "forest_mobs"
+  boss: false
+mob_092:
+  name: "§fWesen 092"
+  type: "SPIDER"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "loot_092"
+  boss: false
+mob_093:
+  name: "§fWesen 093"
+  type: "CREEPER"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "loot_093"
+  boss: false
+mob_094:
+  name: "§fWesen 094"
+  type: "WITCH"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "loot_094"
+  boss: false
+mob_095:
+  name: "§fWesen 095"
+  type: "DROWNED"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "loot_095"
+  boss: false
+mob_096:
+  name: "§fWesen 096"
+  type: "HUSK"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "loot_096"
+  boss: false
+mob_097:
+  name: "§fWesen 097"
+  type: "STRAY"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_097"
+  boss: false
+mob_098:
+  name: "§fWesen 098"
+  type: "PHANTOM"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "forest_mobs"
+  boss: false
+mob_099:
+  name: "§fWesen 099"
+  type: "WOLF"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "loot_099"
+  boss: false
+mob_100:
+  name: "§fWesen 100"
+  type: "ZOMBIE"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_100"
+  boss: true
+mob_101:
+  name: "§fWesen 101"
+  type: "SKELETON"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_101"
+  boss: false
+mob_102:
+  name: "§fWesen 102"
+  type: "PILLAGER"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_102"
+  boss: false
+mob_103:
+  name: "§fWesen 103"
+  type: "SPIDER"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_103"
+  boss: false
+mob_104:
+  name: "§fWesen 104"
+  type: "CREEPER"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_104"
+  boss: false
+mob_105:
+  name: "§fWesen 105"
+  type: "WITCH"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "forest_mobs"
+  boss: false
+mob_106:
+  name: "§fWesen 106"
+  type: "DROWNED"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_106"
+  boss: false
+mob_107:
+  name: "§fWesen 107"
+  type: "HUSK"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_107"
+  boss: false
+mob_108:
+  name: "§fWesen 108"
+  type: "STRAY"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_108"
+  boss: false
+mob_109:
+  name: "§fWesen 109"
+  type: "PHANTOM"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_109"
+  boss: false
+mob_110:
+  name: "§fWesen 110"
+  type: "WOLF"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_110"
+  boss: false
+mob_111:
+  name: "§fWesen 111"
+  type: "ZOMBIE"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "loot_111"
+  boss: false
+mob_112:
+  name: "§fWesen 112"
+  type: "SKELETON"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "forest_mobs"
+  boss: false
+mob_113:
+  name: "§fWesen 113"
+  type: "PILLAGER"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_113"
+  boss: false
+mob_114:
+  name: "§fWesen 114"
+  type: "SPIDER"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "loot_114"
+  boss: false
+mob_115:
+  name: "§fWesen 115"
+  type: "CREEPER"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "loot_115"
+  boss: false
+mob_116:
+  name: "§fWesen 116"
+  type: "WITCH"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "loot_116"
+  boss: false
+mob_117:
+  name: "§fWesen 117"
+  type: "DROWNED"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "loot_117"
+  boss: false
+mob_118:
+  name: "§fWesen 118"
+  type: "HUSK"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "loot_118"
+  boss: false
+mob_119:
+  name: "§fWesen 119"
+  type: "STRAY"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "forest_mobs"
+  boss: false
+mob_120:
+  name: "§fWesen 120"
+  type: "PHANTOM"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_120"
+  boss: false
+mob_121:
+  name: "§fWesen 121"
+  type: "WOLF"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "loot_121"
+  boss: false
+mob_122:
+  name: "§fWesen 122"
+  type: "ZOMBIE"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "loot_122"
+  boss: false
+mob_123:
+  name: "§fWesen 123"
+  type: "SKELETON"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "loot_123"
+  boss: false
+mob_124:
+  name: "§fWesen 124"
+  type: "PILLAGER"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "loot_124"
+  boss: false
+mob_125:
+  name: "§fWesen 125"
+  type: "SPIDER"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "loot_125"
+  boss: true
+mob_126:
+  name: "§fWesen 126"
+  type: "CREEPER"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "forest_mobs"
+  boss: false
+mob_127:
+  name: "§fWesen 127"
+  type: "WITCH"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_127"
+  boss: false
+mob_128:
+  name: "§fWesen 128"
+  type: "DROWNED"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "loot_128"
+  boss: false
+mob_129:
+  name: "§fWesen 129"
+  type: "HUSK"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "loot_129"
+  boss: false
+mob_130:
+  name: "§fWesen 130"
+  type: "STRAY"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_130"
+  boss: false
+mob_131:
+  name: "§fWesen 131"
+  type: "PHANTOM"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_131"
+  boss: false
+mob_132:
+  name: "§fWesen 132"
+  type: "WOLF"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_132"
+  boss: false
+mob_133:
+  name: "§fWesen 133"
+  type: "ZOMBIE"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "forest_mobs"
+  boss: false
+mob_134:
+  name: "§fWesen 134"
+  type: "SKELETON"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_134"
+  boss: false
+mob_135:
+  name: "§fWesen 135"
+  type: "PILLAGER"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_135"
+  boss: false
+mob_136:
+  name: "§fWesen 136"
+  type: "SPIDER"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_136"
+  boss: false
+mob_137:
+  name: "§fWesen 137"
+  type: "CREEPER"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_137"
+  boss: false
+mob_138:
+  name: "§fWesen 138"
+  type: "WITCH"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_138"
+  boss: false
+mob_139:
+  name: "§fWesen 139"
+  type: "DROWNED"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_139"
+  boss: false
+mob_140:
+  name: "§fWesen 140"
+  type: "HUSK"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "forest_mobs"
+  boss: false
+mob_141:
+  name: "§fWesen 141"
+  type: "STRAY"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "loot_141"
+  boss: false
+mob_142:
+  name: "§fWesen 142"
+  type: "PHANTOM"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "loot_142"
+  boss: false
+mob_143:
+  name: "§fWesen 143"
+  type: "WOLF"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_143"
+  boss: false
+mob_144:
+  name: "§fWesen 144"
+  type: "ZOMBIE"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "loot_144"
+  boss: false
+mob_145:
+  name: "§fWesen 145"
+  type: "SKELETON"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "loot_145"
+  boss: false
+mob_146:
+  name: "§fWesen 146"
+  type: "PILLAGER"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "loot_146"
+  boss: false
+mob_147:
+  name: "§fWesen 147"
+  type: "SPIDER"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "forest_mobs"
+  boss: false
+mob_148:
+  name: "§fWesen 148"
+  type: "CREEPER"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "loot_148"
+  boss: false
+mob_149:
+  name: "§fWesen 149"
+  type: "WITCH"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "loot_149"
+  boss: false
+mob_150:
+  name: "§fWesen 150"
+  type: "DROWNED"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_150"
+  boss: true
+mob_151:
+  name: "§fWesen 151"
+  type: "HUSK"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "loot_151"
+  boss: false
+mob_152:
+  name: "§fWesen 152"
+  type: "STRAY"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "loot_152"
+  boss: false
+mob_153:
+  name: "§fWesen 153"
+  type: "PHANTOM"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "loot_153"
+  boss: false
+mob_154:
+  name: "§fWesen 154"
+  type: "WOLF"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "forest_mobs"
+  boss: false
+mob_155:
+  name: "§fWesen 155"
+  type: "ZOMBIE"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "loot_155"
+  boss: false
+mob_156:
+  name: "§fWesen 156"
+  type: "SKELETON"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "loot_156"
+  boss: false
+mob_157:
+  name: "§fWesen 157"
+  type: "PILLAGER"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_157"
+  boss: false
+mob_158:
+  name: "§fWesen 158"
+  type: "SPIDER"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "loot_158"
+  boss: false
+mob_159:
+  name: "§fWesen 159"
+  type: "CREEPER"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "loot_159"
+  boss: false
+mob_160:
+  name: "§fWesen 160"
+  type: "WITCH"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_160"
+  boss: false
+mob_161:
+  name: "§fWesen 161"
+  type: "DROWNED"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "forest_mobs"
+  boss: false
+mob_162:
+  name: "§fWesen 162"
+  type: "HUSK"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_162"
+  boss: false
+mob_163:
+  name: "§fWesen 163"
+  type: "STRAY"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_163"
+  boss: false
+mob_164:
+  name: "§fWesen 164"
+  type: "PHANTOM"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_164"
+  boss: false
+mob_165:
+  name: "§fWesen 165"
+  type: "WOLF"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_165"
+  boss: false
+mob_166:
+  name: "§fWesen 166"
+  type: "ZOMBIE"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "loot_166"
+  boss: false
+mob_167:
+  name: "§fWesen 167"
+  type: "SKELETON"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_167"
+  boss: false
+mob_168:
+  name: "§fWesen 168"
+  type: "PILLAGER"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "forest_mobs"
+  boss: false
+mob_169:
+  name: "§fWesen 169"
+  type: "SPIDER"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_169"
+  boss: false
+mob_170:
+  name: "§fWesen 170"
+  type: "CREEPER"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_170"
+  boss: false
+mob_171:
+  name: "§fWesen 171"
+  type: "WITCH"
+  health: 23
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 61
+  lootTable: "loot_171"
+  boss: false
+mob_172:
+  name: "§fWesen 172"
+  type: "DROWNED"
+  health: 26
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 62
+  lootTable: "loot_172"
+  boss: false
+mob_173:
+  name: "§fWesen 173"
+  type: "HUSK"
+  health: 29
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 63
+  lootTable: "loot_173"
+  boss: false
+mob_174:
+  name: "§fWesen 174"
+  type: "STRAY"
+  health: 32
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 64
+  lootTable: "loot_174"
+  boss: false
+mob_175:
+  name: "§fWesen 175"
+  type: "PHANTOM"
+  health: 35
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 65
+  lootTable: "forest_mobs"
+  boss: true
+mob_176:
+  name: "§fWesen 176"
+  type: "WOLF"
+  health: 38
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 66
+  lootTable: "loot_176"
+  boss: false
+mob_177:
+  name: "§fWesen 177"
+  type: "ZOMBIE"
+  health: 41
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 67
+  lootTable: "loot_177"
+  boss: false
+mob_178:
+  name: "§fWesen 178"
+  type: "SKELETON"
+  health: 44
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 68
+  lootTable: "loot_178"
+  boss: false
+mob_179:
+  name: "§fWesen 179"
+  type: "PILLAGER"
+  health: 47
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 69
+  lootTable: "loot_179"
+  boss: false
+mob_180:
+  name: "§fWesen 180"
+  type: "SPIDER"
+  health: 20
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 40
+  lootTable: "loot_180"
+  boss: false
+mob_181:
+  name: "§fWesen 181"
+  type: "CREEPER"
+  health: 23
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 41
+  lootTable: "loot_181"
+  boss: false
+mob_182:
+  name: "§fWesen 182"
+  type: "WITCH"
+  health: 26
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 42
+  lootTable: "forest_mobs"
+  boss: false
+mob_183:
+  name: "§fWesen 183"
+  type: "DROWNED"
+  health: 29
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 43
+  lootTable: "loot_183"
+  boss: false
+mob_184:
+  name: "§fWesen 184"
+  type: "HUSK"
+  health: 32
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 44
+  lootTable: "loot_184"
+  boss: false
+mob_185:
+  name: "§fWesen 185"
+  type: "STRAY"
+  health: 35
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 45
+  lootTable: "loot_185"
+  boss: false
+mob_186:
+  name: "§fWesen 186"
+  type: "PHANTOM"
+  health: 38
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 46
+  lootTable: "loot_186"
+  boss: false
+mob_187:
+  name: "§fWesen 187"
+  type: "WOLF"
+  health: 41
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 47
+  lootTable: "loot_187"
+  boss: false
+mob_188:
+  name: "§fWesen 188"
+  type: "ZOMBIE"
+  health: 44
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 48
+  lootTable: "loot_188"
+  boss: false
+mob_189:
+  name: "§fWesen 189"
+  type: "SKELETON"
+  health: 47
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 49
+  lootTable: "forest_mobs"
+  boss: false
+mob_190:
+  name: "§fWesen 190"
+  type: "PILLAGER"
+  health: 20
+  damage: 7
+  mainHand: null
+  helmet: null
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 50
+  lootTable: "loot_190"
+  boss: false
+mob_191:
+  name: "§fWesen 191"
+  type: "SPIDER"
+  health: 23
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - whirlwind
+  skillIntervalSeconds: 9
+  xp: 51
+  lootTable: "loot_191"
+  boss: false
+mob_192:
+  name: "§fWesen 192"
+  type: "CREEPER"
+  health: 26
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: "LEATHER_HELMET"
+  skills:
+    - power_strike
+  skillIntervalSeconds: 10
+  xp: 52
+  lootTable: "loot_192"
+  boss: false
+mob_193:
+  name: "§fWesen 193"
+  type: "WITCH"
+  health: 29
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - shield_wall
+  skillIntervalSeconds: 11
+  xp: 53
+  lootTable: "loot_193"
+  boss: false
+mob_194:
+  name: "§fWesen 194"
+  type: "DROWNED"
+  health: 32
+  damage: 5
+  mainHand: null
+  helmet: null
+  skills:
+    - frost_bolt
+  skillIntervalSeconds: 12
+  xp: 54
+  lootTable: "loot_194"
+  boss: false
+mob_195:
+  name: "§fWesen 195"
+  type: "HUSK"
+  health: 35
+  damage: 6
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - arcane_burst
+    - deflect
+  skillIntervalSeconds: 13
+  xp: 55
+  lootTable: "loot_195"
+  boss: false
+mob_196:
+  name: "§fWesen 196"
+  type: "STRAY"
+  health: 38
+  damage: 7
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - execute
+  skillIntervalSeconds: 14
+  xp: 56
+  lootTable: "forest_mobs"
+  boss: false
+mob_197:
+  name: "§fWesen 197"
+  type: "PHANTOM"
+  health: 41
+  damage: 8
+  mainHand: null
+  helmet: null
+  skills:
+    - heal_pulse
+  skillIntervalSeconds: 15
+  xp: 57
+  lootTable: "loot_197"
+  boss: false
+mob_198:
+  name: "§fWesen 198"
+  type: "WOLF"
+  health: 44
+  damage: 3
+  mainHand: "IRON_SWORD"
+  helmet: null
+  skills:
+    - deflect
+  skillIntervalSeconds: 16
+  xp: 58
+  lootTable: "loot_198"
+  boss: false
+mob_199:
+  name: "§fWesen 199"
+  type: "ZOMBIE"
+  health: 47
+  damage: 4
+  mainHand: null
+  helmet: null
+  skills:
+    - mining_focus
+  skillIntervalSeconds: 17
+  xp: 59
+  lootTable: "loot_199"
+  boss: false
+mob_200:
+  name: "§fWesen 200"
+  type: "SKELETON"
+  health: 20
+  damage: 5
+  mainHand: null
+  helmet: "LEATHER_HELMET"
+  skills:
+    - ember_shot
+    - shield_wall
+  skillIntervalSeconds: 8
+  xp: 60
+  lootTable: "loot_000"
   boss: true

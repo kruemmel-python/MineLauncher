@@ -19,6 +19,7 @@ import com.example.rpg.model.SkillType;
 import com.example.rpg.skill.SkillEffectConfig;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.util.Text;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -78,6 +79,19 @@ public class GuiListener implements Listener {
                 }
                 case 16 -> plugin.guiManager().openBuildingCategories(player);
                 case 17 -> plugin.guiManager().openPermissionsMain(player);
+                case 18 -> plugin.guiManager().openDungeonAdmin(player);
+                default -> {
+                }
+            }
+            return;
+        }
+        if (holder instanceof GuiHolders.DungeonAdminHolder) {
+            event.setCancelled(true);
+            switch (event.getSlot()) {
+                case 11 -> toggleDungeonSetting(player, "dungeon.jigsaw.enabled");
+                case 13 -> toggleDungeonSetting(player, "dungeon.jigsaw.wfcFill");
+                case 15 -> promptDungeonTheme(player);
+                case 22 -> plugin.guiManager().openAdminMenu(player);
                 default -> {
                 }
             }
@@ -1333,6 +1347,27 @@ public class GuiListener implements Listener {
                 plugin.guiManager().openEnchanting(player, recipeId, page);
             }
         }
+    }
+
+    private void toggleDungeonSetting(Player player, String path) {
+        boolean current = plugin.getConfig().getBoolean(path, false);
+        plugin.getConfig().set(path, !current);
+        plugin.saveConfig();
+        player.sendMessage(Text.mm("<green>" + path + " => " + (!current)));
+        plugin.guiManager().openDungeonAdmin(player);
+    }
+
+    private void promptDungeonTheme(Player player) {
+        plugin.promptManager().prompt(player, Text.mm("<yellow>Dungeon-Theme eingeben (z.B. wfc):"), input -> {
+            String theme = input.trim();
+            if (theme.isBlank()) {
+                player.sendMessage(Text.mm("<red>Theme darf nicht leer sein."));
+                return;
+            }
+            plugin.dungeonManager().generateDungeon(player, theme, List.of(player));
+            player.sendMessage(Text.mm("<green>Dungeon-Generierung gestartet: " + theme));
+            plugin.guiManager().openDungeonAdmin(player);
+        });
     }
 
     private Quest resolveQuest(ItemStack item) {

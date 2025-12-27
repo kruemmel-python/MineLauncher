@@ -177,6 +177,36 @@ public class GuiManager {
             .name(Text.mm("<aqua>Permissions"))
             .loreLine(Text.mm("<gray>Rollen & Rechte verwalten"))
             .build());
+        inv.setItem(18, new ItemBuilder(Material.DEEPSLATE_BRICKS)
+            .name(Text.mm("<gold>Dungeons"))
+            .loreLine(Text.mm("<gray>Dungeon-Generator"))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openDungeonAdmin(Player player) {
+        Inventory inv = Bukkit.createInventory(new GuiHolders.DungeonAdminHolder(), 27, Component.text("Dungeon Admin"));
+        boolean jigsawEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.enabled", false);
+        boolean wfcFillEnabled = plugin.getConfig().getBoolean("dungeon.jigsaw.wfcFill", false);
+        inv.setItem(11, new ItemBuilder(Material.JIGSAW)
+            .name(Text.mm("<gold>Jigsaw Modus"))
+            .loreLine(Text.mm("<gray>Status: <white>" + (jigsawEnabled ? "Aktiv" : "Inaktiv") + "</white>"))
+            .loreLine(Text.mm("<yellow>Klick: umschalten"))
+            .build());
+        inv.setItem(13, new ItemBuilder(Material.MOSSY_COBBLESTONE)
+            .name(Text.mm("<green>WFC Raum-Füllung"))
+            .loreLine(Text.mm("<gray>Status: <white>" + (wfcFillEnabled ? "Aktiv" : "Inaktiv") + "</white>"))
+            .loreLine(Text.mm("<yellow>Klick: umschalten"))
+            .build());
+        inv.setItem(15, new ItemBuilder(Material.NETHER_STAR)
+            .name(Text.mm("<aqua>Dungeon generieren"))
+            .loreLine(Text.mm("<gray>Erstellt eine neue Instanz"))
+            .loreLine(Text.mm("<yellow>Klick: Theme angeben"))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Zurück"))
+            .loreLine(Text.mm("<gray>Admin-Menü"))
+            .build());
         player.openInventory(inv);
     }
 

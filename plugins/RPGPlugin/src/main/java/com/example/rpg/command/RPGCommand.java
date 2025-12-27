@@ -99,7 +99,7 @@ public class RPGCommand implements CommandExecutor {
         profile.learnedSkills().clear();
         profile.setSkillPoints(profile.level() * 2);
         profile.stats().replaceAll((stat, value) -> 5);
-        profile.applyAttributes(player);
+        profile.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
         player.sendMessage(Text.mm("<green>Respec durchgeführt. Skillpunkte zurückgesetzt."));
     }
 
@@ -128,6 +128,7 @@ public class RPGCommand implements CommandExecutor {
             for (String skill : definition.startSkills()) {
                 profile.learnedSkills().put(skill, 1);
             }
+            profile.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
             player.sendMessage(Text.mm("<green>Klasse gewählt: " + definition.name()));
             return;
         }

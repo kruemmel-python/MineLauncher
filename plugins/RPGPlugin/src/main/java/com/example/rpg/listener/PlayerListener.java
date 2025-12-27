@@ -38,7 +38,7 @@ public class PlayerListener implements Listener {
                     return;
                 }
                 PlayerProfile resolved = profile != null ? profile : plugin.playerDataManager().getProfile(player);
-                resolved.applyAttributes(player);
+                resolved.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
                 unfreeze(player);
             });
         });

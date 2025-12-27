@@ -40,6 +40,7 @@ public class GuiManager {
     private final BuildingManager buildingManager;
     private final com.example.rpg.permissions.PermissionService permissionService;
     private final com.example.rpg.manager.EnchantManager enchantManager;
+    private final com.example.rpg.manager.ItemStatManager itemStatManager;
     private final ItemGenerator itemGenerator;
     private final NamespacedKey questKey;
     private final NamespacedKey skillKey;
@@ -59,7 +60,8 @@ public class GuiManager {
     public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
                       SkillManager skillManager, ClassManager classManager, FactionManager factionManager,
                       BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
-                      com.example.rpg.manager.EnchantManager enchantManager, ItemGenerator itemGenerator,
+                      com.example.rpg.manager.EnchantManager enchantManager, com.example.rpg.manager.ItemStatManager itemStatManager,
+                      ItemGenerator itemGenerator,
                       NamespacedKey questKey, NamespacedKey skillKey, NamespacedKey buildingKey, NamespacedKey buildingCategoryKey,
                       NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey npcTemplateKey, NamespacedKey lootKey, NamespacedKey classKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
@@ -73,6 +75,7 @@ public class GuiManager {
         this.buildingManager = buildingManager;
         this.permissionService = permissionService;
         this.enchantManager = enchantManager;
+        this.itemStatManager = itemStatManager;
         this.itemGenerator = itemGenerator;
         this.questKey = questKey;
         this.skillKey = skillKey;
@@ -94,6 +97,7 @@ public class GuiManager {
         Inventory inv = Bukkit.createInventory(new GuiHolders.PlayerMenuHolder(), 27, Component.text("RPG Menü"));
         PlayerProfile profile = playerDataManager.getProfile(player);
 
+        Map<com.example.rpg.model.RPGStat, Integer> totalStats = profile.totalStats(player, itemStatManager, classManager);
         inv.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
             .name(Text.mm("<gold>Charakter"))
             .loreLine(Text.mm("<gray>Level: <white>" + profile.level()))
@@ -101,10 +105,10 @@ public class GuiManager {
             .loreLine(Text.mm("<gray>Klasse: <white>" + resolveClassName(profile.classId())))
             .loreLine(Text.mm("<gray>Gelernte Skills: <white>" + profile.learnedSkills().size()))
             .loreLine(Text.mm("<gray>Skillpunkte: <white>" + profile.skillPoints()))
-            .loreLine(Text.mm("<gray>Stärke: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.STRENGTH, 0)))
-            .loreLine(Text.mm("<gray>Geschick: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.DEXTERITY, 0)))
-            .loreLine(Text.mm("<gray>Konstitution: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.CONSTITUTION, 0)))
-            .loreLine(Text.mm("<gray>Intelligenz: <white>" + profile.stats().getOrDefault(com.example.rpg.model.RPGStat.INTELLIGENCE, 0)))
+            .loreLine(Text.mm("<gray>Stärke: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.STRENGTH, 0)))
+            .loreLine(Text.mm("<gray>Geschick: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.DEXTERITY, 0)))
+            .loreLine(Text.mm("<gray>Konstitution: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.CONSTITUTION, 0)))
+            .loreLine(Text.mm("<gray>Intelligenz: <white>" + totalStats.getOrDefault(com.example.rpg.model.RPGStat.INTELLIGENCE, 0)))
             .build());
 
         inv.setItem(12, new ItemBuilder(Material.NETHER_STAR)

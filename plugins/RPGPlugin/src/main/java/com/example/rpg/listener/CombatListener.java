@@ -93,7 +93,7 @@ public class CombatListener implements Listener {
         for (Player member : recipients) {
             PlayerProfile profile = plugin.playerDataManager().getProfile(member);
             profile.addXp(share);
-            profile.applyAttributes(member);
+            profile.applyAttributes(member, plugin.itemStatManager(), plugin.classManager());
         }
 
         LootTable table = plugin.lootManager().getTableFor(event.getEntity().getType().name());
@@ -144,7 +144,7 @@ public class CombatListener implements Listener {
         Player player = event.getPlayer();
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         profile.addXp(1);
-        profile.applyAttributes(player);
+        profile.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
         String zoneId = plugin.zoneManager().getZoneAt(event.getBlock().getLocation()) != null
             ? plugin.zoneManager().getZoneAt(event.getBlock().getLocation()).id()
             : null;
@@ -158,7 +158,7 @@ public class CombatListener implements Listener {
         }
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         profile.addXp(2);
-        profile.applyAttributes(player);
+        profile.applyAttributes(player, plugin.itemStatManager(), plugin.classManager());
         String zoneId = plugin.zoneManager().getZoneAt(player.getLocation()) != null
             ? plugin.zoneManager().getZoneAt(player.getLocation()).id()
             : null;

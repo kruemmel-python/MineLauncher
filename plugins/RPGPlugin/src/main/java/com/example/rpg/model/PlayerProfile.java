@@ -230,11 +230,13 @@ public class PlayerProfile {
         return 100 + (level - 1) * 50;
     }
 
-    public void applyAttributes(Player player) {
-        int strength = stats.getOrDefault(RPGStat.STRENGTH, 5);
-        int dex = stats.getOrDefault(RPGStat.DEXTERITY, 5);
-        int con = stats.getOrDefault(RPGStat.CONSTITUTION, 5);
-        int intel = stats.getOrDefault(RPGStat.INTELLIGENCE, 5);
+    public void applyAttributes(Player player, com.example.rpg.manager.ItemStatManager itemStatManager,
+                                com.example.rpg.manager.ClassManager classManager) {
+        Map<RPGStat, Integer> totalStats = totalStats(player, itemStatManager, classManager);
+        int strength = totalStats.getOrDefault(RPGStat.STRENGTH, 5);
+        int dex = totalStats.getOrDefault(RPGStat.DEXTERITY, 5);
+        int con = totalStats.getOrDefault(RPGStat.CONSTITUTION, 5);
+        int intel = totalStats.getOrDefault(RPGStat.INTELLIGENCE, 5);
 
         if (player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE) != null) {
             player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(1.0 + strength * 0.2);
@@ -250,5 +252,22 @@ public class PlayerProfile {
         }
         maxMana = 100 + intel * 5;
         mana = Math.min(mana, maxMana);
+    }
+
+    public Map<RPGStat, Integer> totalStats(Player player, com.example.rpg.manager.ItemStatManager itemStatManager,
+                                            com.example.rpg.manager.ClassManager classManager) {
+        Map<RPGStat, Integer> totals = new java.util.EnumMap<>(RPGStat.class);
+        for (RPGStat stat : RPGStat.values()) {
+            totals.put(stat, stats.getOrDefault(stat, 5));
+        }
+        Map<RPGStat, Integer> gear = itemStatManager.collectStatBonuses(player);
+        for (Map.Entry<RPGStat, Integer> entry : gear.entrySet()) {
+            totals.put(entry.getKey(), totals.getOrDefault(entry.getKey(), 0) + entry.getValue());
+        }
+        Map<RPGStat, Integer> classBonus = classManager.classBonuses(classId);
+        for (Map.Entry<RPGStat, Integer> entry : classBonus.entrySet()) {
+            totals.put(entry.getKey(), totals.getOrDefault(entry.getKey(), 0) + entry.getValue());
+        }
+        return totals;
     }
 }

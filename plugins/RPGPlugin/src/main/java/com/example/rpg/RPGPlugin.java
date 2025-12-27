@@ -221,7 +221,8 @@ public class RPGPlugin extends JavaPlugin {
             getConfig().getBoolean("permissions.auditEnabled", true),
             getConfig().getLong("permissions.cacheTtlSeconds", 30));
         guiManager = new GuiManager(playerDataManager, questManager, worldEventManager, skillManager, classManager, factionManager,
-            buildingManager, permissionService, enchantManager, itemGenerator, questKey, skillKey, buildingKey, buildingCategoryKey,
+            buildingManager, permissionService, enchantManager, itemStatManager, itemGenerator, questKey, skillKey, buildingKey,
+            buildingCategoryKey,
             zoneKey, npcGuiKey, npcTemplateKey, lootKey, classKey, permRoleKey, permPlayerKey, permNodeKey, permActionKey, enchantRecipeKey);
 
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);

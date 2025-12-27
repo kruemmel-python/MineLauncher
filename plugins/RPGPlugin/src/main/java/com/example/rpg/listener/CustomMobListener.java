@@ -91,7 +91,7 @@ public class CustomMobListener implements Listener {
         if (killer != null) {
             PlayerProfile profile = plugin.playerDataManager().getProfile(killer);
             profile.addXp(mob.xp());
-            profile.applyAttributes(killer);
+            profile.applyAttributes(killer, plugin.itemStatManager(), plugin.classManager());
             int gold = 8 + random.nextInt(8) + Math.max(1, profile.level());
             profile.setGold(profile.gold() + gold);
             killer.sendMessage(com.example.rpg.util.Text.mm("<gold>+ " + gold + " Gold"));

@@ -1,5 +1,6 @@
 package com.example.rpg.gui;
 
+import com.example.rpg.RPGPlugin;
 import com.example.rpg.manager.ClassManager;
 import com.example.rpg.manager.FactionManager;
 import com.example.rpg.manager.PlayerDataManager;
@@ -38,6 +39,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class GuiManager {
+    private final RPGPlugin plugin;
     private final PlayerDataManager playerDataManager;
     private final QuestManager questManager;
     private final WorldEventManager worldEventManager;
@@ -64,7 +66,7 @@ public class GuiManager {
     private final NamespacedKey permActionKey;
     private final NamespacedKey enchantRecipeKey;
 
-    public GuiManager(PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
+    public GuiManager(RPGPlugin plugin, PlayerDataManager playerDataManager, QuestManager questManager, WorldEventManager worldEventManager,
                       SkillManager skillManager, ClassManager classManager, FactionManager factionManager,
                       BuildingManager buildingManager, com.example.rpg.permissions.PermissionService permissionService,
                       com.example.rpg.manager.EnchantManager enchantManager, com.example.rpg.manager.ItemStatManager itemStatManager,
@@ -73,6 +75,7 @@ public class GuiManager {
                       NamespacedKey zoneKey, NamespacedKey npcKey, NamespacedKey npcTemplateKey, NamespacedKey lootKey, NamespacedKey classKey,
                       NamespacedKey permRoleKey, NamespacedKey permPlayerKey, NamespacedKey permNodeKey, NamespacedKey permActionKey,
                       NamespacedKey enchantRecipeKey) {
+        this.plugin = plugin;
         this.playerDataManager = playerDataManager;
         this.questManager = questManager;
         this.worldEventManager = worldEventManager;

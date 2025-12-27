@@ -41,6 +41,16 @@ public final class GuiHolders {
     }
 
     public static final class QuestEditorHolder implements InventoryHolder {
+        private final int page;
+
+        public QuestEditorHolder(int page) {
+            this.page = page;
+        }
+
+        public int page() {
+            return page;
+        }
+
         @Override
         public @NotNull Inventory getInventory() {
             throw new UnsupportedOperationException();

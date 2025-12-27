@@ -386,7 +386,23 @@ public class GuiListener implements Listener {
         }
         if (holder instanceof GuiHolders.QuestEditorHolder) {
             event.setCancelled(true);
+            GuiHolders.QuestEditorHolder questHolder = (GuiHolders.QuestEditorHolder) holder;
+            int page = questHolder.page();
+            int questCount = plugin.questManager().quests().size();
+            int maxPage = questCount == 0 ? 0 : (questCount - 1) / 45;
+            if (event.getSlot() == 45) {
+                if (page > 0) {
+                    plugin.guiManager().openQuestEditor(player, page - 1);
+                }
+                return;
+            }
             if (event.getSlot() == 53) {
+                if (page < maxPage) {
+                    plugin.guiManager().openQuestEditor(player, page + 1);
+                }
+                return;
+            }
+            if (event.getSlot() == 49) {
                 plugin.promptManager().prompt(player, Text.mm("<yellow>Quest erstellen: <id> <name>"), input -> {
                     String[] parts = input.trim().split("\\s+", 2);
                     if (parts.length < 2) {
@@ -408,7 +424,7 @@ public class GuiListener implements Listener {
                     plugin.questManager().saveQuest(quest);
                     plugin.auditLog().log(player, "Quest erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Quest erstellt: " + id));
-                    plugin.guiManager().openQuestEditor(player);
+                    plugin.guiManager().openQuestEditor(player, page);
                 });
                 return;
             }
@@ -421,7 +437,7 @@ public class GuiListener implements Listener {
                     plugin.questManager().saveAll();
                     plugin.auditLog().log(player, "Quest gelöscht (GUI): " + questId);
                     player.sendMessage(Text.mm("<red>Quest gelöscht: " + questId));
-                    plugin.guiManager().openQuestEditor(player);
+                    plugin.guiManager().openQuestEditor(player, page);
                 }
                 return;
             }
@@ -509,7 +525,7 @@ public class GuiListener implements Listener {
                 plugin.questManager().saveQuest(quest);
                 plugin.auditLog().log(player, "Quest aktualisiert (GUI): " + quest.id());
                 player.sendMessage(Text.mm("<green>Quest aktualisiert."));
-                plugin.guiManager().openQuestEditor(player);
+                plugin.guiManager().openQuestEditor(player, page);
             });
             return;
         }

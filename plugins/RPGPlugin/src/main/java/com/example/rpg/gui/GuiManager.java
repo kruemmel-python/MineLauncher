@@ -249,12 +249,20 @@ public class GuiManager {
     }
 
     public void openQuestEditor(Player player) {
-        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestEditorHolder(), 54, Component.text("Quest-Editor"));
+        openQuestEditor(player, 0);
+    }
+
+    public void openQuestEditor(Player player, int page) {
+        var quests = new java.util.ArrayList<>(questManager.quests().values());
+        quests.sort(java.util.Comparator.comparing(Quest::id));
+        int pageSize = 45;
+        int maxPage = quests.isEmpty() ? 0 : (quests.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.QuestEditorHolder(safePage), 54, Component.text("Quest-Editor"));
         int slot = 0;
-        for (Quest quest : questManager.quests().values()) {
-            if (slot >= 45) {
-                break;
-            }
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < quests.size() && slot < pageSize; i++) {
+            Quest quest = quests.get(i);
             ItemStack item = new ItemBuilder(Material.BOOK)
                 .name(Text.mm("<aqua>" + quest.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + quest.id()))
@@ -268,8 +276,19 @@ public class GuiManager {
             item.setItemMeta(meta);
             inv.setItem(slot++, item);
         }
-        inv.setItem(53, new ItemBuilder(Material.EMERALD_BLOCK)
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Quest erstellen"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
             .build());
         player.openInventory(inv);
     }

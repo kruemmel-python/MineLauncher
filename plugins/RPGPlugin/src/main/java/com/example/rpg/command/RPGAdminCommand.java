@@ -63,7 +63,10 @@ public class RPGAdminCommand implements CommandExecutor {
             case "spawner" -> handleSpawner(player, args);
             case "build" -> handleBuild(player, args);
             case "perms" -> handlePerms(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin <wand|zone|npc|quest|loot|skill|mob|spawner|build|perms>"));
+            case "event" -> handleEvent(player, args);
+            case "pvp" -> handlePvp(player, args);
+            case "node" -> handleNode(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin <wand|zone|npc|quest|loot|skill|mob|spawner|build|perms|event|pvp|node>"));
         }
         return true;
     }
@@ -309,7 +312,7 @@ public class RPGAdminCommand implements CommandExecutor {
 
     private void handleNpc(Player player, String[] args) {
         if (args.length < 2) {
-            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop>"));
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop|faction|rank>"));
             return;
         }
         switch (args[1].toLowerCase()) {
@@ -317,7 +320,9 @@ public class RPGAdminCommand implements CommandExecutor {
             case "dialog" -> setNpcDialog(player, args);
             case "linkquest" -> linkNpcQuest(player, args);
             case "linkshop" -> linkNpcShop(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop>"));
+            case "faction" -> setNpcFaction(player, args);
+            case "rank" -> setNpcRank(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin npc <create|dialog|linkquest|linkshop|faction|rank>"));
         }
     }
 
@@ -430,6 +435,227 @@ public class RPGAdminCommand implements CommandExecutor {
         plugin.npcManager().saveNpc(npc);
         plugin.auditLog().log(player, "NPC Shop verlinkt: " + npcId + " -> " + shopId);
         player.sendMessage(Text.mm("<green>NPC verlinkt mit Shop: " + shopId));
+    }
+
+    private void setNpcFaction(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc faction <npcId> <factionId>"));
+            return;
+        }
+        Npc npc = plugin.npcManager().getNpc(args[2]);
+        if (npc == null) {
+            player.sendMessage(Text.mm("<red>NPC nicht gefunden."));
+            return;
+        }
+        if (plugin.factionManager().getFaction(args[3]) == null) {
+            player.sendMessage(Text.mm("<red>Fraktion nicht gefunden."));
+            return;
+        }
+        npc.setFactionId(args[3]);
+        plugin.npcManager().saveNpc(npc);
+        plugin.auditLog().log(player, "NPC Fraktion gesetzt: " + npc.id());
+        player.sendMessage(Text.mm("<green>NPC Fraktion gesetzt."));
+    }
+
+    private void setNpcRank(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin npc rank <npcId> <rankId>"));
+            return;
+        }
+        Npc npc = plugin.npcManager().getNpc(args[2]);
+        if (npc == null) {
+            player.sendMessage(Text.mm("<red>NPC nicht gefunden."));
+            return;
+        }
+        npc.setRequiredRankId(args[3]);
+        plugin.npcManager().saveNpc(npc);
+        plugin.auditLog().log(player, "NPC Rang gesetzt: " + npc.id());
+        player.sendMessage(Text.mm("<green>NPC Rang gesetzt."));
+    }
+
+    private void handleEvent(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event <create|addstep|start|stop|reward|unlock>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "create" -> createEvent(player, args);
+            case "addstep" -> addEventStep(player, args);
+            case "start" -> startEvent(player, args);
+            case "stop" -> stopEvent(player, args);
+            case "reward" -> setEventReward(player, args);
+            case "unlock" -> addEventUnlock(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin event <create|addstep|start|stop|reward|unlock>"));
+        }
+    }
+
+    private void createEvent(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event create <id> <zoneId> <name>"));
+            return;
+        }
+        String id = args[2];
+        String zoneId = args[3];
+        if (plugin.zoneManager().getZone(zoneId) == null) {
+            player.sendMessage(Text.mm("<red>Zone nicht gefunden."));
+            return;
+        }
+        String name = args.length > 4 ? String.join(" ", java.util.Arrays.copyOfRange(args, 4, args.length)) : id;
+        com.example.rpg.model.WorldEvent event = new com.example.rpg.model.WorldEvent(id);
+        event.setName(name);
+        event.setZoneId(zoneId);
+        event.setActive(false);
+        plugin.worldEventManager().events().put(id, event);
+        plugin.worldEventManager().saveEvent(event);
+        player.sendMessage(Text.mm("<green>Event erstellt: " + name));
+    }
+
+    private void addEventStep(Player player, String[] args) {
+        if (args.length < 6) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event addstep <id> <type> <target> <amount>"));
+            return;
+        }
+        com.example.rpg.model.WorldEvent event = plugin.worldEventManager().getEvent(args[2]);
+        if (event == null) {
+            player.sendMessage(Text.mm("<red>Event nicht gefunden."));
+            return;
+        }
+        Optional<QuestStepType> typeOpt = parseEnum(QuestStepType.class, args[3]);
+        if (typeOpt.isEmpty()) {
+            player.sendMessage(Text.mm("<red>Unbekannter Step-Typ."));
+            return;
+        }
+        Integer amount = parseInt(args[5]);
+        if (amount == null || amount < 1) {
+            player.sendMessage(Text.mm("<red>Amount ungültig."));
+            return;
+        }
+        event.steps().add(new QuestStep(typeOpt.get(), args[4], amount));
+        plugin.worldEventManager().saveEvent(event);
+        player.sendMessage(Text.mm("<green>Event-Step hinzugefügt."));
+    }
+
+    private void startEvent(Player player, String[] args) {
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event start <id>"));
+            return;
+        }
+        plugin.worldEventManager().startEvent(args[2]);
+        player.sendMessage(Text.mm("<green>Event gestartet."));
+    }
+
+    private void stopEvent(Player player, String[] args) {
+        if (args.length < 3) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event stop <id>"));
+            return;
+        }
+        plugin.worldEventManager().stopEvent(args[2]);
+        player.sendMessage(Text.mm("<yellow>Event gestoppt."));
+    }
+
+    private void setEventReward(Player player, String[] args) {
+        if (args.length < 5) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event reward <id> <xp> <gold>"));
+            return;
+        }
+        com.example.rpg.model.WorldEvent event = plugin.worldEventManager().getEvent(args[2]);
+        if (event == null) {
+            player.sendMessage(Text.mm("<red>Event nicht gefunden."));
+            return;
+        }
+        Integer xp = parseInt(args[3]);
+        Integer gold = parseInt(args[4]);
+        if (xp == null || gold == null) {
+            player.sendMessage(Text.mm("<red>Ungültige Werte."));
+            return;
+        }
+        event.setRewardXp(xp);
+        event.setRewardGold(gold);
+        plugin.worldEventManager().saveEvent(event);
+        player.sendMessage(Text.mm("<green>Belohnung gesetzt."));
+    }
+
+    private void addEventUnlock(Player player, String[] args) {
+        if (args.length < 4) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin event unlock <id> <questId>"));
+            return;
+        }
+        com.example.rpg.model.WorldEvent event = plugin.worldEventManager().getEvent(args[2]);
+        if (event == null) {
+            player.sendMessage(Text.mm("<red>Event nicht gefunden."));
+            return;
+        }
+        if (plugin.questManager().getQuest(args[3]) == null) {
+            player.sendMessage(Text.mm("<red>Quest nicht gefunden."));
+            return;
+        }
+        event.unlockQuests().add(args[3]);
+        plugin.worldEventManager().saveEvent(event);
+        player.sendMessage(Text.mm("<green>Quest freigeschaltet."));
+    }
+
+    private void handlePvp(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin pvp <seasonstart|seasonend>"));
+            return;
+        }
+        switch (args[1].toLowerCase()) {
+            case "seasonstart" -> startSeason(player, args);
+            case "seasonend" -> endSeason(player);
+            default -> player.sendMessage(Text.mm("<gray>/rpgadmin pvp <seasonstart|seasonend>"));
+        }
+    }
+
+    private void handleNode(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin node <create>"));
+            return;
+        }
+        if (!"create".equalsIgnoreCase(args[1])) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin node create <profession> <material> <respawnSeconds> <xp>"));
+            return;
+        }
+        if (args.length < 6) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin node create <profession> <material> <respawnSeconds> <xp>"));
+            return;
+        }
+        String profession = args[2].toLowerCase();
+        String materialName = args[3].toUpperCase();
+        Integer respawn = parseInt(args[4]);
+        Integer xp = parseInt(args[5]);
+        if (respawn == null || xp == null) {
+            player.sendMessage(Text.mm("<red>Ungültige Werte."));
+            return;
+        }
+        Material material = Material.matchMaterial(materialName);
+        if (material == null) {
+            player.sendMessage(Text.mm("<red>Material nicht gefunden."));
+            return;
+        }
+        plugin.resourceNodeManager().createNode(player, profession, material, respawn, xp);
+        player.sendMessage(Text.mm("<green>Ressourcen-Node erstellt."));
+    }
+
+    private void startSeason(Player player, String[] args) {
+        if (args.length < 5) {
+            player.sendMessage(Text.mm("<gray>/rpgadmin pvp seasonstart <id> <name> <days>"));
+            return;
+        }
+        String id = args[2];
+        String name = args[3];
+        Integer days = parseInt(args[4]);
+        if (days == null || days < 1) {
+            player.sendMessage(Text.mm("<red>Tage ungültig."));
+            return;
+        }
+        long endTimestamp = System.currentTimeMillis() + (days * 24L * 60L * 60L * 1000L);
+        plugin.pvpSeasonManager().startSeason(id, name, endTimestamp);
+        player.sendMessage(Text.mm("<green>Season gestartet."));
+    }
+
+    private void endSeason(Player player) {
+        plugin.pvpSeasonManager().endSeason();
+        player.sendMessage(Text.mm("<yellow>Season beendet."));
     }
 
     private void handleQuest(Player player, String[] args) {

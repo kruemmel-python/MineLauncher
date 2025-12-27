@@ -3,6 +3,7 @@ package com.example.rpg.listener;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.behavior.BehaviorContext;
 import com.example.rpg.behavior.BehaviorNode;
+import com.example.rpg.dungeon.DungeonInstance;
 import com.example.rpg.model.LootEntry;
 import com.example.rpg.model.LootTable;
 import com.example.rpg.model.MobDefinition;
@@ -59,7 +60,12 @@ public class CustomMobListener implements Listener {
         }
         MobDefinition mob = plugin.mobManager().getMob(mobId);
         if (mob != null) {
-            event.setDamage(mob.damage());
+            double damage = mob.damage();
+            DungeonInstance instance = plugin.dungeonManager().instanceForWorld(living.getWorld());
+            if (instance != null) {
+                damage *= instance.scale();
+            }
+            event.setDamage(damage);
         }
     }
 
@@ -80,14 +86,20 @@ public class CustomMobListener implements Listener {
         if (mob == null) {
             return;
         }
+        DungeonInstance instance = plugin.dungeonManager().instanceForWorld(entity.getWorld());
         Player killer = entity.getKiller();
         if (killer != null) {
             PlayerProfile profile = plugin.playerDataManager().getProfile(killer);
             profile.addXp(mob.xp());
-            profile.applyAttributes(killer);
+            profile.applyAttributes(killer, plugin.itemStatManager(), plugin.classManager());
             int gold = 8 + random.nextInt(8) + Math.max(1, profile.level());
             profile.setGold(profile.gold() + gold);
             killer.sendMessage(com.example.rpg.util.Text.mm("<gold>+ " + gold + " Gold"));
+            String zoneId = plugin.zoneManager().getZoneAt(entity.getLocation()) != null
+                ? plugin.zoneManager().getZoneAt(entity.getLocation()).id()
+                : null;
+            plugin.worldEventManager().handleKill(killer, mob.id(), zoneId);
+            plugin.worldEventManager().handleKill(killer, entity.getType().name(), zoneId);
         }
         if (mob.lootTable() != null) {
             LootTable table = plugin.lootManager().getTable(mob.lootTable());
@@ -108,6 +120,9 @@ public class CustomMobListener implements Listener {
             }
         } else if (killer != null) {
             dropFallbackLoot(killer, event);
+        }
+        if (mob.boss() && instance != null) {
+            plugin.dungeonManager().completeDungeon(instance);
         }
     }
 
@@ -160,10 +175,15 @@ public class CustomMobListener implements Listener {
         String name = mob.name();
         entity.customName(null);
         entity.setCustomNameVisible(false);
-        if (entity.getAttribute(Attribute.GENERIC_MAX_HEALTH) != null) {
-            entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(mob.health());
+        double health = mob.health();
+        DungeonInstance instance = plugin.dungeonManager().instanceForWorld(entity.getWorld());
+        if (instance != null) {
+            health *= instance.scale();
         }
-        entity.setHealth(mob.health());
+        if (entity.getAttribute(Attribute.GENERIC_MAX_HEALTH) != null) {
+            entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        }
+        entity.setHealth(health);
         entity.getPersistentDataContainer().set(mobKey, PersistentDataType.STRING, mob.id());
         if (mob.mainHand() != null) {
             Material material = Material.matchMaterial(mob.mainHand());

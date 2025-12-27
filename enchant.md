@@ -10,6 +10,7 @@ Dieses Dokument erklärt Schritt für Schritt, wie das **EnchantSystem** genutzt
 - Du brauchst **Gold** (Spielerwährung).
 - Du brauchst ggf. ein **Material‑Item** (z. B. `IRON_NUGGET`) als Verbrauchsgegenstand.
 - Die Verzauberungen werden in `plugins/RPGPlugin/enchantments.yml` definiert.
+- RPG‑Items kommen u. a. aus **Loot**, **NPC‑Shops**, **Dungeons** und **Welt‑Events**.
 
 ---
 
@@ -116,6 +117,8 @@ RuneOfPrecision:
   - Prüfe, ob das Ziel‑Item ein RPG‑Item ist.
   - Prüfe, ob der Ziel‑Slot passt.
   - Prüfe dein Level.
+- **Shop‑Rabatte gelten nicht?**
+  - Fraktions‑Rabatte gelten nur im NPC‑Shop, nicht für die Enchant‑Kosten.
 - **Gold oder Material fehlt?**
   - Im GUI werden die Kosten angezeigt.
 - **Lore zeigt nichts Neues?**

@@ -3,6 +3,9 @@ package com.example.rpg.listener;
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.model.Npc;
 import com.example.rpg.model.NpcRole;
+import com.example.rpg.model.DialogueNode;
+import com.example.rpg.model.DialogueOption;
+import com.example.rpg.model.FactionRank;
 import com.example.rpg.model.PlayerProfile;
 import com.example.rpg.model.Rarity;
 import com.example.rpg.model.ShopDefinition;
@@ -42,10 +45,21 @@ public class NpcListener implements Listener {
             return;
         }
         Player player = event.getPlayer();
-        if (!npc.dialog().isEmpty()) {
+        if (!npc.dialogueNodes().isEmpty()) {
+            openDialogue(player, npc, "start");
+        } else if (!npc.dialog().isEmpty()) {
             player.sendMessage(Text.mm("<gold>" + npc.name() + ":"));
             for (String line : npc.dialog()) {
                 player.sendMessage(Text.mm("<gray>" + line));
+            }
+        }
+        if (npc.factionId() != null && npc.requiredRankId() != null) {
+            PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+            int rep = profile.factionRep().getOrDefault(npc.factionId(), 0);
+            FactionRank rank = plugin.factionManager().getRank(npc.factionId(), rep);
+            if (rank == null || !rank.id().equalsIgnoreCase(npc.requiredRankId())) {
+                player.sendMessage(Text.mm("<red>Dein Ruf reicht nicht aus."));
+                return;
             }
         }
         if (npc.role() == NpcRole.QUESTGIVER && npc.questLink() != null) {
@@ -57,6 +71,7 @@ public class NpcListener implements Listener {
                 openStaticShop(player, npc);
             } else {
                 ShopDefinition shop = buildMixedVendorShop(npc, player);
+                applyFactionDiscount(npc, player, shop);
                 plugin.guiManager().openShop(player, shop);
             }
             return;
@@ -66,6 +81,7 @@ public class NpcListener implements Listener {
             || npc.role() == NpcRole.ITEM_VENDOR
             || npc.role() == NpcRole.RESOURCE_VENDOR) {
             ShopDefinition shop = buildVendorShop(npc, player);
+            applyFactionDiscount(npc, player, shop);
             plugin.guiManager().openShop(player, shop);
         }
     }
@@ -93,49 +109,25 @@ public class NpcListener implements Listener {
         ShopDefinition shop = new ShopDefinition("npc_" + npc.id());
         shop.setTitle(title);
         Map<Integer, ShopItem> items = new java.util.HashMap<>();
-        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
-        int level = Math.max(1, profile.level());
         List<Material> materials = switch (npc.role()) {
-            case WEAPON_VENDOR -> List.of(
-                Material.WOODEN_SWORD, Material.STONE_SWORD, Material.IRON_SWORD,
-                Material.GOLDEN_SWORD, Material.DIAMOND_SWORD, Material.BOW
-            );
-            case ARMOR_VENDOR -> List.of(
-                Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
-                Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
-                Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS
-            );
-            case ITEM_VENDOR -> List.of(
-                Material.BREAD, Material.COOKED_BEEF, Material.COOKED_CHICKEN, Material.GOLDEN_APPLE,
-                Material.POTION, Material.ARROW
-            );
-            case RESOURCE_VENDOR -> List.of(
-                Material.IRON_NUGGET, Material.GOLD_NUGGET, Material.IRON_INGOT,
-                Material.GOLD_INGOT, Material.DIAMOND, Material.EMERALD
-            );
+            case WEAPON_VENDOR -> weaponMaterials();
+            case ARMOR_VENDOR -> armorMaterials();
+            case ITEM_VENDOR -> itemMaterials();
+            case RESOURCE_VENDOR -> resourceMaterials();
             default -> List.of(Material.BREAD);
         };
         int slot = 0;
-        for (int i = 0; i < Math.min(materials.size(), 9); i++) {
-            Material material = materials.get(random.nextInt(materials.size()));
+        for (Material material : materials) {
+            if (slot >= 54) {
+                break;
+            }
             ShopItem item = new ShopItem();
             item.setSlot(slot++);
             item.setMaterial(material.name());
-            if (npc.role() == NpcRole.RESOURCE_VENDOR) {
-                item.setBuyPrice(40 + random.nextInt(60));
-                item.setSellPrice(10 + random.nextInt(20));
-                item.setRpgItem(false);
-            } else {
-                Rarity rarity = rollRarity();
-                int base = 60 + (level * 15);
-                int buyPrice = (int) Math.max(20, base * (1 + rarity.weight()));
-                int sellPrice = Math.max(10, buyPrice / 4);
-                item.setBuyPrice(buyPrice);
-                item.setSellPrice(sellPrice);
-                item.setRpgItem(true);
-                item.setRarity(rarity.name());
-                item.setMinLevel(level);
-            }
+            int buyPrice = priceForMaterial(material, npc.role());
+            item.setBuyPrice(buyPrice);
+            item.setSellPrice(Math.max(1, buyPrice / 3));
+            item.setRpgItem(false);
             items.put(item.slot(), item);
         }
         shop.setItems(items);
@@ -189,6 +181,80 @@ public class NpcListener implements Listener {
         return shop;
     }
 
+    private List<Material> weaponMaterials() {
+        return List.of(
+            Material.WOODEN_SWORD, Material.STONE_SWORD, Material.IRON_SWORD, Material.GOLDEN_SWORD,
+            Material.DIAMOND_SWORD, Material.NETHERITE_SWORD,
+            Material.WOODEN_AXE, Material.STONE_AXE, Material.IRON_AXE, Material.GOLDEN_AXE,
+            Material.DIAMOND_AXE, Material.NETHERITE_AXE,
+            Material.BOW, Material.CROSSBOW, Material.TRIDENT
+        );
+    }
+
+    private List<Material> armorMaterials() {
+        return List.of(
+            Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
+            Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
+            Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
+            Material.GOLDEN_HELMET, Material.GOLDEN_CHESTPLATE, Material.GOLDEN_LEGGINGS, Material.GOLDEN_BOOTS,
+            Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS,
+            Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
+            Material.TURTLE_HELMET
+        );
+    }
+
+    private List<Material> itemMaterials() {
+        return List.of(
+            Material.BREAD, Material.COOKED_BEEF, Material.COOKED_CHICKEN, Material.COOKED_PORKCHOP,
+            Material.COOKED_MUTTON, Material.COOKED_RABBIT, Material.GOLDEN_APPLE,
+            Material.POTION, Material.ARROW, Material.TORCH, Material.LANTERN,
+            Material.SHIELD, Material.BUCKET, Material.WATER_BUCKET, Material.MILK_BUCKET
+        );
+    }
+
+    private List<Material> resourceMaterials() {
+        return List.of(
+            Material.COAL, Material.CHARCOAL, Material.IRON_NUGGET, Material.GOLD_NUGGET,
+            Material.IRON_INGOT, Material.GOLD_INGOT, Material.COPPER_INGOT,
+            Material.REDSTONE, Material.LAPIS_LAZULI, Material.DIAMOND, Material.EMERALD,
+            Material.QUARTZ, Material.NETHERITE_SCRAP, Material.AMETHYST_SHARD
+        );
+    }
+
+    private int priceForMaterial(Material material, NpcRole role) {
+        String name = material.name();
+        int base = switch (role) {
+            case RESOURCE_VENDOR -> 25;
+            case ITEM_VENDOR -> 40;
+            default -> 80;
+        };
+        if (name.contains("NETHERITE")) {
+            return base + 900;
+        }
+        if (name.contains("DIAMOND")) {
+            return base + 600;
+        }
+        if (name.contains("GOLD")) {
+            return base + 350;
+        }
+        if (name.contains("IRON") || name.contains("CHAINMAIL")) {
+            return base + 200;
+        }
+        if (name.contains("STONE")) {
+            return base + 80;
+        }
+        if (name.contains("WOOD") || name.contains("LEATHER")) {
+            return base + 40;
+        }
+        if (name.contains("EMERALD")) {
+            return base + 500;
+        }
+        if (name.contains("COAL") || name.contains("COPPER")) {
+            return base + 60;
+        }
+        return base + 120;
+    }
+
     private Rarity rollRarity() {
         double roll = random.nextDouble();
         double total = 0.0;
@@ -199,5 +265,89 @@ public class NpcListener implements Listener {
             }
         }
         return Rarity.COMMON;
+    }
+
+    private void applyFactionDiscount(Npc npc, Player player, ShopDefinition shop) {
+        if (npc.factionId() == null) {
+            return;
+        }
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        int rep = profile.factionRep().getOrDefault(npc.factionId(), 0);
+        FactionRank rank = plugin.factionManager().getRank(npc.factionId(), rep);
+        if (rank == null || rank.shopDiscount() <= 0) {
+            return;
+        }
+        for (ShopItem item : shop.items().values()) {
+            int buy = item.buyPrice();
+            if (buy <= 0) {
+                continue;
+            }
+            int discounted = (int) Math.max(1, Math.round(buy * (1 - rank.shopDiscount())));
+            item.setBuyPrice(discounted);
+        }
+    }
+
+    private void openDialogue(Player player, Npc npc, String nodeId) {
+        DialogueNode node = npc.dialogueNodes().get(nodeId);
+        if (node == null) {
+            return;
+        }
+        player.sendMessage(Text.mm("<gold>" + npc.name() + ": <white>" + node.text()));
+        if (node.options().isEmpty()) {
+            return;
+        }
+        java.util.List<DialogueOption> available = new java.util.ArrayList<>();
+        PlayerProfile profile = plugin.playerDataManager().getProfile(player);
+        for (DialogueOption option : node.options()) {
+            if (option.requiredFactionId() != null) {
+                int rep = profile.factionRep().getOrDefault(option.requiredFactionId(), 0);
+                if (rep < option.minRep()) {
+                    continue;
+                }
+            }
+            if (option.requiredQuestId() != null) {
+                boolean completed = profile.completedQuests().contains(option.requiredQuestId());
+                boolean active = profile.activeQuests().containsKey(option.requiredQuestId());
+                if (option.requireQuestCompleted() && !completed) {
+                    continue;
+                }
+                if (!option.requireQuestCompleted() && !active && !completed) {
+                    continue;
+                }
+            }
+            available.add(option);
+        }
+        if (available.isEmpty()) {
+            player.sendMessage(Text.mm("<gray>Keine Optionen verfügbar."));
+            return;
+        }
+        int index = 1;
+        for (DialogueOption option : available) {
+            player.sendMessage(Text.mm("<yellow>" + index++ + ". <white>" + option.text()));
+        }
+        plugin.promptManager().prompt(player, Text.mm("<gray>Wähle eine Option (Zahl):"), input -> {
+            int choice;
+            try {
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                player.sendMessage(Text.mm("<red>Ungültige Auswahl."));
+                return;
+            }
+            if (choice < 1 || choice > available.size()) {
+                player.sendMessage(Text.mm("<red>Ungültige Auswahl."));
+                return;
+            }
+            DialogueOption selected = available.get(choice - 1);
+            if (selected.grantQuestId() != null) {
+                var quest = plugin.questManager().getQuest(selected.grantQuestId());
+                if (quest != null && !profile.activeQuests().containsKey(quest.id())) {
+                    profile.activeQuests().put(quest.id(), new com.example.rpg.model.QuestProgress(quest.id()));
+                    player.sendMessage(Text.mm("<green>Quest angenommen: " + quest.name()));
+                }
+            }
+            if (selected.nextId() != null && !"end".equalsIgnoreCase(selected.nextId())) {
+                openDialogue(player, npc, selected.nextId());
+            }
+        });
     }
 }

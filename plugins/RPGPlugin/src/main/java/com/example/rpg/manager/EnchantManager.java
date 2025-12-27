@@ -32,6 +32,9 @@ public class EnchantManager {
     private final Map<String, EnchantmentRecipe> recipes = new HashMap<>();
     private final NamespacedKey rpgItemKey;
     private final NamespacedKey affixKey;
+    private final Map<String, RPGStat> affixStatBonuses = Map.of(
+        "Praezision", RPGStat.DEXTERITY
+    );
 
     public EnchantManager(RPGPlugin plugin) {
         this.plugin = plugin;
@@ -101,14 +104,37 @@ public class EnchantManager {
         if (meta == null) {
             return false;
         }
+        String itemName = resolveItemName(target, meta);
+        List<String> changeLines = new ArrayList<>();
         switch (recipe.type()) {
-            case STAT_UPGRADE -> applyStatUpgrade(meta, recipe);
-            case AFFIX -> applyAffix(meta, recipe);
+            case STAT_UPGRADE -> {
+                int delta = applyStatUpgrade(meta, recipe);
+                if (recipe.statToImprove() != null && delta > 0) {
+                    changeLines.add("+" + delta + " " + recipe.statToImprove().name());
+                }
+            }
+            case AFFIX -> {
+                AffixResult result = applyAffix(meta, recipe);
+                if (result.added()) {
+                    changeLines.add("Affix: " + result.affixName());
+                }
+                if (result.statBonus() != null && result.statDelta() > 0) {
+                    changeLines.add("+" + result.statDelta() + " " + result.statBonus().name());
+                }
+            }
         }
         plugin.itemStatManager().updateLore(meta);
         target.setItemMeta(meta);
+        setTargetItem(player, recipe.targetSlot(), target);
         applyEffects(player, profile, recipe.effects());
-        player.sendMessage(Text.mm("<green>Verzauberung angewendet."));
+        if (changeLines.isEmpty()) {
+            player.sendMessage(Text.mm("<green>Verzauberung angewendet auf <white>" + itemName));
+        } else {
+            player.sendMessage(Text.mm("<green>Verzauberung angewendet:</green> <white>" + itemName));
+            for (String line : changeLines) {
+                player.sendMessage(Text.mm("<gray> - " + line));
+            }
+        }
         return true;
     }
 
@@ -197,6 +223,18 @@ public class EnchantManager {
         };
     }
 
+    private void setTargetItem(Player player, EnchantTargetSlot targetSlot, ItemStack item) {
+        switch (targetSlot) {
+            case HAND -> player.getInventory().setItemInMainHand(item);
+            case OFF_HAND, SHIELD -> player.getInventory().setItemInOffHand(item);
+            case ARMOR_HEAD -> player.getInventory().setHelmet(item);
+            case ARMOR_CHEST -> player.getInventory().setChestplate(item);
+            case ARMOR_LEGS -> player.getInventory().setLeggings(item);
+            case ARMOR_FEET -> player.getInventory().setBoots(item);
+        }
+        player.updateInventory();
+    }
+
     private boolean hasCostItem(Player player, EnchantmentRecipe recipe) {
         if (recipe.costMaterial() == null || recipe.costAmount() <= 0) {
             return true;
@@ -238,19 +276,21 @@ public class EnchantManager {
         player.getInventory().setContents(contents);
     }
 
-    private void applyStatUpgrade(ItemMeta meta, EnchantmentRecipe recipe) {
+    private int applyStatUpgrade(ItemMeta meta, EnchantmentRecipe recipe) {
         if (recipe.statToImprove() == null) {
-            return;
+            return 0;
         }
         NamespacedKey key = plugin.itemStatManager().enchantStatKey(recipe.statToImprove());
         PersistentDataContainer data = meta.getPersistentDataContainer();
         int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
         data.set(key, PersistentDataType.INTEGER, current + 1);
+        applyBaseStatBonus(meta, recipe.statToImprove(), 1);
+        return 1;
     }
 
-    private void applyAffix(ItemMeta meta, EnchantmentRecipe recipe) {
+    private AffixResult applyAffix(ItemMeta meta, EnchantmentRecipe recipe) {
         if (recipe.affix() == null || recipe.affix().isBlank()) {
-            return;
+            return AffixResult.none();
         }
         PersistentDataContainer data = meta.getPersistentDataContainer();
         String current = data.getOrDefault(affixKey, PersistentDataType.STRING, "");
@@ -258,10 +298,18 @@ public class EnchantManager {
         if (!current.isBlank()) {
             affixes.addAll(List.of(current.split(",")));
         }
+        boolean added = false;
         if (!affixes.contains(recipe.affix())) {
             affixes.add(recipe.affix());
+            added = true;
         }
         data.set(affixKey, PersistentDataType.STRING, String.join(",", affixes));
+        RPGStat statBonus = affixStatBonuses.getOrDefault(recipe.affix(), RPGStat.STRENGTH);
+        NamespacedKey statKey = plugin.itemStatManager().enchantStatKey(statBonus);
+        int currentStat = data.getOrDefault(statKey, PersistentDataType.INTEGER, 0);
+        data.set(statKey, PersistentDataType.INTEGER, currentStat + 1);
+        applyBaseStatBonus(meta, statBonus, 1);
+        return new AffixResult(added, recipe.affix(), statBonus, 1);
     }
 
     private void applyEffects(Player player, PlayerProfile profile, List<SkillEffectConfig> effects) {
@@ -279,6 +327,43 @@ public class EnchantManager {
             return Optional.of(Enum.valueOf(type, key));
         } catch (IllegalArgumentException e) {
             return Optional.empty();
+        }
+    }
+
+    private String resolveItemName(ItemStack item, ItemMeta meta) {
+        if (meta != null && meta.hasDisplayName()) {
+            return meta.getDisplayName();
+        }
+        return item.getType().name().toLowerCase().replace("_", " ");
+    }
+
+    private void applyBaseStatBonus(ItemMeta meta, RPGStat stat, int amount) {
+        PersistentDataContainer data = meta.getPersistentDataContainer();
+        switch (stat) {
+            case STRENGTH -> {
+                NamespacedKey key = plugin.itemStatManager().strengthKey();
+                int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
+                data.set(key, PersistentDataType.INTEGER, current + amount);
+            }
+            case DEXTERITY -> {
+                NamespacedKey key = plugin.itemStatManager().critKey();
+                double current = data.getOrDefault(key, PersistentDataType.DOUBLE, 0.0);
+                data.set(key, PersistentDataType.DOUBLE, current + (amount * 0.01));
+            }
+            case CONSTITUTION -> {
+                NamespacedKey key = plugin.itemStatManager().healthKey();
+                int current = data.getOrDefault(key, PersistentDataType.INTEGER, 0);
+                data.set(key, PersistentDataType.INTEGER, current + amount);
+            }
+            case INTELLIGENCE, LUCK -> {
+                // No direct base stat stored; keep as enchant stat only.
+            }
+        }
+    }
+
+    private record AffixResult(boolean added, String affixName, RPGStat statBonus, int statDelta) {
+        private static AffixResult none() {
+            return new AffixResult(false, "", null, 0);
         }
     }
 }

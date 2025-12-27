@@ -22,14 +22,17 @@ public class DungeonCommand implements CommandExecutor {
             return true;
         }
         if (args.length < 1) {
-            player.sendMessage(Text.mm("<gray>/dungeon <enter|leave|generate>"));
+            player.sendMessage(Text.mm("<gray>/dungeon <enter|leave|generate|queue|role|leavequeue>"));
             return true;
         }
         switch (args[0].toLowerCase()) {
             case "enter" -> enterDungeon(player);
             case "leave" -> leaveDungeon(player);
             case "generate" -> generateDungeon(player, args);
-            default -> player.sendMessage(Text.mm("<gray>/dungeon <enter|leave|generate>"));
+            case "queue" -> queueDungeon(player, args);
+            case "leavequeue" -> plugin.dungeonManager().leaveQueue(player);
+            case "role" -> setRole(player, args);
+            default -> player.sendMessage(Text.mm("<gray>/dungeon <enter|leave|generate|queue|role|leavequeue>"));
         }
         return true;
     }
@@ -38,6 +41,10 @@ public class DungeonCommand implements CommandExecutor {
         Location spawn = plugin.dungeonManager().getEntrance();
         if (spawn == null) {
             player.sendMessage(Text.mm("<red>Dungeon nicht konfiguriert."));
+            return;
+        }
+        if (!plugin.dungeonManager().hasFactionAccess(player, "default")) {
+            player.sendMessage(Text.mm("<red>Dein Ruf reicht nicht aus."));
             return;
         }
         plugin.dungeonManager().enterDungeon(player);
@@ -71,6 +78,33 @@ public class DungeonCommand implements CommandExecutor {
         } else {
             members.add(player);
         }
+        if (!plugin.dungeonManager().hasFactionAccess(player, theme)) {
+            player.sendMessage(Text.mm("<red>Dein Ruf reicht nicht aus."));
+            return;
+        }
         plugin.dungeonManager().generateDungeon(player, theme, members);
+    }
+
+    private void queueDungeon(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/dungeon queue <theme>"));
+            return;
+        }
+        plugin.dungeonManager().joinQueue(player, args[1]);
+    }
+
+    private void setRole(Player player, String[] args) {
+        if (args.length < 2) {
+            player.sendMessage(Text.mm("<gray>/dungeon role <tank|heal|dps>"));
+            return;
+        }
+        String role = args[1].toUpperCase();
+        if (!role.equals("TANK") && !role.equals("HEAL") && !role.equals("DPS")) {
+            player.sendMessage(Text.mm("<red>Rolle ungültig."));
+            return;
+        }
+        var profile = plugin.playerDataManager().getProfile(player);
+        profile.setDungeonRole(role);
+        player.sendMessage(Text.mm("<green>Rolle gesetzt: " + role));
     }
 }

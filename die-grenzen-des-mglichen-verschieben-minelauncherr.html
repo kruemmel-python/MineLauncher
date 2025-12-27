@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Grenzen des Möglichen verschieben: MineLauncherRPG – Ein umfassendes System für Minecraft-MMORPGs</title>
+    <meta name="keywords" content="Minecraft, RPG, MMORPG, Plugin, PaperMC, Entwicklung, Spielentwicklung, Servermanagement, Modding, Ralf Krümmel, Fantasy">
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.7; background-color: #f1f5f9; color: #334155; margin: 0; padding: 2rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #ffffff; padding: 2rem 3rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        img { max-width: 100%; height: auto; border-radius: 0.5rem; margin-bottom: 1.5rem; }
+        h1 { font-size: 2.75rem; font-weight: 800; color: #1e293b; line-height: 1.2; margin: 0 0 0.5rem 0; }
+        .publish-info { font-size: 0.9rem; color: #64748b; margin-bottom: 2rem; }
+        .publish-info .author { font-weight: 700; color: #475569; display: block; margin-top: 0.25rem; }
+        .content h2 { font-size: 1.75rem; margin-top: 2.5em; }
+        .content a { color: #2563eb; text-decoration: underline; }
+        .article-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; font-size: 0.8rem; font-style: italic; color: #64748b; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="" alt="Die Grenzen des Möglichen verschieben: MineLauncherRPG – Ein umfassendes System für Minecraft-MMORPGs" />
+        <h1>Die Grenzen des Möglichen verschieben: MineLauncherRPG – Ein umfassendes System für Minecraft-MMORPGs</h1>
+        <div class="publish-info">
+            <span>Veröffentlicht am 27. Dezember 2025</span>
+            <span class="author">Von: Ralf Krümmel (Der Entwickler)</span>
+        </div>
+        <div class="content"><p>Als Ralf Krümmel, &quot;Der Entwickler&quot;, ist es meine Leidenschaft, die Grenzen dessen zu erweitern, was in der Welt von Minecraft möglich ist. Mit Stolz präsentiere ich heute einen tiefgehenden Einblick in unser ambitioniertes Projekt: MineLauncherRPG. Es ist mehr als nur ein Plugin; es ist ein komplettes Framework, das einen Standard-PaperMC-Server in ein voll funktionsfähiges Massively Multiplayer Online Role-Playing Game (MMORPG) verwandelt. Von dynamischen Klassensystemen und mächtigen Skills über prozedural generierte Dungeons und eine florierende Spielerwirtschaft bis hin zu tiefgreifenden Gildenmechaniken und einem kompetitiven PvP-System – MineLauncherRPG ist darauf ausgelegt, ein immersives und persistentes Spielerlebnis zu schaffen. Dieses Reportage beleuchtet die Architektur, die Kernfunktionen und die visionären Werkzeuge, die sowohl Spielern als auch Administratoren zur Verfügung stehen, um unvergessliche Abenteuer zu gestalten.</p>
+<h2>Die Vision eines MMORPGs in Minecraft – Eine Einführung</h2>
+<p>MineLauncherRPG ist eine umfassende Lösung, die das klassische Minecraft-Gameplay mit den komplexen Elementen eines MMORPGs anreichert. Die Spieler können sich auf ein System mit vielfältigen Klassen, einem Arsenal an Skills, herausfordernden Dungeons, einem tiefgehenden Gildensystem und einer robusten, persistenten SQL-Datenbank freuen.</p>
+<p>Die technischen Grundlagen sind klar definiert, um eine stabile und leistungsfähige Umgebung zu gewährleisten:</p>
+<ul>
+<li>Ein Server, der auf PaperMC 1.20.4 oder neuer läuft.</li>
+<li>Eine Java Development Kit (JDK) Version 17+ für die Ausführung.</li>
+<li>Zwingend eine PostgreSQL-Datenbank für die Speicherung aller Spieler- und Weltdaten.</li>
+</ul>
+<p>Die Reise beginnt bereits vor dem Spielstart mit dem &quot;C_launcher&quot; – einem maßgeschneiderten C#-Launcher, der nicht nur die Server-Administration vereinfacht, sondern auch einen direkten Client-Start im Offline-Modus ermöglicht. Ein einfacher Befehl wie <code>dotnet run --project C_launcher -- play Alex</code> genügt, um das Abenteuer zu beginnen. Die neuesten Builds für PaperMC können beispielsweise über die API von PaperMC bezogen werden: <a href="https://api.papermc.io/v2/projects/paper/versions/%7Bversion%7D">https://api.papermc.io/v2/projects/paper/versions/{version}</a>.</p>
+<h2>Das Fundament legen: Installation und Infrastruktur</h2>
+<p>Bevor die ersten Schritte in der neu geschaffenen RPG-Welt unternommen werden können, muss das technische Fundament gelegt werden. Der Prozess ist strukturiert und gewährleistet eine reibungslose Integration:</p>
+<ol>
+<li><strong>Plugin-Installation</strong>: Die <code>rpg-plugin-1.0.0.jar</code> wird im <code>plugins/</code> Ordner des PaperMC-Servers platziert.</li>
+<li><strong>Erste Initialisierung</strong>: Ein einmaliger Serverstart generiert alle notwendigen Konfigurationsdateien. Anschließend wird der Server gestoppt.</li>
+<li><strong>Datenbank-Verbindung</strong>: Die Datei <code>plugins/RPGPlugin/config.yml</code> ist das Herzstück der Datenintegration. Hier werden die Zugangsdaten zur PostgreSQL-Datenbank hinterlegt:<pre><code class="language-yaml">database:
+  host: localhost
+  port: 5432
+  name: rpg_db
+  user: dein_user
+  password: dein_passwort
+  poolSize: 10
+</code></pre>
+Diese Konfiguration stellt sicher, dass alle Spielerdaten, Fortschritte und Weltinformationen persistent und sicher gespeichert werden. Auch die Mojang-Versionsmanifeste sind für die Client-Downloads essenziell: <a href="https://piston-meta.mojang.com/mc/game/version_manifest.json">https://piston-meta.mojang.com/mc/game/version_manifest.json</a>.</li>
+<li><strong>Abschließender Serverstart</strong>: Nach der Datenbankkonfiguration erstellt das Plugin beim erneuten Start automatisch alle erforderlichen Tabellen wie <code>rpg_players</code> und <code>rpg_skills</code>.</li>
+</ol>
+<h2>Spieler im Zentrum: Charakterentwicklung und Interaktion</h2>
+<h3>Klassen und Skills: Der Weg des Helden</h3>
+<p>Die Spieler tauchen in eine Welt ein, in der sie ihren eigenen Weg schmieden können, beginnend mit der Wahl einer Klasse, die in <code>classes.yml</code> definiert ist. Ob als tapferer Krieger, geschickter Ranger oder weiser Magier – jede Klasse bietet einzigartige Startfähigkeiten und Boni. Die <strong>Skill-Liste</strong> (<code>skills.yml</code>) ist das Herzstück der Charakterentwicklung. Sie umfasst:</p>
+<ul>
+<li><strong>Heiler (Healing)</strong>: <code>Heilpuls</code> (<code>heal_pulse</code>), <code>Große Heilung</code> (<code>greater_heal</code>), <code>Segen</code> (<code>divine_blessing</code>).</li>
+<li><strong>Magie (Magic)</strong>: <code>Flammenstoß</code> (<code>ember_shot</code>), <code>Frostbolzen</code> (<code>frost_bolt</code>), <code>Arkane Explosion</code> (<code>arcane_burst</code>).</li>
+<li><strong>Angriff (Attack)</strong>: <code>Machtstoß</code> (<code>power_strike</code>), <code>Wirbelwind</code> (<code>whirlwind</code>), <code>Hinrichtung</code> (<code>execute</code>).</li>
+<li><strong>Verteidigung (Defense)</strong>: <code>Schildwall</code> (<code>shield_wall</code>), <code>Bollwerk</code> (<code>fortify</code>), <code>Abwehrhaltung</code> (<code>deflect</code>).</li>
+<li><strong>Berufe (Profession)</strong>: <code>Bergbau-Fokus</code> (<code>mining_focus</code>), <code>Handwerkskunst</code> (<code>crafting_insight</code>), <code>Alchemie-Meister</code> (<code>alchemy_mastery</code>).</li>
+</ul>
+<p>Spieler erlernen und binden diese Skills über einfache Befehle wie <code>/rpg bind &lt;slot 1-9&gt; &lt;skillId&gt;</code>, die ihre Hotbar in ein mächtiges Arsenal verwandeln.</p>
+<h3>Der Skillbaum: Visuelle Progression</h3>
+<p>Ein intuitiver Skillbaum, zugänglich über <code>/rpg skilltree</code>, visualisiert die Lernpfade und Abhängigkeiten der Fähigkeiten. Er ermöglicht eine strategische Planung der Charakterentwicklung und belohnt Spieler für ihre Investition in spezifische Skill-Linien.</p>
+<h3>Wirtschaft und Handel: Das Gold der Abenteurer</h3>
+<p>Die Wirtschaft bildet das Rückgrat jeder lebendigen MMORPG-Welt. MineLauncherRPG bietet hierfür eine robuste Infrastruktur:</p>
+<ul>
+<li><strong>Loot-Tabellen (<code>loot.yml</code>)</strong>: Monster droppen Gold und seltene Items, deren Stats automatisch generiert werden.</li>
+<li><strong>Shops (<code>shops.yml</code>)</strong>: Administratoren können individuelle Händler definieren, die An- und Verkauf von Waren ermöglichen. Über das Admin-GUI können auch dynamische RPG-Item-Händler (Waffen, Rüstungen, Items, Rohstoffe) erstellt werden, die ihr Angebot an das Spielerlevel anpassen.</li>
+<li><strong>Auktionshaus</strong>: Spieler können Items über <code>/auction sell &lt;Preis&gt;</code> anbieten und über <code>/auction buy &lt;id&gt;</code> erwerben.</li>
+<li><strong>Spielerhandel</strong>: Direkter Handel zwischen Spielern ist über <code>/trade request &lt;player&gt;</code> möglich, inklusive Goldangeboten und -anforderungen.</li>
+<li><strong>Crafting-Aufträge</strong>: Einzigartig ist das System der Crafting-Aufträge, bei dem Spieler über <code>/rpg order create &lt;material&gt; &lt;amount&gt; &lt;reward&gt;</code> Aufträge für andere erstellen und erfüllen können, was eine dynamische Spielerwirtschaft fördert.</li>
+</ul>
+<h3>Fraktionen und Ruf: Loyalität zahlt sich aus</h3>
+<p>Ein tiefgreifendes Fraktionssystem, das in <code>factions.yml</code> definiert wird, ermöglicht es, NPCs an bestimmte Fraktionen zu binden und Interaktionen basierend auf dem Spielerruf zu steuern. Ein hoher Ruf bei einer Fraktion kann Shop-Rabatte oder sogar den Zugang zu Dungeons freischalten. NPCs können über <code>/rpgadmin npc faction &lt;npcId&gt; &lt;factionId&gt;</code> und <code>/rpgadmin npc rank &lt;npcId&gt; &lt;rankId&gt;</code> entsprechend konfiguriert werden.</p>
+<h3>Housing &amp; Gildenhallen: Ein Zuhause in der Welt</h3>
+<p>Spieler können ihre eigenen Heime über <code>/rpg home set</code> definieren und zu ihnen zurückkehren. Gilden haben die Möglichkeit, Gildenhallen zu errichten und diese mit Upgrades wie Crafting-Stationen, Teleportpunkten oder Buff-Generatoren zu verbessern, was die Gemeinschaft stärkt und strategische Vorteile bietet.</p>
+<h2>Die Welt gestalten: Zonen, Mobs und Quests</h2>
+<h3>Zonen und Spawner: Die Dynamik der Wildnis</h3>
+<p>Die Welt von MineLauncherRPG ist in Zonen unterteilt, die über die <code>Editor-Wand</code> (<code>/rpgadmin wand</code>) definiert werden. Für jede Zone können Levelbereiche (<code>/rpgadmin zone setlevel &lt;id&gt; &lt;min&gt; &lt;max&gt;</code>) und Modifikatoren für Langsamkeit oder Schaden festgelegt werden. Spawner (<code>spawners.yml</code>) beleben diese Zonen, indem sie automatisch Custom Mobs innerhalb definierter Grenzen und Intervalle erscheinen lassen.</p>
+<h3>Die Chroniken der Kreaturen: Die Seele der Bedrohung</h3>
+<p>Das Herzstück jeder RPG-Erfahrung sind die Gegner. MineLauncherRPG bietet eine detaillierte Mob-Enzyklopädie, die vom einfachen Waldschlurfer bis zum epischen Welt-Boss reicht. Jeder Mob ist in <code>mobs.yml</code> detailliert definiert, mit spezifischen Gesundheits- und Schadenswerten, Ausrüstung und einer Liste von Skills, die er einsetzen kann.</p>
+<ul>
+<li><strong>Standard-Mobs (Level 1-30)</strong>: Bieten konstanten Fortschritt, mit ansteigenden HP, Schaden und XP. Ihre Taktiken variieren, oft mit Fähigkeiten wie <code>divine_blessing</code> zur Heilung oder <code>frost_bolt</code> für Fernkampfangriffe.</li>
+<li><strong>Spezialisten (Unique Mobs)</strong>: Einzigartige Begegnungen wie der <code>Seuchenbringer</code> oder der <code>Skelettkönig</code> fordern mit spezifischen Skill-Kombinationen wie <code>ember_shot</code> oder <code>shield_wall</code> heraus.</li>
+<li><strong>Dungeon- und Elite-Mobs (Level 11-30)</strong>: Eine Steigerung der Herausforderung, oft mit besserer Ausrüstung und komplexeren Skill-Kombinationen.</li>
+<li><strong>Boss- und Welt-Bosse</strong>: Die ultimativen Herausforderungen, vom <code>WITHER_SKELETON</code>-Boss bis zum <code>WITHER</code>-Welt-Boss mit astronomischen HP-Werten und NETHERITE-Ausrüstung. Sie nutzen ausgeklügelte Behavior Trees, die hohen Schaden und Verteidigungs-Buffs kombinieren, und bieten massive XP-Belohnungen sowie die besten Loots im Spiel.</li>
+</ul>
+<h3>Behavior-Editor (Mob KI): Intelligenz für die Gegner</h3>
+<p>Der integrierte Behavior-Editor (<code>/behavior edit &lt;tree&gt;</code>) ist ein mächtiges Werkzeug für Administratoren, um komplexe KI-Bäume für Mobs zu erstellen und zu testen. Über eine GUI können Knoten wie <code>Selector</code>, <code>Sequence</code>, <code>Cooldown</code>, <code>MeleeAttack</code> oder <code>CastSkill</code> miteinander verknüpft werden, um das Verhalten der Gegner präzise zu steuern. Ein Skelettkönig könnte beispielsweise so konfiguriert werden, dass er im Nahkampf angreift, aber alle 8 Sekunden einen <code>ember_shot</code> einsetzt oder bei niedriger Gesundheit einen <code>shield_wall</code> aktiviert.</p>
+<h3>Quests und Storytelling: Das Epos entfalten</h3>
+<p>Quests (<code>quests.yml</code>) sind der rote Faden, der Spieler durch die Welt führt. Sie werden über den <code>/rpgadmin quest</code> Befehl erstellt und verwaltet. Quest-Schritte können vielfältig sein: <code>KILL</code> (Monster jagen), <code>COLLECT</code> (Items sammeln), <code>TALK</code> (mit NPCs sprechen), <code>EXPLORE</code> (Zonen erkunden), <code>CRAFT</code> (Items herstellen), <code>USE_ITEM</code> (spezifische Items nutzen), <code>DEFEND</code> (Gebiete verteidigen) oder <code>ESCORT</code> (NPCs begleiten). NPCs können als Questgeber fungieren und Quests über <code>/rpgadmin npc linkquest &lt;npcId&gt; &lt;questId&gt;</code> an sich binden.</p>
+<h3>Welt-Events und Meta-Quests: Dynamische Herausforderungen</h3>
+<p>Das System ermöglicht die Erstellung von dynamischen Welt-Events, die an bestimmte Zonen gebunden sind. Diese Events können Quest-Schritte (z.B. <code>KILL ZOMBIE 50</code>) und Belohnungen umfassen. Quests können sogar erst nach dem Abschluss eines Welt-Events freigeschaltet werden, was eine tiefere, emergentere Storytelling-Ebene ermöglicht.</p>
+<h3>Ressourcen-Nodes &amp; Berufe: Handwerk und Fortschritt</h3>
+<p>Spieler können sich in verschiedenen Berufen spezialisieren. Respawnende Sammelknoten, erstellt über <code>/rpgadmin node create mining IRON_ORE 60 8</code>, ermöglichen das gezielte Farmen von Rohstoffen und das Sammeln von Beruf-XP, beispielsweise im Bergbau.</p>
+<h2>Das Endgame: Dungeons, Gilden und PvP</h2>
+<h3>Dungeon-Generierung (Jigsaw + WFC): Abenteuer jenseits der Oberfläche</h3>
+<p>Das Dungeon-System ist eine technische Meisterleistung, die temporäre, instanziierte Welten für Gruppenabenteuer schafft. Es nutzt eine Hybrid-Generierung aus Jigsaw-Räumen für die Makro-Struktur und Wave Function Collapse (WFC) für die Mikro-Details.</p>
+<ol>
+<li><strong>Voraussetzungen</strong>: <code>schem</code>-Dateien für Jigsaw-Räume werden in <code>plugins/RPGPlugin/dungeon_rooms/&lt;theme&gt;/</code> abgelegt. Jigsaw-Blöcke mit <code>name</code> NBT-Feld definieren Sockets für die Raumverbindung. WFC-Patterns für die Detailfüllung liegen in <code>plugins/RPGPlugin/wfc/&lt;theme&gt;/</code>.</li>
+<li><strong>Konfiguration</strong>: <code>config.yml</code> steuert Jigsaw- und WFC-Modus.</li>
+<li><strong>Generierung</strong>: Über <code>/rpgadmin</code> oder <code>/dungeon generate &lt;theme&gt;</code> wird ein Dungeon generiert. Das System teleportiert die Party, spawnt Bosse und löscht die Welt nach Abschluss.</li>
+<li><strong>Matchmaking</strong>: Spieler können sich über <code>/dungeon queue &lt;theme&gt;</code> für Dungeons anmelden und ihre Rolle (<code>/dungeon role &lt;tank|heal|dps&gt;</code>) festlegen.</li>
+</ol>
+<h3>Gilden und Partys: Gemeinschaft und Kooperation</h3>
+<p>Soziale Interaktion ist ein Kernaspekt. Spieler können Partys gründen (<code>/party invite &lt;Name&gt;</code>) und XP im Umkreis teilen. Gilden (<code>/guild create &lt;ID&gt; &lt;Name&gt;</code>) bieten eine Gildenbank, Gildenquests und die Möglichkeit, eine Gildenhalle einzurichten und aufzuwerten.</p>
+<h3>PvP und Elo-System: Der Kampf um Ruhm</h3>
+<p>Für kompetitive Spieler bietet das System PvP-Arenen, die in <code>arenas.yml</code> konfiguriert werden. Spieler können über <code>/pvp join</code> der Warteschlange für Elo-Matches beitreten. Regelmäßige PvP-Saisons (<code>/pvpadmin pvp seasonstart &lt;id&gt; &lt;name&gt; &lt;days&gt;</code>) bieten zusätzliche Anreize und Belohnungen.</p>
+<h2>Die Kunst der Verzauberung: Item-Progression</h2>
+<p>Das <strong>EnchantSystem</strong> (<code>enchantments.yml</code>) ermöglicht es Spielern, ihre RPG-Items zu verbessern und zu individualisieren.</p>
+<ol>
+<li><strong>Voraussetzungen</strong>: Ein RPG-Item, Gold und ggf. Material-Items. Rezepte sind in <code>plugins/RPGPlugin/enchantments.yml</code> definiert.</li>
+<li><strong>Verzauberungs-GUI</strong>: Über <code>/rpg enchant</code> wird ein Menü geöffnet, das verfügbare Rezepte, Kosten und den Verzaubern-Button anzeigt.</li>
+<li><strong>Rezeptauswahl</strong>: Spieler wählen ein Rezept, das den Ziel-Slot (z.B. <code>HAND</code>, <code>ARMOR_CHEST</code>), den Typ (Stat-Upgrade oder Affix) und die Kosten festlegt.</li>
+<li><strong>Ablauf</strong>: Nach Prüfung von Item-Typ, Level und Kosten werden Gold und Materialien abgezogen. Das Item wird aktualisiert, und neue Werte erscheinen im Lore-Text, wie <code>Affix STRENGTH: +1</code> oder <code>Affixe: Praezision</code>. Effekte wie Sounds begleiten den Prozess.</li>
+</ol>
+<h2>Der Admin als Architekt: Werkzeuge für die Weltgestaltung</h2>
+<p>Für Administratoren bietet MineLauncherRPG eine umfassende Suite an In-Game-Werkzeugen, die über das <code>/rpgadmin</code>-Menü zugänglich sind.</p>
+<h3>Der Bau-Manager: Kreativität ohne Grenzen</h3>
+<p>Der Bau-Manager ist ein herausragendes Feature, das das Platzieren komplexer Strukturen aus Sponge-Schematics (<code>.schem</code>-Dateien) revolutioniert.</p>
+<ul>
+<li><strong>Schematic-Ordner</strong>: <code>.schem</code>-Dateien werden in <code>plugins/RPGPlugin/schematics/</code> abgelegt.</li>
+<li><strong>Gebäudedefinitionen (<code>buildings.yml</code>)</strong>: Hier werden Gebäude mit ihren Schematics, möglichen Stockwerken (<code>minFloors</code>, <code>maxFloors</code>, <code>floorHeight</code>), Kellern (<code>basement</code>) und sogar Möbel-Schematics definiert.</li>
+<li><strong>Gebäude platzieren (GUI)</strong>: Über <code>/rpgadmin</code> -&gt; &quot;Bau-Manager&quot; können Kategorien und dann spezifische Gebäude ausgewählt und per Rechtsklick platziert werden. Das System unterstützt mehrstöckige Gebäude und die Integration von Möbeln.</li>
+<li><strong>Einzel-Schema platzieren (GUI)</strong>: Für präzise Einzelplatzierungen kann über den Bau-Manager ein spezifischer <code>haus.schem</code>-Dateiname eingegeben und platziert werden.</li>
+<li><strong>Platzierung rückgängig machen</strong>: Ein wichtiges Feature ist die Undo-Funktion (<code>/rpgadmin build undo</code>), die die letzte Platzierung für den Admin rückgängig macht. Auch das Verschieben von Schematics ist über eine eigene GUI möglich.</li>
+</ul>
+<h3>Admin-GUIs: Vereinfachte Verwaltung</h3>
+<p>Fast alle Aspekte des RPG-Systems können über benutzerfreundliche In-Game-GUIs verwaltet werden:</p>
+<ul>
+<li><strong>RPG-Menü (<code>/rpg</code>)</strong>: Charakterübersicht, Skills, Quests, Fraktionen.</li>
+<li><strong>Admin-Menü (<code>/rpgadmin</code>)</strong>: Zentraler Zugang zu allen Editoren.</li>
+<li><strong>Zonen-Editor</strong>: Erstellung und Bearbeitung von Regionen.</li>
+<li><strong>NPC-Editor</strong>: Platzierung und Konfiguration von NPCs, inklusive Shop-Vorlagen.</li>
+<li><strong>Quest-Editor</strong>: Erstellung und Verwaltung von Quests und deren Schritten.</li>
+<li><strong>Loot-Tabellen-Editor</strong>: Konfiguration von Loot-Drops.</li>
+<li><strong>Skills &amp; Klassen-Editor</strong>: Verwaltung von Fähigkeiten und Charakterklassen.</li>
+<li><strong>Permissions-GUI</strong>: Rollen, Vererbung, Nodes, Spielerrollen und Audit-Log für das Berechtigungssystem.</li>
+<li><strong>Behavior-Editor GUI</strong>: Visuelle Gestaltung der Mob-KI.</li>
+</ul>
+<h3>Wichtige Admin-Befehle (Auszug)</h3>
+<p>Einige der mächtigsten Befehle umfassen:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Befehl</th>
+<th align="left">Beschreibung</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>/rpgadmin wand</code></td>
+<td align="left">Gibt das Tool zum Markieren von Zonen.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin zone</code></td>
+<td align="left">Verwalten von Regionen und Level-Ranges.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin npc</code></td>
+<td align="left">Erstellen und Konfigurieren von NPCs.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin quest</code></td>
+<td align="left">Quests ingame erstellen.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin skill</code></td>
+<td align="left">Skills bearbeiten/erstellen.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin mob</code></td>
+<td align="left">Manuelles Spawnen von Custom Mobs.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin spawner</code></td>
+<td align="left">Konfiguration der automatischen Spawner.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin build gui</code></td>
+<td align="left">Öffnet den Bau-Manager.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin build &lt;id&gt;</code></td>
+<td align="left">Startet Platzierung eines Gebäudes.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin build undo</code></td>
+<td align="left">Macht die letzte Platzierung rückgängig.</td>
+</tr>
+<tr>
+<td align="left"><code>/rpgadmin perms</code></td>
+<td align="left">Permissions-GUI.</td>
+</tr>
+<tr>
+<td align="left"><code>/behavior edit &lt;tree&gt;</code></td>
+<td align="left">Behavior-Editor.</td>
+</tr>
+</tbody></table>
+<h2>Ein Tag im Leben eines Abenteurers: Der Spieler-Walkthrough</h2>
+<p>Die Reise durch MineLauncherRPG ist ein nahtloses Erlebnis, das Spieler von den ersten Schritten bis zu epischen End-Game-Herausforderungen führt:</p>
+<ol>
+<li><strong>Start &amp; Klasse</strong>: Nach dem Login wird die Klasse gewählt (<code>/rpg class choose warrior</code>).</li>
+<li><strong>Setup</strong>: Ein erster Skill wird gebunden (<code>/rpg bind 2 smash</code>).</li>
+<li><strong>Quest</strong>: Die Wache im Dorf bietet eine erste Quest an.</li>
+<li><strong>Kampf</strong>: In der <code>Wald-Zone</code> spawnen automatisch Mobs.</li>
+<li><strong>Action</strong>: Ein Tastendruck löst den gebundenen Skill aus.</li>
+<li><strong>Loot</strong>: Besiegte Mobs droppen Gold und seltene Items mit generierten Stats.</li>
+<li><strong>Handel</strong>: Im Dorf können Items verkauft und neue Ausrüstung erworben werden.</li>
+<li><strong>Abschluss</strong>: Die Quest wird abgegeben, was XP und einen Levelaufstieg bringt.</li>
+<li><strong>Endgame</strong>: Mit Freunden eine Gilde gründen, Dungeons bezwingen und sich im PvP messen!</li>
+</ol>
+<h2>Fazit</h2>
+<p>MineLauncherRPG ist das Ergebnis einer Vision, Minecraft in ein tiefgreifendes, komplexes MMORPG-Erlebnis zu verwandeln. Als &quot;Der Entwickler&quot; bin ich stolz auf die modulare Architektur und die reichhaltigen Funktionen, die sowohl eine intuitive Spielerfahrung als auch mächtige Werkzeuge für Administratoren bieten. Von der prozeduralen Dungeon-Generierung über dynamische Mob-KI bis hin zu einem flexiblen Wirtschaftssystem – dieses Projekt ist ein Beweis dafür, was mit Leidenschaft und Innovation in der Welt der Spielentwicklung erreicht werden kann. Die Zukunft verspricht weitere Erweiterungen und Optimierungen, um die Welt von MineLauncherRPG noch lebendiger und fesselnder zu gestalten.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://api.papermc.io/v2/projects/paper/versions/%7Bversion%7D">https://api.papermc.io/v2/projects/paper/versions/{version}</a></li>
+<li><a href="https://download.getbukkit.org/bukkit/bukkit-%7BserverConfig.Version%7D.jar">https://download.getbukkit.org/bukkit/bukkit-{serverConfig.Version}.jar</a></li>
+<li><a href="https://download.getbukkit.org/craftbukkit/craftbukkit-%7BserverConfig.Version%7D.jar">https://download.getbukkit.org/craftbukkit/craftbukkit-{serverConfig.Version}.jar</a></li>
+<li><a href="https://piston-meta.mojang.com/mc/game/version_manifest.json">https://piston-meta.mojang.com/mc/game/version_manifest.json</a></li>
+<li><a href="https://api.papermc.io/v2/projects/paper/versions/%7BbuildInfo.Version%7D/builds/%7BbuildInfo.Build%7D/downloads/paper-%7BbuildInfo.Version%7D-%7BbuildInfo.Build%7D.jar">https://api.papermc.io/v2/projects/paper/versions/{buildInfo.Version}/builds/{buildInfo.Build}/downloads/paper-{buildInfo.Version}-{buildInfo.Build}.jar</a></li>
+<li><a href="https://repo.papermc.io/repository/maven-public/">https://repo.papermc.io/repository/maven-public/</a></li>
+</ul>
+<h2>MIT License</h2>
+<p>Copyright (c) 2025 Ralf Krümmel</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</div>
+        <footer class="article-footer"><p>Dieser Artikel wurde von Ralf Krümmel (Der Entwickler) verfasst und mit Hilfe von künstlicher Intelligenz erstellt.</p></footer>
+    </div>
+</body>
+</html>

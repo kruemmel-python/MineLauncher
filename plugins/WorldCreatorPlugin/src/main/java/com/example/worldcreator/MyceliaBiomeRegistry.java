@@ -18,7 +18,7 @@ public final class MyceliaBiomeRegistry {
             return;
         }
 
-        for (Map<String, Object> entry : rawProfiles) {
+        for (Map<?, ?> entry : rawProfiles) {
             var name = stringValue(entry, "name", "custom");
             var humidity = mapValue(entry, "humidity");
             var temperature = mapValue(entry, "temperature");
@@ -61,12 +61,12 @@ public final class MyceliaBiomeRegistry {
         );
     }
 
-    private static String stringValue(Map<String, Object> entry, String key, String fallback) {
+    private static String stringValue(Map<?, ?> entry, String key, String fallback) {
         var value = entry.get(key);
         return value instanceof String str ? str : fallback;
     }
 
-    private static Map<String, Object> mapValue(Map<String, Object> entry, String key) {
+    private static Map<String, Object> mapValue(Map<?, ?> entry, String key) {
         var value = entry.get(key);
         if (value instanceof Map<?, ?> map) {
             Map<String, Object> result = new java.util.HashMap<>();

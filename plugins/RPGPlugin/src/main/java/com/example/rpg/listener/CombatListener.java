@@ -60,7 +60,7 @@ public class CombatListener implements Listener {
         int strength = totalStats.getOrDefault(RPGStat.STRENGTH, 5);
         int dexterity = totalStats.getOrDefault(RPGStat.DEXTERITY, 5);
         double baseDamage = event.getDamage();
-        double damage = baseDamage + (strength * 0.2);
+        double damage = baseDamage + (strength * 0.3) + (dexterity * 0.1);
         double critChance = plugin.itemStatManager().collectCritChance(attacker) + (dexterity * 0.002);
         if (random.nextDouble() <= critChance) {
             damage *= 1.5;

@@ -104,7 +104,9 @@ public class SearchLastSeenAreaNode extends BehaviorNode {
         context.putState(BehaviorKeys.SEARCH_ANGLE, angle);
         Location look = lastSeen.clone();
         look.setYaw(angle.floatValue());
-        mob.lookAt(look);
+        Location current = mob.getLocation();
+        current.setYaw(angle.floatValue());
+        mob.teleport(current);
     }
 
     private Player tryAcquireTarget(BehaviorContext context, LivingEntity mob) {
@@ -132,6 +134,6 @@ public class SearchLastSeenAreaNode extends BehaviorNode {
         if (requireLos && !mob.hasLineOfSight(player)) {
             return false;
         }
-        return !player.isSpectator();
+        return true;
     }
 }

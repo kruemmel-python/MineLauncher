@@ -330,7 +330,7 @@ public class CustomMobListener implements Listener {
         if (!mob.getWorld().equals(target.getWorld())) {
             return false;
         }
-        return !target.isSpectator();
+        return true;
     }
 
     private void logDebugStateIfNeeded(BehaviorContext context) {

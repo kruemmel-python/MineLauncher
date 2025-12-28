@@ -61,6 +61,6 @@ public class SelectTargetByThreatNode extends BehaviorNode {
         if (requireLineOfSight && !mob.hasLineOfSight(player)) {
             return false;
         }
-        return !player.isSpectator();
+        return true;
     }
 }

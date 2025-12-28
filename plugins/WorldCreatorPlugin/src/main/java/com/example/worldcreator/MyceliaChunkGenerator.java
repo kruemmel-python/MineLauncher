@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.LimitedRegion;
 import org.bukkit.util.noise.SimplexNoiseGenerator;
 
 public final class MyceliaChunkGenerator extends ChunkGenerator {
@@ -22,6 +23,7 @@ public final class MyceliaChunkGenerator extends ChunkGenerator {
     private SimplexNoiseGenerator oreNoise;
     private SimplexNoiseGenerator humidityNoise;
     private SimplexNoiseGenerator temperatureNoise;
+    private SimplexNoiseGenerator islandNoise;
     private Material baseMat;
     private Material surfaceMat;
     private Material oreMat;
@@ -102,6 +104,7 @@ public final class MyceliaChunkGenerator extends ChunkGenerator {
         oreNoise = new SimplexNoiseGenerator(seed ^ 0x5f3759df);
         humidityNoise = new SimplexNoiseGenerator(seed ^ 0x9e3779b97f4a7c15L);
         temperatureNoise = new SimplexNoiseGenerator(seed ^ 0x85ebca6b);
+        islandNoise = new SimplexNoiseGenerator(seed ^ 0x27d4eb2d);
         initialized = true;
     }
 
@@ -120,5 +123,45 @@ public final class MyceliaChunkGenerator extends ChunkGenerator {
 
     private static int clampHeight(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    @Override
+    public void populate(World world, Random random, int chunkX, int chunkZ, LimitedRegion region) {
+        ensureInitialized(world);
+        int centerX = chunkX * 16 + 8;
+        int centerZ = chunkZ * 16 + 8;
+        double noise = islandNoise.noise(centerX * 0.01, centerZ * 0.01);
+        if (noise < 0.78) {
+            return;
+        }
+
+        int baseY = world.getSeaLevel() + 35 + (int) Math.round((noise - 0.78) * 20.0);
+        int radius = 3 + (int) Math.round((noise - 0.78) * 6.0);
+
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                int distance = Math.abs(dx) + Math.abs(dz);
+                if (distance > radius) {
+                    continue;
+                }
+                int x = centerX + dx;
+                int z = centerZ + dz;
+
+                for (int dy = -2; dy <= 0; dy++) {
+                    region.setBlockData(x, baseY + dy, z, Material.DIRT.createBlockData());
+                }
+
+                region.setBlockData(x, baseY + 1, z, Material.MYCELIUM.createBlockData());
+
+                int hangingLength = 2 + Math.max(0, radius - distance);
+                for (int dy = 1; dy <= hangingLength; dy++) {
+                    int y = baseY - 2 - dy;
+                    region.setBlockData(x, y, z, Material.HANGING_ROOTS.createBlockData());
+                    if (dy == hangingLength) {
+                        region.setBlockData(x, y - 1, z, Material.GLOW_BERRIES.createBlockData());
+                    }
+                }
+            }
+        }
     }
 }

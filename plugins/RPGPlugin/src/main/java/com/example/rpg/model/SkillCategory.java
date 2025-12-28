@@ -4,6 +4,7 @@ public enum SkillCategory {
     HEALING,
     MAGIC,
     ATTACK,
+    TANK,
     DEFENSE,
     PROFESSION
 }

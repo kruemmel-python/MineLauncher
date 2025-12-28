@@ -52,6 +52,35 @@ public class EnchantManager {
         return recipes;
     }
 
+    public void saveRecipe(EnchantmentRecipe recipe) {
+        ConfigurationSection section = config.createSection(recipe.id());
+        section.set("type", recipe.type().name());
+        section.set("rarity", recipe.rarity());
+        section.set("class", recipe.classId());
+        section.set("targetSlot", recipe.targetSlot().name());
+        section.set("statToImprove", recipe.statToImprove() != null ? recipe.statToImprove().name() : null);
+        section.set("minLevel", recipe.minLevel());
+        section.set("costGold", recipe.costGold());
+        if (recipe.costMaterial() != null && recipe.costAmount() > 0) {
+            section.set("costItem", recipe.costMaterial().name() + ":" + recipe.costAmount());
+        } else {
+            section.set("costItem", null);
+        }
+        section.set("affix", recipe.affix());
+        section.set("scaling", recipe.scaling());
+        section.set("tags", recipe.tags());
+        section.set("effects", serializeEffects(recipe.effects()));
+        save();
+    }
+
+    public void saveAll() {
+        config.getKeys(false).forEach(key -> config.set(key, null));
+        for (EnchantmentRecipe recipe : recipes.values()) {
+            saveRecipe(recipe);
+        }
+        save();
+    }
+
     public List<EnchantmentRecipe> availableRecipes(Player player, ItemStack target) {
         if (!isRpgItem(target)) {
             return List.of();
@@ -333,6 +362,17 @@ public class EnchantManager {
         }
     }
 
+    private List<Map<String, Object>> serializeEffects(List<SkillEffectConfig> effects) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (SkillEffectConfig config : effects) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("type", config.type().name());
+            map.put("params", config.params());
+            list.add(map);
+        }
+        return list;
+    }
+
     private boolean isClassAllowed(PlayerProfile profile, EnchantmentRecipe recipe) {
         String requiredClass = recipe.classId();
         if (requiredClass == null || requiredClass.isBlank() || requiredClass.equalsIgnoreCase("any")) {
@@ -343,6 +383,14 @@ public class EnchantManager {
             return false;
         }
         return requiredClass.equalsIgnoreCase(classId);
+    }
+
+    private void save() {
+        try {
+            config.save(file);
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to save enchantments.yml: " + e.getMessage());
+        }
     }
 
     private static <E extends Enum<E>> Optional<E> parseEnum(Class<E> type, String raw) {

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,17 +30,22 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
 
     private NamespacedKey worldTypeKey;
     private final Map<WorldTypeOption, Integer> slotMap = new EnumMap<>(WorldTypeOption.class);
+    private final MyceliaBiomeRegistry biomeRegistry = new MyceliaBiomeRegistry();
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        biomeRegistry.load(getConfig());
         worldTypeKey = new NamespacedKey(this, "world-type");
         Bukkit.getPluginManager().registerEvents(this, this);
 
         slotMap.put(WorldTypeOption.VOID, 10);
         slotMap.put(WorldTypeOption.WATER, 11);
         slotMap.put(WorldTypeOption.SKY_ISLANDS, 12);
-        slotMap.put(WorldTypeOption.JUNGLE, 14);
-        slotMap.put(WorldTypeOption.DESERT, 15);
+        slotMap.put(WorldTypeOption.SKY_REALMS, 13);
+        slotMap.put(WorldTypeOption.MYCELIA, 14);
+        slotMap.put(WorldTypeOption.JUNGLE, 15);
+        slotMap.put(WorldTypeOption.DESERT, 16);
     }
 
     @Override
@@ -47,6 +53,30 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Nur Spieler können dieses Kommando nutzen.");
             return true;
+        }
+
+        if (args.length > 0) {
+            if (args[0].equalsIgnoreCase("tp")) {
+                if (args.length < 2) {
+                    player.sendMessage(ChatColor.YELLOW + "Verwende: /worlds tp <welt>");
+                    return true;
+                }
+                World world = Bukkit.getWorld(args[1]);
+                if (world == null) {
+                    player.sendMessage(ChatColor.RED + "Welt nicht gefunden.");
+                    return true;
+                }
+                player.teleport(world.getSpawnLocation());
+                player.sendMessage(ChatColor.GREEN + "Teleportiert nach: " + world.getName());
+                return true;
+            }
+            if (args[0].equalsIgnoreCase("list")) {
+                String worlds = Bukkit.getWorlds().stream()
+                    .map(World::getName)
+                    .collect(Collectors.joining(", "));
+                player.sendMessage(ChatColor.YELLOW + "Welten: " + worlds);
+                return true;
+            }
         }
 
         player.openInventory(buildMenu());
@@ -110,6 +140,11 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
             case VOID -> creator.generator(new VoidChunkGenerator());
             case WATER -> creator.generator(new WaterChunkGenerator());
             case SKY_ISLANDS -> creator.generator(new SkyIslandsChunkGenerator());
+            case SKY_REALMS -> {
+                creator.generator(new SkyIslandsChunkGenerator());
+                creator.biomeProvider(new MultiBiomeProvider());
+            }
+            case MYCELIA -> creator.generator(new MyceliaChunkGenerator(biomeRegistry));
             case JUNGLE -> creator.biomeProvider(new FixedBiomeProvider(Biome.JUNGLE));
             case DESERT -> creator.biomeProvider(new FixedBiomeProvider(Biome.DESERT));
         }

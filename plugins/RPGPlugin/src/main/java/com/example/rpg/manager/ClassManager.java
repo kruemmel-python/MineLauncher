@@ -13,16 +13,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ClassManager {
     private final JavaPlugin plugin;
     private final File file;
-    private final YamlConfiguration config;
+    private YamlConfiguration config;
     private final Map<String, ClassDefinition> classes = new HashMap<>();
 
     public ClassManager(JavaPlugin plugin) {
         this.plugin = plugin;
         this.file = new File(plugin.getDataFolder(), "classes.yml");
-        this.config = YamlConfiguration.loadConfiguration(file);
         if (!file.exists()) {
-            seedDefaults();
+            plugin.saveResource("classes.yml", false);
         }
+        this.config = YamlConfiguration.loadConfiguration(file);
         load();
     }
 
@@ -38,6 +38,9 @@ public class ClassManager {
         ConfigurationSection section = config.createSection(definition.id());
         section.set("name", definition.name());
         section.set("startSkills", definition.startSkills());
+        if (!definition.presets().isEmpty()) {
+            section.set("presets", definition.presets());
+        }
         save();
     }
 
@@ -83,8 +86,24 @@ public class ClassManager {
             ClassDefinition definition = new ClassDefinition(id);
             definition.setName(section.getString("name", id));
             definition.setStartSkills(section.getStringList("startSkills"));
+            definition.setPresets(loadPresets(section.getConfigurationSection("presets")));
             classes.put(id, definition);
         }
+    }
+
+    private Map<String, Map<String, Object>> loadPresets(ConfigurationSection section) {
+        if (section == null) {
+            return new HashMap<>();
+        }
+        Map<String, Map<String, Object>> presets = new HashMap<>();
+        for (String key : section.getKeys(false)) {
+            ConfigurationSection presetSection = section.getConfigurationSection(key);
+            if (presetSection == null) {
+                continue;
+            }
+            presets.put(key, new HashMap<>(presetSection.getValues(true)));
+        }
+        return presets;
     }
 
     private void seedDefaults() {

@@ -5,5 +5,8 @@ public enum SkillCategory {
     MAGIC,
     ATTACK,
     DEFENSE,
-    PROFESSION
+    PROFESSION,
+    TANK,
+    MELEE,
+    RANGED
 }

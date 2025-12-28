@@ -7,6 +7,11 @@ public class Skill {
     private SkillCategory category;
     private int cooldown;
     private int manaCost;
+    private String classId;
+    private int minLevel;
+    private int maxRank;
+    private java.util.Map<String, Object> scaling = new java.util.HashMap<>();
+    private java.util.List<String> tags = new java.util.ArrayList<>();
     private String requiredSkill;
     private java.util.List<com.example.rpg.skill.SkillEffectConfig> effects = new java.util.ArrayList<>();
 
@@ -56,6 +61,46 @@ public class Skill {
 
     public void setManaCost(int manaCost) {
         this.manaCost = manaCost;
+    }
+
+    public String classId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public int minLevel() {
+        return minLevel;
+    }
+
+    public void setMinLevel(int minLevel) {
+        this.minLevel = minLevel;
+    }
+
+    public int maxRank() {
+        return maxRank;
+    }
+
+    public void setMaxRank(int maxRank) {
+        this.maxRank = maxRank;
+    }
+
+    public java.util.Map<String, Object> scaling() {
+        return scaling;
+    }
+
+    public void setScaling(java.util.Map<String, Object> scaling) {
+        this.scaling = scaling;
+    }
+
+    public java.util.List<String> tags() {
+        return tags;
+    }
+
+    public void setTags(java.util.List<String> tags) {
+        this.tags = tags;
     }
 
     public java.util.List<com.example.rpg.skill.SkillEffectConfig> effects() {

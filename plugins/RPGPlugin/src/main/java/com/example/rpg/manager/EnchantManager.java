@@ -62,6 +62,9 @@ public class EnchantManager {
             if (profile.level() < recipe.minLevel()) {
                 continue;
             }
+            if (!isClassAllowed(profile, recipe)) {
+                continue;
+            }
             if (!recipe.targetSlot().matches(target)) {
                 continue;
             }
@@ -88,6 +91,10 @@ public class EnchantManager {
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         if (profile.level() < recipe.minLevel()) {
             player.sendMessage(Text.mm("<red>Level zu niedrig."));
+            return false;
+        }
+        if (!isClassAllowed(profile, recipe)) {
+            player.sendMessage(Text.mm("<red>Falsche Klasse für diese Verzauberung."));
             return false;
         }
         if (profile.gold() < recipe.costGold()) {
@@ -160,6 +167,12 @@ public class EnchantManager {
             recipe.setCostGold(section.getInt("costGold", 0));
             parseCostItem(section.getString("costItem"), recipe);
             recipe.setAffix(section.getString("affix", null));
+            recipe.setRarity(section.getString("rarity", null));
+            recipe.setClassId(section.getString("class", null));
+            recipe.setScaling(section.getConfigurationSection("scaling") != null
+                ? new HashMap<>(section.getConfigurationSection("scaling").getValues(true))
+                : Map.of());
+            recipe.setTags(section.getStringList("tags"));
             parseEffects(section.getMapList("effects"), recipe.effects());
             recipes.put(key, recipe);
         }
@@ -304,7 +317,9 @@ public class EnchantManager {
             added = true;
         }
         data.set(affixKey, PersistentDataType.STRING, String.join(",", affixes));
-        RPGStat statBonus = affixStatBonuses.getOrDefault(recipe.affix(), RPGStat.STRENGTH);
+        RPGStat statBonus = recipe.statToImprove() != null
+            ? recipe.statToImprove()
+            : affixStatBonuses.getOrDefault(recipe.affix(), RPGStat.STRENGTH);
         NamespacedKey statKey = plugin.itemStatManager().enchantStatKey(statBonus);
         int currentStat = data.getOrDefault(statKey, PersistentDataType.INTEGER, 0);
         data.set(statKey, PersistentDataType.INTEGER, currentStat + 1);
@@ -316,6 +331,18 @@ public class EnchantManager {
         for (SkillEffectConfig config : effects) {
             plugin.skillEffects().apply(config, player, profile);
         }
+    }
+
+    private boolean isClassAllowed(PlayerProfile profile, EnchantmentRecipe recipe) {
+        String requiredClass = recipe.classId();
+        if (requiredClass == null || requiredClass.isBlank() || requiredClass.equalsIgnoreCase("any")) {
+            return true;
+        }
+        String classId = profile.classId();
+        if (classId == null) {
+            return false;
+        }
+        return requiredClass.equalsIgnoreCase(classId);
     }
 
     private static <E extends Enum<E>> Optional<E> parseEnum(Class<E> type, String raw) {

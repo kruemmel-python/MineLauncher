@@ -570,6 +570,7 @@ public class GuiManager {
                 .name(Text.mm("<gold>" + definition.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + definition.id()))
                 .loreLine(Text.mm("<gray>Startskills: <white>" + String.join(", ", definition.startSkills())))
+                .loreLine(Text.mm("<gray>Presets: <white>" + definition.presets().size()))
                 .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
                 .loreLine(Text.mm("<red>Rechtsklick: löschen"))
                 .build();

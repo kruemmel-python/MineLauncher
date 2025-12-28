@@ -30,9 +30,12 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
 
     private NamespacedKey worldTypeKey;
     private final Map<WorldTypeOption, Integer> slotMap = new EnumMap<>(WorldTypeOption.class);
+    private final MyceliaBiomeRegistry biomeRegistry = new MyceliaBiomeRegistry();
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        biomeRegistry.load(getConfig());
         worldTypeKey = new NamespacedKey(this, "world-type");
         Bukkit.getPluginManager().registerEvents(this, this);
 
@@ -40,8 +43,9 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
         slotMap.put(WorldTypeOption.WATER, 11);
         slotMap.put(WorldTypeOption.SKY_ISLANDS, 12);
         slotMap.put(WorldTypeOption.SKY_REALMS, 13);
-        slotMap.put(WorldTypeOption.JUNGLE, 14);
-        slotMap.put(WorldTypeOption.DESERT, 15);
+        slotMap.put(WorldTypeOption.MYCELIA, 14);
+        slotMap.put(WorldTypeOption.JUNGLE, 15);
+        slotMap.put(WorldTypeOption.DESERT, 16);
     }
 
     @Override
@@ -140,6 +144,7 @@ public final class WorldCreatorPlugin extends JavaPlugin implements Listener {
                 creator.generator(new SkyIslandsChunkGenerator());
                 creator.biomeProvider(new MultiBiomeProvider());
             }
+            case MYCELIA -> creator.generator(new MyceliaChunkGenerator(biomeRegistry));
             case JUNGLE -> creator.biomeProvider(new FixedBiomeProvider(Biome.JUNGLE));
             case DESERT -> creator.biomeProvider(new FixedBiomeProvider(Biome.DESERT));
         }

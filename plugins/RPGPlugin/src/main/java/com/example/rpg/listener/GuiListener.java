@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.Arrays;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
@@ -153,16 +154,26 @@ public class GuiListener implements Listener {
                 return;
             }
             if (event.getSlot() == 49) {
-                plugin.promptManager().prompt(player, Text.mm("<yellow>Zone erstellen: <id>"), input -> {
-                    String id = input.trim();
-                    if (id.isBlank()) {
-                        player.sendMessage(Text.mm("<red>ID darf nicht leer sein."));
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Zone erstellen: <id> <min> <max> [name]"), input -> {
+                    String[] parts = input.trim().split("\\s+");
+                    if (parts.length < 3) {
+                        player.sendMessage(Text.mm("<red>Format: <id> <min> <max> [name]"));
+                        return;
+                    }
+                    String id = parts[0];
+                    Integer min = parseInt(parts[1]);
+                    Integer max = parseInt(parts[2]);
+                    if (id.isBlank() || min == null || max == null || min < 1 || max < min) {
+                        player.sendMessage(Text.mm("<red>Ungültige Zone oder Levelbereich."));
                         return;
                     }
                     if (plugin.zoneManager().getZone(id) != null) {
                         player.sendMessage(Text.mm("<red>Zone existiert bereits."));
                         return;
                     }
+                    String name = parts.length > 3
+                        ? String.join(" ", Arrays.copyOfRange(parts, 3, parts.length))
+                        : id;
                     Location pos1 = readPosition(player, "pos1");
                     Location pos2 = readPosition(player, "pos2");
                     if (pos1 == null || pos2 == null) {
@@ -170,9 +181,11 @@ public class GuiListener implements Listener {
                         return;
                     }
                     com.example.rpg.model.Zone zone = new com.example.rpg.model.Zone(id);
-                    zone.setName(id);
+                    zone.setName(name);
                     zone.setWorld(pos1.getWorld().getName());
                     zone.setBounds(pos1, pos2);
+                    zone.setMinLevel(min);
+                    zone.setMaxLevel(max);
                     plugin.zoneManager().zones().put(id, zone);
                     plugin.zoneManager().saveZone(zone);
                     plugin.auditLog().log(player, "Zone erstellt (GUI): " + id);
@@ -198,81 +211,171 @@ public class GuiListener implements Listener {
             if (zone == null) {
                 return;
             }
-            plugin.promptManager().prompt(player, Text.mm("<yellow>Zone bearbeiten: <name|level|mod|bounds|world> ..."), input -> {
-                String[] parts = input.trim().split("\\s+");
-                if (parts.length == 0 || parts[0].isBlank()) {
-                    player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
-                    return;
-                }
-                String action = parts[0].toLowerCase(Locale.ROOT);
-                switch (action) {
-                    case "name" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: name <wert>"));
-                            return;
-                        }
-                        String name = input.substring(input.indexOf(' ') + 1).trim();
-                        if (name.isBlank()) {
-                            player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
-                            return;
-                        }
-                        zone.setName(name);
-                    }
-                    case "level" -> {
-                        if (parts.length < 3) {
-                            player.sendMessage(Text.mm("<red>Format: level <min> <max>"));
-                            return;
-                        }
-                        Integer min = parseInt(parts[1]);
-                        Integer max = parseInt(parts[2]);
-                        if (min == null || max == null || min < 1 || max < min) {
-                            player.sendMessage(Text.mm("<red>Ungültiger Levelbereich."));
-                            return;
-                        }
-                        zone.setMinLevel(min);
-                        zone.setMaxLevel(max);
-                    }
-                    case "mod" -> {
-                        if (parts.length < 3) {
-                            player.sendMessage(Text.mm("<red>Format: mod <slow> <damage>"));
-                            return;
-                        }
-                        Double slow = parseDouble(parts[1]);
-                        Double dmg = parseDouble(parts[2]);
-                        if (slow == null || dmg == null || slow <= 0.0 || dmg <= 0.0) {
-                            player.sendMessage(Text.mm("<red>Ungültige Mod-Werte."));
-                            return;
-                        }
-                        zone.setSlowMultiplier(slow);
-                        zone.setDamageMultiplier(dmg);
-                    }
-                    case "bounds" -> {
-                        Location pos1 = readPosition(player, "pos1");
-                        Location pos2 = readPosition(player, "pos2");
-                        if (pos1 == null || pos2 == null) {
-                            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
-                            return;
-                        }
-                        zone.setWorld(pos1.getWorld().getName());
-                        zone.setBounds(pos1, pos2);
-                    }
-                    case "world" -> {
-                        if (parts.length < 2) {
-                            player.sendMessage(Text.mm("<red>Format: world <name>"));
-                            return;
-                        }
-                        zone.setWorld(parts[1]);
-                    }
-                    default -> {
-                        player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+            plugin.guiManager().openZoneDetail(player, zoneId);
+            return;
+        }
+        if (holder instanceof GuiHolders.ZoneDetailHolder detailHolder) {
+            event.setCancelled(true);
+            String zoneId = detailHolder.zoneId();
+            var zone = plugin.zoneManager().getZone(zoneId);
+            if (zone == null) {
+                plugin.guiManager().openZoneEditor(player);
+                return;
+            }
+            switch (event.getSlot()) {
+                case 10 -> plugin.promptManager().prompt(player, Text.mm("<yellow>Name setzen: <name>"), input -> {
+                    String name = input.trim();
+                    if (name.isBlank()) {
+                        player.sendMessage(Text.mm("<red>Name darf nicht leer sein."));
                         return;
                     }
+                    zone.setName(name);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone Name gesetzt (GUI): " + zone.id());
+                    plugin.guiManager().openZoneDetail(player, zoneId);
+                });
+                case 11 -> plugin.promptManager().prompt(player, Text.mm("<yellow>Levelbereich: <min> <max>"), input -> {
+                    String[] parts = input.trim().split("\\s+");
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <min> <max>"));
+                        return;
+                    }
+                    Integer min = parseInt(parts[0]);
+                    Integer max = parseInt(parts[1]);
+                    if (min == null || max == null || min < 1 || max < min) {
+                        player.sendMessage(Text.mm("<red>Ungültiger Levelbereich."));
+                        return;
+                    }
+                    zone.setMinLevel(min);
+                    zone.setMaxLevel(max);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone Level gesetzt (GUI): " + zone.id());
+                    plugin.guiManager().openZoneDetail(player, zoneId);
+                });
+                case 12 -> plugin.promptManager().prompt(player, Text.mm("<yellow>Modifier: <slow> <damage>"), input -> {
+                    String[] parts = input.trim().split("\\s+");
+                    if (parts.length < 2) {
+                        player.sendMessage(Text.mm("<red>Format: <slow> <damage>"));
+                        return;
+                    }
+                    Double slow = parseDouble(parts[0]);
+                    Double dmg = parseDouble(parts[1]);
+                    if (slow == null || dmg == null || slow <= 0.0 || dmg <= 0.0) {
+                        player.sendMessage(Text.mm("<red>Ungültige Mod-Werte."));
+                        return;
+                    }
+                    zone.setSlowMultiplier(slow);
+                    zone.setDamageMultiplier(dmg);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone Modifier gesetzt (GUI): " + zone.id());
+                    plugin.guiManager().openZoneDetail(player, zoneId);
+                });
+                case 13 -> {
+                    Location pos1 = readPosition(player, "pos1");
+                    Location pos2 = readPosition(player, "pos2");
+                    if (pos1 == null || pos2 == null) {
+                        player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+                        return;
+                    }
+                    zone.setWorld(pos1.getWorld().getName());
+                    zone.setBounds(pos1, pos2);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone Bounds gesetzt (GUI): " + zone.id());
+                    plugin.guiManager().openZoneDetail(player, zoneId);
                 }
-                plugin.zoneManager().saveZone(zone);
-                plugin.auditLog().log(player, "Zone aktualisiert (GUI): " + zone.id());
-                player.sendMessage(Text.mm("<green>Zone aktualisiert."));
-                plugin.guiManager().openZoneEditor(player, page);
-            });
+                case 14 -> plugin.promptManager().prompt(player, Text.mm("<yellow>Welt setzen: <name>"), input -> {
+                    String worldName = input.trim();
+                    if (worldName.isBlank()) {
+                        player.sendMessage(Text.mm("<red>Weltname fehlt."));
+                        return;
+                    }
+                    zone.setWorld(worldName);
+                    plugin.zoneManager().saveZone(zone);
+                    plugin.auditLog().log(player, "Zone Welt gesetzt (GUI): " + zone.id());
+                    plugin.guiManager().openZoneDetail(player, zoneId);
+                });
+                case 15 -> plugin.promptManager().prompt(player,
+                    Text.mm("<yellow>Spawner erstellen: <id> <maxMobs> <interval>"), input -> {
+                        String[] parts = input.trim().split("\\s+");
+                        if (parts.length < 3) {
+                            player.sendMessage(Text.mm("<red>Format: <id> <maxMobs> <interval>"));
+                            return;
+                        }
+                        String spawnerId = parts[0];
+                        if (plugin.spawnerManager().getSpawner(spawnerId) != null) {
+                            player.sendMessage(Text.mm("<red>Spawner existiert bereits."));
+                            return;
+                        }
+                        Integer maxMobs = parseInt(parts[1]);
+                        Integer interval = parseInt(parts[2]);
+                        if (maxMobs == null || interval == null || maxMobs < 1 || interval < 1) {
+                            player.sendMessage(Text.mm("<red>Ungültige Werte."));
+                            return;
+                        }
+                        com.example.rpg.model.Spawner spawner = new com.example.rpg.model.Spawner(spawnerId);
+                        spawner.setZoneId(zoneId);
+                        spawner.setMaxMobs(maxMobs);
+                        spawner.setSpawnInterval(interval);
+                        plugin.spawnerManager().spawners().put(spawnerId, spawner);
+                        plugin.spawnerManager().saveSpawner(spawner);
+                        plugin.auditLog().log(player, "Spawner erstellt (GUI): " + spawnerId);
+                        player.sendMessage(Text.mm("<green>Spawner erstellt: " + spawnerId));
+                        plugin.guiManager().openZoneDetail(player, zoneId);
+                    });
+                case 16 -> plugin.promptManager().prompt(player, Text.mm("<yellow>Spawner zuweisen: <id>"), input -> {
+                    String spawnerId = input.trim();
+                    if (spawnerId.isBlank()) {
+                        player.sendMessage(Text.mm("<red>Spawner-ID fehlt."));
+                        return;
+                    }
+                    var spawner = plugin.spawnerManager().getSpawner(spawnerId);
+                    if (spawner == null) {
+                        player.sendMessage(Text.mm("<red>Spawner nicht gefunden."));
+                        return;
+                    }
+                    spawner.setZoneId(zoneId);
+                    plugin.spawnerManager().saveSpawner(spawner);
+                    plugin.auditLog().log(player, "Spawner zugewiesen (GUI): " + spawnerId + " -> " + zoneId);
+                    plugin.guiManager().openZoneDetail(player, zoneId);
+                });
+                case 17 -> plugin.promptManager().prompt(player,
+                    Text.mm("<yellow>Spawner Mob: <spawnerId> <mobId> [weight]"), input -> {
+                        String[] parts = input.trim().split("\\s+");
+                        if (parts.length < 2) {
+                            player.sendMessage(Text.mm("<red>Format: <spawnerId> <mobId> [weight]"));
+                            return;
+                        }
+                        String spawnerId = parts[0];
+                        String mobId = parts[1];
+                        var spawner = plugin.spawnerManager().getSpawner(spawnerId);
+                        if (spawner == null) {
+                            player.sendMessage(Text.mm("<red>Spawner nicht gefunden."));
+                            return;
+                        }
+                        if (plugin.mobManager().getMob(mobId) == null) {
+                            player.sendMessage(Text.mm("<red>Mob nicht gefunden."));
+                            return;
+                        }
+                        double weight = 1.0;
+                        if (parts.length >= 3) {
+                            Double parsed = parseDouble(parts[2]);
+                            if (parsed == null || parsed <= 0.0) {
+                                player.sendMessage(Text.mm("<red>Ungültiges Gewicht."));
+                                return;
+                            }
+                            weight = parsed;
+                        }
+                        var mobs = new java.util.HashMap<>(spawner.mobs());
+                        mobs.put(mobId, weight);
+                        spawner.setMobs(mobs);
+                        plugin.spawnerManager().saveSpawner(spawner);
+                        plugin.auditLog().log(player, "Spawner Mob gesetzt (GUI): " + spawnerId + " -> " + mobId);
+                        plugin.guiManager().openZoneDetail(player, zoneId);
+                    });
+                case 22 -> plugin.guiManager().openZoneEditor(player);
+                default -> {
+                }
+            }
             return;
         }
         if (holder instanceof GuiHolders.NpcEditorHolder npcHolder) {

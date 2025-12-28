@@ -314,7 +314,7 @@ public class GuiManager {
                 .loreLine(Text.mm("<gray>World: <white>" + zone.world()))
                 .loreLine(Text.mm("<gray>Level: <white>" + zone.minLevel() + "-" + zone.maxLevel()))
                 .loreLine(Text.mm("<gray>Mod: <white>" + zone.slowMultiplier() + " / " + zone.damageMultiplier()))
-                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<yellow>Klick: Optionen"))
                 .loreLine(Text.mm("<red>Rechtsklick: löschen"))
                 .build();
             ItemMeta meta = item.getItemMeta();
@@ -328,6 +328,7 @@ public class GuiManager {
             .build());
         inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Zone erstellen"))
+            .loreLine(Text.mm("<gray>Format: <id> <min> <max> [name]"))
             .loreLine(Text.mm("<gray>Nutze die Wand (Pos1/Pos2)"))
             .build());
         inv.setItem(50, new ItemBuilder(Material.PAPER)
@@ -336,6 +337,70 @@ public class GuiManager {
         inv.setItem(53, new ItemBuilder(Material.ARROW)
             .name(Text.mm("<yellow>Nächste Seite"))
             .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openZoneDetail(Player player, String zoneId) {
+        var zone = plugin.zoneManager().getZone(zoneId);
+        if (zone == null) {
+            player.sendMessage(Text.mm("<red>Zone nicht gefunden."));
+            openZoneEditor(player);
+            return;
+        }
+        var spawners = plugin.spawnerManager().spawners().values().stream()
+            .filter(spawner -> zoneId.equals(spawner.zoneId()))
+            .map(com.example.rpg.model.Spawner::id)
+            .sorted()
+            .toList();
+        String spawnerInfo = spawners.isEmpty() ? "-" : String.join(", ", spawners);
+
+        Inventory inv = Bukkit.createInventory(new GuiHolders.ZoneDetailHolder(zoneId), 27,
+            Component.text("Zone: " + zone.name()));
+        inv.setItem(10, new ItemBuilder(Material.NAME_TAG)
+            .name(Text.mm("<gold>Name ändern"))
+            .loreLine(Text.mm("<gray>Aktuell: <white>" + zone.name()))
+            .loreLine(Text.mm("<yellow>Klick: Name setzen"))
+            .build());
+        inv.setItem(11, new ItemBuilder(Material.EXPERIENCE_BOTTLE)
+            .name(Text.mm("<gold>Levelbereich"))
+            .loreLine(Text.mm("<gray>Aktuell: <white>" + zone.minLevel() + "-" + zone.maxLevel()))
+            .loreLine(Text.mm("<yellow>Klick: Min/Max setzen"))
+            .build());
+        inv.setItem(12, new ItemBuilder(Material.REDSTONE)
+            .name(Text.mm("<gold>Modifier"))
+            .loreLine(Text.mm("<gray>Slow: <white>" + zone.slowMultiplier()))
+            .loreLine(Text.mm("<gray>Damage: <white>" + zone.damageMultiplier()))
+            .loreLine(Text.mm("<yellow>Klick: Werte setzen"))
+            .build());
+        inv.setItem(13, new ItemBuilder(Material.SCAFFOLDING)
+            .name(Text.mm("<gold>Bounds setzen"))
+            .loreLine(Text.mm("<gray>Pos1/Pos2 über Wand-Tool"))
+            .loreLine(Text.mm("<yellow>Klick: Bounds übernehmen"))
+            .build());
+        inv.setItem(14, new ItemBuilder(Material.GRASS_BLOCK)
+            .name(Text.mm("<gold>Welt setzen"))
+            .loreLine(Text.mm("<gray>Aktuell: <white>" + zone.world()))
+            .loreLine(Text.mm("<yellow>Klick: Weltname eingeben"))
+            .build());
+        inv.setItem(15, new ItemBuilder(Material.SPAWNER)
+            .name(Text.mm("<gold>Spawner erstellen"))
+            .loreLine(Text.mm("<gray>Aktive Spawner: <white>" + spawnerInfo))
+            .loreLine(Text.mm("<yellow>Klick: ID, Max, Intervall"))
+            .build());
+        inv.setItem(16, new ItemBuilder(Material.CHAIN)
+            .name(Text.mm("<gold>Spawner zuweisen"))
+            .loreLine(Text.mm("<gray>Spawner-ID an Zone binden"))
+            .loreLine(Text.mm("<yellow>Klick: Spawner-ID"))
+            .build());
+        inv.setItem(17, new ItemBuilder(Material.ZOMBIE_SPAWN_EGG)
+            .name(Text.mm("<gold>Spawner Mob setzen"))
+            .loreLine(Text.mm("<gray>Mob & Gewicht hinzufügen"))
+            .loreLine(Text.mm("<yellow>Klick: <spawnerId> <mobId> [weight]"))
+            .build());
+        inv.setItem(22, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Zurück"))
+            .loreLine(Text.mm("<gray>Zonen-Übersicht"))
             .build());
         player.openInventory(inv);
     }

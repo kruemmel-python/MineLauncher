@@ -403,6 +403,7 @@ public class RPGCommand implements CommandExecutor {
             case "set" -> {
                 var loc = player.getLocation();
                 profile.setHome(loc.getWorld().getName(), loc.getX(), loc.getY(), loc.getZ());
+                player.setRespawnLocation(loc, true);
                 player.sendMessage(Text.mm("<green>Home gesetzt."));
             }
             case "go" -> {

@@ -248,6 +248,10 @@ public class GuiManager {
             .name(Text.mm("<green>Bereich füllen"))
             .loreLine(Text.mm("<gray>Block auswählen"))
             .build());
+        inv.setItem(15, new ItemBuilder(Material.BARRIER)
+            .name(Text.mm("<red>Bereich löschen"))
+            .loreLine(Text.mm("<gray>Setzt markierten Bereich auf Luft"))
+            .build());
         inv.setItem(22, new ItemBuilder(Material.ARROW)
             .name(Text.mm("<yellow>Zurück"))
             .loreLine(Text.mm("<gray>Admin-Menü"))

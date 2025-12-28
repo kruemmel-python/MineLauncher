@@ -94,6 +94,7 @@ public class GuiListener implements Listener {
             switch (event.getSlot()) {
                 case 11 -> giveWand(player);
                 case 13 -> plugin.guiManager().openBlockFillMenu(player, 0);
+                case 15 -> deleteSelection(player);
                 case 22 -> plugin.guiManager().openAdminMenu(player);
                 default -> {
                 }
@@ -1713,6 +1714,33 @@ public class GuiListener implements Listener {
             }
         }
         player.sendMessage(Text.mm("<green>Bereich gefüllt mit: " + material.name()));
+    }
+
+    private void deleteSelection(Player player) {
+        Location pos1 = readPosition(player, "pos1");
+        Location pos2 = readPosition(player, "pos2");
+        if (pos1 == null || pos2 == null) {
+            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+            return;
+        }
+        if (!pos1.getWorld().equals(pos2.getWorld())) {
+            player.sendMessage(Text.mm("<red>Pos1/Pos2 müssen in derselben Welt sein."));
+            return;
+        }
+        int minX = Math.min(pos1.getBlockX(), pos2.getBlockX());
+        int minY = Math.min(pos1.getBlockY(), pos2.getBlockY());
+        int minZ = Math.min(pos1.getBlockZ(), pos2.getBlockZ());
+        int maxX = Math.max(pos1.getBlockX(), pos2.getBlockX());
+        int maxY = Math.max(pos1.getBlockY(), pos2.getBlockY());
+        int maxZ = Math.max(pos1.getBlockZ(), pos2.getBlockZ());
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y <= maxY; y++) {
+                for (int z = minZ; z <= maxZ; z++) {
+                    pos1.getWorld().getBlockAt(x, y, z).setType(Material.AIR, false);
+                }
+            }
+        }
+        player.sendMessage(Text.mm("<green>Bereich gelöscht."));
     }
 
     private Quest resolveQuest(ItemStack item) {

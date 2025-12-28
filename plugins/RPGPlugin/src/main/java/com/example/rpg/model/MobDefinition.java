@@ -17,7 +17,6 @@ public class MobDefinition {
     private String lootTable;
     private String behaviorTree;
     private boolean boss;
-    private boolean debugAi;
 
     public MobDefinition(String id) {
         this.id = id;
@@ -121,13 +120,5 @@ public class MobDefinition {
 
     public void setBoss(boolean boss) {
         this.boss = boss;
-    }
-
-    public boolean debugAi() {
-        return debugAi;
-    }
-
-    public void setDebugAi(boolean debugAi) {
-        this.debugAi = debugAi;
     }
 }

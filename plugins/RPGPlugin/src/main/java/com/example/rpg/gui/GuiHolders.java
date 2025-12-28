@@ -159,23 +159,6 @@ public final class GuiHolders {
         }
     }
 
-    public static final class EnchantAdminHolder implements InventoryHolder {
-        private final int page;
-
-        public EnchantAdminHolder(int page) {
-            this.page = page;
-        }
-
-        public int page() {
-            return page;
-        }
-
-        @Override
-        public @NotNull Inventory getInventory() {
-            throw new UnsupportedOperationException();
-        }
-    }
-
     public static final class QuestListHolder implements InventoryHolder {
         private final int page;
 

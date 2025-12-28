@@ -55,11 +55,8 @@ fireball:
   name: "Feuerball"
   type: ACTIVE
   category: MAGIC
-  class: mage
-  minLevel: 3
   cooldown: 5
   manaCost: 20
-  tags: [burst, fire]
   effects:
   - type: PROJECTILE
     params: { type: SMALL_FIREBALL }
@@ -72,11 +69,8 @@ smash:
   name: "Wuchtschlag"
   type: ACTIVE
   category: ATTACK
-  class: warrior
-  minLevel: 3
   cooldown: 8
   manaCost: 15
-  tags: [melee]
   effects:
   - type: DAMAGE
     params: { amount: 12, radius: 3 } # Flächenschaden
@@ -94,13 +88,11 @@ mage:
   name: "&9Magier"
   startSkills:
   - fireball
-  presets: {}
 
 warrior:
   name: "&cKrieger"
   startSkills:
   - smash
-  presets: {}
 ```
 
 > 🔄 **Tipp:** Nutze `/reload` (oder Server-Neustart) nach Config-Änderungen.
@@ -146,10 +138,6 @@ village_merchant:
       buyPrice: 50
       sellPrice: 0
 ```
-
-### 2.1 Enchant-Rezepte verwalten (Admin-GUI)
-* `/rpgadmin` → **Verzauberungen** öffnen
-* Rezepte erstellen/bearbeiten/löschen (wird in `enchantments.yml` gespeichert)
 
 ### 3. Händler-NPC aufstellen (In-Game)
 1.  Gehe zum Dorfplatz.
@@ -254,11 +242,6 @@ buildings:
 2.  Klicke **Bau-Manager** → Kategorie → Gebäude.
 3.  Rechtsklick auf einen Block, um das Gebäude zu platzieren.
 
-### 3.1 Worldbuilding (Bereich löschen)
-1.  Admin-Menü → **Worldbuilding**.
-2.  Pos1/Pos2 setzen (Editor‑Wand).
-3.  **Bereich löschen** anklicken → markierte Area wird geleert.
-
 ### 4. Einzel-Schema platzieren (GUI)
 1.  Öffne das Admin-Menü: `/rpgadmin`
 2.  Klicke **Bau-Manager** → **Einzel-Schema**.
@@ -314,11 +297,6 @@ Erstellt eine temporäre Welt für eine Gruppe.
 *   Arenen müssen in `arenas.yml` konfiguriert werden.
 *   Spieler nutzen `/pvp join`, um in die Warteschlange für Elo-Matches zu kommen.
 *   **Saison:** `/pvp season` (Anzeige), `/rpgadmin pvp seasonstart <id> <name> <days>`
-
-### 5. Welten verwalten (WorldCreatorPlugin)
-* `/worlds` öffnet das World‑Creator‑Menü.
-* `/worlds list` listet alle Welten.
-* `/worlds tp <welt>` teleportiert zur Welt.
 
 ---
 

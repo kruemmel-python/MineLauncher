@@ -1,228 +1,30 @@
-# enchantments.yml
-# MMO-Design: Verzauberungen definieren Builds (passiv).
-# Felder, die dein Code sicher kennt: type, targetSlot, statToImprove, minLevel, costGold, costItem, affix, effects
-# Zusätzliche Felder: rarity, class, scaling, tags
-
-# -------------------------
-# WARRIOR Enchants (Tank)
-# -------------------------
-
-warrior_threat_weapon_common:
-  type: AFFIX
-  rarity: COMMON
-  class: warrior
+RuneOfStrength:
+  type: STAT_UPGRADE
   targetSlot: HAND
   statToImprove: STRENGTH
-  minLevel: 2
-  costGold: 45
-  costItem: "IRON_INGOT:6"
-  affix: "Provokation"
-  tags: [threat, tank]
-  scaling: { threatBonusPct: { base: 15, perLevel: 1.0, cap: 45 } }
+  minLevel: 1
+  costGold: 250
+  costItem: IRON_NUGGET:1
   effects:
     - type: SOUND
-      params: { sound: "ENTITY_PLAYER_LEVELUP", volume: 1.0, pitch: 1.1 }
-
-warrior_hp_chest_uncommon:
+      params: { sound: ENTITY_PLAYER_LEVELUP, volume: 1.0, pitch: 1.5 }
+RuneOfConstitution:
   type: STAT_UPGRADE
-  rarity: UNCOMMON
-  class: warrior
   targetSlot: ARMOR_CHEST
   statToImprove: CONSTITUTION
-  minLevel: 4
-  costGold: 80
-  costItem: "IRON_BLOCK:2"
-  affix: "Bollwerk"
-  tags: [hp, tank]
-  scaling: { hpBonus: { base: 2.0, perLevel: 0.25, cap: 8.0 } }
+  minLevel: 1
+  costGold: 200
+  costItem: IRON_NUGGET:2
   effects:
     - type: SOUND
-      params: { sound: "BLOCK_ANVIL_USE", volume: 0.8, pitch: 0.9 }
-
-warrior_block_legs_rare:
-  type: STAT_UPGRADE
-  rarity: RARE
-  class: warrior
-  targetSlot: ARMOR_LEGS
-  statToImprove: CONSTITUTION
-  minLevel: 10
-  costGold: 160
-  costItem: "DIAMOND:2"
-  affix: "Standhaft"
-  tags: [block, mitigation]
-  scaling: { blockChancePct: { base: 4, perLevel: 0.4, cap: 12 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ITEM_SHIELD_BLOCK", volume: 1.0, pitch: 0.9 }
-
-warrior_damage_reduction_helm_epic:
+      params: { sound: ENTITY_ANVIL_USE, volume: 1.0, pitch: 1.2 }
+RuneOfPrecision:
   type: AFFIX
-  rarity: EPIC
-  class: warrior
-  targetSlot: ARMOR_HEAD
-  statToImprove: CONSTITUTION
-  minLevel: 16
+  targetSlot: HAND
+  affix: Praezision
+  minLevel: 2
   costGold: 300
-  costItem: "NETHERITE_SCRAP:2"
-  affix: "Unbeugsam"
-  tags: [mitigation, tank]
-  scaling: { damageTakenMultiplier: { base: 0.97, perLevel: -0.002, cap: 0.92 } }
+  costItem: GOLD_NUGGET:1
   effects:
     - type: SOUND
-      params: { sound: "ENTITY_IRON_GOLEM_REPAIR", volume: 0.9, pitch: 0.8 }
-
-# -------------------------
-# MAGE Enchants (Spell / CDR / Mana / -Threat)
-# -------------------------
-
-mage_spellpower_weapon_common:
-  type: STAT_UPGRADE
-  rarity: COMMON
-  class: mage
-  targetSlot: HAND
-  statToImprove: INTELLIGENCE
-  minLevel: 2
-  costGold: 50
-  costItem: "LAPIS_LAZULI:12"
-  affix: "Arkan"
-  tags: [spellpower]
-  scaling: { spellPower: { base: 3.0, perLevel: 0.35, cap: 12.0 } }
-  effects:
-    - type: SOUND
-      params: { sound: "BLOCK_ENCHANTMENT_TABLE_USE", volume: 0.8, pitch: 1.2 }
-
-mage_cdr_chest_uncommon:
-  type: AFFIX
-  rarity: UNCOMMON
-  class: mage
-  targetSlot: ARMOR_CHEST
-  statToImprove: INTELLIGENCE
-  minLevel: 6
-  costGold: 110
-  costItem: "AMETHYST_SHARD:10"
-  affix: "Eile"
-  tags: [cdr]
-  scaling: { cdrPct: { base: 6, perLevel: 0.4, cap: 14 } }
-  effects:
-    - type: SOUND
-      params: { sound: "BLOCK_BEACON_POWER_SELECT", volume: 0.7, pitch: 1.4 }
-
-mage_mana_legs_rare:
-  type: STAT_UPGRADE
-  rarity: RARE
-  class: mage
-  targetSlot: ARMOR_LEGS
-  statToImprove: INTELLIGENCE
-  minLevel: 10
-  costGold: 170
-  costItem: "DIAMOND:1"
-  affix: "Reservoir"
-  tags: [mana]
-  scaling: { manaBonus: { base: 20, perLevel: 2, cap: 60 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 0.8, pitch: 1.3 }
-
-mage_threat_reduction_boots_epic:
-  type: AFFIX
-  rarity: EPIC
-  class: mage
-  targetSlot: ARMOR_FEET
-  statToImprove: INTELLIGENCE
-  minLevel: 16
-  costGold: 320
-  costItem: "ENDER_PEARL:8"
-  affix: "Schleier"
-  tags: [threat, survival]
-  scaling: { threatBonusPct: { base: -20, perLevel: -1.0, cap: -45 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_ENDERMAN_TELEPORT", volume: 0.7, pitch: 1.4 }
-
-# -------------------------
-# RANGER Enchants (Crit / DoT / Mobility)
-# -------------------------
-
-ranger_crit_weapon_common:
-  type: AFFIX
-  rarity: COMMON
-  class: ranger
-  targetSlot: HAND
-  statToImprove: DEXTERITY
-  minLevel: 2
-  costGold: 55
-  costItem: "GOLD_INGOT:4"
-  affix: "Praezision"
-  tags: [crit]
-  scaling: { critChancePct: { base: 3.0, perLevel: 0.35, cap: 10.0 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_ARROW_HIT_PLAYER", volume: 0.8, pitch: 1.2 }
-
-ranger_dot_weapon_uncommon:
-  type: AFFIX
-  rarity: UNCOMMON
-  class: ranger
-  targetSlot: HAND
-  statToImprove: DEXTERITY
-  minLevel: 6
-  costGold: 120
-  costItem: "SPIDER_EYE:12"
-  affix: "Toxin"
-  tags: [dot]
-  scaling: { dotBonusPct: { base: 10, perLevel: 0.7, cap: 28 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_WITCH_DRINK", volume: 0.8, pitch: 1.1 }
-
-ranger_movespeed_boots_rare:
-  type: STAT_UPGRADE
-  rarity: RARE
-  class: ranger
-  targetSlot: ARMOR_FEET
-  statToImprove: DEXTERITY
-  minLevel: 10
-  costGold: 180
-  costItem: "RABBIT_FOOT:2"
-  affix: "Windlauf"
-  tags: [mobility]
-  scaling: { moveSpeedPct: { base: 3.0, perLevel: 0.3, cap: 8.0 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_PLAYER_SPLASH_HIGH_SPEED", volume: 0.7, pitch: 1.4 }
-
-ranger_pierce_weapon_epic:
-  type: AFFIX
-  rarity: EPIC
-  class: ranger
-  targetSlot: HAND
-  statToImprove: DEXTERITY
-  minLevel: 16
-  costGold: 340
-  costItem: "NETHERITE_SCRAP:1"
-  affix: "Durchschlag"
-  tags: [pierce, dungeon]
-  scaling: { armorPenPct: { base: 6, perLevel: 0.5, cap: 14 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_SKELETON_SHOOT", volume: 0.9, pitch: 1.0 }
-
-# -------------------------
-# Global (optional)
-# -------------------------
-
-global_hp_common:
-  type: STAT_UPGRADE
-  rarity: COMMON
-  class: any
-  targetSlot: ARMOR_CHEST
-  statToImprove: CONSTITUTION
-  minLevel: 2
-  costGold: 50
-  costItem: "COOKED_BEEF:6"
-  affix: "Robust"
-  tags: [hp]
-  scaling: { hpBonus: { base: 1.0, perLevel: 0.15, cap: 4.0 } }
-  effects:
-    - type: SOUND
-      params: { sound: "ENTITY_PLAYER_LEVELUP", volume: 0.9, pitch: 1.1 }
+      params: { sound: ENTITY_PLAYER_LEVELUP, volume: 1.0, pitch: 1.8 }

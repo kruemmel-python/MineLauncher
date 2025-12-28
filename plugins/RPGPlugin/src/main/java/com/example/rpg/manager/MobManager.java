@@ -48,7 +48,6 @@ public class MobManager {
         section.set("lootTable", mob.lootTable());
         section.set("behaviorTree", mob.behaviorTree());
         section.set("boss", mob.boss());
-        section.set("debugAi", mob.debugAi());
         save();
     }
 
@@ -80,7 +79,6 @@ public class MobManager {
             mob.setLootTable(section.getString("lootTable", null));
             mob.setBehaviorTree(section.getString("behaviorTree", null));
             mob.setBoss(section.getBoolean("boss", false));
-            mob.setDebugAi(section.getBoolean("debugAi", false));
             mobs.put(id, mob);
         }
     }

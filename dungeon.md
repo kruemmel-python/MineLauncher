@@ -91,7 +91,6 @@ boss_room.schem
 **In‑Game Ablauf:**
 1. Wand holen: `/rpgadmin wand`
 2. Pos1/Pos2 mit der Wand setzen.
-3. Optional: **Worldbuilding → Bereich löschen** zum Leeren der markierten Area.
 3. `/rpgadmin` → **Dungeons** → **Schematic speichern**  
    Zielpfad eingeben, z. B. `dungeon_rooms/crypt/start_room.schem`.
 

@@ -4,16 +4,10 @@ import com.example.rpg.behavior.BehaviorNode;
 import com.example.rpg.behavior.CastSkillNode;
 import com.example.rpg.behavior.CooldownNode;
 import com.example.rpg.behavior.FleeNode;
-import com.example.rpg.behavior.HasLineOfSightNode;
 import com.example.rpg.behavior.HealthBelowNode;
 import com.example.rpg.behavior.HealSelfNode;
 import com.example.rpg.behavior.InverterNode;
-import com.example.rpg.behavior.MemorySelectorNode;
-import com.example.rpg.behavior.MemorySequenceNode;
 import com.example.rpg.behavior.MeleeAttackNode;
-import com.example.rpg.behavior.RememberLastSeenNode;
-import com.example.rpg.behavior.SearchLastSeenAreaNode;
-import com.example.rpg.behavior.SelectTargetByThreatNode;
 import com.example.rpg.behavior.SelectorNode;
 import com.example.rpg.behavior.SequenceNode;
 import com.example.rpg.behavior.TargetDistanceAboveNode;
@@ -98,8 +92,6 @@ public class BehaviorTreeManager {
         return switch (type.toLowerCase()) {
             case "selector" -> buildComposite(new SelectorNode(id), section);
             case "sequence" -> buildComposite(new SequenceNode(id), section);
-            case "memory_selector" -> buildComposite(new MemorySelectorNode(id), section);
-            case "memory_sequence" -> buildComposite(new MemorySequenceNode(id), section);
             case "inverter" -> {
                 BehaviorNode child = parseChild(section, "child", id);
                 yield child != null ? new InverterNode(id, child) : null;
@@ -116,15 +108,6 @@ public class BehaviorTreeManager {
             case "walk_to_target" -> new WalkToTargetNode(id);
             case "health_below" -> new HealthBelowNode(id, section.getDouble("threshold", 0.2));
             case "target_distance_above" -> new TargetDistanceAboveNode(id, section.getDouble("distance", 10));
-            case "has_los" -> new HasLineOfSightNode(id, section.getDouble("maxDistance", -1));
-            case "remember_last_seen" -> new RememberLastSeenNode(id, section.getDouble("maxDistance", -1));
-            case "search_last_seen" -> new SearchLastSeenAreaNode(id,
-                section.getDouble("arriveDistance", 2.0),
-                section.getDouble("searchRadius", 12.0),
-                section.getInt("searchTicks", 80));
-            case "select_target_by_threat" -> new SelectTargetByThreatNode(id,
-                section.getDouble("maxRange", 32.0),
-                section.getBoolean("requireLineOfSight", false));
             default -> null;
         };
     }

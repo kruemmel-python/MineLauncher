@@ -1,44 +1,50 @@
-# MineLauncherRPG – Skill-Übersicht
+# MineLauncherRPG – Skill-Liste (Skill-IDs & Bind-Commands)
 
-Diese Übersicht basiert auf den **aktuellen Skills in `plugins/RPGPlugin/skills.yml`**. Dort kannst du Skills ergänzen oder anpassen.
+Diese Übersicht listet alle aktuell vorhandenen Skills aus dem RPG-Plugin inklusive **Skill-ID** und dem passenden **Bind-Command**.
 
-> **Skill binden:** `/rpg bind <slot 1-9> <skillId>`
+> **Hinweis:** Binden funktioniert mit `/rpg bind <slot 1-9> <skillId>`.
 
-## Krieger (Tank/Bruiser)
-- **taunt** – Spott
-- **challenge_shout** – Herausfordernder Ruf
-- **shield_bash** – Schildstoß
-- **ground_slam** – Bodenschlag
-- **shield_wall** – Schildwall
-- **armor_break** – Rüstung brechen
-- **whirlwind** – Wirbelwind
-- **last_stand** – Letztes Gefecht
-- **cleave** – Spaltender Hieb
+## Heiler (Healing)
 
-## Magier (Frost/Burst)
-- **heal** – Kleiner Heilzauber
-- **frost_lance** – Frostlanze
-- **frost_nova** – Frostnova
-- **ice_barrier** – Eisbarriere
-- **blink** – Blink
-- **time_slow** – Zeitverlangsamung
-- **arcane_burst** – Arkaner Impuls
-- **arcane_missile** – Arkanes Geschoss
-- **fireball** – Feuerball
-- **mana_shield** – Mana-Schild
-- **silence** – Stille
+- **Heilpuls** (`heal_pulse`)
+  - `/rpg bind <slot> heal_pulse`
+- **Große Heilung** (`greater_heal`)
+  - `/rpg bind <slot> greater_heal`
+- **Segen** (`divine_blessing`)
+  - `/rpg bind <slot> divine_blessing`
 
-## Ranger (Ranged/Mobility)
-- **dash** – Sprintschritt
-- **mark_target** – Ziel markieren
-- **poison_arrow** – Giftpfeil
-- **power_shot** – Kraftschuss
-- **multi_shot** – Mehrfachschuss
-- **snare_trap** – Fessel-Falle
-- **disengage** – Abdrängen
-- **slow_shot** – Verlangsamender Schuss
+## Magie (Magic)
 
----
+- **Flammenstoß** (`ember_shot`)
+  - `/rpg bind <slot> ember_shot`
+- **Frostbolzen** (`frost_bolt`)
+  - `/rpg bind <slot> frost_bolt`
+- **Arkane Explosion** (`arcane_burst`)
+  - `/rpg bind <slot> arcane_burst`
 
-## Hinweis
-Skills sind **datengetrieben**. Neue Skills kannst du in `skills.yml` anlegen (inkl. `class`, `minLevel`, `maxRank`, `scaling`, `tags`).
+## Angriff (Attack)
+
+- **Machtstoß** (`power_strike`)
+  - `/rpg bind <slot> power_strike`
+- **Wirbelwind** (`whirlwind`)
+  - `/rpg bind <slot> whirlwind`
+- **Hinrichtung** (`execute`)
+  - `/rpg bind <slot> execute`
+
+## Verteidigung (Defense)
+
+- **Schildwall** (`shield_wall`)
+  - `/rpg bind <slot> shield_wall`
+- **Bollwerk** (`fortify`)
+  - `/rpg bind <slot> fortify`
+- **Abwehrhaltung** (`deflect`)
+  - `/rpg bind <slot> deflect`
+
+## Berufe (Profession)
+
+- **Bergbau-Fokus** (`mining_focus`)
+  - `/rpg bind <slot> mining_focus`
+- **Handwerkskunst** (`crafting_insight`)
+  - `/rpg bind <slot> crafting_insight`
+- **Alchemie-Meister** (`alchemy_mastery`)
+  - `/rpg bind <slot> alchemy_mastery`

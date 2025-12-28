@@ -52,35 +52,6 @@ public class EnchantManager {
         return recipes;
     }
 
-    public void saveRecipe(EnchantmentRecipe recipe) {
-        ConfigurationSection section = config.createSection(recipe.id());
-        section.set("type", recipe.type().name());
-        section.set("rarity", recipe.rarity());
-        section.set("class", recipe.classId());
-        section.set("targetSlot", recipe.targetSlot().name());
-        section.set("statToImprove", recipe.statToImprove() != null ? recipe.statToImprove().name() : null);
-        section.set("minLevel", recipe.minLevel());
-        section.set("costGold", recipe.costGold());
-        if (recipe.costMaterial() != null && recipe.costAmount() > 0) {
-            section.set("costItem", recipe.costMaterial().name() + ":" + recipe.costAmount());
-        } else {
-            section.set("costItem", null);
-        }
-        section.set("affix", recipe.affix());
-        section.set("scaling", recipe.scaling());
-        section.set("tags", recipe.tags());
-        section.set("effects", serializeEffects(recipe.effects()));
-        save();
-    }
-
-    public void saveAll() {
-        config.getKeys(false).forEach(key -> config.set(key, null));
-        for (EnchantmentRecipe recipe : recipes.values()) {
-            saveRecipe(recipe);
-        }
-        save();
-    }
-
     public List<EnchantmentRecipe> availableRecipes(Player player, ItemStack target) {
         if (!isRpgItem(target)) {
             return List.of();
@@ -89,9 +60,6 @@ public class EnchantManager {
         List<EnchantmentRecipe> available = new ArrayList<>();
         for (EnchantmentRecipe recipe : recipes.values()) {
             if (profile.level() < recipe.minLevel()) {
-                continue;
-            }
-            if (!isClassAllowed(profile, recipe)) {
                 continue;
             }
             if (!recipe.targetSlot().matches(target)) {
@@ -120,10 +88,6 @@ public class EnchantManager {
         PlayerProfile profile = plugin.playerDataManager().getProfile(player);
         if (profile.level() < recipe.minLevel()) {
             player.sendMessage(Text.mm("<red>Level zu niedrig."));
-            return false;
-        }
-        if (!isClassAllowed(profile, recipe)) {
-            player.sendMessage(Text.mm("<red>Falsche Klasse für diese Verzauberung."));
             return false;
         }
         if (profile.gold() < recipe.costGold()) {
@@ -196,12 +160,6 @@ public class EnchantManager {
             recipe.setCostGold(section.getInt("costGold", 0));
             parseCostItem(section.getString("costItem"), recipe);
             recipe.setAffix(section.getString("affix", null));
-            recipe.setRarity(section.getString("rarity", null));
-            recipe.setClassId(section.getString("class", null));
-            recipe.setScaling(section.getConfigurationSection("scaling") != null
-                ? new HashMap<>(section.getConfigurationSection("scaling").getValues(true))
-                : Map.of());
-            recipe.setTags(section.getStringList("tags"));
             parseEffects(section.getMapList("effects"), recipe.effects());
             recipes.put(key, recipe);
         }
@@ -346,9 +304,7 @@ public class EnchantManager {
             added = true;
         }
         data.set(affixKey, PersistentDataType.STRING, String.join(",", affixes));
-        RPGStat statBonus = recipe.statToImprove() != null
-            ? recipe.statToImprove()
-            : affixStatBonuses.getOrDefault(recipe.affix(), RPGStat.STRENGTH);
+        RPGStat statBonus = affixStatBonuses.getOrDefault(recipe.affix(), RPGStat.STRENGTH);
         NamespacedKey statKey = plugin.itemStatManager().enchantStatKey(statBonus);
         int currentStat = data.getOrDefault(statKey, PersistentDataType.INTEGER, 0);
         data.set(statKey, PersistentDataType.INTEGER, currentStat + 1);
@@ -359,37 +315,6 @@ public class EnchantManager {
     private void applyEffects(Player player, PlayerProfile profile, List<SkillEffectConfig> effects) {
         for (SkillEffectConfig config : effects) {
             plugin.skillEffects().apply(config, player, profile);
-        }
-    }
-
-    private List<Map<String, Object>> serializeEffects(List<SkillEffectConfig> effects) {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (SkillEffectConfig config : effects) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("type", config.type().name());
-            map.put("params", config.params());
-            list.add(map);
-        }
-        return list;
-    }
-
-    private boolean isClassAllowed(PlayerProfile profile, EnchantmentRecipe recipe) {
-        String requiredClass = recipe.classId();
-        if (requiredClass == null || requiredClass.isBlank() || requiredClass.equalsIgnoreCase("any")) {
-            return true;
-        }
-        String classId = profile.classId();
-        if (classId == null) {
-            return false;
-        }
-        return requiredClass.equalsIgnoreCase(classId);
-    }
-
-    private void save() {
-        try {
-            config.save(file);
-        } catch (Exception e) {
-            plugin.getLogger().warning("Failed to save enchantments.yml: " + e.getMessage());
         }
     }
 

@@ -10,7 +10,6 @@ Dieses Dokument erklärt Schritt für Schritt, wie das **EnchantSystem** genutzt
 - Du brauchst **Gold** (Spielerwährung).
 - Du brauchst ggf. ein **Material‑Item** (z. B. `IRON_NUGGET`) als Verbrauchsgegenstand.
 - Die Verzauberungen werden in `plugins/RPGPlugin/enchantments.yml` definiert.
-- Admins können Rezepte **direkt im Spiel** bearbeiten (siehe Admin‑GUI unten).
 - RPG‑Items kommen u. a. aus **Loot**, **NPC‑Shops**, **Dungeons** und **Welt‑Events**.
 
 ---
@@ -28,15 +27,6 @@ Das GUI zeigt:
 - **Kosten‑Anzeige** (Slots 14–15) – benötigte Materialien & Gold.
 - **Verzaubern‑Button** (Slot 22).
 - **Schließen** (Slot 26).
-
----
-
-## 2.1 Admin‑GUI (Rezepte bearbeiten)
-
-Im Admin‑Menü gibt es einen eigenen Bereich **„Verzauberungen“**, um Rezepte zu erstellen, zu bearbeiten oder zu löschen.
-
-**Pfad:** `/rpgadmin` → **Verzauberungen**  
-**Aktionen (Chat‑Prompt):** `type`, `slot`, `stat`, `affix`, `minlevel`, `costgold`, `costitem`, `class`, `rarity`, `tags`, `addeffect`, `cleareffects`
 
 ---
 
@@ -118,9 +108,6 @@ RuneOfPrecision:
 - `costGold`: Goldkosten
 - `costItem`: Material:Menge
 - `effects`: Effekte (optional, z. B. SOUND)
-- `class`: Klassen‑Gate (`warrior`, `mage`, `ranger`, `any`)
-- `rarity`: Freies Label für Tooltips/Balance
-- `scaling` / `tags`: optionale Metadaten (derzeit informativ)
 
 ---
 

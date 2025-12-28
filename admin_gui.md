@@ -26,7 +26,6 @@ Diese Anleitung beschreibt **alle Admin-GUI-Funktionen** im RPG-Plugin und erkl�
    - **Quest-Editor** (Buch)
    - **Loot-Tabellen** (Truhe)
    - **Skills & Klassen** (Blaze Powder)
-   - **Verzauberungen** (Enchantment Table)
    - **Debug Overlay** (Redstone)
    - **Bau-Manager** (Bricks)
    - **Permissions** (Name Tag)
@@ -85,15 +84,6 @@ Diese Anleitung beschreibt **alle Admin-GUI-Funktionen** im RPG-Plugin und erkl�
 
 ### Zone löschen
 - **Rechtsklick** auf eine Zone.
-
----
-
-## 2.1 Worldbuilding (Bereich füllen/löschen)
-
-1. Öffne **Admin-Menü** → **Worldbuilding**.
-2. **Wand Tool**: Pos1/Pos2 setzen.
-3. **Bereich füllen**: Block auswählen → markierte Area wird gesetzt.
-4. **Bereich löschen**: setzt die markierte Area auf Luft.
 
 ---
 
@@ -230,25 +220,6 @@ Im NPC-Editor findest du fertige **Shop-Vorlagen** in der unteren Reihe. So nutz
 
 ### Quest löschen
 - **Rechtsklick** auf eine Quest.
-
----
-
-## 4.1 Verzauberungen-Admin
-
-### Öffnen
-- Im Admin-Menü auf **Verzauberungen** klicken.
-
-### Rezept erstellen
-1. **Grüner Block** anklicken.
-2. Eingabe: `id` (z. B. `mage_spellpower_weapon_common`).
-3. Das Rezept wird in `enchantments.yml` gespeichert.
-
-### Rezept bearbeiten
-1. **Linksklick** auf ein Rezept.
-2. Aktionen: `type`, `slot`, `stat`, `affix`, `minlevel`, `costgold`, `costitem`, `class`, `rarity`, `tags`, `addeffect`, `cleareffects`.
-
-### Rezept löschen
-- **Rechtsklick** auf ein Rezept.
 
 ---
 

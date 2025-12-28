@@ -43,12 +43,6 @@ public class BehaviorTreeEditorGui {
             .loreLine(Text.mm("<gray>Leert den Baum"))
             .build());
 
-        inventory.setItem(20, new ItemBuilder(Material.ENDER_EYE)
-            .name(Text.mm("<aqua>Aggro & Suche"))
-            .loreLine(Text.mm("<gray>memory_selector + threat + LOS"))
-            .loreLine(Text.mm("<yellow>Klick, um Vorlage hinzuzufügen"))
-            .build());
-
         player.openInventory(inventory);
     }
 }

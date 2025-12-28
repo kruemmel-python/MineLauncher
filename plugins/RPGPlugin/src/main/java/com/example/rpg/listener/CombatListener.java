@@ -8,11 +8,9 @@ import com.example.rpg.model.Quest;
 import com.example.rpg.model.QuestProgress;
 import com.example.rpg.model.QuestStep;
 import com.example.rpg.model.QuestStepType;
-import com.example.rpg.model.RPGStat;
 import com.example.rpg.model.Rarity;
 import java.util.Random;
 import org.bukkit.Material;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -44,28 +42,6 @@ public class CombatListener implements Listener {
                 event.setCancelled(true);
             }
         });
-    }
-
-    @EventHandler(ignoreCancelled = true)
-    public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        Player attacker = resolveAttacker(event);
-        if (attacker == null) {
-            return;
-        }
-        if (!(event.getEntity() instanceof LivingEntity)) {
-            return;
-        }
-        PlayerProfile profile = plugin.playerDataManager().getProfile(attacker);
-        var totalStats = profile.totalStats(attacker, plugin.itemStatManager(), plugin.classManager());
-        int strength = totalStats.getOrDefault(RPGStat.STRENGTH, 5);
-        int dexterity = totalStats.getOrDefault(RPGStat.DEXTERITY, 5);
-        double baseDamage = event.getDamage();
-        double damage = baseDamage + (strength * 0.3) + (dexterity * 0.1);
-        double critChance = plugin.itemStatManager().collectCritChance(attacker) + (dexterity * 0.002);
-        if (random.nextDouble() <= critChance) {
-            damage *= 1.5;
-        }
-        event.setDamage(damage);
     }
 
     @EventHandler(ignoreCancelled = true)

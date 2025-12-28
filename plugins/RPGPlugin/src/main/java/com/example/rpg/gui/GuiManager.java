@@ -337,6 +337,7 @@ public class GuiManager {
         inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Zone erstellen"))
             .loreLine(Text.mm("<gray>Nutze die Wand (Pos1/Pos2)"))
+            .loreLine(Text.mm("<gray>Erstellt einen Mobspawner mit mobs.yml"))
             .build());
         inv.setItem(50, new ItemBuilder(Material.PAPER)
             .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))

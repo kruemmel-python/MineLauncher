@@ -2,7 +2,9 @@ package com.example.rpg.listener;
 
 import com.example.rpg.RPGPlugin;
 import com.example.rpg.behavior.BehaviorContext;
+import com.example.rpg.behavior.BehaviorKeys;
 import com.example.rpg.behavior.BehaviorNode;
+import com.example.rpg.behavior.ThreatTable;
 import com.example.rpg.dungeon.DungeonInstance;
 import com.example.rpg.model.LootEntry;
 import com.example.rpg.model.LootTable;
@@ -21,6 +23,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
+import org.bukkit.entity.Projectile;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,6 +31,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -67,6 +71,31 @@ public class CustomMobListener implements Listener {
             }
             event.setDamage(damage);
         }
+    }
+
+    @EventHandler
+    public void onThreatDamage(EntityDamageByEntityEvent event) {
+        if (!(event.getEntity() instanceof LivingEntity living)) {
+            return;
+        }
+        String mobId = getMobId(living);
+        if (mobId == null) {
+            return;
+        }
+        Player source = resolvePlayerDamager(event.getDamager());
+        if (source == null) {
+            return;
+        }
+        BehaviorContext context = behaviorContexts.get(living.getUniqueId());
+        if (context == null) {
+            return;
+        }
+        ThreatTable threatTable = context.getState(BehaviorKeys.THREAT_TABLE, ThreatTable.class);
+        if (threatTable == null) {
+            threatTable = new ThreatTable();
+            context.putState(BehaviorKeys.THREAT_TABLE, threatTable);
+        }
+        threatTable.addThreat(source, event.getFinalDamage());
     }
 
     @EventHandler
@@ -243,6 +272,17 @@ public class CustomMobListener implements Listener {
         updateHealthBar(living, mob, nextHealth);
     }
 
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        for (BehaviorContext context : behaviorContexts.values()) {
+            ThreatTable threatTable = context.getState(BehaviorKeys.THREAT_TABLE, ThreatTable.class);
+            if (threatTable != null) {
+                threatTable.remove(player);
+            }
+        }
+    }
+
     private void startBehaviorLoop(LivingEntity entity, MobDefinition mob) {
         BehaviorNode root = plugin.behaviorTreeManager().getTree(mob.behaviorTree());
         BehaviorContext context = new BehaviorContext(plugin, entity, mob);
@@ -256,11 +296,10 @@ public class CustomMobListener implements Listener {
                 behaviorContexts.remove(entity.getUniqueId());
                 return;
             }
-            Player target = findTarget(entity);
-            context.setTarget(target);
-            if (target == null) {
-                return;
+            if (!isTargetValid(entity, context.target())) {
+                context.setTarget(findTarget(entity));
             }
+            logDebugStateIfNeeded(context);
             root.tick(context);
         }, 1L, 1L);
         behaviorTasks.put(entity.getUniqueId(), task);
@@ -272,6 +311,55 @@ public class CustomMobListener implements Listener {
             .min((a, b) -> Double.compare(a.getLocation().distanceSquared(entity.getLocation()),
                 b.getLocation().distanceSquared(entity.getLocation())))
             .orElse(null);
+    }
+
+    private Player resolvePlayerDamager(Entity damager) {
+        if (damager instanceof Player player) {
+            return player;
+        }
+        if (damager instanceof Projectile projectile && projectile.getShooter() instanceof Player player) {
+            return player;
+        }
+        return null;
+    }
+
+    private boolean isTargetValid(LivingEntity mob, Player target) {
+        if (target == null || target.isDead() || !target.isValid()) {
+            return false;
+        }
+        if (!mob.getWorld().equals(target.getWorld())) {
+            return false;
+        }
+        return !target.isSpectator();
+    }
+
+    private void logDebugStateIfNeeded(BehaviorContext context) {
+        if (!context.definition().debugAi()) {
+            return;
+        }
+        long now = System.currentTimeMillis();
+        long lastLog = context.getStateLong(BehaviorKeys.DEBUG_LAST_LOG, 0);
+        if (now - lastLog < 1000) {
+            return;
+        }
+        context.putStateLong(BehaviorKeys.DEBUG_LAST_LOG, now);
+        Player target = context.target();
+        boolean hasLos = target != null && context.mob().hasLineOfSight(target);
+        Object lastSeen = context.state().get(BehaviorKeys.LAST_SEEN);
+        ThreatTable threatTable = context.getState(BehaviorKeys.THREAT_TABLE, ThreatTable.class);
+        Player topThreat = threatTable != null
+            ? threatTable.getTopThreatTarget(player -> isTargetValid(context.mob(), player))
+            : null;
+        String targetName = target != null ? target.getName() : "none";
+        String lastSeenInfo = lastSeen != null ? lastSeen.toString() : "none";
+        String threatInfo = topThreat != null ? topThreat.getName() : "none";
+        plugin.getLogger().info(String.format(
+            "[AI:%s] target=%s los=%s lastSeen=%s topThreat=%s",
+            context.mobId(),
+            targetName,
+            hasLos,
+            lastSeenInfo,
+            threatInfo));
     }
 
     private void attachHealthBar(LivingEntity entity, MobDefinition mob, double health) {

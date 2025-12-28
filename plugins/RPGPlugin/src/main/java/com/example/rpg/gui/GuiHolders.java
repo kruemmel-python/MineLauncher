@@ -74,6 +74,23 @@ public final class GuiHolders {
         }
     }
 
+    public static final class ZoneDetailHolder implements InventoryHolder {
+        private final String zoneId;
+
+        public ZoneDetailHolder(String zoneId) {
+            this.zoneId = zoneId;
+        }
+
+        public String zoneId() {
+            return zoneId;
+        }
+
+        @Override
+        public @NotNull Inventory getInventory() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     public static final class NpcEditorHolder implements InventoryHolder {
         private final int page;
 

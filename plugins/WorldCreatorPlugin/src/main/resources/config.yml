@@ -1,0 +1,13 @@
+mycelia:
+  biomes:
+    - name: mycelia-default
+      humidity:
+        min: 0.0
+        max: 1.0
+      temperature:
+        min: 0.0
+        max: 1.0
+      base: DEEPSLATE
+      surface: MYCELIUM
+      ore: AMETHYST_BLOCK
+      biome: MUSHROOM_FIELDS

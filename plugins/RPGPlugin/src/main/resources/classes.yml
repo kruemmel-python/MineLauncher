@@ -1,0 +1,180 @@
+mage:
+  name: Magier
+  startSkills:
+    - heal
+  presets:
+    mage_frost:
+      name: "Frost-Magier"
+      role: "control_dps"
+      description: "Kiten, Kontrolle, sichere DPS. Verlangsamt Gegner und hält Abstand. Ideal für Solo und Dungeons."
+      skillPriority:
+        - frost_lance
+        - frost_nova
+        - blink
+        - ice_barrier
+        - time_slow
+        - silence
+        - heal
+      combatPlan:
+        opener: "time_slow -> frost_lance (druck aufbauen)"
+        defense: "wenn Gegner nah: frost_nova -> Abstand -> blink"
+        antiCaster: "silence auf gefährliche Zauber"
+      enchantmentFocus:
+        weapon:
+          - spell_damage
+          - frost_power
+          - cast_speed
+          - mana_regen
+          - crit_spell_damage
+        armor:
+          - cooldown_reduction
+          - mana_pool
+          - shield_strength
+          - elemental_resist
+          - threat_reduction
+
+    mage_burst_arcane:
+      name: "Arkan-Burst"
+      role: "burst_dps"
+      description: "Kurzzeitiger Extremschaden. Spielt um Burstfenster und Cooldowns, ist aber fragil."
+      skillPriority:
+        - arcane_missile
+        - fireball
+        - blink
+        - mana_shield
+        - silence
+        - time_slow
+      combatPlan:
+        opener: "time_slow -> fireball (burst) -> arcane_missile (finish)"
+        escape: "blink + mana_shield"
+      enchantmentFocus:
+        weapon:
+          - spell_damage
+          - cast_speed
+          - crit_chance
+          - crit_spell_damage
+        armor:
+          - cooldown_reduction
+          - mana_pool
+          - threat_reduction
+          - shield_strength
+
+warrior:
+  name: Krieger
+  startSkills:
+    - taunt
+  presets:
+    warrior_tank:
+      name: "Main Tank"
+      role: "tank"
+      description: "Aggro halten, Schaden reduzieren, Gruppe stabilisieren. Der klassische Dungeon-Anker."
+      skillPriority:
+        - taunt
+        - challenge_shout
+        - shield_wall
+        - shield_bash
+        - ground_slam
+        - armor_break
+        - last_stand
+      combatPlan:
+        opener: "challenge_shout (adds) -> taunt auf boss"
+        sustain: "armor_break aktiv halten, ground_slam für slows"
+        spike: "shield_wall, bei kritisch: last_stand"
+        interrupts: "shield_bash auf casts"
+      enchantmentFocus:
+        weapon:
+          - threat_bonus
+          - armor_pen
+          - life_steal_small
+          - stun_chance
+        armor:
+          - max_health
+          - damage_reduction
+          - block_chance
+          - healing_received
+          - threat_generation
+
+    warrior_bruiser:
+      name: "Bruiser"
+      role: "melee_dps_offtank"
+      description: "Mehr Schaden als Tank, aber immer noch robust. Ideal für Solo und als Offtank."
+      skillPriority:
+        - cleave
+        - whirlwind
+        - armor_break
+        - shield_bash
+        - taunt
+        - last_stand
+      combatPlan:
+        opener: "armor_break -> cleave/whirlwind"
+        utility: "taunt situativ zum retten"
+      enchantmentFocus:
+        weapon:
+          - physical_damage
+          - armor_pen
+          - crit_chance
+          - life_steal_small
+        armor:
+          - max_health
+          - damage_reduction_small
+          - cooldown_reduction_small
+          - movement_resist_knockback
+
+ranger:
+  name: Ranger
+  startSkills:
+    - dash
+  presets:
+    ranger_dot:
+      name: "DoT-Ranger"
+      role: "sustained_dps"
+      description: "Druck über Zeit, stark in langen Kämpfen. DoTs stapeln, Ziel markieren, kiten."
+      skillPriority:
+        - poison_arrow
+        - mark_target
+        - snare_trap
+        - dash
+        - multi_shot
+        - power_shot
+      combatPlan:
+        opener: "mark_target -> poison_arrow -> kiting"
+        aoe: "multi_shot um DoTs zu verteilen"
+        control: "snare_trap + dash für Abstand"
+        finisher: "power_shot im Mark-Fenster"
+      enchantmentFocus:
+        weapon:
+          - dot_damage
+          - crit_chance
+          - piercing
+          - range_bonus
+        armor:
+          - move_speed
+          - evasion
+          - cooldown_reduction
+          - trap_duration
+          - stamina_regen
+
+    ranger_sniper:
+      name: "Sniper"
+      role: "ranged_burst"
+      description: "Hoher Einzelzielschaden aus Distanz. Spielt um Präzision und Positionierung."
+      skillPriority:
+        - power_shot
+        - mark_target
+        - dash
+        - slow_shot
+        - disengage
+      combatPlan:
+        opener: "mark_target -> power_shot"
+        spacing: "slow_shot + disengage, dash nur als Rettung"
+      enchantmentFocus:
+        weapon:
+          - crit_chance
+          - crit_damage
+          - range_bonus
+          - headshot_bonus
+        armor:
+          - move_speed
+          - evasion
+          - cooldown_reduction_small
+          - stamina_regen

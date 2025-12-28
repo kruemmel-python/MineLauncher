@@ -44,6 +44,13 @@ public sealed class ConfigService
 
     public LauncherConfig Deserialize(string json)
     {
-        return JsonSerializer.Deserialize<LauncherConfig>(json, JsonOptions) ?? new LauncherConfig();
+        try
+        {
+            return JsonSerializer.Deserialize<LauncherConfig>(json, JsonOptions) ?? new LauncherConfig();
+        }
+        catch (JsonException)
+        {
+            return new LauncherConfig();
+        }
     }
 }

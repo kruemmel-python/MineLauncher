@@ -76,6 +76,7 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 
 ### 2.9 Housing / Home
 - **Home setzen:** `/rpg home set`
+- **Hinweis:** Setzt auch die Respawn‑Position des Spielers.
 - **Home teleportieren:** `/rpg home go`
 - **Upgrade:** `/rpg home upgrade <craft|teleport|buff>`
 
@@ -161,7 +162,7 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 
 ### 5.1 Admin‑Menü
 - **Öffnen:** `/rpgadmin`
-- Inhalte: Zonen, NPCs, Quests, Loot, Skills, Debug, Bau‑Manager, Permissions.
+- Inhalte: Zonen, NPCs, Quests, Loot, Skills, Verzauberungen, Debug, Bau‑Manager, Permissions.
 
 ### 5.2 Editor‑Wand (Zonen)
 - **Befehl:** `/rpgadmin wand`
@@ -223,6 +224,10 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - `/rpgadmin build undo` (Undo)
 - `/rpgadmin build move` (Move‑GUI)
 
+### 5.9.1 Worldbuilding‑Tools (GUI)
+- **Worldbuilding** → **Bereich füllen** (Blockauswahl)
+- **Worldbuilding** → **Bereich löschen** (setzt markierte Area auf Luft)
+
 ### 5.10 Permissions‑System
 - `/rpgadmin perms` (GUI)
 - `/rpgadmin perms role create <key> <displayName>`
@@ -250,6 +255,7 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - **Skill‑GUI** zum Lernen von Skills.
 - **Skillbaum** (`/rpg skilltree`).
 - **Admin‑Menü** (`/rpgadmin`) mit Debug‑Toggle, Bau‑Manager, Permissions.
+- **Verzauberungen‑Admin**: Rezepte erstellen/bearbeiten/löschen im Admin‑Menü.
 - **Bau‑Manager**: Kategorien, Gebäude, Einzel‑Schemata, Undo, Move‑GUI.
 - **Permissions‑GUI**: Rollen, Vererbung, Nodes, Spielerrollen, Audit‑Log.
 - **Behavior‑Editor GUI** für KI‑Bäume.
@@ -257,6 +263,14 @@ Wenn du ein Permissions‑Plugin nutzt (z. B. LuckPerms):
 - **Gildenbank & Gildenquests**.
 - **Dungeon‑Instanzen** per `/dungeon generate`.
 - **PvP‑Matchmaking** per `/pvp join`.
+
+---
+
+## 7) WorldCreatorPlugin – Weltverwaltung
+
+- **Menü öffnen:** `/worlds`
+- **Welten auflisten:** `/worlds list`
+- **Teleport:** `/worlds tp <welt>`
 
 ---
 

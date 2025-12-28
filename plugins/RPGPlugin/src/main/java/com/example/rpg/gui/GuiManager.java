@@ -170,6 +170,10 @@ public class GuiManager {
             .name(Text.mm("<light_purple>Skills & Klassen"))
             .loreLine(Text.mm("<gray>Skills verwalten"))
             .build());
+        inv.setItem(20, new ItemBuilder(Material.ENCHANTING_TABLE)
+            .name(Text.mm("<aqua>Verzauberungen"))
+            .loreLine(Text.mm("<gray>Enchants verwalten"))
+            .build());
         inv.setItem(15, new ItemBuilder(Material.REDSTONE)
             .name(Text.mm("<red>Debug Overlay"))
             .loreLine(Text.mm("<gray>Region/Quest Debug"))
@@ -243,6 +247,10 @@ public class GuiManager {
         inv.setItem(13, new ItemBuilder(Material.BRICKS)
             .name(Text.mm("<green>Bereich füllen"))
             .loreLine(Text.mm("<gray>Block auswählen"))
+            .build());
+        inv.setItem(15, new ItemBuilder(Material.BARRIER)
+            .name(Text.mm("<red>Bereich löschen"))
+            .loreLine(Text.mm("<gray>Setzt markierten Bereich auf Luft"))
             .build());
         inv.setItem(22, new ItemBuilder(Material.ARROW)
             .name(Text.mm("<yellow>Zurück"))
@@ -538,8 +546,66 @@ public class GuiManager {
             .name(Text.mm("<aqua>Klassen verwalten"))
             .loreLine(Text.mm("<yellow>Klick: öffnen"))
             .build());
+        inv.setItem(47, new ItemBuilder(Material.ENCHANTED_BOOK)
+            .name(Text.mm("<aqua>Verzauberungen"))
+            .loreLine(Text.mm("<yellow>Klick: öffnen"))
+            .build());
         inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
             .name(Text.mm("<green>Skill erstellen"))
+            .build());
+        inv.setItem(50, new ItemBuilder(Material.PAPER)
+            .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
+            .build());
+        inv.setItem(53, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Nächste Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        player.openInventory(inv);
+    }
+
+    public void openEnchantAdmin(Player player) {
+        openEnchantAdmin(player, 0);
+    }
+
+    public void openEnchantAdmin(Player player, int page) {
+        var recipes = new java.util.ArrayList<>(enchantManager.recipes().values());
+        recipes.sort(java.util.Comparator.comparing(com.example.rpg.model.EnchantmentRecipe::id));
+        int pageSize = 45;
+        int maxPage = recipes.isEmpty() ? 0 : (recipes.size() - 1) / pageSize;
+        int safePage = Math.min(Math.max(page, 0), maxPage);
+        Inventory inv = Bukkit.createInventory(new GuiHolders.EnchantAdminHolder(safePage), 54,
+            Component.text("Verzauberungen verwalten"));
+        int slot = 0;
+        int startIndex = safePage * pageSize;
+        for (int i = startIndex; i < recipes.size() && slot < pageSize; i++) {
+            var recipe = recipes.get(i);
+            ItemBuilder builder = new ItemBuilder(Material.ENCHANTED_BOOK)
+                .name(Text.mm("<light_purple>" + recipe.id()))
+                .loreLine(Text.mm("<gray>Typ: <white>" + recipe.type()))
+                .loreLine(Text.mm("<gray>Ziel: <white>" + recipe.targetSlot()))
+                .loreLine(Text.mm("<gray>Klasse: <white>" + (recipe.classId() == null ? "any" : recipe.classId())))
+                .loreLine(Text.mm("<gray>Rarity: <white>" + (recipe.rarity() == null ? "-" : recipe.rarity())))
+                .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
+                .loreLine(Text.mm("<red>Rechtsklick: löschen"));
+            if (recipe.statToImprove() != null) {
+                builder.loreLine(Text.mm("<gray>Stat: <white>" + recipe.statToImprove()));
+            }
+            ItemStack item = builder.build();
+            ItemMeta meta = item.getItemMeta();
+            meta.getPersistentDataContainer().set(enchantRecipeKey, PersistentDataType.STRING, recipe.id());
+            item.setItemMeta(meta);
+            inv.setItem(slot++, item);
+        }
+        inv.setItem(45, new ItemBuilder(Material.ARROW)
+            .name(Text.mm("<yellow>Vorherige Seite"))
+            .loreLine(Text.mm("<gray>Seite " + (safePage + 1) + " von " + (maxPage + 1)))
+            .build());
+        inv.setItem(48, new ItemBuilder(Material.BOOK)
+            .name(Text.mm("<yellow>Zurück zu Skills"))
+            .loreLine(Text.mm("<gray>Skills & Klassen"))
+            .build());
+        inv.setItem(49, new ItemBuilder(Material.EMERALD_BLOCK)
+            .name(Text.mm("<green>Verzauberung erstellen"))
             .build());
         inv.setItem(50, new ItemBuilder(Material.PAPER)
             .name(Text.mm("<gold>Seite " + (safePage + 1) + "/" + (maxPage + 1)))
@@ -570,6 +636,7 @@ public class GuiManager {
                 .name(Text.mm("<gold>" + definition.name()))
                 .loreLine(Text.mm("<gray>ID: <white>" + definition.id()))
                 .loreLine(Text.mm("<gray>Startskills: <white>" + String.join(", ", definition.startSkills())))
+                .loreLine(Text.mm("<gray>Presets: <white>" + definition.presets().size()))
                 .loreLine(Text.mm("<yellow>Klick: bearbeiten"))
                 .loreLine(Text.mm("<red>Rechtsklick: löschen"))
                 .build();

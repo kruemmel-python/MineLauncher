@@ -85,6 +85,14 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpg home upgrade <craft|teleport|buff>` | Housing‑Upgrade | `/rpg home upgrade craft` |
 | `/rpg faction` | Fraktionsruf anzeigen | `/rpg faction` |
 
+### WorldCreatorPlugin – Weltverwaltung
+
+| Befehl | Beschreibung | Beispiel |
+| --- | --- | --- |
+| `/worlds` | Öffnet World‑Creator‑Menü | `/worlds` |
+| `/worlds list` | Listet alle Welten | `/worlds list` |
+| `/worlds tp <welt>` | Teleport zur Welt | `/worlds tp sky_realms-20240101-120000` |
+
 ### Party & Chat
 
 | Befehl | Beschreibung | Beispiel |
@@ -198,6 +206,10 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpgadmin perms role parent remove <role> <parent>` | Parent entfernen | `/rpgadmin perms role parent remove mod admin` |
 | `/rpgadmin perms role node <role> <node> <allow|deny|inherit>` | Node setzen | `/rpgadmin perms role node mod rpg.admin allow` |
 | `/rpgadmin perms user setprimary <player> <role>` | Primary‑Rolle | `/rpgadmin perms user setprimary Alex mod` |
+
+### Admin‑GUI Hinweise
+
+Im Admin‑Menü gibt es jetzt einen **„Verzauberungen“**‑Bereich, um Enchant‑Rezepte zu erstellen/bearbeiten/löschen.
 | `/rpgadmin perms user add <player> <role>` | Rolle hinzufügen | `/rpgadmin perms user add Alex mod` |
 | `/rpgadmin perms user remove <player> <role>` | Rolle entfernen | `/rpgadmin perms user remove Alex mod` |
 | `/rpgadmin perms user info <player> <node>` | Node prüfen | `/rpgadmin perms user info Alex rpg.admin` |

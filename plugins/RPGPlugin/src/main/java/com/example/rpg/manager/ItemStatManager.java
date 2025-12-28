@@ -147,6 +147,24 @@ public class ItemStatManager {
         return totals;
     }
 
+    public double collectCritChance(Player player) {
+        double total = 0.0;
+        List<ItemStack> equipment = new java.util.ArrayList<>();
+        equipment.add(player.getInventory().getItemInMainHand());
+        equipment.add(player.getInventory().getItemInOffHand());
+        for (ItemStack item : player.getInventory().getArmorContents()) {
+            equipment.add(item);
+        }
+        for (ItemStack item : equipment) {
+            if (item == null || item.getItemMeta() == null) {
+                continue;
+            }
+            PersistentDataContainer data = item.getItemMeta().getPersistentDataContainer();
+            total += data.getOrDefault(critKey, PersistentDataType.DOUBLE, 0.0);
+        }
+        return total;
+    }
+
     public NamespacedKey strengthKey() {
         return strengthKey;
     }

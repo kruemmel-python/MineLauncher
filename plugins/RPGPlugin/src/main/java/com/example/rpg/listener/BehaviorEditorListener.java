@@ -44,9 +44,28 @@ public class BehaviorEditorListener implements Listener {
                 player.sendMessage(Text.mm("<yellow>Behavior Tree zurückgesetzt."));
                 gui.open(player, treeName);
             }
+            case 20 -> {
+                plugin.behaviorTreeManager().addTemplate(treeName, buildAggroSearchTemplate());
+                player.sendMessage(Text.mm("<green>Aggro/Suche-Vorlage hinzugefügt."));
+                gui.open(player, treeName);
+            }
             default -> {
             }
         }
+    }
+
+    private Map<String, Object> buildAggroSearchTemplate() {
+        List<Map<String, Object>> children = new ArrayList<>();
+        List<Map<String, Object>> aggroChildren = new ArrayList<>();
+        aggroChildren.add(Map.of("type", "select_target_by_threat", "maxRange", 32.0));
+        aggroChildren.add(Map.of("type", "has_los", "maxDistance", 32.0));
+        aggroChildren.add(Map.of("type", "melee_attack"));
+        children.add(Map.of("type", "sequence", "children", aggroChildren));
+        List<Map<String, Object>> searchChildren = new ArrayList<>();
+        searchChildren.add(Map.of("type", "remember_last_seen", "maxDistance", 32.0));
+        searchChildren.add(Map.of("type", "search_last_seen", "arriveDistance", 2.0, "searchRadius", 12.0, "searchTicks", 80));
+        children.add(Map.of("type", "sequence", "children", searchChildren));
+        return Map.of("type", "memory_selector", "children", children);
     }
 
     private void promptEmergency(Player player, String treeName) {

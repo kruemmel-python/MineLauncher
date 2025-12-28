@@ -1,0 +1,486 @@
+# skills.yml
+# MMO-Design: aktive Skills + klare Rollen.
+# Felder, die dein Code sicher versteht: name, type, category, cooldown, manaCost, effects (mit EffectTypes)
+# Zusätzliche Felder für Progression/Design: class, minLevel, maxRank, scaling, tags
+
+# -------------------------
+# WARRIOR (Tank/Bruiser)
+# -------------------------
+
+taunt:
+  name: "Spott"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 1
+  cooldown: 12
+  manaCost: 0
+  tags: [threat, tank, engage]
+  effects:
+    - type: SOUND
+      params: { sound: "ENTITY_IRON_GOLEM_HURT", volume: 1.0, pitch: 0.8 }
+
+challenge_shout:
+  name: "Herausfordernder Ruf"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 4
+  cooldown: 22
+  manaCost: 0
+  tags: [aoe, threat, tank]
+  effects:
+    - type: SOUND
+      params: { sound: "ENTITY_WITHER_SPAWN", volume: 0.9, pitch: 1.2 }
+    - type: PARTICLE
+      params: { type: "SMOKE", count: 25, speed: 0.02 }
+
+shield_bash:
+  name: "Schildstoß"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 6
+  cooldown: 10
+  manaCost: 0
+  maxRank: 5
+  scaling: { baseDamage: 3.0, perRank: 0.8 }
+  tags: [interrupt, control]
+  effects:
+    - type: DAMAGE
+      params: { amount: 3.0 }
+    - type: POTION
+      params: { type: "SLOW", duration: 40, amplifier: 2 }
+    - type: SOUND
+      params: { sound: "ENTITY_PLAYER_ATTACK_KNOCKBACK", volume: 1.0, pitch: 0.9 }
+
+ground_slam:
+  name: "Bodenschlag"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 8
+  cooldown: 18
+  manaCost: 0
+  tags: [aoe, control]
+  effects:
+    - type: SOUND
+      params: { sound: "ENTITY_GENERIC_EXPLODE", volume: 0.7, pitch: 1.3 }
+    - type: POTION
+      params: { type: "SLOW", duration: 80, amplifier: 1 }
+    - type: PARTICLE
+      params: { type: "BLOCK_CRACK", count: 30, speed: 0.04 }
+
+shield_wall:
+  name: "Schildwall"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 10
+  cooldown: 35
+  manaCost: 0
+  tags: [defensive, cooldown]
+  effects:
+    - type: POTION
+      params: { type: "DAMAGE_RESISTANCE", duration: 120, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ITEM_SHIELD_BLOCK", volume: 1.0, pitch: 0.8 }
+
+armor_break:
+  name: "Rüstung brechen"
+  type: ACTIVE
+  category: MELEE
+  class: warrior
+  minLevel: 12
+  cooldown: 14
+  manaCost: 0
+  maxRank: 5
+  scaling: { baseDebuffSeconds: 4, perRank: 1 }
+  tags: [debuff, boss]
+  effects:
+    - type: DAMAGE
+      params: { amount: 4.0 }
+    - type: POTION
+      params: { type: "WEAKNESS", duration: 80, amplifier: 0 }
+    - type: SOUND
+      params: { sound: "ENTITY_ZOMBIE_ATTACK_IRON_DOOR", volume: 1.0, pitch: 1.0 }
+
+whirlwind:
+  name: "Wirbelwind"
+  type: ACTIVE
+  category: MELEE
+  class: warrior
+  minLevel: 16
+  cooldown: 20
+  manaCost: 0
+  maxRank: 5
+  scaling: { baseDamage: 5.0, perRank: 1.0 }
+  tags: [aoe, dps]
+  effects:
+    - type: DAMAGE
+      params: { amount: 5.0 }
+    - type: PARTICLE
+      params: { type: "SWEEP_ATTACK", count: 12, speed: 0.02 }
+    - type: SOUND
+      params: { sound: "ENTITY_PLAYER_ATTACK_SWEEP", volume: 1.0, pitch: 1.1 }
+
+cleave:
+  name: "Spaltender Hieb"
+  type: ACTIVE
+  category: MELEE
+  class: warrior
+  minLevel: 14
+  cooldown: 14
+  manaCost: 0
+  maxRank: 5
+  scaling: { baseDamage: 4.0, perRank: 0.9 }
+  tags: [aoe, dps]
+  effects:
+    - type: DAMAGE
+      params: { amount: 4.0 }
+    - type: PARTICLE
+      params: { type: "SWEEP_ATTACK", count: 8, speed: 0.02 }
+    - type: SOUND
+      params: { sound: "ENTITY_PLAYER_ATTACK_SWEEP", volume: 1.0, pitch: 1.0 }
+
+last_stand:
+  name: "Letztes Gefecht"
+  type: ACTIVE
+  category: TANK
+  class: warrior
+  minLevel: 20
+  cooldown: 60
+  manaCost: 0
+  tags: [panic, defensive]
+  effects:
+    - type: POTION
+      params: { type: "REGENERATION", duration: 100, amplifier: 1 }
+    - type: POTION
+      params: { type: "DAMAGE_RESISTANCE", duration: 100, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ENTITY_PLAYER_LEVELUP", volume: 1.0, pitch: 0.7 }
+
+# -------------------------
+# MAGE (Frost Control / Burst)
+# -------------------------
+
+heal:
+  name: "Kleiner Heilzauber"
+  type: ACTIVE
+  category: HEALING
+  class: mage
+  minLevel: 1
+  cooldown: 14
+  manaCost: 18
+  maxRank: 5
+  scaling: { baseHeal: 4.0, perRank: 1.5 }
+  tags: [utility, emergency]
+  effects:
+    - type: HEAL
+      params: { amount: 4.0 }
+    - type: SOUND
+      params: { sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 0.8, pitch: 1.4 }
+    - type: PARTICLE
+      params: { type: "HEART", count: 10, speed: 0.01 }
+
+frost_lance:
+  name: "Frostlanze"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 3
+  cooldown: 8
+  manaCost: 12
+  maxRank: 5
+  scaling: { baseDamage: 4.5, perRank: 1.0 }
+  tags: [frost, slow, kiting]
+  effects:
+    - type: DAMAGE
+      params: { amount: 4.5 }
+    - type: POTION
+      params: { type: "SLOW", duration: 60, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ENTITY_SNOW_GOLEM_SHOOT", volume: 0.9, pitch: 1.3 }
+
+frost_nova:
+  name: "Frostnova"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 6
+  cooldown: 18
+  manaCost: 20
+  tags: [control, root]
+  effects:
+    - type: POTION
+      params: { type: "SLOW", duration: 80, amplifier: 3 }
+    - type: PARTICLE
+      params: { type: "SNOWFLAKE", count: 35, speed: 0.02 }
+    - type: SOUND
+      params: { sound: "BLOCK_GLASS_BREAK", volume: 0.8, pitch: 1.4 }
+
+ice_barrier:
+  name: "Eisbarriere"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 8
+  cooldown: 28
+  manaCost: 25
+  tags: [defensive]
+  effects:
+    - type: POTION
+      params: { type: "DAMAGE_RESISTANCE", duration: 120, amplifier: 0 }
+    - type: SOUND
+      params: { sound: "BLOCK_AMETHYST_BLOCK_CHIME", volume: 0.8, pitch: 1.1 }
+
+blink:
+  name: "Blink"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 10
+  cooldown: 16
+  manaCost: 16
+  tags: [mobility]
+  effects:
+    - type: VELOCITY
+      params: { x: 0.0, y: 0.3, z: 1.3 }
+    - type: SOUND
+      params: { sound: "ENTITY_ENDERMAN_TELEPORT", volume: 1.0, pitch: 1.2 }
+    - type: PARTICLE
+      params: { type: "PORTAL", count: 25, speed: 0.02 }
+
+time_slow:
+  name: "Zeitverlangsamung"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 12
+  cooldown: 26
+  manaCost: 22
+  tags: [control, aoe]
+  effects:
+    - type: POTION
+      params: { type: "SLOW", duration: 100, amplifier: 2 }
+    - type: SOUND
+      params: { sound: "BLOCK_BEACON_AMBIENT", volume: 0.6, pitch: 0.6 }
+
+arcane_burst:
+  name: "Arkaner Impuls"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 16
+  cooldown: 20
+  manaCost: 30
+  maxRank: 5
+  scaling: { baseDamage: 7.0, perRank: 1.2 }
+  tags: [burst]
+  effects:
+    - type: DAMAGE
+      params: { amount: 7.0 }
+    - type: SOUND
+      params: { sound: "ENTITY_GUARDIAN_ATTACK", volume: 0.9, pitch: 1.0 }
+    - type: PARTICLE
+      params: { type: "END_ROD", count: 18, speed: 0.02 }
+
+arcane_missile:
+  name: "Arkanes Geschoss"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 14
+  cooldown: 12
+  manaCost: 18
+  maxRank: 5
+  scaling: { baseDamage: 5.0, perRank: 1.0 }
+  tags: [arcane, burst]
+  effects:
+    - type: DAMAGE
+      params: { amount: 5.0 }
+    - type: SOUND
+      params: { sound: "ENTITY_ENDERMAN_HURT", volume: 0.8, pitch: 1.2 }
+
+fireball:
+  name: "Feuerball"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 12
+  cooldown: 14
+  manaCost: 20
+  maxRank: 5
+  scaling: { baseDamage: 6.0, perRank: 1.1 }
+  tags: [fire, burst]
+  effects:
+    - type: PROJECTILE
+      params: { type: "SMALL_FIREBALL" }
+    - type: SOUND
+      params: { sound: "ENTITY_BLAZE_SHOOT", volume: 1.0, pitch: 1.1 }
+
+mana_shield:
+  name: "Mana-Schild"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 18
+  cooldown: 30
+  manaCost: 30
+  tags: [defensive]
+  effects:
+    - type: POTION
+      params: { type: "ABSORPTION", duration: 120, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "BLOCK_ENCHANTMENT_TABLE_USE", volume: 0.8, pitch: 1.3 }
+
+silence:
+  name: "Stille"
+  type: ACTIVE
+  category: MAGIC
+  class: mage
+  minLevel: 20
+  cooldown: 40
+  manaCost: 28
+  tags: [interrupt, anti-caster]
+  effects:
+    - type: POTION
+      params: { type: "WEAKNESS", duration: 80, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ENTITY_WARDEN_SONIC_BOOM", volume: 0.5, pitch: 2.0 }
+
+# -------------------------
+# RANGER (DoT / Mobility)
+# -------------------------
+
+dash:
+  name: "Sprintschritt"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 1
+  cooldown: 12
+  manaCost: 0
+  tags: [mobility]
+  effects:
+    - type: VELOCITY
+      params: { x: 0.0, y: 0.2, z: 1.2 }
+    - type: SOUND
+      params: { sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.4 }
+
+mark_target:
+  name: "Ziel markieren"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 4
+  cooldown: 18
+  manaCost: 8
+  tags: [utility, focus]
+  effects:
+    - type: POTION
+      params: { type: "GLOWING", duration: 120, amplifier: 0 }
+    - type: SOUND
+      params: { sound: "BLOCK_NOTE_BLOCK_PLING", volume: 0.8, pitch: 1.6 }
+
+poison_arrow:
+  name: "Giftpfeil"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 6
+  cooldown: 10
+  manaCost: 10
+  maxRank: 5
+  scaling: { baseDamage: 3.0, perRank: 0.6, dotSeconds: 6 }
+  tags: [dot, pressure]
+  effects:
+    - type: DAMAGE
+      params: { amount: 3.0 }
+    - type: POTION
+      params: { type: "POISON", duration: 120, amplifier: 0 }
+    - type: SOUND
+      params: { sound: "ENTITY_ARROW_HIT_PLAYER", volume: 0.8, pitch: 1.1 }
+
+power_shot:
+  name: "Kraftschuss"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 8
+  cooldown: 16
+  manaCost: 14
+  maxRank: 5
+  scaling: { baseDamage: 6.0, perRank: 1.1 }
+  tags: [burst, finisher]
+  effects:
+    - type: DAMAGE
+      params: { amount: 6.0 }
+    - type: SOUND
+      params: { sound: "ENTITY_SKELETON_SHOOT", volume: 1.0, pitch: 0.9 }
+    - type: PARTICLE
+      params: { type: "CRIT", count: 14, speed: 0.02 }
+
+slow_shot:
+  name: "Verlangsamender Schuss"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 10
+  cooldown: 12
+  manaCost: 10
+  tags: [control]
+  effects:
+    - type: DAMAGE
+      params: { amount: 3.5 }
+    - type: POTION
+      params: { type: "SLOW", duration: 60, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ENTITY_ARROW_SHOOT", volume: 0.8, pitch: 1.3 }
+
+multi_shot:
+  name: "Mehrfachschuss"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 12
+  cooldown: 18
+  manaCost: 18
+  tags: [aoe]
+  effects:
+    - type: PROJECTILE
+      params: { type: "SNOWBALL" }
+    - type: SOUND
+      params: { sound: "ENTITY_ARROW_SHOOT", volume: 1.0, pitch: 1.2 }
+
+snare_trap:
+  name: "Fessel-Falle"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 16
+  cooldown: 26
+  manaCost: 16
+  tags: [control, trap]
+  effects:
+    - type: POTION
+      params: { type: "SLOW", duration: 100, amplifier: 3 }
+    - type: SOUND
+      params: { sound: "BLOCK_TRIPWIRE_CLICK_ON", volume: 1.0, pitch: 1.2 }
+
+disengage:
+  name: "Abdrängen"
+  type: ACTIVE
+  category: RANGED
+  class: ranger
+  minLevel: 20
+  cooldown: 22
+  manaCost: 10
+  tags: [anti-melee, escape]
+  effects:
+    - type: VELOCITY
+      params: { x: 0.0, y: 0.35, z: -1.1 }
+    - type: POTION
+      params: { type: "SLOW", duration: 40, amplifier: 1 }
+    - type: SOUND
+      params: { sound: "ENTITY_GOAT_RAM_IMPACT", volume: 0.8, pitch: 1.4 }

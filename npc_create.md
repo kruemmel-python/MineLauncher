@@ -18,6 +18,8 @@ Dieses Dokument erklärt, wie NPCs im RPG‑Plugin erstellt werden, **inklusive 
 /rpgadmin npc create <id> <role>
 ```
 
+> Alternativ: `/rpgadmin` → **NPC-Editor** öffnen und dort erstellen/bearbeiten.
+
 ### Beispiel
 ```
 /rpgadmin npc create waffi WEAPON_VENDOR

@@ -6,6 +6,7 @@ public enum WorldTypeOption {
     VOID("Leere Welt", Material.GLASS),
     WATER("Wasserwelt", Material.WATER_BUCKET),
     SKY_ISLANDS("Sky Inseln", Material.ELYTRA),
+    SKY_REALMS("Sky Regionen", Material.END_STONE),
     JUNGLE("Dschungel", Material.JUNGLE_LOG),
     DESERT("Wüste", Material.SAND);
 

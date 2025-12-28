@@ -32,6 +32,7 @@ public class PlayerProfile {
     private String guildId;
     private int elo = 1000;
     private String dungeonRole = "DPS";
+    private Map<RPGStat, Integer> cachedTotals = new EnumMap<>(RPGStat.class);
     private String homeWorld;
     private double homeX;
     private double homeY;
@@ -237,21 +238,26 @@ public class PlayerProfile {
         int dex = totalStats.getOrDefault(RPGStat.DEXTERITY, 5);
         int con = totalStats.getOrDefault(RPGStat.CONSTITUTION, 5);
         int intel = totalStats.getOrDefault(RPGStat.INTELLIGENCE, 5);
+        cachedTotals = new EnumMap<>(totalStats);
 
         if (player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE) != null) {
-            player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(1.0 + strength * 0.2);
+            player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(2.0 + strength * 0.5);
         }
         if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH) != null) {
             player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0 + con * 0.8);
         }
         if (player.getAttribute(Attribute.GENERIC_ATTACK_SPEED) != null) {
-            player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4.0 + dex * 0.05);
+            player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4.0 + dex * 0.04);
         }
         if (player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED) != null) {
             player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1 + dex * 0.002);
         }
         maxMana = 100 + intel * 5;
         mana = Math.min(mana, maxMana);
+    }
+
+    public Map<RPGStat, Integer> cachedTotals() {
+        return cachedTotals;
     }
 
     public Map<RPGStat, Integer> totalStats(Player player, com.example.rpg.manager.ItemStatManager itemStatManager,

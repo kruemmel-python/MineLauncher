@@ -75,6 +75,7 @@ public class GuiListener implements Listener {
                 case 12 -> plugin.guiManager().openQuestEditor(player);
                 case 13 -> plugin.guiManager().openLootEditor(player);
                 case 14 -> plugin.guiManager().openSkillAdmin(player);
+                case 20 -> plugin.guiManager().openEnchantAdmin(player);
                 case 15 -> {
                     boolean enabled = plugin.toggleDebug(player.getUniqueId());
                     player.sendMessage(Text.mm(enabled ? "<green>Debug aktiviert." : "<red>Debug deaktiviert."));
@@ -93,6 +94,7 @@ public class GuiListener implements Listener {
             switch (event.getSlot()) {
                 case 11 -> giveWand(player);
                 case 13 -> plugin.guiManager().openBlockFillMenu(player, 0);
+                case 15 -> deleteSelection(player);
                 case 22 -> plugin.guiManager().openAdminMenu(player);
                 default -> {
                 }
@@ -719,6 +721,10 @@ public class GuiListener implements Listener {
                 plugin.guiManager().openSkillAdmin(player, page + 1);
                 return;
             }
+            if (event.getSlot() == 47) {
+                plugin.guiManager().openEnchantAdmin(player, 0);
+                return;
+            }
             if (event.getSlot() == 48) {
                 plugin.guiManager().openClassAdmin(player, 0);
                 return;
@@ -870,6 +876,220 @@ public class GuiListener implements Listener {
                 player.sendMessage(Text.mm("<green>Skill aktualisiert."));
                 plugin.guiManager().openSkillAdmin(player, page);
             });
+            return;
+        }
+        if (holder instanceof GuiHolders.EnchantAdminHolder enchantAdminHolder) {
+            event.setCancelled(true);
+            int page = enchantAdminHolder.page();
+            if (event.getSlot() == 45) {
+                plugin.guiManager().openEnchantAdmin(player, page - 1);
+                return;
+            }
+            if (event.getSlot() == 53) {
+                plugin.guiManager().openEnchantAdmin(player, page + 1);
+                return;
+            }
+            if (event.getSlot() == 48) {
+                plugin.guiManager().openSkillAdmin(player, 0);
+                return;
+            }
+            if (event.getSlot() == 49) {
+                plugin.promptManager().prompt(player, Text.mm("<yellow>Verzauberung erstellen: <id>"), input -> {
+                    String id = input.trim().toLowerCase(Locale.ROOT);
+                    if (id.isBlank()) {
+                        player.sendMessage(Text.mm("<red>ID darf nicht leer sein."));
+                        return;
+                    }
+                    if (plugin.enchantManager().recipes().containsKey(id)) {
+                        player.sendMessage(Text.mm("<red>Verzauberung existiert bereits."));
+                        return;
+                    }
+                    com.example.rpg.model.EnchantmentRecipe recipe = new com.example.rpg.model.EnchantmentRecipe(id);
+                    recipe.setType(com.example.rpg.model.EnchantRecipeType.STAT_UPGRADE);
+                    recipe.setTargetSlot(com.example.rpg.model.EnchantTargetSlot.HAND);
+                    recipe.setMinLevel(1);
+                    recipe.setCostGold(0);
+                    plugin.enchantManager().recipes().put(id, recipe);
+                    plugin.enchantManager().saveRecipe(recipe);
+                    plugin.auditLog().log(player, "Verzauberung erstellt (GUI): " + id);
+                    player.sendMessage(Text.mm("<green>Verzauberung erstellt: " + id));
+                    plugin.guiManager().openEnchantAdmin(player, page);
+                });
+                return;
+            }
+            String recipeId = resolveEnchantRecipeId(current);
+            com.example.rpg.model.EnchantmentRecipe recipe = recipeId != null
+                ? plugin.enchantManager().recipes().get(recipeId)
+                : null;
+            if (recipe == null) {
+                return;
+            }
+            if (event.isRightClick()) {
+                if (plugin.enchantManager().recipes().remove(recipe.id()) != null) {
+                    plugin.enchantManager().saveAll();
+                    plugin.auditLog().log(player, "Verzauberung gelöscht (GUI): " + recipe.id());
+                    player.sendMessage(Text.mm("<red>Verzauberung gelöscht: " + recipe.id()));
+                    plugin.guiManager().openEnchantAdmin(player, page);
+                }
+                return;
+            }
+            plugin.promptManager().prompt(player,
+                Text.mm("<yellow>Verzauberung bearbeiten: <type|slot|stat|affix|minlevel|costgold|costitem|class|rarity|tags|addeffect|cleareffects> ..."),
+                input -> {
+                    String[] parts = input.trim().split("\\s+");
+                    if (parts.length == 0 || parts[0].isBlank()) {
+                        player.sendMessage(Text.mm("<red>Ungültige Eingabe."));
+                        return;
+                    }
+                    String action = parts[0].toLowerCase(Locale.ROOT);
+                    switch (action) {
+                        case "type" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: type <STAT_UPGRADE|AFFIX>"));
+                                return;
+                            }
+                            Optional<com.example.rpg.model.EnchantRecipeType> type =
+                                parseEnum(com.example.rpg.model.EnchantRecipeType.class, parts[1]);
+                            if (type.isEmpty()) {
+                                player.sendMessage(Text.mm("<red>Unbekannter Typ."));
+                                return;
+                            }
+                            recipe.setType(type.get());
+                        }
+                        case "slot" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: slot <HAND|OFF_HAND|ARMOR_HEAD|ARMOR_CHEST|ARMOR_LEGS|ARMOR_FEET|SHIELD>"));
+                                return;
+                            }
+                            Optional<com.example.rpg.model.EnchantTargetSlot> slot =
+                                parseEnum(com.example.rpg.model.EnchantTargetSlot.class, parts[1]);
+                            if (slot.isEmpty()) {
+                                player.sendMessage(Text.mm("<red>Unbekannter Slot."));
+                                return;
+                            }
+                            recipe.setTargetSlot(slot.get());
+                        }
+                        case "stat" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: stat <RPGStat|none>"));
+                                return;
+                            }
+                            if (parts[1].equalsIgnoreCase("none")) {
+                                recipe.setStatToImprove(null);
+                                return;
+                            }
+                            Optional<com.example.rpg.model.RPGStat> stat =
+                                parseEnum(com.example.rpg.model.RPGStat.class, parts[1]);
+                            if (stat.isEmpty()) {
+                                player.sendMessage(Text.mm("<red>Unbekannter Stat."));
+                                return;
+                            }
+                            recipe.setStatToImprove(stat.get());
+                        }
+                        case "affix" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: affix <name|none>"));
+                                return;
+                            }
+                            recipe.setAffix(parts[1].equalsIgnoreCase("none") ? null : parts[1]);
+                        }
+                        case "minlevel" -> {
+                            Integer value = parts.length > 1 ? parseInt(parts[1]) : null;
+                            if (value == null) {
+                                player.sendMessage(Text.mm("<red>Format: minlevel <zahl>"));
+                                return;
+                            }
+                            recipe.setMinLevel(value);
+                        }
+                        case "costgold" -> {
+                            Integer value = parts.length > 1 ? parseInt(parts[1]) : null;
+                            if (value == null) {
+                                player.sendMessage(Text.mm("<red>Format: costgold <zahl>"));
+                                return;
+                            }
+                            recipe.setCostGold(value);
+                        }
+                        case "costitem" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: costitem <MATERIAL:AMOUNT|none>"));
+                                return;
+                            }
+                            if (parts[1].equalsIgnoreCase("none")) {
+                                recipe.setCostMaterial(null);
+                                recipe.setCostAmount(0);
+                                return;
+                            }
+                            String[] costParts = parts[1].split(":", 2);
+                            if (costParts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: costitem <MATERIAL:AMOUNT>"));
+                                return;
+                            }
+                            Material material = Material.matchMaterial(costParts[0].toUpperCase(Locale.ROOT));
+                            Integer amount = parseInt(costParts[1]);
+                            if (material == null || amount == null) {
+                                player.sendMessage(Text.mm("<red>Material oder Menge ungültig."));
+                                return;
+                            }
+                            recipe.setCostMaterial(material);
+                            recipe.setCostAmount(amount);
+                        }
+                        case "class" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: class <id|any>"));
+                                return;
+                            }
+                            recipe.setClassId(parts[1].equalsIgnoreCase("any") ? null : parts[1]);
+                        }
+                        case "rarity" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: rarity <name|none>"));
+                                return;
+                            }
+                            recipe.setRarity(parts[1].equalsIgnoreCase("none") ? null : parts[1]);
+                        }
+                        case "tags" -> {
+                            if (parts.length < 2) {
+                                recipe.setTags(new java.util.ArrayList<>());
+                                return;
+                            }
+                            java.util.List<String> tags = new java.util.ArrayList<>();
+                            for (int i = 1; i < parts.length; i++) {
+                                tags.add(parts[i]);
+                            }
+                            recipe.setTags(tags);
+                        }
+                        case "addeffect" -> {
+                            if (parts.length < 2) {
+                                player.sendMessage(Text.mm("<red>Format: addeffect <effectType> <param:value>..."));
+                                return;
+                            }
+                            Optional<SkillEffectType> typeOpt = parseEnum(SkillEffectType.class, parts[1]);
+                            if (typeOpt.isEmpty()) {
+                                player.sendMessage(Text.mm("<red>Unbekannter Effekt-Typ."));
+                                return;
+                            }
+                            java.util.Map<String, Object> params = new java.util.HashMap<>();
+                            for (int i = 2; i < parts.length; i++) {
+                                String token = parts[i];
+                                if (!token.contains(":")) {
+                                    continue;
+                                }
+                                String[] pair = token.split(":", 2);
+                                params.put(pair[0], parseParamValue(pair[1]));
+                            }
+                            recipe.effects().add(new SkillEffectConfig(typeOpt.get(), params));
+                        }
+                        case "cleareffects" -> recipe.effects().clear();
+                        default -> {
+                            player.sendMessage(Text.mm("<red>Unbekannte Aktion."));
+                            return;
+                        }
+                    }
+                    plugin.enchantManager().saveRecipe(recipe);
+                    plugin.auditLog().log(player, "Verzauberung aktualisiert (GUI): " + recipe.id());
+                    player.sendMessage(Text.mm("<green>Verzauberung aktualisiert."));
+                    plugin.guiManager().openEnchantAdmin(player, page);
+                });
             return;
         }
         if (holder instanceof GuiHolders.ClassAdminHolder classAdminHolder) {
@@ -1494,6 +1714,33 @@ public class GuiListener implements Listener {
             }
         }
         player.sendMessage(Text.mm("<green>Bereich gefüllt mit: " + material.name()));
+    }
+
+    private void deleteSelection(Player player) {
+        Location pos1 = readPosition(player, "pos1");
+        Location pos2 = readPosition(player, "pos2");
+        if (pos1 == null || pos2 == null) {
+            player.sendMessage(Text.mm("<red>Setze Pos1/Pos2 mit der Wand."));
+            return;
+        }
+        if (!pos1.getWorld().equals(pos2.getWorld())) {
+            player.sendMessage(Text.mm("<red>Pos1/Pos2 müssen in derselben Welt sein."));
+            return;
+        }
+        int minX = Math.min(pos1.getBlockX(), pos2.getBlockX());
+        int minY = Math.min(pos1.getBlockY(), pos2.getBlockY());
+        int minZ = Math.min(pos1.getBlockZ(), pos2.getBlockZ());
+        int maxX = Math.max(pos1.getBlockX(), pos2.getBlockX());
+        int maxY = Math.max(pos1.getBlockY(), pos2.getBlockY());
+        int maxZ = Math.max(pos1.getBlockZ(), pos2.getBlockZ());
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y <= maxY; y++) {
+                for (int z = minZ; z <= maxZ; z++) {
+                    pos1.getWorld().getBlockAt(x, y, z).setType(Material.AIR, false);
+                }
+            }
+        }
+        player.sendMessage(Text.mm("<green>Bereich gelöscht."));
     }
 
     private Quest resolveQuest(ItemStack item) {

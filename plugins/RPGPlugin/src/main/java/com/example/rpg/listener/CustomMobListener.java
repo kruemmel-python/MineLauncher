@@ -299,6 +299,7 @@ public class CustomMobListener implements Listener {
             if (!isTargetValid(entity, context.target())) {
                 context.setTarget(findTarget(entity));
             }
+            decayThreat(context);
             logDebugStateIfNeeded(context);
             root.tick(context);
         }, 1L, 1L);
@@ -360,6 +361,13 @@ public class CustomMobListener implements Listener {
             hasLos,
             lastSeenInfo,
             threatInfo));
+    }
+
+    private void decayThreat(BehaviorContext context) {
+        ThreatTable threatTable = context.getState(BehaviorKeys.THREAT_TABLE, ThreatTable.class);
+        if (threatTable != null) {
+            threatTable.decay(0.99);
+        }
     }
 
     private void attachHealthBar(LivingEntity entity, MobDefinition mob, double health) {

@@ -105,8 +105,7 @@ public class SearchLastSeenAreaNode extends BehaviorNode {
         Location look = lastSeen.clone();
         look.setYaw(angle.floatValue());
         Location current = mob.getLocation();
-        current.setYaw(angle.floatValue());
-        mob.teleport(current);
+        mob.setRotation(angle.floatValue(), current.getPitch());
     }
 
     private Player tryAcquireTarget(BehaviorContext context, LivingEntity mob) {

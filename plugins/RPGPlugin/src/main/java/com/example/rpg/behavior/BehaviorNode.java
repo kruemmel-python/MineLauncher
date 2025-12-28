@@ -8,7 +8,7 @@ public abstract class BehaviorNode {
 
     protected BehaviorNode(String id) {
         this.id = id;
-        this.nodeId = UUID.randomUUID().toString();
+        this.nodeId = id;
     }
 
     public String id() {

@@ -42,6 +42,7 @@ public class SpawnerManager {
     }
 
     public void saveSpawner(Spawner spawner) {
+        config.set(spawner.id(), null);
         ConfigurationSection section = config.createSection(spawner.id());
         section.set("zoneId", spawner.zoneId());
         section.set("maxMobs", spawner.maxMobs());

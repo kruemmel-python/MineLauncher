@@ -16,13 +16,16 @@ import com.example.rpg.model.Rarity;
 import com.example.rpg.model.Skill;
 import com.example.rpg.model.SkillCategory;
 import com.example.rpg.model.SkillType;
+import com.example.rpg.model.Spawner;
 import com.example.rpg.schematic.Transform;
 import com.example.rpg.skill.SkillEffectConfig;
 import com.example.rpg.skill.SkillEffectType;
 import com.example.rpg.util.ItemBuilder;
 import com.example.rpg.util.Text;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import org.bukkit.Location;
@@ -179,6 +182,7 @@ public class GuiListener implements Listener {
                     plugin.zoneManager().saveZone(zone);
                     plugin.auditLog().log(player, "Zone erstellt (GUI): " + id);
                     player.sendMessage(Text.mm("<green>Zone erstellt: " + id));
+                    createDefaultSpawnerForZone(player, id);
                     plugin.guiManager().openZoneEditor(player, page);
                 });
                 return;
@@ -2125,6 +2129,36 @@ public class GuiListener implements Listener {
         } catch (IllegalArgumentException e) {
             return com.example.rpg.model.Rarity.COMMON;
         }
+    }
+
+    private void createDefaultSpawnerForZone(Player player, String zoneId) {
+        if (plugin.spawnerManager().spawners().values().stream()
+            .anyMatch(spawner -> zoneId.equalsIgnoreCase(spawner.zoneId()))) {
+            return;
+        }
+        Map<String, Double> mobs = new HashMap<>();
+        for (String mobId : plugin.mobManager().mobs().keySet()) {
+            mobs.put(mobId, 1.0);
+        }
+        if (mobs.isEmpty()) {
+            player.sendMessage(Text.mm("<yellow>Keine Mobs in mobs.yml gefunden. Spawner nicht erstellt."));
+            return;
+        }
+        String baseId = zoneId + "_spawner";
+        String spawnerId = baseId;
+        int index = 1;
+        while (plugin.spawnerManager().getSpawner(spawnerId) != null) {
+            spawnerId = baseId + "_" + index++;
+        }
+        Spawner spawner = new Spawner(spawnerId);
+        spawner.setZoneId(zoneId);
+        spawner.setMaxMobs(6);
+        spawner.setSpawnInterval(200);
+        spawner.setMobs(mobs);
+        plugin.spawnerManager().spawners().put(spawnerId, spawner);
+        plugin.spawnerManager().saveSpawner(spawner);
+        plugin.auditLog().log(player, "Mobspawner erstellt (GUI): " + spawnerId);
+        player.sendMessage(Text.mm("<green>Mobspawner erstellt: " + spawnerId));
     }
 
     private boolean removeOne(Inventory inventory, Material material) {

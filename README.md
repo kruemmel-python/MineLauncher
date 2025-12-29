@@ -1,4 +1,4 @@
-# C_launcher
+# MineRPG_launcher
 
 Ein einfacher C#-Launcher mit GUI für Minecraft-Server (Vanilla, Paper, Bukkit, CraftBukkit) mit Online- und Offline-Modus. Zusätzlich ist ein eigener Client-Launcher integriert, der die Minecraft-Dateien lädt und das Spiel im Offline-Modus startet.
 
@@ -161,6 +161,8 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 
 ## RPG – Adminbefehle
 
+Im Admin‑Menü gibt es jetzt einen **„Verzauberungen“**‑Bereich, um Enchant‑Rezepte zu erstellen/bearbeiten/löschen.
+
 | Befehl | Beschreibung | Beispiel |
 | --- | --- | --- |
 | `/rpgadmin` | Admin‑Menü öffnen | `/rpgadmin` |
@@ -206,10 +208,6 @@ Dieser Abschnitt fasst **alle Commands und In‑Game‑Möglichkeiten** des Proj
 | `/rpgadmin perms role parent remove <role> <parent>` | Parent entfernen | `/rpgadmin perms role parent remove mod admin` |
 | `/rpgadmin perms role node <role> <node> <allow|deny|inherit>` | Node setzen | `/rpgadmin perms role node mod rpg.admin allow` |
 | `/rpgadmin perms user setprimary <player> <role>` | Primary‑Rolle | `/rpgadmin perms user setprimary Alex mod` |
-
-### Admin‑GUI Hinweise
-
-Im Admin‑Menü gibt es jetzt einen **„Verzauberungen“**‑Bereich, um Enchant‑Rezepte zu erstellen/bearbeiten/löschen.
 | `/rpgadmin perms user add <player> <role>` | Rolle hinzufügen | `/rpgadmin perms user add Alex mod` |
 | `/rpgadmin perms user remove <player> <role>` | Rolle entfernen | `/rpgadmin perms user remove Alex mod` |
 | `/rpgadmin perms user info <player> <node>` | Node prüfen | `/rpgadmin perms user info Alex rpg.admin` |

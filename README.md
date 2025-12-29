@@ -165,6 +165,7 @@ Im Admin‑Menü gibt es jetzt einen **„Verzauberungen“**‑Bereich, um Ench
 
 | Befehl | Beschreibung | Beispiel |
 | --- | --- | --- |
+| `/summon villager ~ ~ ~ {CustomName:'{"text":"RPG_HÄNDLER"}',CustomNameVisible:1b,NoAI:1b,Invulnerable:1b,Silent:1b}` | Spawnt den "Alles verkaufen"-Händler | (Vanilla Befehl für Setup) |
 | `/rpgadmin` | Admin‑Menü öffnen | `/rpgadmin` |
 | `/rpgadmin wand` | Editor‑Wand (Pos1/Pos2) | `/rpgadmin wand` |
 | `/rpgadmin zone create <id>` | Zone erstellen | `/rpgadmin zone create startzone` |
